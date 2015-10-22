@@ -22,7 +22,10 @@ x_plot = np.linspace(0, 30, 1000)
 plt.plot(x_plot, f(x_plot, parameter1[0], parameter1[1], parameter1[2]), 'r-', label=r'Theoriekurve $T_1$', linewidth=1)
 plt.plot(x_plot, f(x_plot, parameter2[0], parameter2[1], parameter2[2]), 'b-', label=r'Theoriekurve $T_2$', linewidth=1)
 
-np.savetxt('ausgleichswerte.txt', np.column_stack([parameter1, parameter2]), header="T1 T2")
+fehler1 = np.sqrt(np.diag(covariance1)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
+fehler2 = np.sqrt(np.diag(covariance2))
+
+np.savetxt('ausgleichswerte.txt', np.column_stack([parameter1, parameter2, fehler1, fehler2]), header="T1 T2 T1_Sigma, T2_Sigma")
 
 
 

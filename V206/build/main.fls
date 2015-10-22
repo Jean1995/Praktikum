@@ -21,6 +21,8 @@ INPUT /home/jean/.local/texlive/2015/texmf-dist/tex/latex/koma-script/scrsize11p
 INPUT /home/jean/.local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT /home/jean/.local/texlive/2015/texmf-dist/tex/latex/koma-script/typearea.sty
 INPUT /home/jean/.local/texlive/2015/texmf-dist/tex/latex/koma-script/typearea.sty
+INPUT /home/jean/.local/texlive/2015/texmf-dist/tex/latex/parskip/parskip.sty
+INPUT /home/jean/.local/texlive/2015/texmf-dist/tex/latex/parskip/parskip.sty
 INPUT /home/jean/.local/texlive/2015/texmf-dist/tex/latex/koma-script/scrhack.sty
 INPUT /home/jean/.local/texlive/2015/texmf-dist/tex/latex/koma-script/scrhack.sty
 INPUT /home/jean/.local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
@@ -365,6 +367,13 @@ INPUT ./content/durchfuehrung.tex
 INPUT ./content/auswertung.tex
 INPUT ./content/auswertung.tex
 INPUT plot.pdf
+INPUT /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmroman8-regular.luc
+INPUT /home/jean/.local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmmi5.tfm
+INPUT /home/jean/.local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
+INPUT /home/jean/.local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
+INPUT /home/jean/.local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm
+INPUT /home/jean/.local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmroman6-regular.luc
 INPUT ./content/diskussion.tex
 INPUT ./content/diskussion.tex
 INPUT build/main.aux
