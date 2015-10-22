@@ -4,5 +4,5 @@
 \contentsline {section}{\numberline {1}Theorie}{3}{section.1}
 \contentsline {section}{\numberline {2}Durchführung}{3}{section.2}
 \contentsline {section}{\numberline {3}Auswertung}{3}{section.3}
-\contentsline {section}{\numberline {4}Diskussion}{3}{section.4}
-\contentsline {section}{\nonumberline Literatur}{3}{section*.3}
+\contentsline {section}{\numberline {4}Diskussion}{4}{section.4}
+\contentsline {section}{\nonumberline Literatur}{4}{section*.3}
