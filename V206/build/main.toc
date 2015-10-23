@@ -9,4 +9,4 @@
 \contentsline {subsection}{\numberline {3.1}Güteziffervergleich}{4}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Massendurchsatz}{6}{subsection.3.2}
 \contentsline {section}{\numberline {4}Diskussion}{6}{section.4}
-\contentsline {section}{\nonumberline Literatur}{6}{section*.3}
+\contentsline {section}{\nonumberline Literatur}{6}{section*.4}

@@ -16,10 +16,14 @@ berechnet:
   T(t)=A \cdot t^2 + B \cdot t + C
 \end{equation}
 Die Parameter $A$, $B$ und $C$ wurden bestimmt zu
-\begin{align}
-  A_{T_1} &= \SI{-0,01395 +- 0.00037}{\kelvin\per\minute²} & B_{T_1} &= \SI{1,40708 +- 0.01160}{\kelvin\per\minute} & C_{T_1} &= \SI{293,592 +- 0.075}{\kelvin} \\
-  A_{T_2} &= \SI{0,01566 +- 0.00031}{\kelvin\per\minute²}  & B_{T_2} &= \SI{-1,08915 +- 0.00954}{\kelvin\per\minute} & C_{T_2} &= \SI{294,936 +- 0.062}{\kelvin}
-\end{align}
+\begin{align*}
+A_{T_1} &= \SI{-3.87601 +- 0.10382e-6}{\kelvin\per\second²} \\
+B_{T_1} &= \phantom{1}\SI{0.02345 +- 0.00019}{\kelvin\per\second} \\
+C_{T_1} &= \phantom{1}\SI{293.592 +- 0.062}{\kelvin} \\
+A_{T_2} &= \phantom{1}\SI{4.34879 +- 0.08533e-6}{\kelvin\per\second²}  \\
+ B_{T_2} &= \SI{-0.01815 +- 0.00016}{\kelvin\per\second} \\
+  C_{T_2} &= \phantom{1}\SI{294.936 +- 0.062}{\kelvin}
+\end{align*}
 
 Durch Ableiten und Einsetzen in die Ausgleichskurve
 \begin{equation}
@@ -34,9 +38,22 @@ Für die reale Wärmepunpe gilt jedoch die Formel
 \begin{equation}
   v_{real}= \frac{\symup{d} Q_1}{\symup{d} tN} = (m_1c_w+m_kc_k)\frac{\symup{d} T_1}{\symup{d} tN}.
 \end{equation}
-Wobei $ N = $ der arithmetische Mittelwert der Kompressorleistung $ m_1 = ...$ die Masse des Wassers in $ R_1 $, $ c_w = ...$ die spezifische Wärmekapazität des Wassers und $ m_kc_k $ die Wärmekapazität der Kupferschlange und der Reservoire ist.
-Die Werte sind in der Tabelle 1 aufgelistet.
-\begin{equation}
-\end{equation}
-
+wobei $ N = $ die Kompressorleistung, $ m_1$ die Masse des Wassers in $ R_1 $, $m_k$ die Masse des zu heizenden Reservoirs inklusive Kupferrohre, $ c_w $ die spezifische Wärmekapazität des Wassers sowie $ c_k $ die spezifische Wärmekapazität des Reservoirs und der Kuperrohre ist.
+Da bei der Durchführung des Versuches \SI{4}{\litre} Wasser für $R_1$ verwendet wurden, berechnet sich $m_1$ zu $m_1 = \rho_{H_2O} \cdot V = \SI{4176.48}{\kilogram}$, wobei der Werte für $\rho_{H_20}$ der Literatur entnommen wurde.
+Das Produkt aus $m_k$ und $c_k$ wurde vom Versuchsaufbau zu $\SI{750}{\joule\per\kelvin}$ abgelesen, $c_w$ wurde ebenfalls der Literatur zu $\SI{4,1819}{\kilo\joule\per\kilogram\kelvin}$ entnommen.
+Die Kompressorleistung ergibt sich aus dem arithmetischen Mittelwert der Messdaten zu $N=124.77$.
+Für die Differenzenquotienten wurden die Werte der Ausgleichskurve verwendet.
+\begin{table}
+  \centering
+  \caption{Tabelle 1}
+  \label{tab:tabelle1}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c c c c c c}
+    \toprule
+    {$t [\si{\second}]$} & {$T_1 [\si{\kelvin}]$} & {$T_2 [\si{\kelvin}]$} & {$\increment{T} [\si{\kelvin}]$} & {$\frac{\symup{d}T_1}{\symup{d}t}$} & {$\frac{\symup{d}T_2}{\symup{d}t}$}\\
+    \midrule
+    420 & 29.6 & 14.9 & 14.7 & 0.023397 & -0.01809 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 \subsection{Massendurchsatz}
