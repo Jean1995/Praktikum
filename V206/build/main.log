@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.80.0 (TeX Live 2015) (rev 5238)  (format=lualatex 2015.10.12)  23 OCT 2015 19:40
+This is LuaTeX, Version beta-0.80.0 (TeX Live 2015) (rev 5238)  (format=lualatex 2015.10.12)  24 OCT 2015 00:18
  restricted \write18 enabled.
 **main.tex
 (./main.tex
@@ -289,7 +289,7 @@ Lua-only attribute luaotfload@cursbase = 6
 Lua-only attribute luaotfload@curscurs = 7
 Lua-only attribute luaotfload@cursdone = 8
 Lua-only attribute luaotfload@state = 9
-luaotfload | main : fontloader loaded in 0.029 seconds
+luaotfload | main : fontloader loaded in 0.030 seconds
 Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
 Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
 Inserting `luaotfload.find_vf_file' at position 1 in `find_vf_file'.
@@ -1947,6 +1947,9 @@ luatex-hyphen: info: no hyphenation exceptions for this language
 
 LaTeX Warning: Label `sec:Durchführung' multiply defined.
 
+
+LaTeX Warning: Label `tab:tabelle1' multiply defined.
+
 )
 \openout1 = main.aux
 
@@ -2149,22 +2152,27 @@ luaotfload | load : Lookup/name: "LatinModernMath" -> "latinmodern-math.otf"
 luaotfload | load : Lookup/name: "LatinModernMath" -> "latinmodern-math.otf"
 luaotfload | load : Lookup/name: "LatinModernMath" -> "latinmodern-math.otf"
 luaotfload | load : Lookup/name: "XITSMath" -> "xits-math.otf"
-luaotfload | load : Lookup/name: "XITSMath" -> "xits-math.otf"(load luc: /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmroman6-regular.luc)) (./content/auswertung.tex <plot.pdf, id=52, 417.7206pt x 258.00488pt>
+luaotfload | load : Lookup/name: "XITSMath" -> "xits-math.otf"(load luc: /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmroman6-regular.luc)) (./content/auswertung.tex <plot.pdf, id=54, 417.7206pt x 258.00488pt>
 File: plot.pdf Graphic file (type pdf)
  <use plot.pdf>
 Package pdftex.def Info: plot.pdf used on input line 7.
 (pdftex.def)             Requested size: 417.71957pt x 258.00424pt.
-(load luc: /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmroman5-regular.luc) [4] [5<build/plot.pdf>]) (./content/diskussion.tex)
+(load luc: /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmroman5-regular.luc) [4] [5<build/plot.pdf>]
+Overfull \hbox (32.57648pt too wide) in paragraph at lines 76--86
+ [][][] 
+ []
+
+) (./content/diskussion.tex) [6]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 25.
- [6]
+ [7]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 25.
  (./build/main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 25.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 25.
 Package rerunfilecheck Info: File `main.aux' has not changed.
-(rerunfilecheck)             Checksum: 3AC4767754C94D917F992A78967268D5;5102.
+(rerunfilecheck)             Checksum: 40DFC4B9DBB0FFBD9810F610278CDDAD;5891.
 Package rerunfilecheck Info: File `main.toc' has not changed.
-(rerunfilecheck)             Checksum: 255DEE995F3C43D874F030D877590FC4;814.
+(rerunfilecheck)             Checksum: 1D911A1FA315901B5AE6BFFD85F74BD9;911.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -2176,19 +2184,19 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 25.
 )
 
 Here is how much of LuaTeX's memory you used:
- 43889 strings out of 494897
+ 43894 strings out of 494897
  100000,1648299 words of node,token memory allocated
- 514 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 2 glue, 9 kern, 15 attribute, 57 glue_spec, 15 attribute_list, 1 write nodes
-   avail lists: 1:2,2:9159,3:124,4:840,5:228,6:3038,7:254,8:12,9:349,10:439,11:1
- 46268 multiletter control sequences out of 65536+600000
- 106 fonts using 31655671 bytes
- 69i,19n,104p,1248b,2073s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 528 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 2 glue, 10 kern, 16 attribute, 57 glue_spec, 16 attribute_list, 1 write nodes
+   avail lists: 1:2,2:9211,3:133,4:1304,5:239,6:3038,7:262,8:13,9:456,10:439,11:1
+ 46269 multiletter control sequences out of 65536+600000
+ 106 fonts using 31656127 bytes
+ 69i,21n,104p,1248b,2615s stack positions out of 5000i,500n,10000p,200000b,100000s
 </home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmsans10-bold.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf>
-Output written on main.pdf (6 pages, 65282 bytes).
+Output written on main.pdf (7 pages, 68650 bytes).
 
-PDF statistics: 187 PDF objects out of 1000 (max. 8388607)
- 140 compressed objects within 2 object streams
- 27 named destinations out of 1000 (max. 131072)
- 73 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 198 PDF objects out of 1000 (max. 8388607)
+ 150 compressed objects within 2 object streams
+ 31 named destinations out of 1000 (max. 131072)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

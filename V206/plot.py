@@ -1,7 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from uncertainties import ufloat
+import uncertainties.unumpy as unp
 
-t, T1, Pb, T2, Pa, P = np.genfromtxt('daten.txt', unpack=True)
+t, T1, Pb, T2, Pa, P , T1_error, Pb_error, T2_error, Pa_error, P_error = np.genfromtxt('daten.txt', unpack=True)
 
 T1=T1+273.2
 T2=T2+273.2
@@ -43,22 +45,25 @@ plt.savefig('build/plot.pdf')
 # Differentialquotienten
 # wähle 7, 14, 21, 28 Minuten
 
-d7_1 = f_ab(7, parameter1[0], parameter1[1])
-d7_2 = f_ab(7, parameter2[0], parameter2[1])
+parameter1 = unp.uarray(parameter1, fehler1)
+parameter2 = unp.uarray(parameter2, fehler2)
 
-d14_1 = f_ab(14, parameter1[0], parameter1[1])
-d14_2 = f_ab(14, parameter2[0], parameter2[1])
+d7_1 = f_ab(7*60, parameter1[0], parameter1[1])
+d7_2 = f_ab(7*60, parameter2[0], parameter2[1])
 
-d21_1 = f_ab(21, parameter1[0], parameter1[1])
-d21_2 = f_ab(21, parameter2[0], parameter2[1])
+d14_1 = f_ab(14*60, parameter1[0], parameter1[1])
+d14_2 = f_ab(14*60, parameter2[0], parameter2[1])
 
-d28_1 = f_ab(28, parameter1[0], parameter1[1])
-d28_2 = f_ab(28, parameter2[0], parameter2[1])
+d21_1 = f_ab(21*60, parameter1[0], parameter1[1])
+d21_2 = f_ab(21*60, parameter2[0], parameter2[1])
+
+d28_1 = f_ab(28*60, parameter1[0], parameter1[1])
+d28_2 = f_ab(28*60, parameter2[0], parameter2[1])
 
 d1 = np.array([d7_1, d14_1, d21_1, d28_1])
 d2 = np.array([d7_2, d14_2, d21_2, d28_2])
 
-np.savetxt('diffquotienten.txt', np.column_stack([d1, d2]), header="d1 d2")
+np.savetxt('diffquotienten.txt', np.column_stack([unp.nominal_values(d1), unp.nominal_values(d2), unp.std_devs(d1), unp.std_devs(d2)]), header="d1 d2 err_d1 err_d2")
 # Güteziffer bestimmen
 
 # N = Leistungsaufnahme Kompressor
@@ -69,7 +74,7 @@ np.savetxt('diffquotienten.txt', np.column_stack([d1, d2]), header="d1 d2")
 def v(N, m1, c1, c2, d):
     return (1/N)*(m1*c1+c2) * d
 
-N = np.mean(P[1:31])
+N = ufloat(np.mean(P[1:31]), 1)
 m1 = 4176.48
 c1 = 4.1819
 c2 = 750
@@ -89,4 +94,17 @@ v28_2 = v(N, m1, c1, c2, d28_2)
 v1 = np.array([v7_1, v14_1, v21_1, v28_1])
 v2 = np.array([v7_2, v14_2, v21_2, v28_2])
 
-np.savetxt('gueteziffern.txt', np.column_stack([v1, v2]), header="v T1, v T2")
+np.savetxt('gueteziffern.txt', np.column_stack([unp.nominal_values(v1), unp.nominal_values(v2), unp.std_devs(v1), unp.std_devs(v2)]), header="v T1, v T2, err_v T1, err_v T2")
+
+# v real
+
+T1 = unp.uarray(T1, T1_error)
+T2 = unp.uarray(T2, T2_error)
+
+v_ideal_7 = (T1[7])/(T1[7]-T2[7])
+v_ideal_14 = (T1[14])/(T1[14]-T2[14])
+v_ideal_21 = (T1[21])/(T1[21]-T2[21])
+v_ideal_28 = (T1[28])/(T1[28]-T2[28])
+
+v_ideal = np.array([v_ideal_7, v_ideal_14, v_ideal_21, v_ideal_28])
+np.savetxt('ideale_gueteziffern.txt', np.column_stack([unp.nominal_values(v_ideal),  unp.std_devs(v_ideal)]), header="v_ideal v_ideal_error")
