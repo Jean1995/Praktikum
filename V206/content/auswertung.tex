@@ -29,7 +29,13 @@ Durch Ableiten und Einsetzen in die Ausgleichskurve
 \begin{equation}
   \frac{\symup{d}T}{\symup{d}t}= 2 \cdot A \cdot t + B
 \end{equation}
-erhält man folgende Werte der Differentialquotienten:
+erhält man die Werte der Differentialquotienten, welche der Tabelle 1 entnommen werden können.
+\\
+Für die Fehlerrechnung wurde bei der vorliegenden Rechnung und bei allen folgenden Rechnungen das Gauß\'sche Fehlerfortpflanzungsgesetz
+\begin{equation}
+\increment{f} = \sqrt{(\frac{\partial f}{\partial x_1}\increment{x_1})^2 + (\frac{\partial f}{\partial x_2}\increment{x_2})^2 + \dotsc + (\frac{\partial f}{\partial x_n}\increment{x_n})^2}
+\end{equation}
+für eine Funktion $f(x_1,x_2, \dotsc ,x_n)$ bei denen die Größen $x_1, x_2, \dotsc , x_n$ voneinander unabhängig sind.
 \begin{table}
   \centering
   \caption{Differentialquotienten}
@@ -46,13 +52,6 @@ erhält man folgende Werte der Differentialquotienten:
     \bottomrule
   \end{tabular}
 \end{table}
-\\
-Für die Fehlerrechnung wurde bei der vorliegenden Rechnung und bei allen folgenden Rechnungen das Gauß\'sche Fehlerfortpflanzungsgesetz
-\begin{equation}
-\increment{f} = \sqrt{(\frac{\partial f}{\partial x_1}\increment{x_1})^2 + (\frac{\partial f}{\partial x_2}\increment{x_2})^2 + \dotsc + (\frac{\partial f}{\partial x_n}\increment{x_n})^2}
-\end{equation}
-für eine Funktion $f(x_1,x_2, \dotsc ,x_n)$ bei denen die Größen $x_1, x_2, \dotsc , x_n$ voneinander unabhängig sind.
-
 \subsection{Güteziffervergleich}
 Für eine ideale Wärmepumpe gilt
 \begin{equation}
