@@ -379,6 +379,8 @@ INPUT /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lm
 INPUT plot2.pdf
 INPUT ./content/diskussion.tex
 INPUT ./content/diskussion.tex
+INPUT original_v206_1.jpg
+INPUT original_v206_2.jpg
 INPUT build/main.aux
 INPUT build/main.aux
 INPUT build/main.toc
