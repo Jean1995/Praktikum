@@ -14,11 +14,14 @@ all: build/main.pdf
 build/plot.pdf: plot.py matplotlibrc header-matplotlib.tex daten.txt| build
 	TEXINPUTS="$(call translate,$(pwd):)" python plot.py
 
+build/plot2.pdf: plot2.py matplotlibrc header-matplotlib.tex| build
+		TEXINPUTS="$(call translate,$(pwd):)" python plot2.py
+
 daten.txt: datenersteller.py
 	python datenersteller.py
 
 # hier weitere Abhängigkeiten für build/main.pdf deklarieren:
-build/main.pdf: build/plot.pdf
+build/main.pdf: build/plot.pdf build/plot2.pdf
 
 build/main.pdf: FORCE | build
 	  TEXINPUTS="$(call translate,build:)" \

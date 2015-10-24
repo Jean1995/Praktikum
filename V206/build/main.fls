@@ -364,6 +364,7 @@ INPUT ./content/theorie.tex
 INPUT ./content/theorie.tex
 INPUT ./content/durchfuehrung.tex
 INPUT ./content/durchfuehrung.tex
+INPUT skizze.png
 INPUT /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmroman8-regular.luc
 INPUT /home/jean/.local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmmi5.tfm
 INPUT /home/jean/.local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
@@ -375,6 +376,7 @@ INPUT ./content/auswertung.tex
 INPUT ./content/auswertung.tex
 INPUT plot.pdf
 INPUT /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmroman5-regular.luc
+INPUT plot2.pdf
 INPUT ./content/diskussion.tex
 INPUT ./content/diskussion.tex
 INPUT build/main.aux

@@ -2,10 +2,10 @@
 \label{sec:Auswertung}
 
 \subsection{Bestimmung einer Ausgleichskurve}
-\begin{figure}
+\begin{figure}[H]
   \centering
   \includegraphics{plot.pdf}
-  \caption{Plot.}
+  \caption{Temperaturverlauf.}
   \label{fig:plot}
 \end{figure}
 Die gemessenen Daten für die Tempeatur $T_1$ des wärmeren sowie die Temperatur
@@ -69,7 +69,7 @@ Für die Differenzenquotienten wurden die Werte der Ausgleichskurve, angegeben i
 
 \begin{table}
   \centering
-  \caption{Güteziffervergleich}
+  \caption{Güteziffervergleich.}
   \label{tab:tabelle1}
   \sisetup{table-format=1.2}
 \begin{tabular}{c c c c c c c}
@@ -86,3 +86,52 @@ Für die Differenzenquotienten wurden die Werte der Ausgleichskurve, angegeben i
 Es fällt auf, dass sich die reale Güteziffer deutlich von der idealen Güteziffer unterscheidet.
 Gründe für diese Differenz werden im Kapitel Diskussion besprochen.
 \subsection{Massendurchsatz}
+Bei einer Wärmepumpe wird dem kälteren Reservoir, hier $R_2$, die Wärmeenergie $Q_2$ in Form von Verdampfungswärme entzogen.
+Der Zusammenhang zwischen dem Massendurchsatz $\frac{\symup{d} m}{\symup{d} t}$ und der entnommenen Wärmemenge pro Zeit $\frac{\symup{d} Q_2}{\symup{d} t}$ wird durch
+\begin{equation}
+  \frac{\symup{d} Q_2}{\symup{d}t} = L \cdot \frac{\symup{d} m}{\symup{d} t}
+    \label{eqn:md}
+\end{equation}
+beschrieben, wobei $L$ die Verdampfungswärme des Mediums ist.
+Dabei gibt $L$ an, welche Energie pro Kilogramm erforderlich ist, um einen Stoff bei gleichbleibender Temperatur zu verdampfen.
+$L$ kann dabei der Dampfdruckkurve eines spezifischen Stoffes entnommen werden, welche den Phasenübergang zwischen flüssig und gasförmig in einem $pT$-Diagramm beschreibt.
+Diese Kurve wird im Allgemeinen durch die Clausius-Clapeyronsche Gleichung beschrieben, welche unter vereinfachten Bedingungen den Zusammenhang
+\begin{equation}
+  ln(p)= -\frac{L}{R}\frac{1}{T} + const
+  \label{eqn:ccg}
+\end{equation}
+ergibt.
+Hierbei ist $R$ die allgemeine Gaskonstante.
+Um nun den Wert von L für das genutzte Medium $\ce{Cl2F2C}$ zu bestimmen, wurden die Kehrwerte der Drucktemperaturen gegen den natürlichen Logarithmus des dazugehörigen Drucks abgetragen.
+\begin{figure}[H]
+  \centering
+  \includegraphics{plot2.pdf}
+  \caption{Dampfdruckkurve.}
+  \label{fig:plot2}
+\end{figure}
+Durch lineare Ausgleichsrechnung mit SciPy wurden die Parameter $b$ und $m$ der Ausgleichsgerade bestimmt zu:
+\begin{align*}
+m &= \SI{-2313.109 +- 70.380}{\per\kelvin} & b &= \num{21.160 +- 0.227}
+\end{align*}
+Nach dem bereits genannten Zusammenhang \eqref{eqn:ccg} ergibt sich die Verdampfungswärme $L$ nun zu
+\begin{align*}
+  L = -m \cdot R = \SI[per-mode=fraction]{19231.19 +- 572.47}{\joule\per\mol}.
+\end{align*}
+Nach dem allgemeinen Zusammenhang für die Verdampfungswärme \eqref{eqn:md} kann nun der Massendurchsatz bestimmt werden:
+
+\begin{table}
+  \centering
+  \caption{Massendurchsatz.}
+  \label{tab:tabelle3}
+  \sisetup{table-format=1.2}
+\begin{tabular}{c c c}
+  \toprule
+  {$t [\si{\second}]$} & {$T_2 [\si{\kelvin}]$} & {$\frac{\symup{d} m}{\symup{d} t} [\si{\mol\per\second}]$}\\
+  \midrule
+  \num{420} & \num{14.9 +- 0.1} & \num{0.013732 +- 0.00048} \\
+  \num{840} & \num{19.5 +- 0.1} & \num{0.010274 +- 0.00039}\\
+  \num{1260} & \num{5.7 +- 0.1} & \num{0.006814 +- 0.00034}  \\
+  \num{1680} & \num{3.5 +- 0.1} & \num{0.003354 +- 0.00033} \\
+  \bottomrule
+\end{tabular}
+\end{table}
