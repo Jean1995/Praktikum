@@ -31,11 +31,11 @@ Durch Ableiten und Einsetzen in die Ausgleichskurve
 \end{equation}
 erhält man die Werte der Differentialquotienten, welche der Tabelle 1 entnommen werden können.
 \\
-Für die Fehlerrechnung wurde bei der vorliegenden Rechnung und bei allen folgenden Rechnungen das Gauß\'sche Fehlerfortpflanzungsgesetz
+Für die Fehlerrechnung wurde bei der vorliegenden Rechnung und bei allen folgenden Rechnungen das Gaußsche Fehlerfortpflanzungsgesetz
 \begin{equation}
 \increment{f} = \sqrt{(\frac{\partial f}{\partial x_1}\increment{x_1})^2 + (\frac{\partial f}{\partial x_2}\increment{x_2})^2 + \dotsc + (\frac{\partial f}{\partial x_n}\increment{x_n})^2}
 \end{equation}
-für eine Funktion $f(x_1,x_2, \dotsc ,x_n)$ bei denen die Größen $x_1, x_2, \dotsc , x_n$ voneinander unabhängig sind.
+für eine Funktion $f(x_1,x_2, \dotsc ,x_n)$ bei denen die Größen $x_1, x_2, \dotsc , x_n$ voneinander unabhängig sind verwendet.
 \begin{table}
   \centering
   \caption{Differentialquotienten}
@@ -61,13 +61,13 @@ Für die reale Wärmepunpe gilt jedoch die Formel
 \begin{equation}
   v_{real}= \frac{\symup{d} Q_1}{\symup{d} tN} = (m_1c_w+m_kc_k)\frac{\symup{d} T_1}{\symup{d} tN}.
 \end{equation}
-wobei $ N = $ die Kompressorleistung, $ m_1$ die Masse des Wassers in $ R_1 $, $m_k$ die Masse des zu heizenden Reservoirs inklusive Kupferrohre, $ c_w $ die spezifische Wärmekapazität des Wassers sowie $ c_k $ die spezifische Wärmekapazität des Reservoirs und der Kuperrohre ist.
+wobei $ N$ die Kompressorleistung, $ m_1$ die Masse des Wassers in $ R_1 $, $m_k$ die Masse des zu heizenden Reservoirs inklusive Kupferrohre, $ c_w $ die spezifische Wärmekapazität des Wassers sowie $ c_k $ die spezifische Wärmekapazität des Reservoirs und der Kupferrohre ist.
 Da bei der Durchführung des Versuches \SI{4}{\litre} Wasser für $R_1$ verwendet wurden, berechnet sich $m_1$ zu $m_1 = \rho_{H_2O} \cdot V = \SI{4176.48}{\kilogram}$, wobei der Werte für $\rho_{H_20}$ der Literatur entnommen wurde.
 Das Produkt aus $m_k$ und $c_k$ wurde vom Versuchsaufbau zu $\SI{750}{\joule\per\kelvin}$ abgelesen, $c_w$ wurde ebenfalls der Literatur zu $\SI{4,1819}{\kilo\joule\per\kilogram\kelvin}$ entnommen.
 Die Kompressorleistung ergibt sich aus dem arithmetischen Mittelwert der Messdaten zu $N=124.77$.
-Für die Differenzenquotienten wurden die Werte der Ausgleichskurve, angegeben in Tabelle 1 verwendet.
+Für die Differentialquotienten wurden die Werte der Ausgleichskurve, angegeben in Tabelle 1 verwendet.
 
-\begin{table}
+\begin{table}[H]
   \centering
   \caption{Güteziffervergleich.}
   \label{tab:tabelle1}
@@ -93,14 +93,14 @@ Der Zusammenhang zwischen dem Massendurchsatz $\frac{\symup{d} m}{\symup{d} t}$ 
     \label{eqn:md}
 \end{equation}
 beschrieben, wobei $L$ die Verdampfungswärme des Mediums ist.
-Dabei gibt $L$ an, welche Energie pro Kilogramm erforderlich ist, um einen Stoff bei gleichbleibender Temperatur zu verdampfen.
-$L$ kann dabei der Dampfdruckkurve eines spezifischen Stoffes entnommen werden, welche den Phasenübergang zwischen flüssig und gasförmig in einem $pT$-Diagramm beschreibt.
-Diese Kurve wird im Allgemeinen durch die Clausius-Clapeyronsche Gleichung beschrieben, welche unter vereinfachten Bedingungen den Zusammenhang
+Dabei gibt $L$ an, welche Energie pro Mol erforderlich ist, um einen Stoff bei gleichbleibender Temperatur zu verdampfen.
+$L$ kann dabei der Dampfdruckkurve des jeweiligen Stoffes entnommen werden, welche den Phasenübergang zwischen flüssig und gasförmig in einem $pT$-Diagramm beschreibt.
+Diese Kurve wird im Allgemeinen durch die Clausius-Clapeyronsche Gleichung beschrieben, aus der unter vereinfachten Bedingungen der Zusammenhang
 \begin{equation}
   ln(p)= -\frac{L}{R}\frac{1}{T} + const
   \label{eqn:ccg}
 \end{equation}
-ergibt.
+folgt.
 Hierbei ist $R$ die allgemeine Gaskonstante.
 Um nun den Wert von L für das genutzte Medium $\ce{Cl2F2C}$ zu bestimmen, wurden die Kehrwerte der Drucktemperaturen gegen den natürlichen Logarithmus des dazugehörigen Drucks abgetragen.
 \begin{figure}[H]
@@ -113,11 +113,11 @@ Durch lineare Ausgleichsrechnung mit SciPy wurden die Parameter $b$ und $m$ der 
 \begin{align*}
 m &= \SI{-2313.109 +- 70.380}{\per\kelvin} & b &= \num{21.160 +- 0.227}
 \end{align*}
-Nach dem bereits genannten Zusammenhang \eqref{eqn:ccg} ergibt sich die Verdampfungswärme $L$ nun zu
+Aus dem bereits genannten Zusammenhang \eqref{eqn:ccg} ergibt sich die Verdampfungswärme $L$ nun zu
 \begin{align*}
   L = -m \cdot R = \SI[per-mode=fraction]{19231.19 +- 572.47}{\joule\per\mol}.
 \end{align*}
-Nach dem allgemeinen Zusammenhang für die Verdampfungswärme \eqref{eqn:md} kann nun der Massendurchsatz bestimmt werden:
+Aus dem allgemeinen Zusammenhang für die Verdampfungswärme \eqref{eqn:md} kann nun der Massendurchsatz bestimmt werden:
 
 \begin{table}
   \centering
@@ -132,6 +132,45 @@ Nach dem allgemeinen Zusammenhang für die Verdampfungswärme \eqref{eqn:md} kan
   \num{840} & \num{19.5 +- 0.1} & \num{0.010274 +- 0.00039}\\
   \num{1260} & \num{5.7 +- 0.1} & \num{0.006814 +- 0.00034}  \\
   \num{1680} & \num{3.5 +- 0.1} & \num{0.003354 +- 0.00033} \\
+  \bottomrule
+\end{tabular}
+\end{table}
+\subsection{Kompressorleistung}
+Um die Wärmemenge als Kondensationswärme an das Reservoir $R_1$ abgeben zu können, komprimiert der Kondensator $K$ das Gas, so dass es flüssig wird.
+Da der Kondensator das Volumen $V_1$ bei einem Druck $p_b$ zum Volumen $V_2$ verringert, errechnet sich die verrichtete Arbeit zu
+\begin{equation}
+  W = - \int_{V_1}^{V_2} p_b \symup{d}V.
+\end{equation}
+Idealerweise findet dieser Prozess nahezu adiabatisch statt, so dass aus der Adiabatengleichung für die verrichtete Arbeit
+\begin{equation}
+  W = \frac{1}{\kappa -1}\Bigl(p_b \sqrt[\kappa]{\frac{p_a}{p_b}} - p_a \Bigr) V_a
+\end{equation}
+folgt.
+Um die mechanische Kompressorleistung $P_{\text{mech}}$ zu bestimmen, wird der Quotient aus $\increment W$ und $\increment t$ gebildet.
+Wird zudem das Volumen $V_a$ durch den Quotienten aus der Masse $m$ und der Dichte $\rho$ ersetzt, ergibt sich
+\begin{equation}
+  P_{\text{mech}} = \frac{1}{\kappa -1}\Bigl(p_b \sqrt[\kappa]{\frac{p_a}{p_b}} - p_a \Bigr) \frac{1}{\rho} \frac{\increment m}{\increment t} \cdot M \cdot 10^{-3}.
+\end{equation}
+$\kappa$ ist der Adiabatenkoeffizient des Mediums, für $\ce{Cl2F2C}$ durch $\kappa = 1.14$ gegeben, $p_a$ und $p_b$ die Drücke bei denen der Kompressor arbeitet, $\rho$ die Dichte des Gases unter $p_a$, $\frac{\increment m}{\increment t}$ der Massendurchsatz und $M$ die Molmasse des Mediums, für $\ce{Cl2F2C}$ durch $M = \SI{120.91}{\gram\mol}$ gegeben. Der Faktor $10^{-3}$ wurde ergänzt, um den Massendurchsatz in SI-Einheiten umzurechnen. \\
+Um die Dichte $\rho$ zu bestimmen, wird die allgemeine Gasgleichung
+\begin{equation}
+  p V=m R_s T
+\end{equation}
+verwendet, $R_S$ ist die spezifische Gaskonstante. Diese bestimmt sich durch gegebenes $\rho_0=\SI{5,51}{\gram\per\litre}$ bei Normalbedingungen für das vorhandene Transportmedium zu $R_S = \SI{76.513}{\joule\per\kilogram\per\kelvin}$.
+Hieraus können die Dichten für alle Messzeitpunkte berechnet werden.
+\begin{table}
+  \centering
+  \caption{Kompressorleistung.}
+  \label{tab:tabelle4}
+  \sisetup{table-format=1.2}
+\begin{tabular}{c c c}
+  \toprule
+  {$t [\si{\second}]$} & {$\rho [\si{\gram\per\litre}]$} & {$P_{\text{mech}} [\si{\joule\per\second}]$}\\
+  \midrule
+  \num{420} & \num{19.961 +- 0.907} & \num{17.697 +- 1.736} \\
+  \num{840} & \num{17.568 +- 0.925} & \num{22.014 +- 1.641} \\
+  \num{1260} & \num{16.870 +- 0.937} & \num{17.809 +- 1.326} \\
+  \num{1680} & \num{16.296 +- 0.945} & \num{10.143 +- 1.120} \\
   \bottomrule
 \end{tabular}
 \end{table}

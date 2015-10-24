@@ -9,5 +9,6 @@
 \contentsline {subsection}{\numberline {3.1}Bestimmung einer Ausgleichskurve}{5}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Güteziffervergleich}{6}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Massendurchsatz}{7}{subsection.3.3}
-\contentsline {section}{\numberline {4}Diskussion}{9}{section.4}
-\contentsline {section}{\nonumberline Literatur}{9}{section*.8}
+\contentsline {subsection}{\numberline {3.4}Kompressorleistung}{9}{subsection.3.4}
+\contentsline {section}{\numberline {4}Diskussion}{10}{section.4}
+\contentsline {section}{\nonumberline Literatur}{10}{section*.9}
