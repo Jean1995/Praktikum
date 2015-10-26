@@ -29,7 +29,7 @@ Durch Ableiten und Einsetzen in die Ausgleichskurve
 \begin{equation}
   \frac{\symup{d}T}{\symup{d}t}= 2 \cdot A \cdot t + B
 \end{equation}
-erhält man die Werte der Differentialquotienten, welche der Tabelle 1 entnommen werden können.
+erhält man die Werte der Differentialquotienten, welche der Tabelle \ref{tab:tabelle1} entnommen werden können.
 \\
 Für die Fehlerrechnung wurde bei der vorliegenden Rechnung und bei allen folgenden Rechnungen das Gaußsche Fehlerfortpflanzungsgesetz
 \begin{equation}
@@ -70,7 +70,7 @@ Für die Differentialquotienten wurden die Werte der Ausgleichskurve, angegeben 
 \begin{table}[H]
   \centering
   \caption{Güteziffervergleich.}
-  \label{tab:tabelle1}
+  \label{tab:tabelle2}
   \sisetup{table-format=1.2}
 \begin{tabular}{c c c c c c c}
   \toprule
@@ -111,7 +111,7 @@ Um nun den Wert von L für das genutzte Medium $\ce{Cl2F2C}$ zu bestimmen, wurde
 \end{figure}
 Durch lineare Ausgleichsrechnung mit SciPy wurden die Parameter $b$ und $m$ der Ausgleichsgerade bestimmt zu:
 \begin{align*}
-m &= \SI{-2313.109 +- 70.380}{\per\kelvin} & b &= \num{21.160 +- 0.227}
+m &= \SI{-2313.109 +- 70.380}{\kelvin} & b &= \num{21.160 +- 0.227}
 \end{align*}
 Aus dem bereits genannten Zusammenhang \eqref{eqn:ccg} ergibt sich die Verdampfungswärme $L$ nun zu
 \begin{align*}
@@ -137,7 +137,7 @@ Aus dem allgemeinen Zusammenhang für die Verdampfungswärme \eqref{eqn:md} kann
 \end{table}
 \subsection{Kompressorleistung}
 Um die Wärmemenge als Kondensationswärme an das Reservoir $R_1$ abgeben zu können, komprimiert der Kondensator $K$ das Gas, so dass es flüssig wird.
-Da der Kondensator das Volumen $V_1$ bei einem Druck $p_b$ zum Volumen $V_2$ verringert, errechnet sich die verrichtete Arbeit zu
+Da der Kompressor das Volumen $V_1$ bei einem Druck $p_b$ zum Volumen $V_2$ verringert, errechnet sich die verrichtete Arbeit zu
 \begin{equation}
   W = - \int_{V_1}^{V_2} p_b \symup{d}V.
 \end{equation}
