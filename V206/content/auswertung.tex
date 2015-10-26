@@ -10,7 +10,8 @@
 \end{figure}
 Die gemessenen Daten für die Tempeatur $T_1$ des wärmeren sowie die Temperatur
 $T_2$ des kälteren Reservoirs wurden gegen die Zeit $t$ in Minuten abgetragen.
-Mithilfe von SciPy wurde jeweils eine Ausgleichskurve für die folgende Funktion
+Zum Plotten wurde Matplotlib \cite{matplotlib} benutzt.
+Mithilfe von SciPy \cite{scipy} wurde jeweils eine Ausgleichskurve für die folgende Funktion
 berechnet:
 \begin{equation}
   T(t)=A \cdot t^2 + B \cdot t + C
@@ -35,7 +36,8 @@ Für die Fehlerrechnung wurde bei der vorliegenden Rechnung und bei allen folgen
 \begin{equation}
 \increment{f} = \sqrt{(\frac{\partial f}{\partial x_1}\increment{x_1})^2 + (\frac{\partial f}{\partial x_2}\increment{x_2})^2 + \dotsc + (\frac{\partial f}{\partial x_n}\increment{x_n})^2}
 \end{equation}
-für eine Funktion $f(x_1,x_2, \dotsc ,x_n)$ bei denen die Größen $x_1, x_2, \dotsc , x_n$ voneinander unabhängig sind verwendet.
+für eine Funktion $f(x_1,x_2, \dotsc ,x_n)$ ,bei der die Größen $x_1, x_2, \dotsc , x_n$ voneinander unabhängig sind, verwendet.
+Uncertainties \cite{uncertainties} hat jene und folgende Rechnungen übernommen.
 \begin{table}
   \centering
   \caption{Differentialquotienten}
@@ -64,7 +66,7 @@ Für die reale Wärmepunpe gilt jedoch die Formel
 wobei $ N$ die Kompressorleistung, $ m_1$ die Masse des Wassers in $ R_1 $, $m_k$ die Masse des zu heizenden Reservoirs inklusive Kupferrohre, $ c_w $ die spezifische Wärmekapazität des Wassers sowie $ c_k $ die spezifische Wärmekapazität des Reservoirs und der Kupferrohre ist.
 Da bei der Durchführung des Versuches \SI{4}{\litre} Wasser für $R_1$ verwendet wurden, berechnet sich $m_1$ zu $m_1 = \rho_{H_2O} \cdot V = \SI{4176.48}{\kilogram}$, wobei der Werte für $\rho_{H_20}$ der Literatur entnommen wurde.
 Das Produkt aus $m_k$ und $c_k$ wurde vom Versuchsaufbau zu $\SI{750}{\joule\per\kelvin}$ abgelesen, $c_w$ wurde ebenfalls der Literatur zu $\SI{4,1819}{\kilo\joule\per\kilogram\kelvin}$ entnommen.
-Die Kompressorleistung ergibt sich aus dem arithmetischen Mittelwert der Messdaten zu $N=124.77$.
+Die Kompressorleistung ergibt sich aus dem arithmetischen Mittelwert der Messdaten zu $N=\SI{124.77}{\watt}$.
 Für die Differentialquotienten wurden die Werte der Ausgleichskurve, angegeben in Tabelle 1 verwendet.
 
 \begin{table}[H]
@@ -84,7 +86,7 @@ Für die Differentialquotienten wurden die Werte der Ausgleichskurve, angegeben 
 \end{tabular}
 \end{table}
 Es fällt auf, dass sich die reale Güteziffer deutlich von der idealen Güteziffer unterscheidet.
-Gründe für diese Differenz werden im Kapitel Diskussion besprochen.
+Gründe für diese Differenz werden im Kapitel Diskussion \ref{sec:Diskussion} besprochen.
 \subsection{Massendurchsatz}
 Bei einer Wärmepumpe wird dem kälteren Reservoir, hier $R_2$, die Wärmeenergie $Q_2$ in Form von Verdampfungswärme entzogen.
 Der Zusammenhang zwischen dem Massendurchsatz $\frac{\symup{d} m}{\symup{d} t}$ und der entnommenen Wärmemenge pro Zeit $\frac{\symup{d} Q_2}{\symup{d} t}$ wird durch
@@ -92,7 +94,7 @@ Der Zusammenhang zwischen dem Massendurchsatz $\frac{\symup{d} m}{\symup{d} t}$ 
   \frac{\symup{d} Q_2}{\symup{d}t} = L \cdot \frac{\symup{d} m}{\symup{d} t}
     \label{eqn:md}
 \end{equation}
-beschrieben, wobei $L$ die Verdampfungswärme des Mediums ist.
+beschrieben, wobei $L$ die Verdampfungswärme des Mediums ist \cite{V203}.
 Dabei gibt $L$ an, welche Energie pro Mol erforderlich ist, um einen Stoff bei gleichbleibender Temperatur zu verdampfen.
 $L$ kann dabei der Dampfdruckkurve des jeweiligen Stoffes entnommen werden, welche den Phasenübergang zwischen flüssig und gasförmig in einem $pT$-Diagramm beschreibt.
 Diese Kurve wird im Allgemeinen durch die Clausius-Clapeyronsche Gleichung beschrieben, aus der unter vereinfachten Bedingungen der Zusammenhang
@@ -136,7 +138,7 @@ Aus dem allgemeinen Zusammenhang für die Verdampfungswärme \eqref{eqn:md} kann
 \end{tabular}
 \end{table}
 \subsection{Kompressorleistung}
-Um die Wärmemenge als Kondensationswärme an das Reservoir $R_1$ abgeben zu können, komprimiert der Kondensator $K$ das Gas, so dass es flüssig wird.
+Um die Wärmemenge als Kondensationswärme an das Reservoir $R_1$ abgeben zu können, komprimiert der Kompressor $K$ das Gas, so dass es flüssig wird.
 Da der Kompressor das Volumen $V_1$ bei einem Druck $p_b$ zum Volumen $V_2$ verringert, errechnet sich die verrichtete Arbeit zu
 \begin{equation}
   W = - \int_{V_1}^{V_2} p_b \symup{d}V.

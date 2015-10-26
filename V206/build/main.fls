@@ -381,6 +381,10 @@ INPUT ./content/diskussion.tex
 INPUT ./content/diskussion.tex
 INPUT original_v206_1.jpg
 INPUT original_v206_2.jpg
+INPUT C:/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmromancaps10-regular.luc
+INPUT c:/texlive/2015/texmf-dist/tex/latex/euenc/eu2lmtt.fd
+INPUT c:/texlive/2015/texmf-dist/tex/latex/euenc/eu2lmtt.fd
+INPUT C:/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmmono10-regular.luc
 INPUT build/main.aux
 INPUT build/main.aux
 INPUT build/main.toc

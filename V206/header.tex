@@ -99,11 +99,16 @@
 
 % Literaturverzeichnis
 \usepackage[
+  style=numeric,
+  sorting=none,
   backend=biber,
 ]{biblatex}
 % Quellendatenbank
 \addbibresource{lit.bib}
 \addbibresource{programme.bib}
+
+%Biber bringt nichts durcheinander
+%\usepackage[sort&compress,numbers]{natbib}
 
 % Hyperlinks im Dokument
 \usepackage[
