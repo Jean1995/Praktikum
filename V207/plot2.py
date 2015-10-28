@@ -23,7 +23,7 @@ plt.plot(x_plot, f(x_plot, par1[0], par1[1]), 'b-',label=r'Theoriekurve $U_d$', 
 
 fehler = np.sqrt(np.diag(e1))
 
-np.savetxt('ausgleichswerte_d.txt', np.column_stack([par1, e1]), header= "d U_d")
+np.savetxt('ausgleichswerte_d.txt', np.column_stack([par1, fehler]), header= "d U_d")
 
 plt.xlabel(r'$d \:/\: \si{\metre}$')
 plt.ylabel(r'$U_d \:/\: \si{\volt}$')
