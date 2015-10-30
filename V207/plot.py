@@ -60,36 +60,80 @@ np.savetxt('ausgleichswerte4.txt', np.column_stack([params4, fehler4]), header="
 
 
 ## Unsere Ausgleichsrechnung:
-x = T**4 - Tnull**4
-#x = x-Tnull**4
+
 y = U1
-xy = x * y
-xy_mittelwert = (1/12) * (np.sum(xy))
-x_mittelwert = (1/12) * (np.sum(x))
-y_mittelwert = (1/12) * (np.sum(y))
+x = T**4 - Tnull**4
 
-x2_mittelwert = (1/12) * (np.sum(x * x))
+b = ( np.sum(x**2) * np.sum(y) - np.sum(x) * np.sum(x*y) ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
+m = ( 12 * np.sum(x*y) - np.sum(x) * np.sum(y) ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
 
-b = (x2_mittelwert * y_mittelwert - x_mittelwert * xy_mittelwert) / (x2_mittelwert - x_mittelwert**2)
-m = (xy_mittelwert - x_mittelwert * y_mittelwert) / (x2_mittelwert - x_mittelwert**2)
-bla = np.array([m, b])
+delta_y = y-b-m*x
+sy_quadrat = ( np.sum(delta_y**2) ) / (12 - 2)
 
-fstr = (y-y_mittelwert)**2
-sigma = np.sqrt( (1/12) * sum(fstr) )
+sigma_b_quadrat = sy_quadrat * ( np.sum(x**2) ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
+sigma_m_quadrat = sy_quadrat * ( 12 ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
 
-error_m =np.sqrt( (sigma**2)/(12*(x2_mittelwert-x_mittelwert**2)) )
-error_b =np.sqrt( (sigma**2 * x2_mittelwert)/(12*(x2_mittelwert-x_mittelwert**2)) )
+mb = np.array([m, b])
+mb_sigma = np.array([np.sqrt(sigma_m_quadrat), np.sqrt(sigma_b_quadrat)])
 
-#error_b = np.sqrt( np.sum(x**2)/(12**2*np.sum(x**2)- np.sum(x)**2) * np.std(y)**2 )
+np.savetxt('U1_ausgleichswerte.txt', np.column_stack([mb, mb_sigma]), header="m/b m_err/b_err" )
 
-bla2 = np.array([error_m, error_b])
+## Unsere Ausgleichsrechnung U2:
 
-np.savetxt('meine_ausgleichwerte', np.column_stack([bla, bla2]), header = "m b" )
+y = U2
+x = T**4 - Tnull**4
 
-x_plot = np.linspace(0, 10**10, 1000000)
+b = ( np.sum(x**2) * np.sum(y) - np.sum(x) * np.sum(x*y) ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
+m = ( 12 * np.sum(x*y) - np.sum(x) * np.sum(y) ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
 
-plt.plot(x_plot, f(x_plot, m, b), '-k', label=r'$\text{Theoriekurve manuel} U_1$' )
+delta_y = y-b-m*x
+sy_quadrat = ( np.sum(delta_y**2) ) / (12 - 2)
 
+sigma_b_quadrat = sy_quadrat * ( np.sum(x**2) ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
+sigma_m_quadrat = sy_quadrat * ( 12 ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
+
+mb = np.array([m, b])
+mb_sigma = np.array([np.sqrt(sigma_m_quadrat), np.sqrt(sigma_b_quadrat)])
+
+np.savetxt('U2_ausgleichswerte.txt', np.column_stack([mb, mb_sigma]), header="m/b m_err/b_err" )
+
+## Unsere Ausgleichsrechnung U3:
+
+y = U3
+x = T**4 - Tnull**4
+
+b = ( np.sum(x**2) * np.sum(y) - np.sum(x) * np.sum(x*y) ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
+m = ( 12 * np.sum(x*y) - np.sum(x) * np.sum(y) ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
+
+delta_y = y-b-m*x
+sy_quadrat = ( np.sum(delta_y**2) ) / (12 - 2)
+
+sigma_b_quadrat = sy_quadrat * ( np.sum(x**2) ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
+sigma_m_quadrat = sy_quadrat * ( 12 ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
+
+mb = np.array([m, b])
+mb_sigma = np.array([np.sqrt(sigma_m_quadrat), np.sqrt(sigma_b_quadrat)])
+
+np.savetxt('U3_ausgleichswerte.txt', np.column_stack([mb, mb_sigma]), header="m/b m_err/b_err" )
+
+## Unsere Ausgleichsrechnung U4:
+
+y = U4
+x = T**4 - Tnull**4
+
+b = ( np.sum(x**2) * np.sum(y) - np.sum(x) * np.sum(x*y) ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
+m = ( 12 * np.sum(x*y) - np.sum(x) * np.sum(y) ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
+
+delta_y = y-b-m*x
+sy_quadrat = ( np.sum(delta_y**2) ) / (12 - 2)
+
+sigma_b_quadrat = sy_quadrat * ( np.sum(x**2) ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
+sigma_m_quadrat = sy_quadrat * ( 12 ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
+
+mb = np.array([m, b])
+mb_sigma = np.array([np.sqrt(sigma_m_quadrat), np.sqrt(sigma_b_quadrat)])
+
+np.savetxt('U4_ausgleichswerte.txt', np.column_stack([mb, mb_sigma]), header="m/b m_err/b_err" )
 
 
 

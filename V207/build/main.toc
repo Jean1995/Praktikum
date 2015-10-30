@@ -6,5 +6,7 @@
 \contentsline {subsection}{\numberline {2.1}Aufbau}{4}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Durchführung}{5}{subsection.2.2}
 \contentsline {section}{\numberline {3}Auswertung}{5}{section.3}
-\contentsline {section}{\numberline {4}Diskussion}{6}{section.4}
-\contentsline {section}{\nonumberline Literatur}{6}{section*.4}
+\contentsline {subsection}{\numberline {3.1}Temperaturmessung}{5}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Abstandsmessung}{6}{subsection.3.2}
+\contentsline {section}{\numberline {4}Diskussion}{7}{section.4}
+\contentsline {section}{\nonumberline Literatur}{7}{section*.4}
