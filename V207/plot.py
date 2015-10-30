@@ -47,14 +47,7 @@ params4, error4 = curve_fit(f, T**4-Tnull**4, U4)
 plt.plot(x_plot, f(x_plot, params4[0], params4[1]), '-k', label=r'$\text{Theoriekurve} U_4$' )
 fehler4 = np.sqrt(np.diag(error4))
 
-#plt.plot(x, y, label='Kurve')
-plt.xlabel(r'$T^4 - T_0^4 \:/\: \si{\kelvin\tothe{4}}$')
-plt.ylabel(r'$U \:/\: \si{\volt}$')
-plt.legend(loc='best')
 
-# in matplotlibrc leider (noch) nicht möglich
-plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('build/plot.pdf')
 
 np.savetxt('ausgleichswerte1.txt', np.column_stack([params1, fehler1]), header="params1, error" )
 
@@ -63,3 +56,48 @@ np.savetxt('ausgleichswerte2.txt', np.column_stack([params2, fehler2]), header="
 np.savetxt('ausgleichswerte3.txt', np.column_stack([params3, fehler3]), header="params3, error" )
 
 np.savetxt('ausgleichswerte4.txt', np.column_stack([params4, fehler4]), header="params4, error" )
+
+
+
+## Unsere Ausgleichsrechnung:
+x = T**4 - Tnull**4
+#x = x-Tnull**4
+y = U1
+xy = x * y
+xy_mittelwert = (1/12) * (np.sum(xy))
+x_mittelwert = (1/12) * (np.sum(x))
+y_mittelwert = (1/12) * (np.sum(y))
+
+x2_mittelwert = (1/12) * (np.sum(x * x))
+
+b = (x2_mittelwert * y_mittelwert - x_mittelwert * xy_mittelwert) / (x2_mittelwert - x_mittelwert**2)
+m = (xy_mittelwert - x_mittelwert * y_mittelwert) / (x2_mittelwert - x_mittelwert**2)
+bla = np.array([m, b])
+
+fstr = (y-y_mittelwert)**2
+sigma = np.sqrt( (1/12) * sum(fstr) )
+
+error_m =np.sqrt( (sigma**2)/(12*(x2_mittelwert-x_mittelwert**2)) )
+error_b =np.sqrt( (sigma**2 * x2_mittelwert)/(12*(x2_mittelwert-x_mittelwert**2)) )
+
+#error_b = np.sqrt( np.sum(x**2)/(12**2*np.sum(x**2)- np.sum(x)**2) * np.std(y)**2 )
+
+bla2 = np.array([error_m, error_b])
+
+np.savetxt('meine_ausgleichwerte', np.column_stack([bla, bla2]), header = "m b" )
+
+x_plot = np.linspace(0, 10**10, 1000000)
+
+plt.plot(x_plot, f(x_plot, m, b), '-k', label=r'$\text{Theoriekurve manuel} U_1$' )
+
+
+
+
+#plt.plot(x, y, label='Kurve')
+plt.xlabel(r'$T^4 - T_0^4 \:/\: \si{\kelvin\tothe{4}}$')
+plt.ylabel(r'$U \:/\: \si{\volt}$')
+plt.legend(loc='best')
+
+# in matplotlibrc leider (noch) nicht möglich
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot.pdf')
