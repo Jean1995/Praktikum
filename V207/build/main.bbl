@@ -18,19 +18,38 @@
 
 
 \refsection{0}
-  \sortlist{nty}{nty}
+  \sortlist{none}{none}
     \entry{sample}{manual}{}
       \name{author}{1}{}{%
         {{hash=2821a70f99517ac7757c95300d43e95c}{Dortmund}{D\bibinitperiod}{TU}{T\bibinitperiod}{}{}{}{}}%
       }
       \strng{namehash}{2821a70f99517ac7757c95300d43e95c}
       \strng{fullhash}{2821a70f99517ac7757c95300d43e95c}
-      \field{sortinit}{D}
-      \field{sortinithash}{78f7c4753a2004675f316a80bdb31742}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Versuch zum Literaturverzeichnis}
-      \field{year}{2014}
+      \field{title}{Versuchsanleitung, Versuch Nr. 207}
+      \field{year}{2015}
+    \endentry
+    \entry{fehler}{book}{}
+      \name{author}{1}{}{%
+        {{hash=cb0f22f8b7d1efb0fad3273e9738f3bb}{Walcher}{W\bibinitperiod}{Wilhelm}{W\bibinitperiod}{}{}{}{}}%
+      }
+      \list{publisher}{1}{%
+        {Teubner}%
+      }
+      \strng{namehash}{cb0f22f8b7d1efb0fad3273e9738f3bb}
+      \strng{fullhash}{cb0f22f8b7d1efb0fad3273e9738f3bb}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Praktikum der Physik}
+      \field{volume}{7}
+      \field{year}{1994}
+      \field{pages}{37\bibrangedash 39}
+      \range{pages}{3}
     \endentry
   \endsortlist
 \endrefsection

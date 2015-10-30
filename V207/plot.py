@@ -76,6 +76,9 @@ sigma_m_quadrat = sy_quadrat * ( 12 ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
 mb = np.array([m, b])
 mb_sigma = np.array([np.sqrt(sigma_m_quadrat), np.sqrt(sigma_b_quadrat)])
 
+m1 = m
+m1_error=np.sqrt(sigma_m_quadrat)
+
 np.savetxt('U1_ausgleichswerte.txt', np.column_stack([mb, mb_sigma]), header="m/b m_err/b_err" )
 
 ## Unsere Ausgleichsrechnung U2:
@@ -94,6 +97,9 @@ sigma_m_quadrat = sy_quadrat * ( 12 ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
 
 mb = np.array([m, b])
 mb_sigma = np.array([np.sqrt(sigma_m_quadrat), np.sqrt(sigma_b_quadrat)])
+
+m2 = m
+m2_error=np.sqrt(sigma_m_quadrat)
 
 np.savetxt('U2_ausgleichswerte.txt', np.column_stack([mb, mb_sigma]), header="m/b m_err/b_err" )
 
@@ -114,6 +120,9 @@ sigma_m_quadrat = sy_quadrat * ( 12 ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
 mb = np.array([m, b])
 mb_sigma = np.array([np.sqrt(sigma_m_quadrat), np.sqrt(sigma_b_quadrat)])
 
+m3 = m
+m3_error=np.sqrt(sigma_m_quadrat)
+
 np.savetxt('U3_ausgleichswerte.txt', np.column_stack([mb, mb_sigma]), header="m/b m_err/b_err" )
 
 ## Unsere Ausgleichsrechnung U4:
@@ -133,6 +142,9 @@ sigma_m_quadrat = sy_quadrat * ( 12 ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
 mb = np.array([m, b])
 mb_sigma = np.array([np.sqrt(sigma_m_quadrat), np.sqrt(sigma_b_quadrat)])
 
+m4 = m
+m4_error=np.sqrt(sigma_m_quadrat)
+
 np.savetxt('U4_ausgleichswerte.txt', np.column_stack([mb, mb_sigma]), header="m/b m_err/b_err" )
 
 
@@ -145,3 +157,19 @@ plt.legend(loc='best')
 # in matplotlibrc leider (noch) nicht möglich
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/plot.pdf')
+
+# Bestimmung der Steigungen und somit der Emissionsvermögen
+
+epsilon1 = m1/m2
+epsilon2 = m2/m2
+epsilon3 = m3/m2
+epsilon4 = m4/m2
+epsilon = np.array([epsilon1, epsilon2, epsilon3, epsilon4])
+
+error_epsilon1 = np.sqrt( ((m1_error**2) / (m2**2)) + ((m1**2) / (m2**4)) * m2_error**2)
+error_epsilon2 = np.sqrt( ((m2_error**2) / (m2**2)) + ((m2**2) / (m2**4)) * m2_error**2)
+error_epsilon3 = np.sqrt( ((m3_error**2) / (m2**2)) + ((m3**2) / (m2**4)) * m2_error**2)
+error_epsilon4 = np.sqrt( ((m4_error**2) / (m2**2)) + ((m4**2) / (m2**4)) * m2_error**2)
+error_epsilon = np.array([error_epsilon1, error_epsilon2, error_epsilon3, error_epsilon4])
+
+np.savetxt('Emissionsvermoegen.txt', np.column_stack([epsilon, error_epsilon]), header = "epsilon epsilon_error")

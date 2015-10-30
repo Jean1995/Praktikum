@@ -21,6 +21,8 @@ INPUT /home/jean/.local/texlive/2015/texmf-dist/tex/latex/koma-script/scrsize11p
 INPUT /home/jean/.local/texlive/2015/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT /home/jean/.local/texlive/2015/texmf-dist/tex/latex/koma-script/typearea.sty
 INPUT /home/jean/.local/texlive/2015/texmf-dist/tex/latex/koma-script/typearea.sty
+INPUT /home/jean/.local/texlive/2015/texmf-dist/tex/latex/parskip/parskip.sty
+INPUT /home/jean/.local/texlive/2015/texmf-dist/tex/latex/parskip/parskip.sty
 INPUT /home/jean/.local/texlive/2015/texmf-dist/tex/latex/koma-script/scrhack.sty
 INPUT /home/jean/.local/texlive/2015/texmf-dist/tex/latex/koma-script/scrhack.sty
 INPUT /home/jean/.local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
@@ -354,10 +356,6 @@ INPUT /home/jean/.local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbol
 INPUT /home/jean/.local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /home/jean/.local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /home/jean/.local/texlive/2015/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
-INPUT build/main.toc
-INPUT build/main.toc
-INPUT build/main.toc
-OUTPUT build/main.toc
 INPUT ./content/theorie.tex
 INPUT ./content/theorie.tex
 INPUT plot3.pdf
@@ -378,6 +376,5 @@ INPUT ./content/diskussion.tex
 INPUT ./content/diskussion.tex
 INPUT build/main.aux
 INPUT build/main.aux
-INPUT build/main.toc
 INPUT build/main.run.xml
 OUTPUT build/main.run.xml
