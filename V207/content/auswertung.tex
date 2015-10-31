@@ -2,6 +2,8 @@
 \label{sec:Auswertung}
 
 \subsection{Bestimmung der Ausgleichsfunktionen}
+Die temperaturabhängige Messung beginnt bei $\SI{90}{\celsius}$.
+Es wird immer im Abstand von $\Delta T= \SI{5}{\celsius}$ gemessen.
 Der gemessene Offset beträgt am Anfang der Messreihe $U_{0,Anfang} = \SI{0,0075}{\milli\volt}$ und am Ende $U_{0,Ende} = \SI{0,0088}{\milli\volt}$
 Der Mittelwert beträgt dementsprechend $U_0 = \SI{0.00815}{\milli\volt}$.
 $\Delta U = U_i - U_0$ ist demnach die wahre Spannung.
@@ -78,8 +80,30 @@ Es folgt direkt
 \begin{equation}
   \Delta\epsilon = \sqrt{ \Bigl( \frac{\partial \epsilon}{\partial m_i} \cdot \Delta m_i \Bigr)^2 +  \Bigl( \frac{\partial \epsilon}{\partial m_s} \cdot \Delta m_s  \Bigr)^2 } = \sqrt{ \frac{\Delta m_i ^2}{m_s^2} + \frac{m_i^2}{m_s^4} \Delta m_s^2 } .
 \end{equation}
-woraus sich für die Emissionsvermögen
+woraus sich für die Emissionsvermögen mit Fehlern
 \\
 $Hier Werte aus Emissionsvermoegen.txt einfügen. Einheitenlos $
 \\
+ergeben.
 \subsection{Strahlenintensität als Funktion des Abstandes}
+Die abstandsabhängige Messung wird bei $\SI{49}{\celsius}$ durchgeführt.
+Sie beginnt bei $\SI{10}{\cm}$ und es wird immer im Abstand von $\Delta d = \SI{1}{\cm}$ gemessen bis $\SI{20}{\cm}$ erreicht werden.
+Die Ergebnisse dieser Messung sind in Tabelle 5 zu sehen.\\
+$Tabelle 5 Abstandsmessung blabla$\\
+Für die Strahlungsleistung wird erwartet, dass sie proportional zu $\frac{1}{d²}$ abnimmt.
+Folglich wird ein Zusammenhang von
+\begin{equation}
+  g(x) = \frac{c}{x²} + d
+\end{equation}
+angenommen.\\
+Die Steigung $c$ und der Schnitt mit der y-Achse $d$ werden über eine nicht lineare Regression zu
+\\
+$Werte c und d$
+\\
+bestimmt. In Abbildung 3 werden die Ergebnisse graphisch dargestellt.
+\begin{figure}[H]
+  \centering
+  \includegraphics{plot2.pdf}
+  \caption{Plot.}
+  \label{fig:plot2}
+\end{figure}
