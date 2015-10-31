@@ -25,8 +25,8 @@ parameter1, covariance1 = curve_fit(f, t, T1)
 parameter2, covariance2 = curve_fit(f, t, T2)
 x_plot = np.linspace(0, 31*60, 1000)
 
-plt.plot(x_plot, f(x_plot, parameter1[0], parameter1[1], parameter1[2]), 'r-', label=r'Theoriekurve $T_1$', linewidth=1)
-plt.plot(x_plot, f(x_plot, parameter2[0], parameter2[1], parameter2[2]), 'b-', label=r'Theoriekurve $T_2$', linewidth=1)
+plt.plot(x_plot, f(x_plot, parameter1[0], parameter1[1], parameter1[2]), 'r-', label=r'Ausgleichspolynom $T_1$', linewidth=1)
+plt.plot(x_plot, f(x_plot, parameter2[0], parameter2[1], parameter2[2]), 'b-', label=r'Ausgleichspolynom $T_2$', linewidth=1)
 
 fehler1 = np.sqrt(np.diag(covariance1)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
 fehler2 = np.sqrt(np.diag(covariance2))
@@ -74,9 +74,9 @@ np.savetxt('diffquotienten.txt', np.column_stack([unp.nominal_values(d1), unp.no
 def v(N, m1, c1, c2, d):
     return (1/N)*(m1*c1+c2) * d
 
-N = ufloat(np.mean(P[1:31]), 1)
-m1 = 4176.48
-c1 = 4.1819
+N = ufloat(np.mean(P[1:31]), np.std(P[1:31]))
+m1 = 3.992
+c1 = 4184
 c2 = 750
 
 # Für T1

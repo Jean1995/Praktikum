@@ -1,11 +1,11 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 Im Folgenden wird der Versuch ausgewertet.\\
-Die Messerte wurden immer im Abstand von $\Delta t = \SI{1}{\minute}$ aufgenommen.
-Die Reservoire wurden jeweils mit genau abgemessenen $\SI{4}{\litre}$ Wasser befüllt.
-Die Temperaturen wurden auf 0,1 $ \si{\celsius} $ genau gemessen.
-Die Druckskala von $ p_b $ konnte man auf $ \SI{0,1}{\bar} $ ablesen, die von $ p_a $ auf $ \SI{0,2}{\bar} $.
-Die Kompressorleistung wurde auf $ \SI{1}{\watt} $ genau bestimmt.
+Die Messerte werden immer im Abstand von $\Delta t = \SI{1}{\minute}$ aufgenommen.
+Die Reservoire werden jeweils mit genau abgemessenen $\SI{4}{\litre}$ Wasser befüllt.
+Die Temperaturen werden auf 0,1 $ \si{\celsius} $ genau gemessen.
+Die Druckskala von $ p_b $ kann auf $ \SI{0,1}{\bar} $ genau ablesen werden, die von $ p_a $ auf $ \SI{0,2}{\bar} $.
+Die Kompressorleistung wird auf $ \SI{1}{\watt} $ genau bestimmt.
 \subsection{Bestimmung einer Ausgleichskurve}
 \begin{figure}[H]
   \centering
@@ -14,35 +14,38 @@ Die Kompressorleistung wurde auf $ \SI{1}{\watt} $ genau bestimmt.
   \label{fig:plot}
 \end{figure}
 Die gemessenen Daten für die Temperatur $T_1$ des wärmeren sowie die Temperatur
-$T_2$ des kälteren Reservoirs wurden gegen die Zeit $t$ in Sekunden abgetragen.
-Zum Plotten wurde Matplotlib \cite{matplotlib} benutzt.
-Mithilfe von SciPy \cite{scipy} wurde jeweils eine Ausgleichskurve für die folgende Funktion
-berechnet:
+$T_2$ des kälteren Reservoirs werden gegen die Zeit $t$ in Sekunden abgetragen.
+Zum Plotten in Python wird Matplotlib benutzt, die Ausgleichsrechnung wird mit SciPy durchgeführt.
+Für folgende Funktion wird das Ausgleichspolynom bestimmt:
 \begin{equation}
   T(t)=A \cdot t^2 + B \cdot t + C
 \end{equation}
-Die Parameter $A$, $B$ und $C$ wurden bestimmt zu
+Die Parameter $A$, $B$ und $C$ ergeben sich zu
 \begin{align*}
-A_{T_1} &= \SI{-3.87601 +- 0.10382e-6}{\kelvin\per\second²} \\
-B_{T_1} &= \phantom{1}\SI{0.02345 +- 0.00019}{\kelvin\per\second} \\
-C_{T_1} &= \phantom{1}\SI{293.592 +- 0.062}{\kelvin} \\
-A_{T_2} &= \phantom{1}\SI{4.34879 +- 0.08533e-6}{\kelvin\per\second²}  \\
- B_{T_2} &= \SI{-0.01815 +- 0.00016}{\kelvin\per\second} \\
-  C_{T_2} &= \phantom{1}\SI{294.936 +- 0.062}{\kelvin}
+A_{T_1} &= \SI[per-mode=fraction]{-3.9 +- 0.1e-6}{\kelvin\per\second²} \\
+B_{T_1} &= \phantom{1}\SI[per-mode=fraction]{0.0234 +- 0.0002}{\kelvin\per\second} \\
+C_{T_1} &= \phantom{1}\SI[per-mode=fraction]{293.29 +- 0.06}{\kelvin} \\
+A_{T_2} &= \phantom{1}\SI[per-mode=fraction]{4.35 +- 0.09e-6}{\kelvin\per\second²}  \\
+ B_{T_2} &= \SI[per-mode=fraction]{-0.0182 +- 0.0002}{\kelvin\per\second} \\
+  C_{T_2} &= \phantom{1}\SI[per-mode=fraction]{294.94 +- 0.06}{\kelvin}
 \end{align*}
 
 Durch Ableiten und Einsetzen in die Ausgleichskurve
 \begin{equation}
   \frac{\symup{d}T}{\symup{d}t}= 2 \cdot A \cdot t + B
 \end{equation}
-erhält man die Werte der Differentialquotienten, welche der Tabelle \ref{tab:tabelle1} entnommen werden können.
+ergeben sich die Werte der Differentialquotienten, welche der Tabelle \ref{tab:tabelle1} entnommen werden können.
 \\
-Für die Fehlerrechnung wurde bei der vorliegenden Rechnung und bei allen folgenden Rechnungen das Gaußsche Fehlerfortpflanzungsgesetz
+Für die Fehlerrechnung wird bei der vorliegenden Rechnung und bei allen folgenden Rechnungen das Gaußsche Fehlerfortpflanzungsgesetz
 \begin{equation}
-\increment{f} = \sqrt{(\frac{\partial f}{\partial x_1}\increment{x_1})^2 + (\frac{\partial f}{\partial x_2}\increment{x_2})^2 + \dotsc + (\frac{\partial f}{\partial x_n}\increment{x_n})^2}
+\increment{f} = \sqrt{\Bigl(\frac{\partial f}{\partial x_1}\increment{x_1}\Bigr)^2 + \Bigl(\frac{\partial f}{\partial x_2}\increment{x_2}\Bigr)^2 + \dotsc + \Bigl(\frac{\partial f}{\partial x_n}\increment{x_n}\Bigr)^2}
 \end{equation}
 für eine Funktion $f(x_1,x_2, \dotsc ,x_n)$, bei der die Größen $x_1, x_2, \dotsc , x_n$ voneinander unabhängig sind, verwendet.
-Uncertainties \cite{uncertainties} hat jene und folgende Rechnungen übernommen.
+Dementsprechend beträgt der Fehler für die Differentialquotienten
+\begin{equation}
+  \Delta \frac{\symup{d}T}{\symup{d}t} = \sqrt{\Bigl(2\ \cdot A \cdot \Delta A \Bigr)^2 - \Bigl( \Delta T \Bigr)^2 }.
+\end{equation}
+Uncertainties hat jene und folgende Rechnungen übernommen.
 \begin{table}
   \centering
   \caption{Differentialquotienten}
@@ -50,12 +53,12 @@ Uncertainties \cite{uncertainties} hat jene und folgende Rechnungen übernommen.
   \sisetup{table-format=1.2}
   \begin{tabular}{c c c c c}
     \toprule
-    {$t [\si{\second}]$} & {$T_1 [\si{\kelvin}]$} & {$T_2 [\si{\kelvin}]$} & {$\frac{\symup{d}T_1}{\symup{d}t} [\si{\kelvin\per\second}]$}  & {$\frac{\symup{d}T_2}{\symup{d}t} [\si{\kelvin\per\second}]$}\\
+    {$t [\si{\second}]$} & {$T_1 [\si{\kelvin}]$} & {$T_2 [\si{\kelvin}]$} & {$\frac{\symup{d}T_1}{\symup{d}t} [\si[per-mode=fraction]{\kelvin\per\second}]$}  & {$\frac{\symup{d}T_2}{\symup{d}t} [\si[per-mode=fraction]{\kelvin\per\second}]$}\\
     \midrule
-    \num{420} & \num{29.6 +- 0.1} & \num{14.9 +- 0.1} & \num{0.021954 +- 0.000212} & \num{-0.014500 +- 0.000174} \\
-    \num{840} & \num{37.5 +- 0.1} & \num{19.5 +- 0.1} & \num{0.016940 +- 0.000260} & \num{-0.010846 +- 0.000214} \\
-    \num{1260} & \num{43.7 +- 0.1} & \num{5.7 +- 0.1} & \num{0.013684 +- 0.000325} & \num{-0.007193 +- 0.000267} \\
-    \num{1680} & \num{48.9 +- 0.1} & \num{3.5 +- 0.1} & \num{0.010428 +- 0.000399} & \num{-0.003988 +- 0.000328} \\
+    \num{420} & \num{29.6 +- 0.1} & \num{14.9 +- 0.1} & \num{0.02020 +- 0.0002} & \num{-0.0145 +- 0.0002} \\
+    \num{840} & \num{37.5 +- 0.1} & \num{19.5 +- 0.1} & \num{0.01694 +- 0.0003} & \num{-0.0108 +- 0.0002} \\
+    \num{1260} & \num{43.7 +- 0.1} & \num{5.7 +- 0.1} & \num{0.01368 +- 0.0003} & \num{-0.0071 +- 0.0003} \\
+    \num{1680} & \num{48.9 +- 0.1} & \num{3.5 +- 0.1} & \num{0.01043 +- 0.0004} & \num{-0.0040 +- 0.0003} \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -69,29 +72,41 @@ Für die reale Wärmepumpe gilt jedoch die Formel
   v_{real}= \frac{\symup{d} Q_1}{\symup{d} tN} = (m_1c_w+m_kc_k)\frac{\symup{d} T_1}{\symup{d} tN}.
 \end{equation}
 wobei $ N$ die Kompressorleistung, $ m_1$ die Masse des Wassers in $ R_1 $, $m_k$ die Masse des zu heizenden Reservoirs inklusive Kupferrohre, $ c_w $ die spezifische Wärmekapazität des Wassers sowie $ c_k $ die spezifische Wärmekapazität des Reservoirs und der Kupferrohre ist.
-Da bei der Durchführung des Versuches \SI{4}{\litre} Wasser für $R_1$ verwendet wurden, berechnet sich $m_1$ zu $m_1 = \rho_{H_2O} \cdot V = \SI{4176.48}{\kilogram}$, wobei der Werte für $\rho_{H_20}$ der Literatur entnommen wurde.
-Das Produkt aus $m_k$ und $c_k$ wurde vom Versuchsaufbau zu $\SI{750}{\joule\per\kelvin}$ abgelesen, $c_w$ wurde ebenfalls der Literatur zu $\SI{4,1819}{\kilo\joule\per\kilogram\per\kelvin}$ entnommen.
-Die Kompressorleistung ergibt sich aus dem arithmetischen Mittelwert der Messdaten zu $N=\SI{124.77}{\watt}$.
+Es werden folgende Werte benutzt:
+\begin{align*}
+  \rho_{H_2O} &= \SI[per-mode=fraction]{0.998}{\gram\per\centi\metre\tothe{3}} \\
+  m_1 = \rho{H_2O} \cdot V &= \SI[per-mode=fraction]{3,992}{\kilogram} \\
+  m_k \cdot c_k &= \SI[per-mode=fraction]{750}{\joule\per\kelvin} \\
+  c_w &= \SI[per-mode=fraction]{4184}{\joule\per\kilogram\per\kelvin} \\
+\end{align*}
+ \cite{lecher2001taschenbuch} \\
+Die Kompressorleistung ergibt sich aus dem arithmetischen Mittelwert der Messdaten zu $N=\SI{124.8+-1.1}{\watt}$.
 Für die Differentialquotienten wurden die Werte der Ausgleichskurve, angegeben in Tabelle 1, verwendet.
-
+Es ergeben sich nach der Gaußschen Fehlerfortpflanzung die Fehlerformeln
+\begin{equation}
+  \Delta v_{\text{ideal}} = \sqrt{ \Bigl( \frac{-T_2}{(T_1-T_2)^2} \Delta T_1 \Bigr)^2 + \Bigl( \frac{T_1}{(T_1-T_2)^2} \Delta T_2 \Bigr)^2}
+\end{equation}
+sowie
+\begin{equation}
+  \Delta v_{\text{real}} = \sqrt{ \Bigl( (m_1 c_w + m_k c_k) \cdot \frac{1}{N} \cdot\Delta(\frac{\symup{T_1}}{\symup{d}t}   \Bigr)^2 + \Bigr( (m_1 c_w + m_k c_k) \cdot \frac{\symup{T_1}}{\symup{d}t} \cdot \frac{1}{N^2} \cdot \Delta N  \Bigl)^2 } .
+\end{equation}
 \begin{table}[H]
   \centering
   \caption{Güteziffervergleich.}
   \label{tab:tabelle2}
   \sisetup{table-format=1.2}
-\begin{tabular}{c c c c c c c}
+\begin{tabular}{c c c c c c}
   \toprule
-  {$t [\si{\second}]$} & {$T_1 [\si{\kelvin}]$} & {$T_2 [\si{\kelvin}]$} & {$\increment{T} [\si{\kelvin}]$} & {$v_{real, T_1}$}  & {$v_{real, T_2}$} & {$v_{ideal}$}\\
+  {$t [\si{\second}]$} & {$T_1 [\si{\kelvin}]$} & {$T_2 [\si{\kelvin}]$} & {$\increment{T} [\si{\kelvin}]$} & {$v_{real, T_1}$} & {$v_{ideal}$}\\
   \midrule
-  \num{420} & \num{29.6 +- 0.1} & \num{14.9 +- 0.1} & \num{14.7 +- 0.1} & \num{2.948 +- 0.039} & \num{-2.117 +- 0.031} & \num{20.599 +- 0.193} \\
-  \num{840} & \num{37.5 +- 0.1} & \num{19.5 +- 0.1} & \num{18.0 +- 0.1} & \num{2.473 +- 0.043} & \num{-1.584 +- 0.034} & \num{11.096 +- 0.054}  \\
-  \num{1260} & \num{43.7 +- 0.1} & \num{5.7 +- 0.1} & \num{38.0 +- 0.1} & \num{1.998 +- 0.050} & \num{-1.050 +- 0.040} & \num{8.339 +- 0.029}  \\
-  \num{1680} & \num{48.9 +- 0.1} & \num{3.5 +- 0.1} & \num{45.4 +- 0.1} & \num{1.522 +- 0.059} & \num{-0.517 +- 0.048} & \num{7.095 +- 0.021}  \\
+  \num{420} & \num{29.6 +- 0.1} & \num{14.9 +- 0.1} & \num{14.7 +- 0.1} & \num{2.83 +- 0.04} & \num{20.6 +- 0.2} \\
+  \num{840} & \num{37.5 +- 0.1} & \num{19.5 +- 0.1} & \num{18.0 +- 0.1} & \num{2.37 +- 0.04} & \num{11.10 +- 0.05}  \\
+  \num{1260} & \num{43.7 +- 0.1} & \num{5.7 +- 0.1} & \num{38.0 +- 0.1} & \num{1.91 +- 0.05} & \num{8.34 +- 0.03}  \\
+  \num{1680} & \num{48.9 +- 0.1} & \num{3.5 +- 0.1} & \num{45.4 +- 0.1} & \num{1.46 +- 0.06} & \num{7.10 +- 0.02}  \\
   \bottomrule
 \end{tabular}
 \end{table}
-Es fällt auf, dass sich die reale Güteziffer deutlich von der idealen Güteziffer unterscheidet.
-Gründe für diese Differenz werden im Kapitel Diskussion \ref{sec:Diskussion} besprochen.
+
 \subsection{Massendurchsatz}
 Bei einer Wärmepumpe wird dem kälteren Reservoir, hier $R_2$, die Wärmeenergie $Q_2$ in Form von Verdampfungswärme entzogen.
 Der Zusammenhang zwischen dem Massendurchsatz $\frac{\symup{d} m}{\symup{d} t}$ und der entnommenen Wärmemenge pro Zeit $\frac{\symup{d} Q_2}{\symup{d} t}$ wird durch

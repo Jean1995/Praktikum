@@ -1,15 +1,24 @@
+\section{Zielsetzung}
+Im vorliegenden Versuch wird eine Wärmepumpe untersucht.
+Dazu sollen charakteristische Werte wie die Güteziffer, der Massendurchsatz sowie die Kompressorleistung bestimmt und mit den theoretischen Werten einer idealen Wärmepumpe verglichen werden.
+
 \section{Theorie}
 \label{sec:Theorie}
 Aus dem zweiten Hauptsatz der Thermodynamik geht hervor, dass es unmöglich ist, ohne äußere Einwirkung einem kälteren Reservoir Teile dessen Wärmemenge zu entziehen, um sie einem wärmeren Reservoir zuzuführen.
-Der erste Hauptsatz beinhaltet jedoch die Möglichkeit, durch Zuführen zusätzlicher Arbeit auch den umgekehrten Prozess zu realisieren.
-Die zusätzliche Wärmemenge $ Q_1 $ im wärmeren Reservoir $ R_1 $ entspricht nun der aufgewendeten Arbeit $ A $ addiert mit der aus dem kälteren Reservoir $ R_2 $ entzogenen Wärmemenge $ Q_2 $.
+Der erste Hauptsatz beinhaltet jedoch die Möglichkeit, durch Zuführen zusätzlicher Arbeit auch den umgekehrten Prozess zu realisieren. Laut ihm gilt
+\begin{equation}
+  Q_1 = A + Q_2
+\end{equation}
+wobei $Q_1$ die zusätzliche Wärmemenge im wärmeren Reservoir $ R_1 $, $A$ die aufgewendete Arbeit und $Q_2$ die dem kälteren Reservoir $R_2$ entzogenen Wärmemenge ist.
 Eine Wärmepumpe kann dies leisten.\\
-Die Effizienz wird durch ihre Güteziffer bestimmt.
+Die Effizienz der Wärmepumpe wird durch ihre Güteziffer bestimmt.
 Sie stellt sich zusammen aus der zugeführten Wärmemenge und der zu diesem Zweck aufgewendeten Arbeit:
 \begin{equation}
   v = \frac{Q_1}{A}=\frac{T_1}{T_1-T_2}.
 \end{equation}
 Dabei ist $ T_1 $ die Temperatur in $R_1$ und $ T_2 $ die Temperatur in $ R_2 $.
+Damit diese Gleichung erfüllt werden kann, muss der Wärmetransport in einem reversiblen Prozess stattfinden.
+Dies bedeutet, dass der durchgeführte Prozess jederzeit ohne Energieverluste umgekehrt ablaufen könnte.
 Erfahrungsgemäß ist es jedoch schwierig ein absolut geschlossenes System innerhalb der Wärmepumpe zu gewährleisten, wodurch
 \begin{equation}
   Q_1 < Q_2 + A

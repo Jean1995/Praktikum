@@ -32,64 +32,26 @@
       \field{title}{Versuchsanleitung, Versuch Nr. 206}
       \field{year}{2015}
     \endentry
-    \entry{matplotlib}{article}{}
+    \entry{lecher2001taschenbuch}{book}{}
       \name{author}{1}{}{%
-        {{hash=945db4bbb079217b43c830150ebb3811}{Hunter}{H\bibinitperiod}{John\bibnamedelima D.}{J\bibinitperiod\bibinitdelim D\bibinitperiod}{}{}{}{}}%
+        {{hash=767a4f162ec0de613dbe598da4d1cd9e}{Lecher}{L\bibinitperiod}{K.}{K\bibinitperiod}{}{}{}{}}%
       }
       \list{publisher}{1}{%
-        {IEEE}%
+        {Parey}%
       }
-      \strng{namehash}{945db4bbb079217b43c830150ebb3811}
-      \strng{fullhash}{945db4bbb079217b43c830150ebb3811}
+      \strng{namehash}{767a4f162ec0de613dbe598da4d1cd9e}
+      \strng{fullhash}{767a4f162ec0de613dbe598da4d1cd9e}
       \field{sortinit}{0}
       \field{sortinithash}{990108227b3316c02842d895999a0165}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{journaltitle}{Computing in Science \& Engineering}
-      \field{number}{3}
-      \field{title}{{Matplotlib}: A {2D} Graphics Environment}
-      \field{version}{1.4.3}
-      \field{volume}{9}
-      \field{year}{2007}
-      \field{pages}{90\bibrangedash 95}
-      \range{pages}{6}
+      \field{isbn}{9783826384936}
+      \field{title}{Taschenbuch der Wasserwirtschaft: mit 170 Tabellen}
+      \field{year}{2001}
+      \field{pages}{5}
+      \range{pages}{1}
       \verb{url}
-      \verb http://matplotlib.org/
-      \endverb
-    \endentry
-    \entry{scipy}{software}{}
-      \true{moreauthor}
-      \name{author}{3}{}{%
-        {{hash=4b3d26f886661aa723985bcfd835ba18}{Jones}{J\bibinitperiod}{Eric}{E\bibinitperiod}{}{}{}{}}%
-        {{hash=00f2976ade6b1d16d78161a1f190716c}{Oliphant}{O\bibinitperiod}{Travis\bibnamedelima E.}{T\bibinitperiod\bibinitdelim E\bibinitperiod}{}{}{}{}}%
-        {{hash=3d6efaaa3d9682e20787eb06ff70a3d7}{Peterson}{P\bibinitperiod}{Pearu}{P\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{6161d5ffac903d9c99af53f45c09a00f}
-      \strng{fullhash}{a084ab80d4e88edca8fdd4b590cf2da8}
-      \field{sortinit}{0}
-      \field{sortinithash}{990108227b3316c02842d895999a0165}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{{SciPy}: Open source scientific tools for {Python}}
-      \field{version}{0.16.0}
-      \verb{url}
-      \verb http://www.scipy.org/
-      \endverb
-    \endentry
-    \entry{uncertainties}{software}{}
-      \name{author}{1}{}{%
-        {{hash=fd5e607cc043da9b40442508c133a26c}{Lebigot}{L\bibinitperiod}{Eric\bibnamedelima O.}{E\bibinitperiod\bibinitdelim O\bibinitperiod}{}{}{}{}}%
-      }
-      \strng{namehash}{fd5e607cc043da9b40442508c133a26c}
-      \strng{fullhash}{fd5e607cc043da9b40442508c133a26c}
-      \field{sortinit}{0}
-      \field{sortinithash}{990108227b3316c02842d895999a0165}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Uncertainties: a Python package for calculations with uncertainties}
-      \field{version}{2.4.6.1}
-      \verb{url}
-      \verb http://pythonhosted.org/uncertainties/
+      \verb https://books.google.de/books?id=sbPvheoPYboC
       \endverb
     \endentry
     \entry{V203}{manual}{}
