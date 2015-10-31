@@ -33,14 +33,14 @@ np.savetxt('ausgleichswerte_d.txt', np.column_stack([par1, fehler]), header= "d 
 y = Uabs
 x = 1/d**2
 
-b = ( np.sum(x**2) * np.sum(y) - np.sum(x) * np.sum(x*y) ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
-m = ( 12 * np.sum(x*y) - np.sum(x) * np.sum(y) ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
+b = ( np.sum(x**2) * np.sum(y) - np.sum(x) * np.sum(x*y) ) / ( 11 * np.sum(x**2) - np.sum(x)**2 )
+m = ( 11 * np.sum(x*y) - np.sum(x) * np.sum(y) ) / ( 11 * np.sum(x**2) - np.sum(x)**2 )
 
 delta_y = y-b-m*x
-sy_quadrat = ( np.sum(delta_y**2) ) / (12 - 2)
+sy_quadrat = ( np.sum(delta_y**2) ) / (11 - 2)
 
-sigma_b_quadrat = sy_quadrat * ( np.sum(x**2) ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
-sigma_m_quadrat = sy_quadrat * ( 12 ) / ( 12 * np.sum(x**2) - np.sum(x)**2 )
+sigma_b_quadrat = sy_quadrat * ( np.sum(x**2) ) / ( 11 * np.sum(x**2) - np.sum(x)**2 )
+sigma_m_quadrat = sy_quadrat * ( 11 ) / ( 11 * np.sum(x**2) - np.sum(x)**2 )
 
 mb = np.array([m, b])
 mb_sigma = np.array([np.sqrt(sigma_m_quadrat), np.sqrt(sigma_b_quadrat)])
