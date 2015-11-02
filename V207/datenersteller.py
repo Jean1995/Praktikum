@@ -17,7 +17,16 @@ U4 = U4/1000
 d = d*0.01
 Uabs = Uabs/1000
 
-
+o = 24.6+273.2
 
 np.savetxt('daten.txt', np.column_stack([T, U1, U2, U3, U4]), header="T, U1, U2, U3, U4")
 np.savetxt('daten2.txt', np.column_stack([d, Uabs]), header="abs, Uabs")
+Uoffset = ((0.0075/1000) + (0.0088/1000))/2
+dU1 = U1-Uoffset
+dU2 = U2-Uoffset
+dU3 = U3-Uoffset
+dU4 = U4-Uoffset
+dUabs = Uabs-Uoffset
+dt = T**4 - o**4
+np.savetxt('tabelle.txt', np.column_stack([T, dU1, dU2, dU3, dU4, dt]), header="T, dU1, dU2, dU3, dU4, dt")
+np.savetxt('tabelle2.txt', np.column_stack([d, dUabs]), header="d, dUabs")

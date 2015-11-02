@@ -15,7 +15,7 @@ U4 = U4-Uoffset
 Uabs = Uabs-Uoffset
 
 
-Tnull = 24.4+273.2
+Tnull = 24.6+273.2
 
 plt.plot(T**4-Tnull**4, U1, 'xr', label=r'$U_1$')
 plt.plot(T**4-Tnull**4, U2, 'xb', label=r'$U_2$')
