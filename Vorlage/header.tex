@@ -3,7 +3,7 @@
   captions=tableheading,  % Tabellenüberschriften
   titlepage=firstiscover, % Titelseite ist Deckblatt
 ]{scrartcl}
-
+\usepackage{parskip}
 % Paket float verbessern
 \usepackage{scrhack}
 
@@ -99,11 +99,16 @@
 
 % Literaturverzeichnis
 \usepackage[
+  style=numeric,
+  sorting=none,
   backend=biber,
 ]{biblatex}
 % Quellendatenbank
 \addbibresource{lit.bib}
 \addbibresource{programme.bib}
+
+%Biber bringt nichts durcheinander
+%\usepackage[sort&compress,numbers]{natbib}
 
 % Hyperlinks im Dokument
 \usepackage[
@@ -119,16 +124,16 @@
 \usepackage[shortcuts]{extdash}
 
 \author{
-  AUTOR A%
+  Johannes Kollek%
   \texorpdfstring{
     \\
-    \href{mailto:authorA@udo.edu}{authorA@udo.edu}
+    \href{mailto:johannes.kollek@udo.edu}{johannes.kollek@udo.edu}
   }{}%
   \texorpdfstring{\and}{, }
-  AUTOR B%
+  Jean-Marco Alameddine%
   \texorpdfstring{
     \\
-    \href{mailto:authorB@udo.edu}{authorB@udo.edu}
+    \href{mailto:jean-marco.alameddine@udo.edu}{jean-marco.alameddine@udo.edu}
   }{}%
 }
 \publishers{TU Dortmund – Fakultät Physik}
