@@ -1,4 +1,83 @@
 \section{Theorie}
 \label{sec:Theorie}
+Das Dulong-Petitsche Gesetz besagt, dass die Molwärme eines aus Atomgittern bestehenden Stoffes material- und temperaturunabhängig ist.
+Sie beträgt immer
+\begin{equation}
+  C = 3R,
+  \label{eqn:1}
+\end{equation}
+wobei $C$ die Molwärme/Atomwärme und $R$ die allgemeine Gaskonstante ist.
+%Bei Versuchen ist es praktischer von der Wärmekapazität $C$ auszugehen, für die
+%\begin{equation}
+%  C = C_mn
+%\end{equation}
+%gilt.
+%Dabei ist $n$ die Stoffmenge.
+Zwischen der Atomwärme bei konstantem Volumen und der Wärmemenge $Q$ eines Stoffes besteht der Zusammenhang
+\begin{equation}
+  C_V = \left(\frac{\symup{d}Q}{\symup{d}T}\right)_V
+\end{equation}
+Da bei diesem isochoren Zusammenhang keine Arbeit verrichtet wird, ist laut dem 1. Hauptsatz der Thermodynamik
+\begin{equation}
+  \symup{d}U = \symup{d}Q + \symup{d}A
+  \label{eqn:2}
+\end{equation}
+$\symup{d}Q$ identisch $\symup{d}U$ und es folgt
+\begin{equation}
+  C_V = \left(\frac{\symup{d}U}{\symup{d}T}\right)_V.
+\end{equation}\\
+Die innere Energie $U$ lässt sich jedoch über die klassische Physik oder durch die Quantenmechanik beschreiben.
+Allgemein setzt sich jene Energie aus der kinetischen und potentiellen Energie der Atome zusammen, welche auf Grund von Gitterkräften im Material nur eine Schwingung der Frequenz $\omega$ ausführen können.
+Die innere Energie wird nun gemittelt.\\
+In der klassischen Physik, auf die sich das Dulong-Petitsche Gesetz stützt, wird davon ausgegangen, dass die Atome kontinuierlich Energie austauschen können.
+Demnach folgt
+\begin{equation}
+  \langle U_{kl} \rangle = 3RT
+  \label{eqn:3}
+\end{equation}
+für die gemittelte innere Energie.\\
+Die Quantenmechanik andererseits verlangt, dass die Energien nur in diskreten Portionen, also gequantelt, ausgetauscht werden können.
+Nach einem komplizierteren Zusammenhang zwischen $U$ und $T$ ergibt sich
+\begin{equation}
+  \langle U_{qu} \rangle = \frac{3N_L\hbar\omega}{exp(\hbar\omega/kT)-1}
+  \label{eqn:4}
+\end{equation}
+mit $N_L = \SI{6,02e23}{\per\mol}$ (Loschmidtsche Zahl), der Plankschen Konstante $\hbar$ und der Boltzmannkonstante $k$.\\
+Wird der quantenmechanische Ausdruck \ref{eqn:4} für $T\to\infty $ getaylort, ergibt sich ungefähr der klassische Ausdruck \ref{eqn:3}, da für hohe Temperaturen, also viel Teilchenbewegung, der Energieaustausch annähernd kontinuierlich wird.
+Ansonsten gilt
+\begin{equation}
+  \langle U_{qu} \rangle < \langle U_{kl} \rangle = C_VT.
+\end{equation}
+Der klassische Begriff verfehlt die realen Werte bei geringen Temperaturen und geringen Atommassen, da er von beliebig kleinem Energieaustausch ausgeht.\\
+Um nun den Wert der Atomwärme zu überprüfen wird am besten ein Experiment gewählt, das auf einer isobaren Bedingung basiert.
+Daher eignet sich ein Kalorimeter.
+Um später wieder von dem errechneten $C_P$ auf $C_V$ zu kommen wird der Zusammenhang
+\begin{equation}
+  C_P - C_V = 9 \alpha² \kappa V_0 T,
+  \label{eqn:5}
+\end{equation}
+ausgenutzt.
+Dabei ist $\alpha$ der lineare Ausdehnungskoeffizient, $\kappa$ das Kompressionsmodul und $V_0$ das Molvolumen.
+Zudem geht man im Versuch von der spezifischen Wärmekapazität $c$ aus, für die
+\begin{equation}
+  cm = Cn
+  \label{eqn:6}
+\end{equation}
+gilt.
+Dabei ist $n$ die Stoffmenge und $m$ die Masse des gesamten zu untersuchenden Körpers.
+Das Verfahren beim Mischungskalorimeter basiert wieder auf dem 1. Hauptsatz der Thermodynamik \ref{eqn:2}.
+Wenn man nun zwei Materialien mit unterschiedlichen Temperaturen vermischt, gilt
+\begin{equation}
+  Q_1 = Q_2,
+\end{equation}
+da $\symup{d}A$ jeweils Null ist und keine Energie aus dem System verloren geht.
+Daraus folgt weiterhin
+\begin{equation}
+  c_1m_1(T_1-T_m) = c_2m_2(T_m-T_2).
+  \label{eqn:7}
+\end{equation}
+Somit ist es möglich, wenn die Masse und die spezifische Wärmekapazität von einem der Stoffe bekannt ist, mit Hilfe der Mischtemperatur $T_m$ auf die Wärmekapazität des jeweils anderen zu schließen.
+Durch \ref{eqn:7}, \ref{eqn:5} und \ref{eqn:6} kann das Dulong-Petitsche Gesetz überprüft werden.
+
 
 \cite{sample}
