@@ -19,13 +19,13 @@ m_w, m_k, U_w, T_w, U_k, T_k, U_m, T_m = np.genfromtxt('daten.txt', unpack=True)
 write('build/tabelle.tex', make_table([m_w, m_k, U_w, T_w, U_k, T_k, U_m, T_m], [2, 2, 2, 2, 2, 2, 2, 2]))
 
 cg_mg = 224.84 # Joule pro Kelvin
-cw_mw = 4.18 # Joule pro Kelvin pro Gramm
+cw = 4.18 # Joule pro Kelvin pro Gramm
 
-ck_0 = ( (cw_mw + cg_mg) * (T_m[0] - T_w[0]) ) / ( m_k[0] * (T_k[0] - T_m[0]) )
-ck_1 = ( (cw_mw + cg_mg) * (T_m[1] - T_w[1]) ) / ( m_k[1] * (T_k[1] - T_m[1]) )
-ck_2 = ( (cw_mw + cg_mg) * (T_m[2] - T_w[2]) ) / ( m_k[2] * (T_k[2] - T_m[2]) )
-ck_3 = ( (cw_mw + cg_mg) * (T_m[3] - T_w[3]) ) / ( m_k[3] * (T_k[3] - T_m[3]) )
-ck_4 = ( (cw_mw + cg_mg) * (T_m[4] - T_w[4]) ) / ( m_k[4] * (T_k[4] - T_m[4]) )
+ck_0 = ( ((cw * m_w[0]) + cg_mg) * (T_m[0] - T_w[0]) ) / ( m_k[0] * (T_k[0] - T_m[0]) )
+ck_1 = ( ((cw * m_w[1]) + cg_mg) * (T_m[1] - T_w[1]) ) / ( m_k[1] * (T_k[1] - T_m[1]) )
+ck_2 = ( ((cw * m_w[2]) + cg_mg) * (T_m[2] - T_w[2]) ) / ( m_k[2] * (T_k[2] - T_m[2]) )
+ck_3 = ( ((cw * m_w[3]) + cg_mg) * (T_m[3] - T_w[3]) ) / ( m_k[3] * (T_k[3] - T_m[3]) )
+ck_4 = ( ((cw * m_w[4]) + cg_mg) * (T_m[4] - T_w[4]) ) / ( m_k[4] * (T_k[4] - T_m[4]) )
 
 write('build/ck_blei.tex', str(ck_0))
 write('build/ck_zinn1.tex', str(ck_1))
