@@ -10,10 +10,12 @@ Um die gemessenen Spannungen in Temperaturen umzurechnen, wird die Formel
   T = 25,157 \cdot U_{th} - 0,19 \cdot U_{th}²,
 \end{equation}
 $T$ in \SI{}{\celsius} und $U_{th}$ in \SI{}{\milli\volt}, verwendet.
-Damit ergeben sich die Daten aus Tabelle \ref{tab:1}.
+Damit ergeben sich die Daten aus Tabelle \ref{tab:1}. \\
+\\
+\\
 \begin{table}
   \centering
-  \caption{Tabelle 1}
+  \caption{Messdaten}
   \label{tab:1}
   \sisetup{table-format=1.2}
   \begin{tabular}{c c c c c c c c}
@@ -24,6 +26,8 @@ Damit ergeben sich die Daten aus Tabelle \ref{tab:1}.
     \bottomrule
   \end{tabular}
 \end{table}
+\\
+\\
 Die Wärmekapazität des Dewargefäßes beträgt nun mit Hilfe von Zusammenhang \ref{eqn:7}
 \begin{equation}
   c_gm_g = \frac{c_wm_2(T_2-T_m')-c_wm_1(T_m'-T_1)}{T_m'-T_1},
@@ -46,6 +50,56 @@ ergibt sich nach \ref{eqn:8} für die Wärmekapazität des Dewargefäßes
 
 Nun können die spezifischen Wärmekapazitäten der Probekörper über
 \begin{equation}
-  c_k = \frac{(c_wm_w+c_gm_g)(T_m-T_w)}{T_m-T_w}
+  c_k = \frac{(c_wm_w+c_gm_g)(T_m-T_w)}{m_k(T_m-T_w)}
 \end{equation}
-berechnen.
+berechnet werden.
+Aus den Messungen folgt auf die zweite Nachkommastelle gerundet
+\begin{align}
+  c_{\text{Blei}} &= \input{build/ck_blei.tex}\: \si{\joule\per\gram\per\kelvin} \label{Bleiwert:c}
+\end{align}
+für Blei, sowie
+\begin{align}
+  c_{\text{Graphit}} &= \input{build/ck_graphit.tex}\: \si{\joule\per\gram\per\kelvin} \label{Bullseye:c}
+\end{align}
+für Graphit.
+Für Zinn ergeben die drei Messungen
+\begin{align}
+  c_{\text{Zinn,1}} &= \input{build/ck_zinn1.tex}\: \si{\joule\per\gram\per\kelvin} \label{Kackwert:c},\\
+  c_{\text{Zinn,2}} &= \input{build/ck_zinn2.tex}\: \si{\joule\per\gram\per\kelvin},\\
+  c_{\text{Zinn,3}} &= \input{build/ck_zinn3.tex}\: \si{\joule\per\gram\per\kelvin}.
+\end{align}
+Der Mittelwert der Zinnmessungen wird über die Formel
+\begin{equation}
+  \overline{x} = \frac{1}{N} \sum_{i=1}^N x_i \label{eqn:9}
+\end{equation}
+zu
+\begin{align}
+  \overline{c}_{\text{Zinn}} &= \input{build/ck_zinnm.tex}\: \si{\joule\per\gram\per\kelvin}.
+\end{align}
+bestimmt.
+Somit folgt mit der Formel für die Standardabweichung
+\begin{equation}
+  \sigma = \sqrt{\overline{x²}-\overline{x}²} \label{eqn:10},
+\end{equation}
+dass der Fehler
+\begin{align}
+  c_{\sigma} &= \input{build/ck_zinna.tex}\: \si{\joule\per\gram\per\kelvin}
+\end{align}
+beträgt.\\
+Nach Anwenden der Formeln \ref{eqn:5} und \ref{eqn:6},
+\begin{equation}
+  C_k = c_k M - 9\alpha² \kappa \frac{M}{\rho} T_m,
+\end{equation}
+folgen die Molwärmen bei konstantem Volumen zu
+\begin{align}
+  C_{\text{Graphit}} &= \input{build/C_graphit.tex}\: \si{\joule\per\mol\per\kelvin} \label{Bullseye:C},\\
+  C_{\text{Blei}}    &= \input{build/C_blei.tex}\: \si{\joule\per\mol\per\kelvin} \label{Bleiwert:C},\\
+  C_{\text{Zinn,1}}  &= \input{build/C_zinn1.tex}\: \si{\joule\per\mol\per\kelvin} \label{Kackwert:C},\\
+  C_{\text{Zinn,2}}  &= \input{build/C_zinn2.tex}\: \si{\joule\per\mol\per\kelvin},\\
+  C_{\text{Zinn,3}}  &= \input{build/C_zinn3.tex}\: \si{\joule\per\mol\per\kelvin}.
+\end{align}
+Die spezifischen Werte der Molmassen $M$, Dichten $\rho$, Kompresionsmodule $\kappa$ und Ausdehnungskoeffizienten $\alpha$ der einzelnen Stoffe sind im Anhang beigefügt.
+Zuletzt ergibt der gemittelte Wert \ref{eqn:9} mit Abweichung \ref{eqn:10} der Zinnrechnung
+\begin{align}
+  C_{\text{Zinn}}  &= (\num{48,31+-29,93})\: \si{\joule\per\mol\per\kelvin}.
+\end{align}
