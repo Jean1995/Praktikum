@@ -81,7 +81,7 @@ Es werden folgende Werte benutzt:
 \end{align*}
  \cite{lecher2001taschenbuch} \\
 Die Kompressorleistung ergibt sich aus dem arithmetischen Mittelwert der Messdaten zu $N=\SI{124.8+-1.1}{\watt}$.
-Für die Differentialquotienten wurden die Werte der Ausgleichskurve, angegeben in Tabelle 1, verwendet.
+Für die Differentialquotienten werden die Werte der Ausgleichskurve, angegeben in Tabelle 1, verwendet.
 Es ergeben sich nach der Gaußschen Fehlerfortpflanzung die Fehlerformeln
 \begin{equation}
   \Delta v_{\text{ideal}} = \sqrt{ \Bigl( \frac{-T_2}{(T_1-T_2)^2} \Delta T_1 \Bigr)^2 + \Bigl( \frac{T_1}{(T_1-T_2)^2} \Delta T_2 \Bigr)^2}
@@ -116,7 +116,7 @@ Der Zusammenhang zwischen dem Massendurchsatz $\frac{\symup{d} m}{\symup{d} t}$ 
 \end{equation}
 beschrieben, wobei $L$ die Verdampfungswärme des Mediums ist \cite{V203}.
 Dabei gibt $L$ an, welche Energie pro Mol erforderlich ist, um einen Stoff bei gleichbleibender Temperatur zu verdampfen.
-$L$ kann dabei der Dampfdruckkurve des jeweiligen Stoffes entnommen werden, welche den Phasenübergang zwischen flüssig und gasförmig in einem $pT$-Diagramm beschreibt.
+Der Wert von $L$ kann dabei der Dampfdruckkurve des jeweiligen Stoffes entnommen werden, welche den Phasenübergang zwischen flüssig und gasförmig in einem $pT$-Diagramm beschreibt.
 Diese Kurve wird im Allgemeinen durch die Clausius-Clapeyronsche Gleichung beschrieben, aus der unter vereinfachten Bedingungen der Zusammenhang
 \begin{equation}
   ln(p)= -\frac{L}{R}\frac{1}{T} + const
@@ -124,6 +124,8 @@ Diese Kurve wird im Allgemeinen durch die Clausius-Clapeyronsche Gleichung besch
 \end{equation}
 folgt.
 Hierbei ist $R$ die allgemeine Gaskonstante.
+Damit die Formel in dieser Form gültig ist, wird angenommen, dass die Temperatur $T$ deutlich unter der kritischen Temperatur $T_{Kr}$ liegt.
+In diesem Fall kann davon ausgegangen werden, dass $L$ unabhängig von Druck und Temperatur ist.
 Um nun den Wert von L für das genutzte Medium $\ce{Cl2F2C}$ zu bestimmen, werden die Kehrwerte der Drucktemperaturen \ref{tab:tabelle3} gegen den natürlichen Logarithmus des dazugehörigen Drucks abgetragen.
 
 \begin{table}
@@ -152,14 +154,15 @@ Um nun den Wert von L für das genutzte Medium $\ce{Cl2F2C}$ zu bestimmen, werde
   \caption{Dampfdruckkurve.}
   \label{fig:plot2}
 \end{figure}
-Durch lineare Ausgleichsrechnung mit SciPy wurden die Parameter $b$ und $m$ der Ausgleichsgerade bestimmt zu:
+Durch lineare Ausgleichsrechnung mit SciPy werden die Parameter $b$ und $m$ der Ausgleichsgerade bestimmt zu:
 \begin{align*}
-m &= \SI{-2313.109 +- 70.380}{\kelvin} & b &= \num{21.160 +- 0.227}
+m &= \SI{-2313 +- 7}{\kelvin} & b &= \num{21.2 +- 0.2}
 \end{align*}
 Aus dem bereits genannten Zusammenhang \eqref{eqn:ccg} ergibt sich die Verdampfungswärme $L$ nun zu
 \begin{align*}
-  L = -m \cdot R = \SI[per-mode=fraction]{19231.19 +- 572.47}{\joule\per\mol}.
+  L = -m \cdot R = \SI[per-mode=fraction]{19231 +- 572}{\joule\per\mol},
 \end{align*}
+wobei für $R$ der Wert \SI{8.314}{\joule\per\mol\per\kelvin} genutzt wird. \cite{codata}
 Aus dem allgemeinen Zusammenhang für die Verdampfungswärme \eqref{eqn:md} kann nun der Massendurchsatz bestimmt werden:
 
 \begin{table}
@@ -171,10 +174,10 @@ Aus dem allgemeinen Zusammenhang für die Verdampfungswärme \eqref{eqn:md} kann
   \toprule
   {$t [\si{\second}]$} & {$T_2 [\si{\kelvin}]$} & {$\frac{\symup{d} m}{\symup{d} t} [\si{\mol\per\second}]$}\\
   \midrule
-  \num{420} & \num{14.9 +- 0.1} & \num{0.013732 +- 0.00048} \\
-  \num{840} & \num{19.5 +- 0.1} & \num{0.010274 +- 0.00039}\\
-  \num{1260} & \num{5.7 +- 0.1} & \num{0.006814 +- 0.00034}  \\
-  \num{1680} & \num{3.5 +- 0.1} & \num{0.003354 +- 0.00033} \\
+  \num{420} & \num{14.9 +- 0.1} & \num{0.0137 +- 0.0005} \\
+  \num{840} & \num{19.5 +- 0.1} & \num{0.0103 +- 0.0004}\\
+  \num{1260} & \num{5.7 +- 0.1} & \num{0.0068 +- 0.0003}  \\
+  \num{1680} & \num{3.5 +- 0.1} & \num{0.0034 +- 0.0003} \\
   \bottomrule
 \end{tabular}
 \end{table}
@@ -203,6 +206,13 @@ Um die Dichte $\rho$ zu bestimmen, wird der Zusammenhang
 verwendet, wobei $\rho_0 = \SI{5,51}{\gram\per\litre}$ die Dichte des Transportmediums bei $T_0 = \SI{0}{\celsius}$ und $p_0 = \SI{1}{\bar}$ ist \cite{sample}.
 %$R_S$ ist die spezifische Gaskonstante. Diese bestimmt sich durch gegebenes $\rho_0=\SI{5,51}{\gram\per\litre}$ bei Normalbedingungen für das vorhandene Transportmedium zu $R_S = \SI{76.513}{\joule\per\kilogram\per\kelvin}$.\cite{sample}
 Hieraus können die Dichten $\rho_i$ für alle Messzeitpunkte berechnet werden.
+Für den Fehler der Kompressorleistung wurde dabei die Fehlerformel
+\begin{equation}
+\increment{P_{\text{mech}}} = \sqrt{\Bigl(\frac{\partial P_{\text{mech}}}{\partial p_a}\increment{p_a}\Bigr)^2 + \Bigl( \frac{\partial P_{\text{mech}}}{\partial p_b}\increment{p_b}\Bigr)^2 + \Bigl( \frac{\partial P_{\text{mech}}}{\dot{m}} \increment{\dot{m}}  \Bigr)^2}
+%\sqrt{ \Bigl( \frac{1}{\kappa} \cdot \sqrt[\kappa]{\frac{p_a}{p_b}} \cdot \frac{1}{\rho}  \frac{\increment m}{\increment t} \cdot M \cdot 10^{-3} \cdot \increment p_b  \Bigr)^2 + \Bigl( \frac{1}{\kappa^2 - \kappa} ((\frac{p_a}{p_b})^{\frac{1}{\kappa}-1} -1) \cdot \frac{1}{\rho}  \frac{\increment m}{\increment t} \cdot M \cdot 10^{-3} \cdot \increment p_a   \Bigr)^2 + \Bigl( \frac{1}{\kappa -1} (p_b \sqrt[\kappa]{\frac{p_a}{p_b}} - p_a \frac{1}{\rho}  \cdot M \cdot 10^{-3} \increment \frac{\increment m}{\increment t}  \Bigr)^2 }
+\end{equation}
+verwendet, $\dot{m}$ beschreibt hierbei den Massendurchsatz.
+
 \begin{table}
   \centering
   \caption{Kompressorleistung.}
@@ -212,10 +222,10 @@ Hieraus können die Dichten $\rho_i$ für alle Messzeitpunkte berechnet werden.
   \toprule
   {$t [\si{\second}]$} & {$\rho [\si{\gram\per\litre}]$} & {$P_{\text{mech}} [\si{\joule\per\second}]$}\\
   \midrule
-  \num{420} & \num{22.990 +- 1.045} & \num{14.722 +- 1.445} \\
-  \num{840} & \num{20.234 +- 1.064} & \num{18.312 +- 1.367} \\
-  \num{1260} & \num{19.430 +- 1.080} & \num{14.814 +- 1.104} \\
-  \num{1680} & \num{18.769 +- 1.088} & \num{8.438 +- 0.932} \\
+  \num{420} & \num{23 +- 1} & \num{14 +- 1} \\
+  \num{840} & \num{20 +- 1} & \num{18 +- 1} \\
+  \num{1260} & \num{19 +- 1} & \num{14 +- 1} \\
+  \num{1680} & \num{18 +- 1} & \num{8.4 +- 0.9} \\
   \bottomrule
 \end{tabular}
 \end{table}

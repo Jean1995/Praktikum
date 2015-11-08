@@ -67,6 +67,20 @@
       \field{title}{Versuchsanleitung, Versuch Nr. 203}
       \field{year}{2015}
     \endentry
+    \entry{codata}{article}{}
+      \name{author}{1}{}{%
+        {{hash=b7a1863aee3ce5aaf8be0e0dc3f30400}{Codata}{C\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{b7a1863aee3ce5aaf8be0e0dc3f30400}
+      \strng{fullhash}{b7a1863aee3ce5aaf8be0e0dc3f30400}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{year}{2015}
+      \verb{url}
+      \verb http://physics.nist.gov/cgi-bin/cuu/Value?r
+      \endverb
+    \endentry
     \entry{pubchem}{article}{}
       \name{author}{1}{}{%
         {{hash=b6cb305e52f5de9a05e260dc327222b8}{pubchem}{p\bibinitperiod}{}{}{}{}{}{}}%
