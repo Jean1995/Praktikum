@@ -124,7 +124,28 @@ Diese Kurve wird im Allgemeinen durch die Clausius-Clapeyronsche Gleichung besch
 \end{equation}
 folgt.
 Hierbei ist $R$ die allgemeine Gaskonstante.
-Um nun den Wert von L für das genutzte Medium $\ce{Cl2F2C}$ zu bestimmen, wurden die Kehrwerte der Drucktemperaturen gegen den natürlichen Logarithmus des dazugehörigen Drucks abgetragen.
+Um nun den Wert von L für das genutzte Medium $\ce{Cl2F2C}$ zu bestimmen, werden die Kehrwerte der Drucktemperaturen \ref{tab:tabelle3} gegen den natürlichen Logarithmus des dazugehörigen Drucks abgetragen.
+
+\begin{table}
+  \centering
+  \caption{p,T}
+  \label{tab:tabelle3}
+  \sisetup{table-format=1.2}
+\begin{tabular}{c c}
+  \toprule
+  {$p [\si{\pascal}]$} & {$T [\si{\kelvin}]$}\\
+  \midrule
+  \num{5.5 +- 1.0}  & \num{17.5 +- 1.0} \\
+  \num{7.0 +- 1.0}  & \num{27.0 +- 1.0} \\
+  \num{8.2 +- 1.0}  & \num{35.0 +- 1.0} \\
+  \num{9.5 +- 1.0}  & \num{40.0 +- 1.0} \\
+  \num{10.5 +- 1.0} & \num{44.0 +- 1.0} \\
+  \num{11.5 +- 1.0} & \num{47.0 +- 1.0} \\
+  \num{12.2 +- 1.0} & \num{50.0 +- 1.0} \\
+  \bottomrule
+\end{tabular}
+\end{table}
+
 \begin{figure}[H]
   \centering
   \includegraphics{plot2.pdf}
@@ -144,7 +165,7 @@ Aus dem allgemeinen Zusammenhang für die Verdampfungswärme \eqref{eqn:md} kann
 \begin{table}
   \centering
   \caption{Massendurchsatz.}
-  \label{tab:tabelle3}
+  \label{tab:tabelle4}
   \sisetup{table-format=1.2}
 \begin{tabular}{c c c}
   \toprule
@@ -159,40 +180,42 @@ Aus dem allgemeinen Zusammenhang für die Verdampfungswärme \eqref{eqn:md} kann
 \end{table}
 \subsection{Kompressorleistung}
 Um die Wärmemenge als Kondensationswärme an das Reservoir $R_1$ abgeben zu können, komprimiert der Kompressor $K$ das Gas, so dass es flüssig wird.
-Da der Kompressor das Volumen $V_1$ bei einem Druck $p_b$ zum Volumen $V_2$ verringert, errechnet sich die verrichtete Arbeit zu
-\begin{equation}
-  W = - \int_{V_1}^{V_2} p_b \symup{d}V.
-\end{equation}
-Idealerweise findet dieser Prozess nahezu adiabatisch statt, so dass aus der Adiabatengleichung für die verrichtete Arbeit
-\begin{equation}
-  W = \frac{1}{\kappa -1}\Bigl(p_b \sqrt[\kappa]{\frac{p_a}{p_b}} - p_a \Bigr) V_a
-\end{equation}
-folgt.
-Um die mechanische Kompressorleistung $P_{\text{mech}}$ zu bestimmen, wird der Quotient aus $\increment W$ und $\increment t$ gebildet.
-Wird zudem das Volumen $V_a$ durch den Quotienten aus der Masse $m$ und der Dichte $\rho$ ersetzt, ergibt sich
+%Da der Kompressor das Volumen $V_1$ bei einem Druck $p_b$ zum Volumen $V_2$ verringert, errechnet sich die verrichtete Arbeit zu
+%\begin{equation}
+%  W = - \int_{V_1}^{V_2} p_b \symup{d}V.
+%\end{equation}
+%Idealerweise findet dieser Prozess nahezu adiabatisch statt, so dass aus der Adiabatengleichung für die verrichtete Arbeit
+%\begin{equation}
+%  W = \frac{1}{\kappa -1}\Bigl(p_b \sqrt[\kappa]{\frac{p_a}{p_b}} - p_a \Bigr) V_a
+%\end{equation}
+%folgt.
+%Um die mechanische Kompressorleistung $P_{\text{mech}}$ zu bestimmen, wird der Quotient aus $\increment W$ und $\increment t$ gebildet.
+%Wird zudem das Volumen $V_a$ durch den Quotienten aus der Masse $m$ und der Dichte $\rho$ ersetzt, ergibt sich
+Für die mechanische Kompressorleistung $P_{\text{mech}}$ ergibt sich
 \begin{equation}
   P_{\text{mech}} = \frac{1}{\kappa -1}\Bigl(p_b \sqrt[\kappa]{\frac{p_a}{p_b}} - p_a \Bigr) \frac{1}{\rho} \frac{\increment m}{\increment t} \cdot M \cdot 10^{-3}.
 \end{equation}
-$\kappa$ ist der Adiabatenkoeffizient des Mediums, für $\ce{Cl2F2C}$ durch $\kappa = 1.14$ gegeben, $p_a$ und $p_b$ die Drücke bei denen der Kompressor arbeitet, $\rho$ die Dichte des Gases unter $p_a$, $\frac{\increment m}{\increment t}$ der Massendurchsatz und $M$ die Molmasse des Mediums, für $\ce{Cl2F2C}$ durch $M = \SI{120.91}{\gram\per\mol}$ gegeben. Der Faktor $10^{-3}$ wurde ergänzt, um den Massendurchsatz in SI-Einheiten umzurechnen. \\
-Um die Dichte $\rho$ zu bestimmen, wird die allgemeine Gasgleichung
+$\kappa$ ist der Adiabatenkoeffizient des Mediums, für $\ce{Cl2F2C}$ durch $\kappa = 1.14$ gegeben \cite{sample}, $p_a$ und $p_b$ die Drücke bei denen der Kompressor arbeitet, $\rho$ die Dichte des Gases unter $p_a$, $\frac{\increment m}{\increment t}$ der Massendurchsatz und $M$ die Molmasse des Mediums, für $\ce{Cl2F2C}$ durch $M = \SI{120.91}{\gram\per\mol}$ gegeben \cite{pubchem}. Der Faktor $10^{-3}$ wurde ergänzt, um den Massendurchsatz in SI-Einheiten umzurechnen. \\
+Um die Dichte $\rho$ zu bestimmen, wird der Zusammenhang
 \begin{equation}
-  p V=m R_s T
+  \frac{p_i}{\rho_iT_i} = \frac{p_0}{\rho_0T_0}
 \end{equation}
-verwendet, $R_S$ ist die spezifische Gaskonstante. Diese bestimmt sich durch gegebenes $\rho_0=\SI{5,51}{\gram\per\litre}$ bei Normalbedingungen für das vorhandene Transportmedium zu $R_S = \SI{76.513}{\joule\per\kilogram\per\kelvin}$.\cite{sample}
-Hieraus können die Dichten für alle Messzeitpunkte berechnet werden.
+verwendet, wobei $\rho_0 = \SI{5,51}{\gram\per\litre}$ die Dichte des Transportmediums bei $T_0 = \SI{0}{\celsius}$ und $p_0 = \SI{1}{\bar}$ ist \cite{sample}.
+%$R_S$ ist die spezifische Gaskonstante. Diese bestimmt sich durch gegebenes $\rho_0=\SI{5,51}{\gram\per\litre}$ bei Normalbedingungen für das vorhandene Transportmedium zu $R_S = \SI{76.513}{\joule\per\kilogram\per\kelvin}$.\cite{sample}
+Hieraus können die Dichten $\rho_i$ für alle Messzeitpunkte berechnet werden.
 \begin{table}
   \centering
   \caption{Kompressorleistung.}
-  \label{tab:tabelle4}
+  \label{tab:tabelle5}
   \sisetup{table-format=1.2}
 \begin{tabular}{c c c}
   \toprule
   {$t [\si{\second}]$} & {$\rho [\si{\gram\per\litre}]$} & {$P_{\text{mech}} [\si{\joule\per\second}]$}\\
   \midrule
-  \num{420} & \num{19.961 +- 0.907} & \num{17.697 +- 1.736} \\
-  \num{840} & \num{17.568 +- 0.925} & \num{22.014 +- 1.641} \\
-  \num{1260} & \num{16.870 +- 0.937} & \num{17.809 +- 1.326} \\
-  \num{1680} & \num{16.296 +- 0.945} & \num{10.143 +- 1.120} \\
+  \num{420} & \num{22.990 +- 1.045} & \num{14.722 +- 1.445} \\
+  \num{840} & \num{20.234 +- 1.064} & \num{18.312 +- 1.367} \\
+  \num{1260} & \num{19.430 +- 1.080} & \num{14.814 +- 1.104} \\
+  \num{1680} & \num{18.769 +- 1.088} & \num{8.438 +- 0.932} \\
   \bottomrule
 \end{tabular}
 \end{table}

@@ -83,6 +83,30 @@ rho28 = (Pa[28])/(T2[28]*R_s)
 dichte = np.array([rho7, rho14, rho21, rho28])
 np.savetxt('dichten.txt', np.column_stack([unp.nominal_values(dichte),  unp.std_devs(dichte)]), header="dichte dichte_error")
 
+#richtige Dichte yo
+R_0 = 5.51
+TR_0 = 273.2
+PR = 100000
+
+R_7  = (Pa[7] /PR)*(TR_0/T2[7] )*R_0
+R_14 = (Pa[14]/PR)*(TR_0/T2[14])*R_0
+R_21 = (Pa[21]/PR)*(TR_0/T2[21])*R_0
+R_28 = (Pa[28]/PR)*(TR_0/T2[28])*R_0
+
+rdichte = np.array([R_7, R_14, R_21, R_28])
+np.savetxt('rdichten.txt', np.column_stack([unp.nominal_values(rdichte),  unp.std_devs(rdichte)]), header="rdichte rdichte_error")
+
+rP_mech_7 = (1/(kappa-1)) * (Pb[7] * (Pa[7]/Pb[7])**(1/kappa)-Pa[7]) * (1/rdichte[0]) * md[0] * Mas * 0.001
+rP_mech_14 = (1/(kappa-1)) * (Pb[14] * (Pa[14]/Pb[14])**(1/kappa)-Pa[14]) * (1/rdichte[1]) * md[1] * Mas * 0.001
+rP_mech_21 = (1/(kappa-1)) * (Pb[21] * (Pa[21]/Pb[21])**(1/kappa)-Pa[21]) * (1/rdichte[2]) * md[2] * Mas * 0.001
+rP_mech_28 = (1/(kappa-1)) * (Pb[28] * (Pa[28]/Pb[28])**(1/kappa)-Pa[28]) * (1/rdichte[3]) * md[3] * Mas * 0.001
+
+rP_mech = np.array([rP_mech_7, rP_mech_14, rP_mech_21, rP_mech_28])
+
+np.savetxt('rp_mech.txt', np.column_stack([unp.nominal_values(rP_mech),  unp.std_devs(rP_mech)]), header="rP_mech rP_mech_error")
+
+
+
 P_mech_7 = (1/(kappa-1)) * (Pb[7] * (Pa[7]/Pb[7])**(1/kappa)-Pa[7]) * (1/dichte[0]) * md[0] * Mas * 0.001
 P_mech_14 = (1/(kappa-1)) * (Pb[14] * (Pa[14]/Pb[14])**(1/kappa)-Pa[14]) * (1/dichte[1]) * md[1] * Mas * 0.001
 P_mech_21 = (1/(kappa-1)) * (Pb[21] * (Pa[21]/Pb[21])**(1/kappa)-Pa[21]) * (1/dichte[2]) * md[2] * Mas * 0.001

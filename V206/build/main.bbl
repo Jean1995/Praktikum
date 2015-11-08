@@ -67,6 +67,20 @@
       \field{title}{Versuchsanleitung, Versuch Nr. 203}
       \field{year}{2015}
     \endentry
+    \entry{pubchem}{article}{}
+      \name{author}{1}{}{%
+        {{hash=b6cb305e52f5de9a05e260dc327222b8}{pubchem}{p\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{b6cb305e52f5de9a05e260dc327222b8}
+      \strng{fullhash}{b6cb305e52f5de9a05e260dc327222b8}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{year}{2015}
+      \verb{url}
+      \verb http://pubchem.ncbi.nlm.nih.gov/compound/dichlorodifluoromethane#section=Top
+      \endverb
+    \endentry
   \endsortlist
 \endrefsection
 \endinput
