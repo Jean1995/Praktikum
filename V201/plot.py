@@ -83,3 +83,6 @@ write('build/C_zinna.tex', str("%.2f" % C_zinna))
 
 C_zinngut = (C_zinn2+C_zinn3)/2
 write('build/C_zinngut.tex', str("%.2f" % C_zinngut))
+
+C_zinnguta = np.sqrt((C_zinn2**2+C_zinn3**2)/2-C_zinngut**2)
+write('build/C_zinnguta.tex', str("%.2f" % C_zinnguta))
