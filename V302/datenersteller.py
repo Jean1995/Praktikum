@@ -39,7 +39,7 @@ np.savetxt('wheat.wert11.txt', np.column_stack([R_2, R_2er, R_3, R_4, R_34, R_34
 C_2    = np.array([750, 597, 399])
 C_2er  = C_2*0.002
 R_2    = np.array([238, 292, 431])
-R_2er  = R_2*0.002
+R_2er  = R_2*0.03
 R_3    = np.array([716, 671, 579])
 R_4    = np.array([284, 329, 421])
 R_34   = np.array([R_3[0]/R_4[0], R_3[1]/R_4[1], R_3[2]/R_4[2]])
@@ -51,7 +51,7 @@ np.savetxt('kapa.kombiwert8.txt', np.column_stack([C_2, C_2er, R_2, R_2er, R_3, 
 C_2 = np.array([399, 750, 597])
 C_2er  = C_2*0.002
 R_2 = np.array([0, 0, 0])
-R_2er  = R_2*0.002
+R_2er  = R_2*0.03
 R_3 = np.array([489, 642, 589])
 R_4 = np.array([511, 358, 411])
 R_34   = np.array([R_3[0]/R_4[0], R_3[1]/R_4[1], R_3[2]/R_4[2]])
@@ -64,7 +64,7 @@ np.savetxt('kapa.wert3.txt', np.column_stack([C_2, C_2er, R_2, R_2er, R_3, R_4, 
 C_2 = np.array([597, 750, 399])
 C_2er  = C_2*0.002
 R_2 = np.array([3, 0, 1])
-R_2er  = R_2*0.002
+R_2er  = R_2*0.03
 R_3 = np.array([478, 532, 378])
 R_4 = np.array([522, 468, 622])
 R_34   = np.array([R_3[0]/R_4[0], R_3[1]/R_4[1], R_3[2]/R_4[2]])
@@ -79,7 +79,7 @@ np.savetxt('kapa.wert1.txt', np.column_stack([C_2, C_2er, R_2, R_2er, R_3, R_4, 
 L_2    = np.array([20.1, 14.6])
 L_2er  = L_2*0.002
 R_2    = np.array([91, 68])
-R_2er  = R_2*0.002
+R_2er  = R_2*0.03
 R_3    = np.array([572, 650])
 R_4    = np.array([428, 350])
 R_34   = np.array([R_3[0]/R_4[0], R_3[1]/R_4[1]])
