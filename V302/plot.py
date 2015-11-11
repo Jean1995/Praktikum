@@ -47,7 +47,7 @@ C2  = unp.uarray(C_2, C_2er)
 R2  = unp.uarray(R_2, R_2er)
 R34 = unp.uarray(R_34, R_34er)
 
-Cx = C2*R34
+Cx = C2*1/R34
 Cx_mean=np.mean(Cx)
 
 Rx = R2*R34
@@ -134,13 +134,14 @@ write('build/indu/indu.R19m.tex', str(Rx_mean))
 
 #d) Maxwell-Brücke
 #L/R-Kombination Wert 19
-C_4, C_4er, R_2, R_2er, R_3, R_3er, R_4, R_34, R_34er = np.genfromtxt('max.kombiwert19.txt', unpack=True)
+C_4, C_4er, R_2, R_2er, R_3, R_3er, R_4, R_4er = np.genfromtxt('max.kombiwert19.txt', unpack=True)
 C_4 = C_4*10**(-9)
 C_4er = C_4er*10**(-9)
 C4  = unp.uarray(C_4, C_4er)
 R2  = unp.uarray(R_2, R_2er)
 R3  = unp.uarray(R_3, R_3er)
-R34 = unp.uarray(R_34, R_34er)
+R4  = unp.uarray(R_4, R_4er)
+R34 = R3/R4
 
 Lx = C4*R3*R2
 Lx_mean = np.mean(Lx)

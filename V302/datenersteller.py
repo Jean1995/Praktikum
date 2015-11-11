@@ -95,9 +95,10 @@ C_4er  = C_4*0.002
 R_2    = np.array([1000, 322, 664])
 R_2er  = R_2*0.002
 R_3    = np.array([69, 190, 102])
-R_3er  = R_3*0.002 #NICHT SICHER OB WIRKLICH 0,2%, DA R3 VARIABEL EINSTELLBAR WAR
+R_3er  = R_3*0.03 #NICHT SICHER OB WIRKLICH 0,2%, DA R3 VARIABEL EINSTELLBAR WAR -> Hab es jetzt doch auf 3 % geändert?
 R_4    = np.array([556, 548, 552])
-R_34   = np.array([R_3[0]/R_4[0], R_3[1]/R_4[1], R_3[2]/R_4[2]])
-R_34er = R_34*0.005
+R_4er  = R_4*0.03
+#R_34   = np.array([R_3[0]/R_4[0], R_3[1]/R_4[1], R_3[2]/R_4[2]]) # Konnte ich jetzt nicht nachvollziehen warum du das gemacht hast?
+#R_34er = R_34*0.005
 
-np.savetxt('max.kombiwert19.txt', np.column_stack([C_4, C_4er, R_2, R_2er, R_3, R_3er, R_4, R_34, R_34er]), header="C_4 [nF], C_4error [nF], R_2 [ohm], R_2error [ohm], R_3 [ohm], R_3error [ohm], R_4 [ohm], R_3/R_4, R_34error")
+np.savetxt('max.kombiwert19.txt', np.column_stack([C_4, C_4er, R_2, R_2er, R_3, R_3er, R_4, R_4er]), header="C_4 [nF], C_4error [nF], R_2 [ohm], R_2error [ohm], R_3 [ohm], R_3error [ohm], R_4 [ohm], R_4error [ohm]")
