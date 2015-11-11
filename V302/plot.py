@@ -177,7 +177,13 @@ x_plot = np.linspace(0.01, 100, 1000000)
 plt.plot(x_plot, f(x_plot), 'r-', label=r'Ausgleichspolynom $U/Us$', linewidth=0.5)
 plt.savefig('build/plot.pdf')
 
+#f)
 
+U_br = U[11] #Brückenspannung bei Minimum
+Br_Bs = np.sqrt(f(2)) #Br/Bs Faktor für omega = 2, da omega = w/w0 = v/v0 = 2*v0/v0 = 2
+U2 = U_br / Br_Bs
+k = U2/Us
+write('build/klirrfaktor.tex', str(k))
 
 
 
