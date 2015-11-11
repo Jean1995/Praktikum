@@ -18,33 +18,25 @@ R_2, R_2er, R_3, R_4, R_34, R_34er = np.genfromtxt('wheat.wert14.txt', unpack=Tr
 R2  = unp.uarray(R_2, R_2er)
 R34 = unp.uarray(R_34, R_34er)
 
-Rx1 = R2[0]*R34[0]
-Rx2 = R2[1]*R34[1]
-Rx3 = R2[2]*R34[2]
+Rx = R2*R34
+Rx_mean=np.mean(Rx)
 
-#Rx = np.array([Rx1, Rx2, Rx3])
-Rx = (Rx1 +Rx2 + Rx3)/3
-write('build/wheat/wheat.R14_1.tex', str(Rx1))
-write('build/wheat/wheat.R14_2.tex', str(Rx2))
-write('build/wheat/wheat.R14_3.tex', str(Rx3))
-write('build/wheat/wheat.R14m.tex', str(unp.nominal_values(Rx)))
-write('build/wheat/wheat.R14a.tex', str(unp.std_devs(Rx)))
+write('build/wheat/wheat.R14_1.tex', str(Rx[0]))
+write('build/wheat/wheat.R14_2.tex', str(Rx[1]))
+write('build/wheat/wheat.R14_3.tex', str(Rx[2]))
+write('build/wheat/wheat.R14m.tex', str(Rx_mean))
 #Widerstand Wert 11
 R_2, R_2er, R_3, R_4, R_34, R_34er = np.genfromtxt('wheat.wert11.txt', unpack=True)
 R2  = unp.uarray(R_2, R_2er)
 R34 = unp.uarray(R_34, R_34er)
 
-Rx1 = R2[0]*R34[0]
-Rx2 = R2[1]*R34[1]
-Rx3 = R2[2]*R34[2]
+Rx = R2 * R34
+Rx_mean=np.mean(Rx)
 
-#Rx = np.array([Rx1, Rx2, Rx3])
-Rx = (Rx1 +Rx2 + Rx3)/3
-write('build/wheat/wheat.R11_1.tex', str(Rx1))
-write('build/wheat/wheat.R11_2.tex', str(Rx2))
-write('build/wheat/wheat.R11_3.tex', str(Rx3))
-write('build/wheat/wheat.R11m.tex', str(unp.nominal_values(Rx)))
-write('build/wheat/wheat.R11a.tex', str(unp.std_devs(Rx)))
+write('build/wheat/wheat.R11_1.tex', str(Rx[0]))
+write('build/wheat/wheat.R11_2.tex', str(Rx[1]))
+write('build/wheat/wheat.R11_3.tex', str(Rx[2]))
+write('build/wheat/wheat.R11m.tex', str(Rx_mean))
 
 #b) Kapazitätsbrücke
 #R/C-Kombination Wert 8
@@ -55,26 +47,20 @@ C2  = unp.uarray(C_2, C_2er)
 R2  = unp.uarray(R_2, R_2er)
 R34 = unp.uarray(R_34, R_34er)
 
-Cx1 = C2[0]*R34[0]
-Cx2 = C2[1]*R34[1]
-Cx3 = C2[2]*R34[2]
-Cx = (Cx1 + Cx2 + Cx3)/3
+Cx = C2*R34
+Cx_mean=np.mean(Cx)
 
-Rx1 = R2[0]*R34[0]
-Rx2 = R2[1]*R34[1]
-Rx3 = R2[2]*R34[2]
-Rx = (Rx1 +Rx2 + Rx3)/3
+Rx = R2*R34
+Rx_mean=np.mean(Rx)
 
-write('build/kapa/kapa.C8_1.tex', str(Cx1))
-write('build/kapa/kapa.C8_2.tex', str(Cx2))
-write('build/kapa/kapa.C8_3.tex', str(Cx3))
-write('build/kapa/kapa.C8m.tex', str(unp.nominal_values(Cx)))
-write('build/kapa/kapa.C8a.tex', str(unp.std_devs(Cx)))
-write('build/kapa/kapa.R8_1.tex', str(Rx1))
-write('build/kapa/kapa.R8_2.tex', str(Rx2))
-write('build/kapa/kapa.R8_3.tex', str(Rx3))
-write('build/kapa/kapa.R8m.tex', str(unp.nominal_values(Rx)))
-write('build/kapa/kapa.R8a.tex', str(unp.std_devs(Rx)))
+write('build/kapa/kapa.C8_1.tex', str(Cx[0]))
+write('build/kapa/kapa.C8_2.tex', str(Cx[1]))
+write('build/kapa/kapa.C8_3.tex', str(Cx[2]))
+write('build/kapa/kapa.C8m.tex', str(Cx_mean))
+write('build/kapa/kapa.R8_1.tex', str(Rx[0]))
+write('build/kapa/kapa.R8_2.tex', str(Rx[1]))
+write('build/kapa/kapa.R8_3.tex', str(Rx[2]))
+write('build/kapa/kapa.R8m.tex', str(Rx_mean))
 
 #Kondensator Wert 3
 C_2, C_2er, R_2, R_2er, R_3, R_4, R_34, R_34er = np.genfromtxt('kapa.wert3.txt', unpack=True)
@@ -84,26 +70,20 @@ C2  = unp.uarray(C_2, C_2er)
 R2  = unp.uarray(R_2, R_2er)
 R34 = unp.uarray(R_34, R_34er)
 
-Cx1 = C2[0]*1/R34[0]
-Cx2 = C2[1]*1/R34[1]
-Cx3 = C2[2]*1/R34[2]
-Cx = (Cx1 + Cx2 + Cx3)/3
+Cx = C2*1/R34
+Cx_mean=np.mean(Cx)
 
-Rx1 = R2[0]*R34[0]
-Rx2 = R2[1]*R34[1]
-Rx3 = R2[2]*R34[2]
-Rx = (Rx1 +Rx2 + Rx3)/3
+Rx = R2*R34
+Rx_mean = np.mean(Rx)
 
-write('build/kapa/kapa.C3_1.tex', str(Cx1))
-write('build/kapa/kapa.C3_2.tex', str(Cx2))
-write('build/kapa/kapa.C3_3.tex', str(Cx3))
-write('build/kapa/kapa.C3m.tex', str(unp.nominal_values(Cx)))
-write('build/kapa/kapa.C3a.tex', str(unp.std_devs(Cx)))
-write('build/kapa/kapa.R3_1.tex', str(Rx1))
-write('build/kapa/kapa.R3_2.tex', str(Rx2))
-write('build/kapa/kapa.R3_3.tex', str(Rx3))
-write('build/kapa/kapa.R3m.tex', str(unp.nominal_values(Rx)))
-write('build/kapa/kapa.R3a.tex', str(unp.std_devs(Rx)))
+write('build/kapa/kapa.C3_1.tex', str(Cx[0]))
+write('build/kapa/kapa.C3_2.tex', str(Cx[1]))
+write('build/kapa/kapa.C3_3.tex', str(Cx[2]))
+write('build/kapa/kapa.C3m.tex', str(Cx_mean))
+write('build/kapa/kapa.R3_1.tex', str(Rx[0]))
+write('build/kapa/kapa.R3_2.tex', str(Rx[1]))
+write('build/kapa/kapa.R3_3.tex', str(Rx[2]))
+write('build/kapa/kapa.R3m.tex', str(Rx_mean))
 
 #Kondensator Wert 1
 C_2, C_2er, R_2, R_2er, R_3, R_4, R_34, R_34er = np.genfromtxt('kapa.wert1.txt', unpack=True)
@@ -113,26 +93,20 @@ C2  = unp.uarray(C_2, C_2er)
 R2  = unp.uarray(R_2, R_2er)
 R34 = unp.uarray(R_34, R_34er)
 
-Cx1 = C2[0]*(1/R34[0])
-Cx2 = C2[1]*(1/R34[1])
-Cx3 = C2[2]*(1/R34[2])
-Cx = (Cx1 + Cx2 + Cx3)/3
+Cx = C2*(1/R34)
+Cx_mean=np.mean(Cx)
 
-Rx1 = R2[0]*R34[0]
-Rx2 = R2[1]*R34[1]
-Rx3 = R2[2]*R34[2]
-Rx = (Rx1 +Rx2 + Rx3)/3
+Rx = R2*R34
+Rx_mean=np.mean(Rx)
 
-write('build/kapa/kapa.C1_1.tex', str(Cx1))
-write('build/kapa/kapa.C1_2.tex', str(Cx2))
-write('build/kapa/kapa.C1_3.tex', str(Cx3))
-write('build/kapa/kapa.C1m.tex', str(unp.nominal_values(Cx)))
-write('build/kapa/kapa.C1a.tex', str(unp.std_devs(Cx)))
-write('build/kapa/kapa.R1_1.tex', str(Rx1))
-write('build/kapa/kapa.R1_2.tex', str(Rx2))
-write('build/kapa/kapa.R1_3.tex', str(Rx3))
-write('build/kapa/kapa.R1m.tex', str(unp.nominal_values(Rx)))
-write('build/kapa/kapa.R1a.tex', str(unp.std_devs(Rx)))
+write('build/kapa/kapa.C1_1.tex', str(Cx[0]))
+write('build/kapa/kapa.C1_2.tex', str(Cx[1]))
+write('build/kapa/kapa.C1_3.tex', str(Cx[2]))
+write('build/kapa/kapa.C1m.tex', str(Cx_mean))
+write('build/kapa/kapa.R1_1.tex', str(Rx[0]))
+write('build/kapa/kapa.R1_2.tex', str(Rx[1]))
+write('build/kapa/kapa.R1_3.tex', str(Rx[2]))
+write('build/kapa/kapa.R1m.tex', str(Rx_mean))
 
 
 #c) Induktivitätsbrücke
@@ -144,22 +118,18 @@ L2  = unp.uarray(L_2, L_2er)
 R2  = unp.uarray(R_2, R_2er)
 R34 = unp.uarray(R_34, R_34er)
 
-Lx1 = L2[0]*R34[0]
-Lx2 = L2[1]*R34[1]
-Lx = (Lx1+Lx2)/2
+Lx = L2*R34
+Lx_mean = np.mean(Lx)
 
-Rx1 = R2[0]*R34[0]
-Rx2 = R2[1]*R34[1]
-Rx = (Rx1+Rx2)/2
+Rx = R2*R34
+Rx_mean = np.mean(Rx)
 
-write('build/indu/indu.L19_1.tex', str(Lx1))
-write('build/indu/indu.L19_2.tex', str(Lx2))
-write('build/indu/indu.L19m.tex', str(unp.nominal_values(Lx)))
-write('build/indu/indu.L19a.tex', str(unp.std_devs(Lx)))
-write('build/indu/indu.R19_1.tex', str(Rx1))
-write('build/indu/indu.R19_2.tex', str(Rx2))
-write('build/indu/indu.R19m.tex', str(unp.nominal_values(Rx)))
-write('build/indu/indu.R19a.tex', str(unp.std_devs(Rx)))
+write('build/indu/indu.L19_1.tex', str(Lx[0]))
+write('build/indu/indu.L19_2.tex', str(Lx[1]))
+write('build/indu/indu.L19m.tex', str(Lx_mean))
+write('build/indu/indu.R19_1.tex', str(Rx[0]))
+write('build/indu/indu.R19_2.tex', str(Rx[1]))
+write('build/indu/indu.R19m.tex', str(Rx_mean))
 
 
 #d) Maxwell-Brücke
@@ -172,26 +142,20 @@ R2  = unp.uarray(R_2, R_2er)
 R3  = unp.uarray(R_3, R_3er)
 R34 = unp.uarray(R_34, R_34er)
 
-Lx1 = C4[0]*R3[0]*R2[0]
-Lx2 = C4[1]*R3[1]*R2[1]
-Lx3 = C4[2]*R3[2]*R2[2]
-Lx = (Lx1+Lx2+Lx3)/2
+Lx = C4*R3*R2
+Lx_mean = np.mean(Lx)
 
-Rx1 = R2[0]*R34[0]
-Rx2 = R2[1]*R34[1]
-Rx3 = R2[2]*R34[2]
-Rx = (Rx1+Rx2+Rx3)/3
+Rx = R2*R34
+Rx_mean = np.array(Rx)
 
-write('build/max/max.L19_1.tex', str(Lx1))
-write('build/max/max.L19_2.tex', str(Lx2))
-write('build/max/max.L19_3.tex', str(Lx3))
-write('build/max/max.L19m.tex', str(unp.nominal_values(Lx)))
-write('build/max/max.L19a.tex', str(unp.std_devs(Lx)))
-write('build/max/max.R19_1.tex', str(Rx1))
-write('build/max/max.R19_2.tex', str(Rx2))
-write('build/max/max.R19_3.tex', str(Rx3))
-write('build/max/max.R19m.tex', str(unp.nominal_values(Rx)))
-write('build/max/max.R19a.tex', str(unp.std_devs(Rx)))
+write('build/max/max.L19_1.tex', str(Lx[0]))
+write('build/max/max.L19_2.tex', str(Lx[1]))
+write('build/max/max.L19_3.tex', str(Lx[2]))
+write('build/max/max.L19m.tex', str(Lx_mean))
+write('build/max/max.R19_1.tex', str(Rx[0]))
+write('build/max/max.R19_2.tex', str(Rx[1]))
+write('build/max/max.R19_3.tex', str(Rx[2]))
+write('build/max/max.R19m.tex', str(Rx_mean))
 
 #e)
 v, U = np.genfromtxt('frequenzmessung.txt', unpack=True)
