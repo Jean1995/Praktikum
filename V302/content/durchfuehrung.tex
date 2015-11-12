@@ -1,2 +1,67 @@
 \section{Durchführung}
 \label{sec:Durchführung}
+\subsection{Wheatstonebrücke}
+Abbildung \ref{fig:1} zeigt den systematischen Aufbau einer Wheatstonebrücke.
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=6cm]{wheat.png}
+  \caption{Wheatstonebrücke \cite{sample}}
+  \label{fig:1}
+\end{figure}
+Sie besteht aus jeweils zwei parallel zueinander geschalteten Widerständen $R_x$ und $R_3$, und $R_2$ und $R_4$.
+Es wird die Potentialdifferenz $U_{\text{br}}$ zwischen den beiden Punkten nach jeweils dem ersten Widerstand abgegriffen.
+Bei dieser mit Wechselstrom betriebenen Schaltung wird das Verhältnis von $R_3$ zu $R_4$ nun solange variiert bis die Brückenspannunng $U_{\text{Br}}$ ihr Minimum erreicht hat.
+Somit kann $R_x$ bestimmt werden.
+Es werden zwei unbekannte Widerstände $R_x$ mit jeweils drei verschiedenen $R_2$ ermittelt.
+
+\subsection{Kapazitätsmessbrücke}
+Mit der Kapazitätsmessbrücke kann die Kapazität und der Widerstand eines unbekannten Kondensatorelements berechnet werden.
+Die Abbildung \ref{fig:2} zeigt eine solche Schaltung.
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=6cm]{kapa.png}
+  \caption{Kapazitätsmessbrücke \cite{sample}}
+  \label{fig:2}
+\end{figure}
+Sie unterscheidet sich von der Wheatstonebrücke nur darin, dass hier anstelle von $R_x$ eine unbekannte R/C-Kombination oder eben nur ein unbekannter Kondensator eingebaut und ermittelt wird.
+Zusätzlich wird mit einem festen Kondensator $C_2$ und einem variablen Widerstand $R_2$ abgegelichen.
+Es werden nun $R_2$ und das Verhältnis von $R_3$ und $R_4$ solange nacheinander variiert bis das Minimum der Brückenspannung $U_{\text{Br}}$ auf dem Oszilloskop beobachtet wird.
+Auf diese Weise werden die Kapazitäten und Widerstände einer R/C-Kombination, sowie von zwei unbekannten Kondensatoren bestimmt.
+Es wird jeweils dreimal mit verschiedenen Kondensatoren $C_2$ gemessen.
+
+\subsection{Induktivitätsmessbrücke}
+Die Induktivitätsmessbrücke, dargestellt in Abbildung \ref{fig:3}, funktioniert im Prinzip genauso wie die Kapazitätsmessbrücke \ref{fig:2}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=6cm]{indu.png}
+  \caption{Induktivitätsmessbrücke \cite{sample}}
+  \label{fig:3}
+\end{figure}
+Anstelle der Kondensatoren werden hier jedoch die Spule $L_2$ und eine L/R-Kombination eingebaut.
+Es gilt das selbe Messverfahren wie bei der Kapazitätsmessbrücke, um diesmal die Werte von nur einer unbekannten L/R-Kombination zu ermitteln.
+$L_2$ wird dabei zweimal variiert.
+
+\subsection{Maxwell-Brücke}
+Da bei der Induktivitätsmessbrücke auf eine Spule zur Berechnung der unbekannten Induktivität zurückgegriffen wird, diese aber zumeist bei niedrigen Frequenzen hohe Verluste besitzt, ist es besser anstelle einer Spule einen möglichst verlustarmen Kondensator zu verwenden.
+Dies wird bei der Maxwell-Brücke, Abbildung \ref{fig:4}, realisiert.
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=6cm]{max.png}
+  \caption{Maxwell-Brücke \cite{sample}}
+  \label{fig:4}
+\end{figure}
+Die Abgleichelemente sind hier die variablen Widerstände $R_3$ und $R_4$, wobei der Kondensator $C_4$ parallel zu $R_3$ geschaltet wird.
+Dabei soll die selbe L/R-Kombination untersucht werden, indem $R_3$ und $R_4$ nacheinander variiert werden, sodass die Brückenspannung $U_{\text{Br}}$ minimal wird.
+Es wird dreimal mit verschiedenen Widerständen $R_2$ gemessen.
+
+\subsection{Wien-Robinson-Brücke}
+Bei den obigen Schaltungen ist ein Abgleich bei beliebigen Frequenzen möglich.
+Bei der Wien-Robinson-Brücke \ref{fig:5} hingegen ist ein Abgleich nur bei einer bestimmten Frequenz möglich, die untersucht werden soll.
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=6cm]{wien.png}
+  \caption{Wien-Robinson-Brücke \cite{sample}}
+  \label{fig:5}
+\end{figure}
+Dabei wird die Frequenz $v$ der Ausgangsspannung $U_{\text{S}}$ in um die Minimalbrückenspannung kleiner werdenden Abständen variiert und die jeweilige entstehende Brückenspannung $U_{\text{Br}}$ notiert.
+Die Frequenz befindet sich in einem Bereich von $\SI{20}{\hertz}$ bis $\SI{30}{\kilo\hertz}$.
