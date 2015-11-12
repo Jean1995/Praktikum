@@ -44,10 +44,19 @@ Es werden zwei unbekannte Widerstände $R_x$ mit jeweils drei verschiedenen $R_2
   \end{tabular}
 \end{table}
 
+\begin{equation}
+  R_x = R_2 \frac{R_3}{R_4}
+\end{equation}
 
 \begin{align}
-  R_{14}   &= \input{build/wheat/wheat.R14m.tex}\\
-  R_{11}   &= \input{build/wheat/wheat.R11m.tex}
+  R_{14,1}   &= (\input{build/wheat/wheat.R14_1.tex})\:\si{\ohm} & R_{11,1} &= (\input{build/wheat/wheat.R11_1.tex})\:\si{\ohm}\\
+  R_{14,2}   &= (\input{build/wheat/wheat.R14_2.tex})\:\si{\ohm} & R_{11,2} &= (\input{build/wheat/wheat.R11_2.tex})\:\si{\ohm}\\
+  R_{14,3}   &= (\input{build/wheat/wheat.R14_3.tex})\:\si{\ohm} & R_{11,3} &= (\input{build/wheat/wheat.R11_3.tex})\:\si{\ohm}
+\end{align}
+
+\begin{align}
+  R_{14}   &= (\input{build/wheat/wheat.R14m.tex})\:\si{\ohm}\\
+  R_{11}   &= (\input{build/wheat/wheat.R11m.tex})\:\si{\ohm}
 \end{align}
 
 \section{Kapazitätsmessbrücke}
@@ -106,6 +115,38 @@ Es wird jeweils dreimal mit verschiedenen Kondensatoren $C_2$ gemessen.
   \end{tabular}
 \end{table}
 
+\begin{equation}
+  R_x = R_2 \frac{R_3}{R_4}
+\end{equation}
+
+\begin{equation}
+  C_x = C_2 \frac{R_4}{R_3}
+\end{equation}
+
+\begin{align}
+  C_{8,1}   &= (\input{build/kapa/kapa.C8_1.tex})\:\si{\nano\farad} & R_{8,1} &= (\input{build/kapa/kapa.R8_1.tex})\:\si{\ohm}\\
+  C_{8,2}   &= (\input{build/kapa/kapa.C8_2.tex})\:\si{\nano\farad} & R_{8,2} &= (\input{build/kapa/kapa.R8_2.tex})\:\si{\ohm}\\
+  C_{8,3}   &= (\input{build/kapa/kapa.C8_3.tex})\:\si{\nano\farad} & R_{8,3} &= (\input{build/kapa/kapa.R8_3.tex})\:\si{\ohm}
+\end{align}
+
+\begin{align}
+  C_{3,1}   &= (\input{build/kapa/kapa.C3_1.tex})\:\si{\nano\farad} & R_{3,1} &= (\input{build/kapa/kapa.R3_1.tex})\:\si{\ohm}\\
+  C_{3,2}   &= (\input{build/kapa/kapa.C3_2.tex})\:\si{\nano\farad} & R_{3,2} &= (\input{build/kapa/kapa.R3_2.tex})\:\si{\ohm}\\
+  C_{3,3}   &= (\input{build/kapa/kapa.C3_3.tex})\:\si{\nano\farad} & R_{3,3} &= (\input{build/kapa/kapa.R3_3.tex})\:\si{\ohm}
+\end{align}
+
+\begin{align}
+  C_{1,1}   &= (\input{build/kapa/kapa.C1_1.tex})\:\si{\nano\farad} & R_{1,1} &= (\input{build/kapa/kapa.R1_1.tex})\:\si{\ohm}\\
+  C_{1,2}   &= (\input{build/kapa/kapa.C1_2.tex})\:\si{\nano\farad} & R_{1,2} &= (\input{build/kapa/kapa.R1_2.tex})\:\si{\ohm}\\
+  C_{1,3}   &= (\input{build/kapa/kapa.C1_3.tex})\:\si{\nano\farad} & R_{1,3} &= (\input{build/kapa/kapa.R1_3.tex})\:\si{\ohm}
+\end{align}
+
+\begin{align}
+  C_{8}   &= (\input{build/kapa/kapa.C8m.tex})\:\si{\nano\farad} & R_{8} &= (\input{build/kapa/kapa.R8m.tex})\:\si{\ohm}\\
+  C_{3}   &= (\input{build/kapa/kapa.C3m.tex})\:\si{\nano\farad} & R_{3} &= (\input{build/kapa/kapa.R3m.tex})\:\si{\ohm}\\
+  C_{1}   &= (\input{build/kapa/kapa.C1m.tex})\:\si{\nano\farad} & R_{1} &= (\input{build/kapa/kapa.R1m.tex})\:\si{\ohm}
+\end{align}
+
 \section{Induktivitätsmessbrücke}
 \subsection{Durchführung}
 Die Induktivitätsmessbrücke, dargestellt in Abbildung \ref{fig:3}, funktioniert im Prinzip genauso wie die Kapazitätsmessbrücke \ref{fig:2}.
@@ -133,7 +174,22 @@ $L_2$ wird dabei zweimal variiert.
   \end{tabular}
 \end{table}
 
+\begin{align}
+  L_{19,1}   &= (\input{build/indu/indu.L19_1.tex})\:\si{\milli\henry} & R_{19,1} &= (\input{build/indu/indu.R19_1.tex})\:\si{\ohm}\\
+  L_{19,2}   &= (\input{build/indu/indu.L19_2.tex})\:\si{\milli\henry} & R_{19,2} &= (\input{build/indu/indu.R19_2.tex})\:\si{\ohm}
+\end{align}
 
+\begin{equation}
+  R_x = R_2 \frac{R_3}{R_4}
+\end{equation}
+
+\begin{equation}
+  L_x = L_2 \frac{R_3}{R_4}
+\end{equation}
+
+\begin{align}
+  L_{19}   &= (\input{build/indu/indu.L19m.tex})\:\si{\milli\henry} & R_{19} &= (\input{build/indu/indu.R19m.tex})\:\si{\ohm}
+\end{align}
 
 \section{Maxwell-Brücke}
 \subsection{Durchführung}
@@ -163,8 +219,23 @@ Es wird dreimal mit verschiedenen Widerständen $R_2$ gemessen.
   \end{tabular}
 \end{table}
 
+\begin{equation}
+  R_x = R_2 \frac{R_3}{R_4}
+\end{equation}
 
+\begin{equation}
+  L_x = C_4R_3R_2
+\end{equation}
 
+\begin{align}
+  L_{19,1}   &= (\input{build/max/max.L19_1.tex})\:\si{\milli\henry} & R_{19,1} &= (\input{build/max/max.R19_1.tex})\:\si{\ohm}\\
+  L_{19,2}   &= (\input{build/max/max.L19_2.tex})\:\si{\milli\henry} & R_{19,2} &= (\input{build/max/max.R19_2.tex})\:\si{\ohm}\\
+  L_{19,3}   &= (\input{build/max/max.L19_3.tex})\:\si{\milli\henry} & R_{19,3} &= (\input{build/max/max.R19_3.tex})\:\si{\ohm}
+\end{align}
+
+\begin{align}
+  L_{19}   &= (\input{build/max/max.L19m.tex})\:\si{\milli\henry} & R_{19} &= (\input{build/max/max.R19m.tex})\:\si{\ohm}
+\end{align}
 
 \section{Wien-Robinson-Brücke}
 \subsection{Durchführung}
@@ -192,3 +263,15 @@ Die Frequenz befindet sich in einem Bereich von $\SI{20}{\hertz}$ bis $\SI{30}{\
     \bottomrule
   \end{tabular}
 \end{table}
+
+\begin{equation}
+  f(v) = \frac{U_{\text{Br}}}{U_{\text{S}}} = \sqrt{\frac{1}{9} \frac{\left(\Omega²-1 \right)²}{\left(1-\Omega² \right)²+9\Omega²}}
+\end{equation}
+
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=10cm]{plot.pdf}
+  \caption{Frequenzmessergebnisse}
+  \label{fig:6}
+\end{figure}
