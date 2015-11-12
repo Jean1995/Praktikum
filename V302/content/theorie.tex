@@ -1,4 +1,142 @@
 \section{Theorie}
 \label{sec:Theorie}
 
+Bei einer Brückenschaltung können im Allgemeinen unbekannte Größen bei Kenntnis ausreichend vieler Größen, insbesondere der Speisespannung $U_s$ sowie der Brückenspannung $U_b$, mit Hilfe der Kirchhoffschen Regeln bestimmt werden.\\
+Die erste Kirchhoffsche Regel ist dabei die Knotenregel \eqref{eqn:knotenregel}.
+Diese folgt direkt aus der Ladungserhaltung und besagt, dass in jedem Knotenpunkt einer Schaltung die Summe alle eingehenden und ausgehenden Ströme verschwinden muss:
+
+\begin{equation}
+  \sum_{k=1}^n I_k = 0.
+  \label{eqn:knotenregel}
+\end{equation}
+Beispielsweise gilt für Abbilung \ref{fig:knotenregel}
+\begin{equation}
+I_1 = I_2 + I_3
+\end{equation}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}
+    \draw[->] (0, 0) -- (1.8, 0) node[midway, above] {$I_1$};
+    \draw[->] (2, 0.1) -- (4, 1) node[midway, above] {$I_2$};
+    \draw[->] (2, 0) -- (4, 0) node[midway, below] {$I_3$};
+    %\draw[IPfeil=0em]([yshift=1.0em]0,0) -- node [above]{I$\mathsf{_R}$}([yshift=1.0em]0.5,0);
+  \end{tikzpicture}
+  \caption{Maschenregel.}
+  \label{fig:knotenregel}
+\end{figure}
+Die zweite Kirchhoffsche Regel ist die Maschenregel \eqref{eqn:maschenregel}.
+Sie folgt aus dem Induktionsgesetz im Vakuum
+\begin{equation}
+\oint \vec{E} \cdot \vec{\symup{d}s} = 0
+\end{equation}
+und besagt, dass in jeder geschlossenen Masche der Schaltung die Summe der Spannungen null ergeben muss:
+\begin{equation}
+  \sum_{i=1}^n U_1 = 0.
+  \label{eqn:maschenregel}
+\end{equation}
+Beispielsweise gilt für Abbildung \ref{fig:maschenregel}
+\begin{equation}
+U_s = I \cdot R_3 + I \cdot R_2 + I \cdot R_1
+\end{equation}
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[circuit ee IEC, font=\sffamily\footnotesize]
+      \draw (0,0) to [resistor={info={$R_1$},info'={$\mathsf{_{}}$}}] (4,0);
+      \draw (4,0) to [resistor={info={$R_2$},info'={$\mathsf{_{}}$}}] (4,2);
+      \draw (4,2) to [resistor={info={$R_3$},info'={$\mathsf{_{}}$}}] (0,2);
+      \draw (0,2) to [battery={info'={$U_s$}}] (0,0);
+      %\node at ([xshift=-1em]battery.north) {+};
+
+      \draw[IPfeil=0em]([yshift=1.0em]1.7,2.1) -- node [above]{$I$}([yshift=1.0em]2.3,2.1);
+    \end{tikzpicture}
+    \caption{Maschenregel.}
+    \label{fig:maschenregel}
+\end{figure}
+
+Um nun eine unbekannte Größe zu messen, sieht eine allgemeine Brückenschaltung wie in Abbildung \ref{fig:bruecke} beschrieben aus.
+
+%Volt- und Amperemeter festlegen:
+\tikzset{circuit declare symbol = Us}
+\tikzset{set Us graphic ={draw,generic circle IEC, minimum size=5mm,info=center:$U_s$}}
+
+\tikzset{circuit declare symbol = Ub}
+\tikzset{set Ub graphic ={draw,generic circle IEC, minimum size=5mm,info=center:$U_b$}}
+
+
+\begin{figure}[H]
+  \centering
+  \begin{tikzpicture}[circuit ee IEC, font=\sffamily\footnotesize]
+
+      \draw(1,2) to (0,2);
+      \draw(0,2) to (0,5);
+
+      \draw (1,0) to [resistor={info={$Z_3$},info'={$\mathsf{_{}}$}}] (4,0);
+            \draw[IPfeil=0em]([yshift=1.0em]1.1,-0.2) -- node [above]{$I_3$}([yshift=1.0em]1.6,-0.2);
+      \draw[fill=black] (4,0) circle (1.5pt);
+      \draw (4,0) to [resistor={info={$Z_4$},info'={$\mathsf{_{}}$}}] (7,0);
+      \draw[IPfeil=0em]([yshift=1.0em]6.1,-0.2) -- node [above]{$I_4$}([yshift=1.0em]6.6,-0.2);
+      \draw (7,0) to (7,2);
+
+      \draw(1,0) to (1,2);
+      \draw[fill=black] (1,2) circle (1.5pt);
+      \draw(1,2) to (1,4);
+      \draw (1,4) to [resistor={info={$Z_1$},info'={$\mathsf{_{}}$}}] (4,4);
+      \draw[IPfeil=0em]([yshift=1.0em]1.1,3.8) -- node [above]{$I_1$}([yshift=1.0em]1.6,3.8);
+      \draw[fill=black] (4,4) circle (1.5pt);
+      \draw (4,4) to [resistor={info={$Z_2$},info'={$\mathsf{_{}}$}}] (7,4);
+      \draw[IPfeil=0em]([yshift=1.0em]6.1,3.8) -- node [above]{$I_2$}([yshift=1.0em]6.6,3.8);
+      \draw (7,4) to (7,2);
+      \draw[fill=black] (7,2) circle (1.5pt);
+
+      \draw(7,2) to (8,2);
+      \draw(8,2) to (8,5);
+
+      \draw (4,0) to  [Ub={info'={}}](4,4);
+      \draw (8,5) to  [Us={info'={}}](0,5);
+
+
+      %\draw (4,2) to [resistor={info={$R_3$},info'={$\mathsf{_{}}$}}] (0,2);
+      %\draw (0,2) to [battery={info'={$U_s$}}] (0,0);
+      %\node at ([xshift=-1em]battery.north) {+};
+      %\draw[IPfeil=0em]([yshift=1.0em]1.7,2.1) -- node [above]{$I$}([yshift=1.0em]2.3,2.1);
+    \end{tikzpicture}
+    \caption{Allgemeine Brückenschaltung.}
+    \label{fig:bruecke}
+\end{figure}
+Damit die folgenden Formeln auch wenn für $U_s$ ein Wechselstrom angelegt wird gelten, wird die Impedanz
+\begin{equation}
+  Z = R + i X
+\end{equation}
+genutzt.
+Hierbei steht $R$ für den Wirkwiderstand und $X$ für den Blindwiderstand. \\
+Nach der Knotenregel gelten für die Ströme, wenn der Innenwiderstand des Voltmeters von $U_b$ so gewählt wird dass er keinen Storm durchlässt, die beiden Zusammenhänge
+\begin{gather}
+  I_1 = I_2 \\
+  I_3 = I_4
+\end{gather}
+sowie nach der Maschenregel
+\begin{align}
+  U_b - Z_3 I_3 + Z_1 I_1 &= 0 \\
+  U_b + Z_4 I_4 - Z_2 I_2 &= 0
+\end{align}
+Werden beide Ausdrücke kombiniert ergibt sich für das Verhältnis von $U_b$ zu $U_s$ der Ausdruck
+\begin{equation}
+  U_b = \frac{Z_2 Z_3 - Z_1 Z_4}{(Z_3 + Z_4)(Z_1 + Z_2)}U_s.
+\end{equation}
+Wenn der Zähler dieses Ausdruckes nun 0 wird, also das Verhältnis
+\begin{equation}
+Z_2 Z_3 - Z_1 Z_4 = 0 \iff Z_2 = \frac{Z_1 Z_4}{Z_3}
+\end{equation}
+gilt, so wird die Brückenspannung bei anliegender Speisespannung 0.\\
+Dieses Nullmethode genannte Verfahren kann genutzt werden, um eine unbekannte Impedanz $Z_2$ bei ansonsten bekannten Impedanzen zu berechnen.
+Handelt es sich um reele Impedanzen, d.h. die Blindwiderstände sind 0, kann dieses Verhältnis direkt genutzt werden.
+Dabei wird einer der bekannten Widerstände variiert bis $U_b=0$ ist.\\
+Handelt es sich um komplexe Widerstände, müssen sowohl die Realteile als auch die Imaginärteile 0 ergeben.
+Das bedeutet, dass die beiden Gleichungen
+\begin{align}
+  R_1 R_4 - X_1 X_4 &= R_2 R_3 - X_2 X_3 \\
+  R_1 X_4 + R_4 X_1 &= R_2 X_3 + R_3 X_3
+  \end{align}
+simultan erfüllt sein müssen.
+Beim Nullabgleich müssen dementsprechend zwei bekante Werte variiert werden, so dass die Brückenspannung 0 wird.
 %\cite{sample}
