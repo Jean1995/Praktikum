@@ -17,7 +17,7 @@ from uncertainties import ufloat
 R_2, R_2er, R_3, R_4, R_34, R_34er = np.genfromtxt('wheat.wert14.txt', unpack=True)
 R2  = unp.uarray(R_2, R_2er)
 R34 = unp.uarray(R_34, R_34er)
-
+write('build/wheat1tabelle.tex', make_table([R2, R34], [2, 2]))
 Rx = R2*R34
 Rx_mean=np.mean(Rx)
 
@@ -29,7 +29,7 @@ write('build/wheat/wheat.R14m.tex', str(Rx_mean))
 R_2, R_2er, R_3, R_4, R_34, R_34er = np.genfromtxt('wheat.wert11.txt', unpack=True)
 R2  = unp.uarray(R_2, R_2er)
 R34 = unp.uarray(R_34, R_34er)
-
+write('build/wheat2tabelle.tex', make_table([R2, R34], [2, 2]))
 Rx = R2 * R34
 Rx_mean=np.mean(Rx)
 
@@ -46,7 +46,7 @@ C_2er = C_2er*10**(-9)
 C2  = unp.uarray(C_2, C_2er)
 R2  = unp.uarray(R_2, R_2er)
 R34 = unp.uarray(R_34, R_34er)
-
+write('build/kapa1tabelle.tex', make_table([C2*10**(9), R2, 1/R34], [2, 2, 2]))
 Cx = C2*1/R34
 Cx_mean=np.mean(Cx)
 
@@ -69,7 +69,7 @@ C_2er = C_2er*10**(-9)
 C2  = unp.uarray(C_2, C_2er)
 R2  = unp.uarray(R_2, R_2er)
 R34 = unp.uarray(R_34, R_34er)
-
+write('build/kapa2tabelle.tex', make_table([C2*10**(9), R2, 1/R34], [1, 0, 2]))
 Cx = C2*1/R34
 Cx_mean=np.mean(Cx)
 
@@ -92,7 +92,7 @@ C_2er = C_2er*10**(-9)
 C2  = unp.uarray(C_2, C_2er)
 R2  = unp.uarray(R_2, R_2er)
 R34 = unp.uarray(R_34, R_34er)
-
+write('build/kapa3tabelle.tex', make_table([C2*10**(9), R2, 1/R34], [2, 2, 2]))
 Cx = C2*(1/R34)
 Cx_mean=np.mean(Cx)
 
@@ -117,7 +117,7 @@ L_2er = L_2er*10**(-3)
 L2  = unp.uarray(L_2, L_2er)
 R2  = unp.uarray(R_2, R_2er)
 R34 = unp.uarray(R_34, R_34er)
-
+write('build/indu1tabelle.tex', make_table([L2*10**(3), R2, R34], [2, 2, 2]))
 Lx = L2*R34
 Lx_mean = np.mean(Lx)
 
@@ -142,7 +142,7 @@ R2  = unp.uarray(R_2, R_2er)
 R3  = unp.uarray(R_3, R_3er)
 R4  = unp.uarray(R_4, R_4er)
 R34 = R3/R4
-
+write('build/max1tabelle.tex', make_table([C4*10**(9), R3, R2, R34], [1, 2, 2, 2]))
 Lx = C4*R3*R2
 Lx_mean = np.mean(Lx)
 
@@ -160,6 +160,7 @@ write('build/max/max.R19m.tex', str(Rx_mean))
 
 #e)
 v, U = np.genfromtxt('frequenzmessung.txt', unpack=True)
+write('build/frequenztabelle.tex', make_table([v, U], [0, 4]))
 Us = 8.16
 v0 = 1125
 U = U/Us
@@ -213,9 +214,9 @@ write('build/klirrfaktor.tex', str(k))
 #
 #
 ## Beispieltabelle
-#a = np.linspace(1, 10, 10)
-#b = np.linspace(11, 20, 10)
-#write('build/tabelle.tex', make_table([a, b], [4, 2]))   # [4,2] = Nachkommastellen
+a = np.linspace(1, 10, 10)
+b = np.linspace(11, 20, 10)
+write('build/tabelle.tex', make_table([a, b], [4, 2]))   # [4,2] = Nachkommastellen
 #
 #
 ## Beispielwerte
