@@ -62,13 +62,13 @@ Um nun eine unbekannte Größe zu messen, sieht eine allgemeine Brückenschaltun
 \tikzset{circuit declare symbol = Ub}
 \tikzset{set Ub graphic ={draw,generic circle IEC, minimum size=5mm,info=center:$U_b$}}
 
-
 \begin{figure}[H]
   \centering
   \begin{tikzpicture}[circuit ee IEC, font=\sffamily\footnotesize]
 
       \draw(1,2) to (0,2);
       \draw(0,2) to (0,5);
+
 
       \draw (1,0) to [resistor={info={$Z_3$},info'={$\mathsf{_{}}$}}] (4,0);
             \draw[IPfeil=0em]([yshift=1.0em]1.1,-0.2) -- node [above]{$I_3$}([yshift=1.0em]1.6,-0.2);

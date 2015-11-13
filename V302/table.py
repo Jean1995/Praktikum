@@ -1,5 +1,5 @@
 import itertools
-
+import uncertainties
 import numpy as np
 import uncertainties.unumpy as unp
 from uncertainties.unumpy import (
@@ -40,6 +40,12 @@ def make_SI(num, unit, exp='', figures=None):
 
 def write(filename, content):
     with open(filename, 'w') as f:
-        f.write(content)
-        if not content.endswith('\n'):
-            f.write('\n')
+        if type(content) == uncertainties.Variable:
+            content = "\num{" + str(x.n) + " +- " + str(x.s) + "}"
+            f.write(content)
+            if not content.endswith('\n'):
+                f.write('\n')
+        else:
+            f.write(content)
+            if not content.endswith('\n'):
+                f.write('\n')
