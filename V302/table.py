@@ -6,6 +6,7 @@ from uncertainties.unumpy import (
     nominal_values as noms,
     std_devs as stds,
 )
+from uncertainties import ufloat
 
 def make_table(columns, figures=None):
     if figures is None:
@@ -29,6 +30,9 @@ def make_table(columns, figures=None):
     return (r' \\' + '\n').join([' & '.join(s for s in row if s is not None) for row in rows]) + r' \\'
 
 def make_SI(num, unit, exp='', figures=None):
+    y = ufloat(0.0, 0) #siunitx mag kein 0 +- 0, deshalb hier der workaround
+    if num == y:
+        return "(0 \pm 0) ~ \si{" + unit + "}"
     if np.any(stds([num])):
         if figures is None:
             figures = ''

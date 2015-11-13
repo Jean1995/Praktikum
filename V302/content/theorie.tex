@@ -1,6 +1,6 @@
 \section{Theorie}
+\subsection{Grundlagen der Brückenschaltungen}
 \label{sec:Theorie}
-
 Bei einer Brückenschaltung können im Allgemeinen unbekannte Größen bei Kenntnis ausreichend vieler Größen, insbesondere der Speisespannung $U_s$ sowie der Brückenspannung $U_b$, mit Hilfe der Kirchhoffschen Regeln bestimmt werden.\\
 Die erste Kirchhoffsche Regel ist dabei die Knotenregel \eqref{eqn:knotenregel}.
 Diese folgt direkt aus der Ladungserhaltung und besagt, dass in jedem Knotenpunkt einer Schaltung die Summe alle eingehenden und ausgehenden Ströme verschwinden muss:
@@ -133,10 +133,27 @@ Handelt es sich um reele Impedanzen, d.h. die Blindwiderstände sind 0, kann die
 Dabei wird einer der bekannten Widerstände variiert bis $U_b=0$ ist.\\
 Handelt es sich um komplexe Widerstände, müssen sowohl die Realteile als auch die Imaginärteile 0 ergeben.
 Das bedeutet, dass die beiden Gleichungen
-\begin{align}
-  R_1 R_4 - X_1 X_4 &= R_2 R_3 - X_2 X_3 \\
-  R_1 X_4 + R_4 X_1 &= R_2 X_3 + R_3 X_3
-  \end{align}
+\begin{equation}
+  R_1 R_4 - X_1 X_4 = R_2 R_3 - X_2 X_3
+  \label{eqn:bed1}
+\end{equation}
+\begin{equation}
+  R_1 X_4 + R_4 X_1 = R_2 X_3 + R_3 X_2
+  \label{eqn:bed2}
+\end{equation}
+
 simultan erfüllt sein müssen.
 Beim Nullabgleich müssen dementsprechend zwei bekannte Werte variiert werden, so dass die Brückenspannung 0 wird.
 %\cite{sample}
+\subsection{Impedanzen bekannter elektrischer Bauelemente}
+Die Impedanzen eines ohmschen Widerstandes $R$, einer Induktivität $L$ sowie einer Kapazität $C$ sind gegeben durch
+\begin{equation}
+  Z_R = R,
+\end{equation}
+\begin{equation}
+  Z_L = i \omega L
+\end{equation}
+sowie
+\begin{equation}
+  Z_C = \frac{-i}{\omega C}.
+\end{equation}\cite{sample}

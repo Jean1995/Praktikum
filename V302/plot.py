@@ -21,10 +21,11 @@ write('build/wheat1tabelle.tex', make_table([R2, R34], [1,1 , 1, 1]))
 Rx = R2*R34
 Rx_mean=np.mean(Rx)
 
-write('build/wheat/wheat.R14_1.tex', str(Rx[0]))
-write('build/wheat/wheat.R14_2.tex', str(Rx[1]))
-write('build/wheat/wheat.R14_3.tex', str(Rx[2]))
-write('build/wheat/wheat.R14m.tex', str(Rx_mean))
+
+write('build/wheat/wheat.R14_1.tex', make_SI(Rx[0], r'\ohm', figures=1))
+write('build/wheat/wheat.R14_2.tex', make_SI(Rx[1], r'\ohm', figures=1 ))
+write('build/wheat/wheat.R14_3.tex', make_SI(Rx[2], r'\ohm', figures=1))
+write('build/wheat/wheat.R14m.tex', make_SI(Rx_mean, r'\ohm', figures=1))
 #Widerstand Wert 11
 R_2, R_2er, R_3, R_4, R_34, R_34er = np.genfromtxt('wheat.wert11.txt', unpack=True)
 R2  = unp.uarray(R_2, R_2er)
@@ -33,10 +34,10 @@ write('build/wheat2tabelle.tex', make_table([R2, R34], [1, 1, 1, 1]))
 Rx = R2 * R34
 Rx_mean=np.mean(Rx)
 
-write('build/wheat/wheat.R11_1.tex', str(Rx[0]))
-write('build/wheat/wheat.R11_2.tex', str(Rx[1]))
-write('build/wheat/wheat.R11_3.tex', str(Rx[2]))
-write('build/wheat/wheat.R11m.tex', str(Rx_mean))
+write('build/wheat/wheat.R11_1.tex', make_SI(Rx[0], r'\ohm', figures=1))
+write('build/wheat/wheat.R11_2.tex', make_SI(Rx[1], r'\ohm', figures=1))
+write('build/wheat/wheat.R11_3.tex', make_SI(Rx[2], r'\ohm', figures=1))
+write('build/wheat/wheat.R11m.tex', make_SI(Rx_mean, r'\ohm', figures=1))
 
 #b) Kapazitätsbrücke
 #R/C-Kombination Wert 8
@@ -53,37 +54,38 @@ Cx_mean=np.mean(Cx)
 Rx = R2*R34
 Rx_mean=np.mean(Rx)
 
-write('build/kapa/kapa.C8_1.tex', str(Cx[0]*10**9))
-write('build/kapa/kapa.C8_2.tex', str(Cx[1]*10**9))
-write('build/kapa/kapa.C8_3.tex', str(Cx[2]*10**9))
-write('build/kapa/kapa.C8m.tex', str(Cx_mean*10**9))
-write('build/kapa/kapa.R8_1.tex', str(Rx[0]))
-write('build/kapa/kapa.R8_2.tex', str(Rx[1]))
-write('build/kapa/kapa.R8_3.tex', str(Rx[2]))
-write('build/kapa/kapa.R8m.tex', str(Rx_mean))
+write('build/kapa/kapa.C8_1.tex', make_SI(Cx[0]*10**9, r'\nano\farad', figures=1))
+write('build/kapa/kapa.C8_2.tex', make_SI(Cx[1]*10**9., r'\nano\farad', figures=1))
+write('build/kapa/kapa.C8_3.tex', make_SI(Cx[2]*10**9, r'\nano\farad', figures=1))
+write('build/kapa/kapa.C8m.tex', make_SI(Cx_mean*10**9, r'\nano\farad', figures=1))
+write('build/kapa/kapa.R8_1.tex', make_SI(Rx[0], r'\ohm', figures=1))
+write('build/kapa/kapa.R8_2.tex', make_SI(Rx[1], r'\ohm', figures=1))
+write('build/kapa/kapa.R8_3.tex', make_SI(Rx[2], r'\ohm', figures=1))
+write('build/kapa/kapa.R8m.tex', make_SI(Rx_mean, r'\ohm', figures=1))
 
 #Kondensator Wert 3
-C_2, C_2er, R_2, R_2er, R_3, R_4, R_34, R_34er = np.genfromtxt('kapa.wert3.txt', unpack=True)
+C_2, C_2er, R_2, R_2er, R_3, R_4, baz, bar = np.genfromtxt('kapa.wert3.txt', unpack=True)
 C_2 = C_2*10**(-9)
 C_2er = C_2er*10**(-9)
 C2  = unp.uarray(C_2, C_2er)
 R2  = unp.uarray(R_2, R_2er)
 R34 = unp.uarray(R_34, R_34er)
-write('build/kapa2tabelle.tex', make_table([C2*10**(9), R2, 1/R34], [1, 1, 1, 1, 1, 1]))
+#Hab den Mist aufgegeben: Diese sch**** Tabelle wird jetzt von Hand erstellt. Punkt!
+#write('build/kapa2tabelle.tex', make_table([C2*10**(9), R2, baz, bar], [1, 1, 1, 1, 1, 1]))
 Cx = C2*1/R34
 Cx_mean=np.mean(Cx)
 
 Rx = R2*R34
 Rx_mean = np.mean(Rx)
 
-write('build/kapa/kapa.C3_1.tex', str(Cx[0]*10**9))
-write('build/kapa/kapa.C3_2.tex', str(Cx[1]*10**9))
-write('build/kapa/kapa.C3_3.tex', str(Cx[2]*10**9))
-write('build/kapa/kapa.C3m.tex', str(Cx_mean*10**9))
-write('build/kapa/kapa.R3_1.tex', str(Rx[0]))
-write('build/kapa/kapa.R3_2.tex', str(Rx[1]))
-write('build/kapa/kapa.R3_3.tex', str(Rx[2]))
-write('build/kapa/kapa.R3m.tex', str(Rx_mean))
+write('build/kapa/kapa.C3_1.tex', make_SI(Cx[0]*10**9, r'\nano\farad', figures=1))
+write('build/kapa/kapa.C3_2.tex', make_SI(Cx[1]*10**9, r'\nano\farad', figures=1))
+write('build/kapa/kapa.C3_3.tex', make_SI(Cx[2]*10**9, r'\nano\farad', figures=1))
+write('build/kapa/kapa.C3m.tex', make_SI(Cx_mean*10**9, r'\nano\farad', figures=1))
+write('build/kapa/kapa.R3_1.tex', make_SI(Rx[0], r'\ohm', figures=1)) # siunitx scheint Probleme mit 0.0 +- 0 zu haben? -> Gelöst mit dauernden workaround in table.py!
+write('build/kapa/kapa.R3_2.tex', make_SI(Rx[1], r'\ohm', figures=1))
+write('build/kapa/kapa.R3_3.tex', make_SI(Rx[2], r'\ohm', figures=1))
+write('build/kapa/kapa.R3m.tex', make_SI(Rx_mean, r'\ohm', figures=1))
 
 #Kondensator Wert 1
 C_2, C_2er, R_2, R_2er, R_3, R_4, R_34, R_34er = np.genfromtxt('kapa.wert1.txt', unpack=True)
@@ -99,14 +101,14 @@ Cx_mean=np.mean(Cx)
 Rx = R2*R34
 Rx_mean=np.mean(Rx)
 
-write('build/kapa/kapa.C1_1.tex', str(Cx[0]*10**9))
-write('build/kapa/kapa.C1_2.tex', str(Cx[1]*10**9))
-write('build/kapa/kapa.C1_3.tex', str(Cx[2]*10**9))
-write('build/kapa/kapa.C1m.tex', str(Cx_mean*10**9))
-write('build/kapa/kapa.R1_1.tex', str(Rx[0]))
-write('build/kapa/kapa.R1_2.tex', str(Rx[1]))
-write('build/kapa/kapa.R1_3.tex', str(Rx[2]))
-write('build/kapa/kapa.R1m.tex', str(Rx_mean))
+write('build/kapa/kapa.C1_1.tex', make_SI(Cx[0]*10**9, r'\nano\farad', figures=1))
+write('build/kapa/kapa.C1_2.tex', make_SI(Cx[1]*10**9, r'\nano\farad', figures=1))
+write('build/kapa/kapa.C1_3.tex', make_SI(Cx[2]*10**9, r'\nano\farad', figures=1))
+write('build/kapa/kapa.C1m.tex', make_SI(Cx_mean*10**9, r'\nano\farad', figures=1))
+write('build/kapa/kapa.R1_1.tex', make_SI(Rx[0], r'\ohm', figures=1))
+write('build/kapa/kapa.R1_2.tex', make_SI(Rx[1], r'\ohm', figures=1))
+write('build/kapa/kapa.R1_3.tex', make_SI(Rx[2], r'\ohm', figures=1))
+write('build/kapa/kapa.R1m.tex', make_SI(Rx_mean, r'\ohm', figures=1))
 
 
 #c) Induktivitätsbrücke
@@ -124,13 +126,12 @@ Lx_mean = np.mean(Lx)
 Rx = R2*R34
 Rx_mean = np.mean(Rx)
 
-write('build/indu/indu.L19_1.tex', str(Lx[0]*10**3))
-write('build/indu/indu.L19_2.tex', str(Lx[1]*10**3))
-write('build/indu/indu.L19m.tex', str(Lx_mean*10**3))
-write('build/indu/indu.R19_1.tex', str(Rx[0]))
-write('build/indu/indu.R19_2.tex', str(Rx[1]))
-write('build/indu/indu.R19m.tex', str(Rx_mean))
-
+write('build/indu/indu.L19_1.tex', make_SI(Lx[0]*10**3 , r'\milli\henry', figures=1))
+write('build/indu/indu.L19_2.tex', make_SI(Lx[1]*10**3 , r'\milli\henry', figures=1))
+write('build/indu/indu.L19m.tex', make_SI(Lx_mean*10**3 , r'\milli\henry', figures=1))
+write('build/indu/indu.R19_1.tex', make_SI(Rx[0], r'\ohm', figures=1))
+write('build/indu/indu.R19_2.tex', make_SI(Rx[1], r'\ohm', figures=1))
+write('build/indu/indu.R19m.tex', make_SI(Rx_mean, r'\ohm', figures=1))
 
 #d) Maxwell-Brücke
 #L/R-Kombination Wert 19
@@ -142,21 +143,21 @@ R2  = unp.uarray(R_2, R_2er)
 R3  = unp.uarray(R_3, R_3er)
 R4  = unp.uarray(R_4, R_4er)
 R34 = R3/R4
-write('build/max1tabelle.tex', make_table([C4*10**(9), R3, R2, R34], [1, 1, 1, 1, 1, 1, 1, 1]))
+write('build/max1tabelle.tex', make_table([C4*10**(9), R4, R3, R2, R34], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))
 Lx = C4*R3*R2
 Lx_mean = np.mean(Lx)
 
 Rx = R2*R34
 Rx_mean = np.mean(Rx)
 
-write('build/max/max.L19_1.tex', str(Lx[0]*10**3))
-write('build/max/max.L19_2.tex', str(Lx[1]*10**3))
-write('build/max/max.L19_3.tex', str(Lx[2]*10**3))
-write('build/max/max.L19m.tex', str(Lx_mean*10**3))
-write('build/max/max.R19_1.tex', str(Rx[0]))
-write('build/max/max.R19_2.tex', str(Rx[1]))
-write('build/max/max.R19_3.tex', str(Rx[2]))
-write('build/max/max.R19m.tex', str(Rx_mean))
+write('build/max/max.L19_1.tex', make_SI(Lx[0]*10**3 , r'\milli\henry', figures=1))
+write('build/max/max.L19_2.tex', make_SI(Lx[1]*10**3 , r'\milli\henry', figures=1))
+write('build/max/max.L19_3.tex', make_SI(Lx[2]*10**3 , r'\milli\henry', figures=1))
+write('build/max/max.L19m.tex', make_SI(Lx_mean*10**3 , r'\milli\henry', figures=1))
+write('build/max/max.R19_1.tex', make_SI(Rx[0], r'\ohm', figures=1))
+write('build/max/max.R19_2.tex', make_SI(Rx[1], r'\ohm', figures=1))
+write('build/max/max.R19_3.tex', make_SI(Rx[2], r'\ohm', figures=1))
+write('build/max/max.R19m.tex', make_SI(Rx_mean, r'\ohm', figures=1))
 
 #e)
 v, U = np.genfromtxt('frequenzmessung.txt', unpack=True)
@@ -185,9 +186,6 @@ Br_Bs = np.sqrt(f(2)) #Br/Bs Faktor für omega = 2, da omega = w/w0 = v/v0 = 2*v
 U2 = U_br / Br_Bs
 k = U2/Us
 write('build/klirrfaktor.tex', str(k))
-
-
-
 
 
 
