@@ -15,6 +15,7 @@ Bei dieser mit Wechselstrom betriebenen Schaltung wird das Verhältnis von $R_3$
 Somit kann $R_x$ bestimmt werden.
 Es werden zwei unbekannte Widerstände $R_x$ mit jeweils drei verschiedenen $R_2$ ermittelt.
 \subsection{Auswertung}
+Die gemessenen Daten sind in den Tabellen \ref{tab:1} für Wert14 und \ref{tab:2} für Wert11 abgebildet.
 \begin{table}
   \centering
   \caption{Messdaten R = Wert14}
@@ -43,20 +44,20 @@ Es werden zwei unbekannte Widerstände $R_x$ mit jeweils drei verschiedenen $R_2
     \bottomrule
   \end{tabular}
 \end{table}
-
+Über den in der Theorie genannten Zusammenhang \ref{eqn:1} ergibt sich für den unbekannten Widerstand
 \begin{equation}
-  R_x = R_2 \frac{R_3}{R_4}
+  R_x = R_2 \frac{R_3}{R_4}.
 \end{equation}
-
+Somit errechnen sich die jeweiligen Messwerte zu $R_{14}$ und $R_{11}$ zu
 \begin{align}
-  R_{14,1}   &= (\input{build/wheat/wheat.R14_1.tex})\:\si{\ohm} & R_{11,1} &= (\input{build/wheat/wheat.R11_1.tex})\:\si{\ohm}\\
-  R_{14,2}   &= (\input{build/wheat/wheat.R14_2.tex})\:\si{\ohm} & R_{11,2} &= (\input{build/wheat/wheat.R11_2.tex})\:\si{\ohm}\\
-  R_{14,3}   &= (\input{build/wheat/wheat.R14_3.tex})\:\si{\ohm} & R_{11,3} &= (\input{build/wheat/wheat.R11_3.tex})\:\si{\ohm}
+  R_{14,1}   &= (\input{build/wheat/wheat.R14_1.tex})\:\si{\ohm} & R_{11,1} &= (\input{build/wheat/wheat.R11_1.tex})\:\si{\ohm},\\
+  R_{14,2}   &= (\input{build/wheat/wheat.R14_2.tex})\:\si{\ohm} & R_{11,2} &= (\input{build/wheat/wheat.R11_2.tex})\:\si{\ohm},\\
+  R_{14,3}   &= (\input{build/wheat/wheat.R14_3.tex})\:\si{\ohm} & R_{11,3} &= (\input{build/wheat/wheat.R11_3.tex})\:\si{\ohm}.
 \end{align}
-
+Die daraus errechneten Mittelwerte ergeben
 \begin{align}
-  R_{14}   &= (\input{build/wheat/wheat.R14m.tex})\:\si{\ohm}\\
-  R_{11}   &= (\input{build/wheat/wheat.R11m.tex})\:\si{\ohm}
+  R_{14}   &= (\input{build/wheat/wheat.R14m.tex})\:\si{\ohm},\\
+  R_{11}   &= (\input{build/wheat/wheat.R11m.tex})\:\si{\ohm}.
 \end{align}
 
 \section{Kapazitätsmessbrücke}
