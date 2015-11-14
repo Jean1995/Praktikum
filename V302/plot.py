@@ -161,12 +161,16 @@ write('build/max/max.R19m.tex', make_SI(Rx_mean, r'\ohm', figures=1))
 
 #e)
 v, U = np.genfromtxt('frequenzmessung.txt', unpack=True)
-write('build/frequenztabelle.tex', make_table([v, U], [0, 4]))
+
+vtab1, vtab2 = np.array_split(v, 2)
+Utab1, Utab2 = np.array_split(U, 2)
+write('build/frequenztabelle.tex', make_table([vtab1, Utab1, vtab2, Utab2], [0, 4, 0, 4]))
+
 Us = 8.16
 v0 = 1125
 U = U/Us
 v = v/v0
-plt.plot(v, U,'xr', label=r'$U$')
+plt.plot(v, U,'xr', label=r'$\text{Messwerte} U_{Br} \ /\  U_s$')
 plt.xscale('log')
 plt.ylim(0,0.4)
 
@@ -176,9 +180,11 @@ from scipy.optimize import curve_fit
 def f(v):
     return np.sqrt((1/9)*(v**2-1)**2/((1-v**2)**2+9*v**2))
 x_plot = np.linspace(0.01, 100, 1000000)
-plt.plot(x_plot, f(x_plot), 'r-', label=r'Ausgleichspolynom $U/Us$', linewidth=0.5)
+plt.plot(x_plot, f(x_plot), 'r-', label=r'\text{Theoriekurve} $U_{Br} \ /\  U_s$', linewidth=0.5)
 plt.savefig('build/plot.pdf')
-
+plt.ylabel(r'$U_{Br} \ /\  U_S$')
+plt.xlabel(r'$\nu \ /\  \nu_0$')
+plt.legend(loc='best')
 #f)
 
 U_br = U[11] #Brückenspannung bei Minimum
@@ -207,8 +213,8 @@ write('build/klirrfaktor.tex', str(k))
 #plt.legend(loc='best')
 #
 ## in matplotlibrc leider (noch) nicht möglich
-#plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-#plt.savefig('build/plot.pdf')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot.pdf')
 #
 #
 ## Beispieltabelle

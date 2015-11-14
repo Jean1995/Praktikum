@@ -285,19 +285,32 @@ Bei der Wien-Robinson-Brücke \ref{fig:5} hingegen ist ein Abgleich nur bei eine
 Dabei wird die Frequenz $v$ der Speisespannung $U_{\text{S}}$ in um die Minimalbrückenspannung kleiner werdenden Abständen variiert und die jeweilige entstehende Brückenspannung $U_{\text{Br}}$ notiert.
 Die Frequenz befindet sich in einem Bereich von $\SI{20}{\hertz}$ bis $\SI{30}{\kilo\hertz}$.
 \subsection{Auswertung}
+
 \begin{table}
   \centering
-  \caption{Messdaten Frequenzmessung}
+  \caption{Messdaten Frequenzmessung.}
   \label{tab:8}
-  \sisetup{table-format=5.4}
-  \begin{tabular}{c c}
+  \sisetup{parse-numbers=false}
+  \begin{tabular}{
+    S[table-format=1.3]
+    S[table-format=1.3]
+    @{${}{}$}
+    %S[table-format=1.2]
+    @{\hspace*{3em}\hspace*{\tabcolsep}}
+    S[table-format=1.3]
+    S[table-format=1.3]
+    @{${}{}$}
+    %S[table-format=1.2]
+  }
     \toprule
-    {$v [\si{\hertz}]$} & {$U_{\text{Br}} [\si{\volt}]$} \\
+    {$v \:/\: \si{\hertz}$} & {$U_{\text{Br}} \:/\: \si{\volt}$} &
+    {$v \:/\: \si{\hertz}$} & {$U_{\text{Br}} \:/\: \si{\volt}$} \\
     \midrule
     \input{build/frequenztabelle.tex}
     \bottomrule
   \end{tabular}
 \end{table}
+
 
 \begin{equation}
   f(v) = \frac{U_{\text{Br}}}{U_{\text{S}}} = \sqrt{\frac{1}{9} \frac{\left(\Omega²-1 \right)²}{\left(1-\Omega² \right)²+9\Omega²}}
