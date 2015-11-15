@@ -293,7 +293,7 @@ Die verwendeten Schaltungselemente haben die Werte
    R  &= \SI{332}{\ohm}, \\
    C  &= Wert3 = \SI{320}{\nano\farad}.
 \end{align}
-Die gemessenen Spannungen sind in \ref{tab:8} aufgetragen.
+Die gemessenen Spannungen sind in Tabelle \ref{tab:8} aufgetragen.
 
 \begin{table}
   \centering
@@ -335,9 +335,9 @@ Nach dem Ziehen des Betrags und der Substitution
 \end{equation}
 folgt für das Verhältnis der Brückenspannung $U_{\text{Br}}$ und der Speisespannung $U_{\text{S}}$ die Funktion
 \begin{equation}
-  f(v) = \frac{U_{\text{Br}}}{U_{\text{S}}} = \sqrt{\frac{1}{9} \frac{\left(\Omega²-1 \right)²}{\left(1-\Omega² \right)²+9\Omega²}}.
+  f(\Omega) = \frac{U_{\text{Br}}}{U_{\text{S}}} = \sqrt{\frac{1}{9} \frac{\left(\Omega²-1 \right)²}{\left(1-\Omega² \right)²+9\Omega²}}.
 \end{equation}
-Wird dieses Verhältnis in einem halblogarithmischen Zusammenhang dargestellt folgt das Diagramm \ref{fig:6}.
+Dieses Verhältnis wird nun in Diagramm \ref{fig:6} dargestellt.
 %\begin{equation}
 %  \omega = 2 \pi v
 %\end{equation}
@@ -351,4 +351,20 @@ Wird dieses Verhältnis in einem halblogarithmischen Zusammenhang dargestellt fo
 
 Mit einer gemessenen Sperrfrequenz $v_0 = \SI{1125}{\hertz}$.
 Die errechnete Sperrfrequenz nach \ref{doof} beträgt jedoch $v_0 = \SI{1498.07}{\hertz}$.
-test
+Der Grund dafür, dass die Brückenspannung nur minimal und nicht Null wird liegt an vom Generator unerwünscht erzeugten Oberwellen.
+Der Klirrfaktor $k$, für den
+\begin{equation}
+    k = \frac{\sqrt{U_2²+U_3²+...}}{U_1}
+\end{equation}
+gilt, beschreibt das Verhältnis von der Grundwelle zu den Oberwellen.
+Dabei ist $U_1$ die Amplitude der Grundwelle und $U_{n}$ die Amplitude der n-ten Oberwelle.
+Vereinfacht wird hier nur von der ersten Oberwelle ausgegangen.
+Für diese gilt
+\begin{equation}
+  U_2 = \frac{U_{\text{Br}}}{f(\Omega = 2)}.
+\end{equation}
+Dadurch lässt sich der Klirrfaktor auf
+\begin{align}
+  k = 4.05 \cdot 10^{-4}
+\end{align}
+bestimmen.
