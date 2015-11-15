@@ -174,6 +174,9 @@ plt.plot(v, U,'xr', label=r'$\text{Messwerte} U_{Br} \ /\  U_s$')
 plt.xscale('log')
 plt.ylim(0,0.4)
 
+v= v*v0
+v0 = 1498.07 #errechneter Wert mit C_3 und R
+v = v/v0
 # fitten
 from scipy.optimize import curve_fit
 

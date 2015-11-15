@@ -284,7 +284,16 @@ Bei der Wien-Robinson-Brücke \ref{fig:5} hingegen ist ein Abgleich nur bei eine
 \end{figure}
 Dabei wird die Frequenz $v$ der Speisespannung $U_{\text{S}}$ in um die Minimalbrückenspannung kleiner werdenden Abständen variiert und die jeweilige entstehende Brückenspannung $U_{\text{Br}}$ notiert.
 Die Frequenz befindet sich in einem Bereich von $\SI{20}{\hertz}$ bis $\SI{30}{\kilo\hertz}$.
+Zuletzt wird die Speisespannung $U_{\text{S}}$ notiert.
+
 \subsection{Auswertung}
+Die verwendeten Schaltungselemente haben die Werte
+\begin{align}
+   R' &= \SI{500}{\ohm}, \\
+   R  &= \SI{332}{\ohm}, \\
+   C  &= Wert3 = \SI{320}{\nano\farad}.
+\end{align}
+Die gemessenen Spannungen sind in \ref{tab:8} aufgetragen.
 
 \begin{table}
   \centering
@@ -311,11 +320,27 @@ Die Frequenz befindet sich in einem Bereich von $\SI{20}{\hertz}$ bis $\SI{30}{\
   \end{tabular}
 \end{table}
 
-
+Das Verhältnis der Brückenspannung $U_{\text{Br}}$ und der Speisespannung $U_{\text{S}}$ errechnet sich nach den Kirchhoffschen Regeln zu der Formel
 \begin{equation}
-  f(v) = \frac{U_{\text{Br}}}{U_{\text{S}}} = \sqrt{\frac{1}{9} \frac{\left(\Omega²-1 \right)²}{\left(1-\Omega² \right)²+9\Omega²}}
+  \frac{U_{\text{Br}}}{U_{\text{S}}} = \frac{1-\omega²R²C²}{1-\omega²R²C²+4i\omega RC}.
 \end{equation}
-
+Dabei ist zu erkennen, dass die Brückenspannung $U_{\text{Br}}$ bei einer Frequenz von
+\begin{equation}
+  v_0 = \frac{\omega}{2 \pi} =\frac{1}{2 \pi RC} \label{doof}
+\end{equation}
+minimal wird.
+Nach dem Ziehen des Betrags und der Substitution
+\begin{equation}
+  \Omega = \frac{\omega}{\omega_0} = \frac{v}{v_0}
+\end{equation}
+folgt für das Verhältnis der Brückenspannung $U_{\text{Br}}$ und der Speisespannung $U_{\text{S}}$ die Funktion
+\begin{equation}
+  f(v) = \frac{U_{\text{Br}}}{U_{\text{S}}} = \sqrt{\frac{1}{9} \frac{\left(\Omega²-1 \right)²}{\left(1-\Omega² \right)²+9\Omega²}}.
+\end{equation}
+Wird dieses Verhältnis in einem halblogarithmischen Zusammenhang dargestellt folgt das Diagramm \ref{fig:6}.
+%\begin{equation}
+%  \omega = 2 \pi v
+%\end{equation}
 
 \begin{figure}[H]
   \centering
@@ -323,3 +348,7 @@ Die Frequenz befindet sich in einem Bereich von $\SI{20}{\hertz}$ bis $\SI{30}{\
   \caption{Frequenzmessergebnisse}
   \label{fig:6}
 \end{figure}
+
+Mit einer gemessenen Sperrfrequenz $v_0 = \SI{1125}{\hertz}$.
+Die errechnete Sperrfrequenz nach \ref{doof} beträgt jedoch $v_0 = \SI{1498.07}{\hertz}$.
+test
