@@ -67,9 +67,14 @@ Dementprechend berechnet sich der Fehler von $R_x$ zu
 \end{equation}
 Die daraus errechneten Mittelwerte ergeben
 \begin{align*}
-  R_{14}   &= \input{build/wheat/wheat.R14m.tex},\\
-  R_{11}   &= \input{build/wheat/wheat.R11m.tex}.
+  R_{14}   &= \SI{908 +- 2}{\ohm},\\
+  R_{11}   &= \SI{494 +- 0.5}{\ohm}.
 \end{align*}
+Bei dieser und allen folgenden Berechnungen des Mittelwerts berechnet sich der Fehler des Mittelwerts zu
+\begin{equation}
+ \sigma_m = \sqrt{\frac{1}{N} \sum_{i=1}^n \bigl(x_i - \overline{x} \bigr)^2 }
+\end{equation}
+wobei $N$ den Stichprobenumfang und $\overline{x}$ den Mittelwert bezeichnet.
 
 \section{Kapazitätsmessbrücke}
 \subsection{Durchführung}
@@ -159,9 +164,9 @@ Es folgen somit für die Kapazitäten und Widerstände der Kondensatoren aus den
 Die Fehler bestimmen sich analog zu der in \ref{eqn:fehler1} angegebenen Fehlerformel.
 Als Mittelwerte ergeben sich somit
 \begin{align*}
-  C_{8}   &= \input{build/kapa/kapa.C8m.tex} & R_{8} &= \input{build/kapa/kapa.R8m.tex}\\
-  C_{3}   &= \input{build/kapa/kapa.C3m.tex} & R_{3} &= \input{build/kapa/kapa.R3m.tex}\\
-  C_{1}   &= \input{build/kapa/kapa.C1m.tex} & R_{1} &= \input{build/kapa/kapa.R1m.tex}
+  C_{8}   &= \SI{293 +- 3}{\nano\farad} & R_{8} &= \SI{596 +- 3}{\ohm}\\
+  C_{3}   &= \SI{417 +- 0.5}{\nano\farad} & R_{3} &= \SI{0}{\ohm}\\
+  C_{1}   &= \SI{656 +- 3}{\nano\farad} & R_{1} &= \SI{1 +- 1}{\ohm}
 \end{align*}
 für die Kapazitäten und Widerstände der jeweiligen Bauteile.
 
@@ -211,7 +216,7 @@ Für die Induktivität sowie den Widerstand der Spule ergeben sich für die beid
 wobei die Fehler analog zur Fehlerformel \ref{eqn:fehler1} bestimmt werden.
 Als Mittelwerte ergeben sich
 \begin{align*}
-  L_{19}   &= \input{build/indu/indu.L19m.tex} & R_{19} &= \input{build/indu/indu.R19m.tex}.
+  L_{19}   &= \SI{27 +- 0.1}{\milli\henry} & R_{19} &= \SI{124 +- 2}{\ohm}.
 \end{align*}
 
 \section{Maxwell-Brücke}
@@ -269,7 +274,7 @@ Hieraus ergeben sich aus den drei Messungen für die Induktivität sowie den Wid
 \end{align*}
 Als Mittelwert für den Wert 19 folgt somit
 \begin{align*}
-  L_{19}   &= \input{build/max/max.L19m.tex} & R_{19} &= \input{build/max/max.R19m.tex}.
+  L_{19}   &= \SI{30 +- 2}{\milli\henry} & R_{19} &= \SI{119 +- 5}{\ohm}.
 \end{align*}
 
 \section{Wien-Robinson-Brücke}
@@ -288,11 +293,11 @@ Zuletzt wird die Speisespannung $U_{\text{S}}$ notiert.
 
 \subsection{Auswertung}
 Die verwendeten Schaltungselemente haben die Werte
-\begin{align}
+\begin{align*}
    R' &= \SI{500}{\ohm}, \\
    R  &= \SI{332}{\ohm}, \\
-   C  &= Wert3 = \SI{320}{\nano\farad}.
-\end{align}
+   C  &= \text{Wert 3} = \SI{417}{\nano\farad}.
+\end{align*}
 Die gemessenen Spannungen sind in Tabelle \ref{tab:8} aufgetragen.
 
 \begin{table}
@@ -326,7 +331,7 @@ Das Verhältnis der Brückenspannung $U_{\text{Br}}$ und der Speisespannung $U_{
 \end{equation}
 Dabei ist zu erkennen, dass die Brückenspannung $U_{\text{Br}}$ bei einer Frequenz von
 \begin{equation}
-  v_0 = \frac{\omega}{2 \pi} =\frac{1}{2 \pi RC} \label{doof}
+  v_0 = \frac{\omega_0}{2 \pi} =\frac{1}{2 \pi RC} \label{doof}
 \end{equation}
 minimal wird.
 Nach dem Ziehen des Betrags und der Substitution
@@ -337,7 +342,7 @@ folgt für das Verhältnis der Brückenspannung $U_{\text{Br}}$ und der Speisesp
 \begin{equation}
   f(\Omega) = \frac{U_{\text{Br}}}{U_{\text{S}}} = \sqrt{\frac{1}{9} \frac{\left(\Omega²-1 \right)²}{\left(1-\Omega² \right)²+9\Omega²}}.
 \end{equation}
-Dieses Verhältnis wird nun in Diagramm \ref{fig:6} dargestellt.
+Dieses Verhältnis wird nun in Diagramm \ref{fig:6} halblogarithmisch dargestellt.
 %\begin{equation}
 %  \omega = 2 \pi v
 %\end{equation}
@@ -349,8 +354,8 @@ Dieses Verhältnis wird nun in Diagramm \ref{fig:6} dargestellt.
   \label{fig:6}
 \end{figure}
 
-Mit einer gemessenen Sperrfrequenz $v_0 = \SI{1125}{\hertz}$.
-Die errechnete Sperrfrequenz nach \ref{doof} beträgt jedoch $v_0 = \SI{1498.07}{\hertz}$.
+Die gemessene Sperrfrequenz, welche für das Auftragen der Messwerte verwendet wird, beträgt $v_0 = \SI{1125}{\hertz}$.
+Die errechnete Sperrfrequenz, welche für das Plotten der Theoriekurve verwendet wird, nach \ref{doof} beträgt jedoch $v_0 = \SI{1149.6}{\hertz}$.
 Der Grund dafür, dass die Brückenspannung nur minimal und nicht Null wird liegt an vom Generator unerwünscht erzeugten Oberwellen.
 Der Klirrfaktor $k$, für den
 \begin{equation}
@@ -365,6 +370,6 @@ Für diese gilt
 \end{equation}
 Dadurch lässt sich der Klirrfaktor auf
 \begin{align}
-  k = 4.05 \cdot 10^{-4}
+  k = 1.05 \cdot 10^{-3}
 \end{align}
 bestimmen.
