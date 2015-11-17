@@ -16,7 +16,7 @@ from uncertainties import ufloat
 
 # Werte und Tabelle
 m_w, m_k, U_w, T_w, U_k, T_k, U_m, T_m = np.genfromtxt('daten.txt', unpack=True)
-write('build/tabelle.tex', make_table([m_w, m_k, U_w, T_w, U_k, T_k, U_m, T_m], [2, 2, 2, 2, 2, 2, 2, 2]))
+#write('build/tabelle.tex', make_table([m_w, m_k, U_w, T_w, U_k, T_k, U_m, T_m], [2, 2, 2, 2, 2, 2, 2, 2]))
 
 cg_mg = 224.84 # Joule pro Kelvin
 cw = 4.18 # Joule pro Kelvin pro Gramm

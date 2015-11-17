@@ -4,7 +4,7 @@
 Für die Untersuchung des Dulong-Petitschen Gesetzes wird ein Mischungskalorimeter verwendet.
 Die Temperaturmessung wird über ein Thermoelement durchgeführt.
 Zuerst muss jedoch der Offset $U_{\text{offset}}$ des Elementes bestimmt werden.
-Er beträgt $U_{\text{offset}}= \SI{-0,02}{\milli\volt}$
+Er beträgt $U_{\text{offset}}= \SI{-0,02}{\milli\volt}$.
 Um die gemessenen Spannungen in Temperaturen umzurechnen, wird die Formel
 \begin{equation}
   T = 25,157 \cdot U_{th} - 0,19 \cdot U_{th}²,
@@ -18,9 +18,9 @@ Damit ergeben sich die Daten aus Tabelle \ref{tab:1}. \\
   \caption{Messdaten}
   \label{tab:1}
   \sisetup{table-format=1.2}
-  \begin{tabular}{c c c c c c c c}
+  \begin{tabular}{c c c c c c c c c}
     \toprule
-    {$m_w [\si{\gram}]$} & {$m_k [\si{\gram}]$} & {$U_w [\si{\milli\volt}]$} & {$T_w [\si{\kelvin}]$} & {$U_k [\si{\milli\volt}]$} & {$T_k [\si{\kelvin}]$} & {$U_m [\si{\milli\volt}]$} & {$T_m [\si{\kelvin}]$} \\
+    {Probe} & {$m_w [\si{\gram}]$} & {$m_k [\si{\gram}]$} & {$U_w [\si{\milli\volt}]$} & {$T_w [\si{\kelvin}]$} & {$U_k [\si{\milli\volt}]$} & {$T_k [\si{\kelvin}]$} & {$U_m [\si{\milli\volt}]$} & {$T_m [\si{\kelvin}]$} \\
     \midrule
     \input{build/tabelle.tex}
     \bottomrule
@@ -50,7 +50,7 @@ ergibt sich nach \ref{eqn:8} für die Wärmekapazität des Dewargefäßes
 
 Nun können die spezifischen Wärmekapazitäten der Probekörper über
 \begin{equation}
-  c_k = \frac{(c_wm_w+c_gm_g)(T_m-T_w)}{m_k(T_m-T_w)}
+  c_k = \frac{(c_wm_w+c_gm_g)(T_m-T_w)}{m_k(T_k-T_m)}
 \end{equation}
 berechnet werden.
 Aus den Messungen folgt auf die zweite Nachkommastelle gerundet
