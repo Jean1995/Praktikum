@@ -11,7 +11,7 @@ Abbildung \ref{fig:1} zeigt den systematischen Aufbau einer Wheatstonebrücke.
 \end{figure}
 Sie besteht aus jeweils zwei parallel zueinander geschalteten Widerständen $R_x$ und $R_3$, und $R_2$ und $R_4$.
 Es wird die Potentialdifferenz $U_{\text{br}}$ zwischen den beiden Punkten nach jeweils dem ersten Widerstand abgegriffen.
-Bei dieser mit Wechselstrom betriebenen Schaltung wird das Verhältnis von $R_3$ zu $R_4$ nun solange variiert bis die Brückenspannunng $U_{\text{Br}}$ ihr Minimum erreicht hat.
+Bei dieser mit Wechselstrom betriebenen Schaltung wird das Verhältnis von $R_3$ zu $R_4$ nun solange variiert bis die Brückenspannung $U_{\text{Br}}$ ihr Minimum erreicht hat.
 Somit kann $R_x$ bestimmt werden.
 Es werden zwei unbekannte Widerstände $R_x$ mit jeweils drei verschiedenen $R_2$ ermittelt.
 \subsection{Auswertung}
@@ -60,7 +60,7 @@ Für die Fehlerrechnung wird bei der vorliegenden Rechnung und bei allen folgend
 \increment{f} = \sqrt{\Bigl(\frac{\partial f}{\partial x_1}\increment{x_1}\Bigr)^2 + \Bigl(\frac{\partial f}{\partial x_2}\increment{x_2}\Bigr)^2 + \dotsc + \Bigl(\frac{\partial f}{\partial x_n}\increment{x_n}\Bigr)^2}
 \end{equation}
 für eine Funktion $f(x_1,x_2, \dotsc ,x_n)$, bei der die Größen $x_1, x_2, \dotsc , x_n$ voneinander unabhängig sind, verwendet.
-Dementprechend berechnet sich der Fehler von $R_x$ zu
+Dementsprechend berechnet sich der Fehler von $R_x$ zu
 \begin{equation}
 \increment{R_x} = \sqrt{\frac{R_3^2}{R_4^2} \cdot \increment{R_2}^2 + R_2^2 \cdot \Bigl(\increment{\frac{R_3}{R_4} }\Bigr)^2}.
   \label{eqn:fehler1}
@@ -207,7 +207,7 @@ sowie aus Gleichung \ref{eqn:bed2} der Zusammenhang
 \begin{equation}
   L_x = L_2 \frac{R_3}{R_4}
 \end{equation}
-für verschwindene Brückenspannung $U_Br$.
+für verschwindende Brückenspannung $U_Br$.
 Für die Induktivität sowie den Widerstand der Spule ergeben sich für die beiden Messungen jeweils
 \begin{align*}
   L_{19,1}   &= \input{build/indu/indu.L19_1.tex} & R_{19,1} &= \input{build/indu/indu.R19_1.tex}\\
