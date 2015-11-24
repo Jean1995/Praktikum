@@ -34,5 +34,5 @@ write('build/tabelle.tex', make_table([a, b], [4, 2]))   # [4,2] = Nachkommastel
 # Beispielwerte
 
 
-c = ufloat(24601, 42)
+c = ufloat(0, 0)
 write('build/wert_a.tex', make_SI(c*1e3, r'\joule\per\kelvin\per\gram' ))

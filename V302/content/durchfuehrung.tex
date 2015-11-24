@@ -86,10 +86,10 @@ Die Abbildung \ref{fig:2} zeigt eine solche Schaltung.
   \caption{Kapazitätsmessbrücke \cite{sample}}
   \label{fig:2}
 \end{figure}
-Sie unterscheidet sich von der Wheatstonebrücke nur darin, dass hier anstelle von $R_x$ eine unbekannte R/C-Kombination oder eben ein unbekannter verlustbehafteter Kondensator eingebaut und betrachtet wird.
+Sie unterscheidet sich von der Wheatstonebrücke nur darin, dass hier anstelle von $R_x$ eine unbekannte RC-Kombination oder eben ein unbekannter verlustbehafteter Kondensator eingebaut und betrachtet wird.
 Zusätzlich wird mit einem festen Kondensator $C_2$ und einem variablen Widerstand $R_2$ abgeglichen.
 Es werden nun $R_2$ und das Verhältnis von $R_3$ und $R_4$ solange nacheinander variiert, bis das Minimum der Brückenspannung $U_{\text{Br}}$ auf dem Oszilloskop beobachtet wird.
-Auf diese Weise werden die Kapazitäten und Widerstände einer R/C-Kombination, sowie von zwei unbekannten verlustbehafteten Kondensatoren bestimmt.
+Auf diese Weise werden die Kapazitäten und Widerstände einer RC-Kombination, sowie von zwei unbekannten verlustbehafteten Kondensatoren bestimmt.
 Es wird jeweils dreimal mit verschiedenen Kondensatoren $C_2$ gemessen.
 
 \subsection{Auswertung}
@@ -161,7 +161,7 @@ Es folgen somit für die Kapazitäten und Widerstände der Kondensatoren aus den
   C_{1,2}   &= \input{build/kapa/kapa.C1_2.tex} & R_{1,2} &= \input{build/kapa/kapa.R1_2.tex}\\
   C_{1,3}   &= \input{build/kapa/kapa.C1_3.tex} & R_{1,3} &= \input{build/kapa/kapa.R1_3.tex}
 \end{align*}
-Die Fehler bestimmen sich analog zu der in \ref{eqn:fehler1} angegebenen Fehlerformel.
+Die Fehler bestimmen sich analog zu der in Gleichung \ref{eqn:fehler1} angegebenen Fehlerformel.
 Als Mittelwerte ergeben sich somit
 \begin{align*}
   C_{8}   &= \SI{293 +- 3}{\nano\farad} & R_{8} &= \SI{596 +- 3}{\ohm}\\
@@ -172,7 +172,7 @@ für die Kapazitäten und Widerstände der jeweiligen Bauteile.
 
 \section{Induktivitätsmessbrücke}
 \subsection{Durchführung}
-Die Induktivitätsmessbrücke, dargestellt in Abbildung \ref{fig:3}, funktioniert analog zur Kapazitätsmessbrücke \ref{fig:2}.
+Die Induktivitätsmessbrücke, dargestellt in Abbildung \ref{fig:3}, funktioniert analog zur Kapazitätsmessbrücke in Abbildung \ref{fig:2}.
 \begin{figure}[H]
   \centering
   \includegraphics[height=6cm]{indu.png}
@@ -207,7 +207,7 @@ sowie aus Gleichung \ref{eqn:bed2} der Zusammenhang
 \begin{equation}
   L_x = L_2 \frac{R_3}{R_4}
 \end{equation}
-für verschwindende Brückenspannung $U_Br$.
+für verschwindende Brückenspannung $U_{\text{Br}}$.
 Für die Induktivität sowie den Widerstand der Spule ergeben sich für die beiden Messungen jeweils
 \begin{align*}
   L_{19,1}   &= \input{build/indu/indu.L19_1.tex} & R_{19,1} &= \input{build/indu/indu.R19_1.tex}\\
@@ -230,7 +230,7 @@ Dies wird bei der Maxwell-Brücke, Abbildung \ref{fig:4}, realisiert.
   \label{fig:4}
 \end{figure}
 Die Abgleichelemente sind hier die variablen Widerstände $R_3$ und $R_4$, wobei der Kondensator $C_4$ parallel zu $R_4$ geschaltet wird.
-Dabei soll dieselbe L/R-Kombination 19 untersucht werden, indem $R_3$ und $R_4$ nacheinander variiert werden, sodass die Brückenspannung $U_{\text{Br}}$ minimal wird.
+Dabei soll dieselbe LR-Kombination 19 untersucht werden, indem $R_3$ und $R_4$ nacheinander variiert werden, sodass die Brückenspannung $U_{\text{Br}}$ minimal wird.
 Es wird dreimal mit verschiedenen Widerständen $R_2$ gemessen.
 \subsection{Auswertung}
 Die Messwerte für die drei Messungen mit jeweils verschiedenen $R_2$ werden in Tabelle \ref{tab:7} angegeben.
@@ -280,7 +280,7 @@ Als Mittelwert für den Wert 19 folgt somit
 \section{Wien-Robinson-Brücke}
 \subsection{Durchführung}
 Bei den obigen Schaltungen ist ein Abgleich bei beliebigen Frequenzen möglich.
-Bei der Wien-Robinson-Brücke \ref{fig:5} hingegen ist ein Abgleich nur bei einer bestimmten Frequenz möglich, die untersucht werden soll.
+Bei der Wien-Robinson-Brücke, beschrieben in Abbildung \ref{fig:5}, hingegen ist ein Abgleich nur bei einer bestimmten Frequenz möglich, die untersucht werden soll.
 \begin{figure}[H]
   \centering
   \includegraphics[height=6cm]{wien.png}
@@ -296,7 +296,8 @@ Die verwendeten Schaltungselemente haben die Werte
 \begin{align*}
    R' &= \SI{500}{\ohm}, \\
    R  &= \SI{332}{\ohm}, \\
-   C  &= \text{Wert 3} = \SI{417}{\nano\farad}.
+   C  &= \text{Wert 3} = \SI{417}{\nano\farad}, \\
+   U_s &= \SI{8.18}{\volt}.
 \end{align*}
 Die gemessenen Spannungen sind in Tabelle \ref{tab:8} aufgetragen.
 
@@ -342,7 +343,7 @@ folgt für das Verhältnis der Brückenspannung $U_{\text{Br}}$ und der Speisesp
 \begin{equation}
   f(\Omega) = \frac{U_{\text{Br}}}{U_{\text{S}}} = \sqrt{\frac{1}{9} \frac{\left(\Omega²-1 \right)²}{\left(1-\Omega² \right)²+9\Omega²}}.
 \end{equation}
-Dieses Verhältnis wird nun in Diagramm \ref{fig:6} halblogarithmisch dargestellt.
+Dieses Verhältnis wird nun in Abbildung \ref{fig:6} halblogarithmisch dargestellt.
 %\begin{equation}
 %  \omega = 2 \pi v
 %\end{equation}
@@ -355,7 +356,7 @@ Dieses Verhältnis wird nun in Diagramm \ref{fig:6} halblogarithmisch dargestell
 \end{figure}
 
 Die gemessene Sperrfrequenz, welche für das Auftragen der Messwerte verwendet wird, beträgt $v_0 = \SI{1125}{\hertz}$.
-Die errechnete Sperrfrequenz, welche für das Plotten der Theoriekurve verwendet wird, nach \ref{doof} beträgt jedoch $v_0 = \SI{1149.6}{\hertz}$.
+Die errechnete Sperrfrequenz, welche für das Plotten der Theoriekurve verwendet wird, beträgt nach Gleichung \ref{doof} jedoch $v_0 = \SI{1149.6}{\hertz}$.
 Der Grund dafür, dass die Brückenspannung nur minimal und nicht Null wird liegt an vom Generator unerwünscht erzeugten Oberwellen.
 Der Klirrfaktor $k$, für den
 \begin{equation}
@@ -366,10 +367,10 @@ Dabei ist $U_1$ die Amplitude der Grundwelle und $U_{n}$ die Amplitude der n-ten
 Vereinfacht wird hier nur von der ersten Oberwelle ausgegangen.
 Für diese gilt
 \begin{equation}
-  U_2 = \frac{U_{\text{Br}}}{f(\Omega = 2)}.
+  U_2 = \frac{U_{\text{Br}}}{f(\Omega = 2)} = \SI{0.0698}{\volt}.
 \end{equation}
 Dadurch lässt sich der Klirrfaktor auf
 \begin{align}
-  k = 1.05 \cdot 10^{-3}
+  k = 8.55 \cdot 10^{-3}
 \end{align}
 bestimmen.

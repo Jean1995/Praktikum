@@ -192,9 +192,9 @@ plt.savefig('build/plot.pdf')
 plt.ylabel(r'$U_{Br} \ /\  U_S$')
 plt.xlabel(r'$\nu \ /\  \nu_0$')
 plt.legend(loc='best')
-#f)
+#f)ma
 
-U_br = U[11] #Brückenspannung bei Minimum
+U_br = 0.0104 #Brückenspannung bei Minimum
 Br_Bs = f(2) #Br/Bs Faktor für omega = 2, da omega = w/w0 = v/v0 = 2*v0/v0 = 2
 U2 = U_br / Br_Bs
 k = U2/Us
