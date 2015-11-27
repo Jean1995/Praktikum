@@ -13,67 +13,106 @@ from table import (
 from uncertainties import ufloat
 from scipy.optimize import curve_fit
 R_a, I, U_k = np.genfromtxt('mono.txt', unpack=True)
-plt.plot(I, U_k, 'xr', label=r'$Monozelle$')
+#plt.plot(I, U_k, 'xr', label=r'$Monozelle$')
+plt.errorbar(I, U_k, xerr=I*0.03, yerr=U_k*0.015, fmt='b.', label=r'$Monozelle$')
+
 plt.xlabel(r'$I \:/\: \si{\ampere}$')
 plt.ylabel(r'$U_k \:/\: \si{\volt}$')
-plt.legend(loc='best')
+
 def f(x, m, b):
     return m*x+b
 
-x_plot = np.linspace(0.02, 0.105, 1000000)
+
+
+x_plot = np.linspace(0, 0.105, 1000000)
+
 params1, error1 = curve_fit(f, I, U_k)
-plt.plot(x_plot, f(x_plot, params1[0], params1[1]), '-r', label=r'$\text{Ausgleichsgerade} U_1$' )
+plt.plot(x_plot, f(x_plot, params1[0], params1[1]), '-r', label=r'$\text{Ausgleichsgerade } U_k$' )
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.xlim(0, 0.105)
+plt.legend(loc='best')
 plt.savefig('build/monoplot.pdf')
+
+
+fehler1 = np.sqrt(np.diag(error1)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
+U_0 = ufloat(params1[1], fehler1[1])
+R_i = ufloat(params1[0], fehler1[0])
+write('build/mono_u0.tex', make_SI(U_0, r'\volt' ))
+write('build/mono_ri.tex', make_SI(R_i, r'\ohm' ))
 
 plt.clf()
 
 R_a, I, U_k = np.genfromtxt('gegen.txt', unpack=True)
-plt.plot(I, U_k, 'xr', label=r'$Gegenspannung$')
+#plt.plot(I, U_k, 'xr', label=r'$Gegenspannung$')
+plt.errorbar(I, U_k, xerr=I*0.03, yerr=U_k*0.015, fmt='b.', label=r'$Gegenspannung$')
 plt.xlabel(r'$I \:/\: \si{\ampere}$')
 plt.ylabel(r'$U_k \:/\: \si{\volt}$')
-plt.legend(loc='best')
 def f(x, m, b):
     return m*x+b
 
-x_plot = np.linspace(0.03, 0.25, 1000000)
+x_plot = np.linspace(0, 0.25, 1000000)
 params1, error1 = curve_fit(f, I, U_k)
-plt.plot(x_plot, f(x_plot, params1[0], params1[1]), '-r', label=r'$\text{Ausgleichsgerade} U_1$' )
+plt.plot(x_plot, f(x_plot, params1[0], params1[1]), '-r', label=r'$\text{Ausgleichsgerade } U_k$' )
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.xlim(0, 0.25)
+plt.legend(loc='best')
 plt.savefig('build/gegenplot.pdf')
+
+fehler1 = np.sqrt(np.diag(error1)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
+U_0 = ufloat(params1[1], fehler1[1])
+R_i = ufloat(params1[0], fehler1[0])
+write('build/gegen_u0.tex', make_SI(U_0, r'\volt' ))
+write('build/gegen_ri.tex', make_SI(R_i, r'\ohm' ))
 
 plt.clf()
 
 R_a, I, U_k = np.genfromtxt('rechteck.txt', unpack=True)
-plt.plot(I, U_k, 'xr', label=r'$Rechtecksspannung$')
-plt.xlabel(r'$I \:/\: \si{\ampere}$')
+I = I*1000
+#plt.plot(I, U_k, 'xr', label=r'$Rechtecksspannung$')
+plt.errorbar(I, U_k, xerr=I*0.03, yerr=U_k*0.015, fmt='b.', label=r'$Rechteckspannung$')
+plt.xlabel(r'$I \:/\: \si{\milli\ampere}$')
 plt.ylabel(r'$U_k \:/\: \si{\volt}$')
-plt.legend(loc='best')
 def f(x, m, b):
     return m*x+b
-x_plot = np.linspace(0.0069, 0.0015, 1000000)
+x_plot = np.linspace(0, max(I)+0.5, 1000000)
 params1, error1 = curve_fit(f, I, U_k)
-plt.plot(x_plot, f(x_plot, params1[0], params1[1]), '-r', label=r'$\text{Ausgleichsgerade} U_1$' )
+plt.plot(x_plot, f(x_plot, params1[0], params1[1]), '-r', label=r'$\text{Ausgleichsgerade } U_k$' )
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.xlim(0, max(I)+0.5)
+plt.legend(loc='best')
 plt.savefig('build/rechteckplot.pdf')
+
+fehler1 = np.sqrt(np.diag(error1)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
+U_0 = ufloat(params1[1], fehler1[1])
+R_i = ufloat(params1[0], fehler1[0])
+write('build/rechteck_u0.tex', make_SI(U_0, r'\volt' ))
+write('build/rechteck_ri.tex', make_SI(R_i, r'\milli\ohm' ))
 
 plt.clf()
 
 R_a, I, U_k = np.genfromtxt('sinus.txt', unpack=True)
-plt.plot(I, U_k, 'xr', label=r'$Sinusspannung$')
-plt.xlabel(r'$I \:/\: \si{\ampere}$')
+I=I*1000
+#plt.plot(I, U_k, 'xr', label=r'$Sinusspannung$')
+plt.errorbar(I, U_k, xerr=I*0.03, yerr=U_k*0.015, fmt='b.', label=r'$Sinusspannung$')
+
+plt.xlabel(r'$I \:/\: \si{\milli\ampere}$')
 plt.ylabel(r'$U_k \:/\: \si{\volt}$')
-plt.legend(loc='best')
 def f(x, m, b):
     return m*x+b
 
-x_plot = np.linspace(0.0003, 0.0023, 1000000)
+x_plot = np.linspace(0, 0.0023*1000, 1000000)
 params1, error1 = curve_fit(f, I, U_k)
-plt.plot(x_plot, f(x_plot, params1[0], params1[1]), '-r', label=r'$\text{Ausgleichsgerade} U_1$' )
+plt.plot(x_plot, f(x_plot, params1[0], params1[1]), '-r', label=r'$\text{Ausgleichsgerade } U_k$' )
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.xlim(0, 0.0023*1000)
+plt.legend(loc='best')
 plt.savefig('build/sinusplot.pdf')
 
-
+fehler1 = np.sqrt(np.diag(error1)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
+U_0 = ufloat(params1[1], fehler1[1])
+R_i = ufloat(params1[0], fehler1[0])
+write('build/sinus_u0.tex', make_SI(U_0, r'\volt' ))
+write('build/sinus_ri.tex', make_SI(R_i, r'\milli\ohm' ))
 
 
 
