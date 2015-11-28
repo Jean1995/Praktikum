@@ -5,13 +5,13 @@ In der Theorie wird immer von einer idealen Spannungsquelle ausgegangen, dessen 
 Um nun in der Praxis Spannungsquellen zu benutzen, müssen die technischen Daten eben dieser bekannt sein.
 Es handelt sich um die Leerlaufspannung $U_0$ und den vorhin bereits erwähnten Innenwiderstand $R_i$.\\
 Die Leerlaufspannung $U_0$ liegt an einer Spannungsquelle genau dann an, wenn ihr keine Leistung entnommen wird, also bei eingeschalteter Spannungsquelle kein Strom fließt.
-Sobald aber ein Strom über einen Lastwiderstand $R_a$ fließt, wie beispielsweise in Abbildung \ref{fig:1}, wird ein Sinken der Spannung $U_k$ (Klemmspannung) parallel zur Spannungsquelle beobachtet.
+Sobald aber ein Strom über einen Lastwiderstand $R_a$ fließt, wie beispielsweise in Abbildung \ref{fig:t1}, wird ein Sinken der Spannung $U_k$ (Klemmspannung) parallel zur Spannungsquelle beobachtet.
 
 \begin{figure}[H]
   \centering
   \includegraphics[height=6cm]{innenwiderstand.png}
   \caption{Beispielaufbau \cite{sample}}
-  \label{fig:1}
+  \label{fig:t1}
 \end{figure}
 
 Dies folgt aus den Kirchhoffschen Regeln, vorallem aus der Maschenregel (\ref{eqn:maschenregel}).\\
@@ -40,14 +40,14 @@ Sie besagt, dass in jeder geschlossenen Masche der Schaltung die Summe der Spann
   \sum_{i=1}^n U_i = 0.
   \label{eqn:maschenregel}
 \end{equation}
-Demnach folgt für den Beispielaufbau \ref{fig:1}, dass die Spannungsquelle einen Innenwiderstand $R_i$ haben muss, der sich in der Formel
+Demnach folgt für den Beispielaufbau \ref{fig:t1}, dass die Spannungsquelle einen Innenwiderstand $R_i$ haben muss, der sich in der Formel
 \begin{equation}
   U_0 = IR_i + IR_a
 \end{equation}
-äußert.
-Wobei die oben genannte Klemmenspannung
+äußert, wobei die oben genannte Klemmenspannung
 \begin{equation}
   U_k = IR_a = U_0 - IR_i
+  \label{eqn:klemmspannung}
 \end{equation}
 beträgt.
 Dass durch alle Bauteile der selbe Strom fließt, folgt aus der Knotenregel (\ref{eqn:knotenregel}).\\
@@ -55,10 +55,11 @@ Würde es den Innenwiderstand nicht geben, folgt aus dem Ohmschen-Gesetz,
 \begin{equation}
   U = RI,
 \end{equation}
-dass mit der Spannungsquelle eine unendlich große Stromstärke $I$ und somit eine beliebig große Leistung $N$ erreicht wird, da für sie
+dass mit der Spannungsquelle eine unendlich große Stromstärke $I$ und somit eine beliebig große Leistung $P$ erreicht wird, da für sie
 \begin{equation}
-  N = I²R_a
+  P = I²R_a
+  \label{eqn:leistung}
 \end{equation}
 gilt.
-Im realen Fall durchläuft $N(R_a)$ ein Maximum.
-Es wird von Leistungsanpassung gesprochen, wenn $R_a$ so gewählt wird, dass die Leistung $N$ der Spannungsquelle maximal wird.
+Im realen Fall durchläuft $P(R_a)$ ein Maximum.
+Es wird von Leistungsanpassung gesprochen, wenn $R_a$ so gewählt wird, dass die Leistung $P$ der Spannungsquelle maximal wird.
