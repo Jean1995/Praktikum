@@ -4,7 +4,7 @@ Der Eigenwiderstand des verwendeten Voltmeters beträgt $R_v=\SI{10}{\mega\ohm}$
 \subsection{Monozelle und Gegenspannung}
 \label{ch:auswertung}
 Der wie in der Durchführung beschriebene gemessene Wert für die Leerlaufspannung der Monozelle beträgt $U_{0,\text{mono}} = \SI{1.55}{\volt}$.
-Bei der folgenden Messreihe wird der Widerstand $R_a$ jeweils in einem Bereich von $\SI{0}{\ohm}$ bis $\SI{50}{\ohm}$ varriert.
+Bei der folgenden Messreihe wird der Widerstand $R_a$ jeweils in einem Bereich von $\SI{0}{\ohm}$ bis $\SI{50}{\ohm}$ variiert.
 Die Messwerte sind in Tabelle \ref{tab:1} für die Monozelle und in Tabelle \ref{tab:2} für die Schaltung mit zusätzlicher Gegenspannung dargestellt.
 \begin{table}
   \hspace*{\fill}
@@ -114,7 +114,8 @@ Mit den gegebenen Werten für $R_i$ und $R_v$ beträgt die Abweichung von $U_0$ 
 \end{align*}
 Würde das Amperemeter in Abbildung \ref{fig:schaltung1} zwischen der Spannungsquelle und dem Voltmeter liegen, so würde der Innenwiderstand des Amperemeters ebenfalls einen zusätzlichen systematischen Fehler ergeben.
 \subsection{Rechteckspannung und Sinusspannung}
-Bei der Messung unter einer Rechteckspannung wird $R_a$ zwischen $\SI{20}{\ohm}$ bis $\SI{250}{\ohm}$ varriert, bei der Messung unter der Sinusspannung zwischen $\SI{100}{\ohm}$ bis $\SI{5000}{\ohm}$.
+Bei der Messung unter einer Rechteckspannung wird $R_a$ zwischen $\SI{20}{\ohm}$ bis $\SI{250}{\ohm}$ variiert, bei der Messung unter der Sinusspannung zwischen $\SI{100}{\ohm}$ bis $\SI{5000}{\ohm}$. \\
+Die direkte Messung der Rechteckspannung am Generator ergibt $U_{0, \text{rechteck}} = \SI{0.56}{\volt}$, die direkte Messung der Sinusspannung ergibt $U_{0, \text{sinus}} = \SI{2}{\volt}$.
 Es ergeben sich die in Tabelle \ref{tab:3} und Tabelle \ref{tab:4} angegebenen Messwerte.
 \begin{table}[H]
   \hspace*{\fill}
@@ -154,7 +155,7 @@ Hieraus ergibt sich für die Messung der Rechteckspannung der in Abbildung \ref{
 \begin{figure}[H]
   \centering
   \includegraphics[height=8cm]{build/rechteckplot.pdf}
-  \caption{Rechtecktspannungplot.}
+  \caption{Rechteckspannungsplot.}
   \label{fig:3}
 \end{figure}
 \begin{figure}[H]
@@ -165,7 +166,7 @@ Hieraus ergibt sich für die Messung der Rechteckspannung der in Abbildung \ref{
 \end{figure}
 Analog zur Rechnung bei der Monozelle sowie bei der Gegenspannung werden mit SciPy Ausgleichsgeraden erstellt.
 Dabei werden die Messwerte an die Funktion \ref{eqn:mxb} gefittet, so dass aus den errechneten Parametern nach \ref{eqn:uk} der Innenwiderstand $R_i$ und die Leerspannung $U_0$ abgelesen werden können.
-Der y-Achenabschnitt, die Steigung sowie deren Fehler berechnen sich nach (\ref{eqn:2}), (\ref{eqn:3}), (\ref{eqn:4}) und (\ref{eqn:5}), so dass sich die Werte
+Der y-Achsenabschnitt, die Steigung sowie deren Fehler berechnen sich nach (\ref{eqn:2}), (\ref{eqn:3}), (\ref{eqn:4}) und (\ref{eqn:5}), so dass sich die Werte
 \begin{align*}
   U_{0,{\text{rechteck}}}  &= \input{build/rechteck_u0.tex},  & R_{i,\text{rechteck}}  &= \input{build/rechteck_ri.tex},\\
   U_{0,{\text{sinus}}} &= \input{build/sinus_u0.tex}, & R_{i,\text{sinus}} &= \input{build/sinus_ri.tex}
@@ -173,7 +174,7 @@ Der y-Achenabschnitt, die Steigung sowie deren Fehler berechnen sich nach (\ref{
 ergeben
 
 \subsection{Leistung im Belastungswiderstand}
-Im folgenden werden die Messergebnisse der Monozellenmessung aus Tabelle \ref{tab:1} betrachtet.
+Im Folgenden werden die Messergebnisse der Monozellenmessung aus Tabelle \ref{tab:1} betrachtet.
 Aus der gemessenen Klemmspannung $U_k$ sowie dem Strom $I$ lässt sich die Leistung zu
 \begin{equation}
   P = U_k I
@@ -213,7 +214,7 @@ sowie für $R_a$ die Fehlerformel
 \begin{equation}
   \increment{R_a} = \sqrt{ \Bigl( \frac{1}{I} \increment{U_k} \Bigr)^2 + \Bigl( - \frac{U_k}{I^2} \increment{I}  \Bigr)^2}.
 \end{equation}
-Zudem wird als Theoriekurve die Leistung nach Formel \ref{eqn:leistung} sowie nach \ref{eqn:klemmspannung} zu
+Zudem wird als Theoriekurve die Leistung nach Formel \ref{eqn:leistung} sowie nach Formel \ref{eqn:klemmspannung} zu
 \begin{equation}
   P = \frac{U_0^2}{(R_i + R_a)^2} R_a
 \end{equation}
