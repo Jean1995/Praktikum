@@ -32,7 +32,7 @@ verh = wr/ws
 
 
 np.savetxt('daten.txt', np.column_stack([unp.nominal_values(w1), unp.nominal_values(w2)]), header="w1, w2")
-np.savetxt('daten2.txt', np.column_stack([unp.nominal_values(w1/2*math.pi), unp.nominal_values(w2/2*math.pi)]), header="v1, v2")
+np.savetxt('daten2.txt', np.column_stack([unp.nominal_values(w1/(2*math.pi)), unp.nominal_values(w2/(2*math.pi))]), header="v1, v2")
 rel_fehler = unp.nominal_values((abs(ex-verh))/verh*100)
 
 
@@ -48,7 +48,7 @@ rel_fehler_neu = unp.nominal_values((abs(ex-verh_neu))/verh_neu*100)
 
 write('build/wr_ws_verhaeltnis_neu.tex', make_table([ex, C_k*10**(9), wr_neu*10**(-3), ws_neu*10**(-3),verh_neu, rel_fehler_neu], [1,1,1,1,1,1,1,1,1, 2]))
 np.savetxt('daten3.txt', np.column_stack([unp.nominal_values(w1_neu), unp.nominal_values(w2_neu)]), header="w1neu, w2neu")
-np.savetxt('daten4.txt', np.column_stack([unp.nominal_values(w1_neu/2*math.pi), unp.nominal_values(w2_neu/2*math.pi)]), header="v1neu, v2neu")
+np.savetxt('daten4.txt', np.column_stack([unp.nominal_values(w1_neu/(2*math.pi)), unp.nominal_values(w2_neu/(2*math.pi))]), header="v1neu, v2neu")
 
 
 #b)
@@ -57,7 +57,7 @@ C_k, f1, f2 = np.genfromtxt('b.txt', unpack=True)
 C_k = C_k*10**(-9)
 f1   = f1*10**(-3)
 f2   = f2*10**(-3)
-write('build/vergleichdirekt.tex', make_table([f1, w1_neu*10**(-3)/2*math.pi, f2, w2_neu*10**(-3)/2*math.pi], [2,2,2,2]))
+write('build/vergleichdirekt.tex', make_table([f1, w1_neu*10**(-3)/(2*math.pi), f2, w2_neu*10**(-3)/(2*math.pi)], [2,2,2,2]))
 
 
 
