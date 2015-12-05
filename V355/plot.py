@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 import uncertainties.unumpy as unp
 from uncertainties.unumpy import (
     nominal_values as noms,
@@ -12,6 +13,8 @@ from table import (
 )
 from uncertainties import ufloat
 
+#a)
+
 C_k_nom, C_k_err, ex_nom, ex_err = np.genfromtxt('a.txt', unpack=True)
 C_k  = unp.uarray(C_k_nom, C_k_err)
 ex = unp.uarray(ex_nom, ex_err) # Extrema, entspricht wr/ws
@@ -20,18 +23,22 @@ C = 0.8015*10**(-9)
 Cs = 0.037*10**(-9)
 R = 48
 
-w2 = unp.sqrt((1/C + 2/C_k)/L)
-w1 = w2*0 + 1/np.sqrt(L*C) # Ich benutze das Array w2 um ein leeres Array w2 zu bekommen was die richtige Anzahl an Elemente hat #ThugLife
-ws = (abs(w1 - w2))/2 #Schwebungsfrequenzen
+
+w2 = unp.sqrt((1/C + 2/C_k)/L) #kk die angegebene Formel war falsch, BESTE  w+
+w1 = w2*0 + 1/np.sqrt(L*C) # Ich benutze das Array w2 um ein leeres Array w2 zu bekommen was die richtige Anzahl an Elemente hat #ThugLife  w-
+ws = (abs(w2 - w1))/2 #Schwebungsfrequenzen
 wr = (w1 + w2)/2 # Resonanzfrequenzen
 verh = wr/ws
 
+
+np.savetxt('daten.txt', np.column_stack([unp.nominal_values(w1), unp.nominal_values(w2)]), header="w1, w2")
+np.savetxt('daten2.txt', np.column_stack([unp.nominal_values(w1/2*math.pi), unp.nominal_values(w2/2*math.pi)]), header="v1, v2")
 rel_fehler = unp.nominal_values((abs(ex-verh))/verh*100)
 
 
 write('build/wr_ws_verhaeltnis.tex', make_table([ex, C_k*10**(9), wr*10**(-3), ws*10**(-3),verh, rel_fehler], [1,1,1,1,1,1,1,1,1, 2]))
 
-w2_neu = 1/unp.sqrt(L*( (1/C + 2/C_k)**(-1) + Cs ) )
+w2_neu = unp.sqrt(( (1/(C+Cs) + 2/C_k))/L ) #da C_alt ersetzt wurde durch C_ges = C_alt + Cs
 w1_neu = w2_neu*0 + 1/unp.sqrt(L* (C+Cs))
 ws_neu = (abs(w1_neu - w2_neu))/2 #Schwebungsfrequenzen
 wr_neu = (w1_neu + w2_neu)/2 # Resonanzfrequenzen
@@ -40,6 +47,27 @@ verh_neu = wr_neu/ws_neu
 rel_fehler_neu = unp.nominal_values((abs(ex-verh_neu))/verh_neu*100)
 
 write('build/wr_ws_verhaeltnis_neu.tex', make_table([ex, C_k*10**(9), wr_neu*10**(-3), ws_neu*10**(-3),verh_neu, rel_fehler_neu], [1,1,1,1,1,1,1,1,1, 2]))
+np.savetxt('daten3.txt', np.column_stack([unp.nominal_values(w1_neu), unp.nominal_values(w2_neu)]), header="w1neu, w2neu")
+np.savetxt('daten4.txt', np.column_stack([unp.nominal_values(w1_neu/2*math.pi), unp.nominal_values(w2_neu/2*math.pi)]), header="v1neu, v2neu")
+
+
+#b)
+
+C_k, f1, f2 = np.genfromtxt('b.txt', unpack=True)
+C_k = C_k*10**(-9)
+f1   = f1*10**(-3)
+f2   = f2*10**(-3)
+write('build/vergleichdirekt.tex', make_table([f1, w1_neu*10**(-3)/2*math.pi, f2, w2_neu*10**(-3)/2*math.pi], [2,2,2,2]))
+
+
+
+
+
+
+
+
+
+
 
 
 
