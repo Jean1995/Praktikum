@@ -29,7 +29,17 @@ verh = wr/ws
 rel_fehler = unp.nominal_values((abs(ex-verh))/verh)
 
 
-write('build/wr_ws_verhaeltnis.tex', make_table([ex, C_k*10**(9), wr*10**(-3), ws*10**(-3),verh, rel_fehler], [1,1,1,1,1,1,1,1,1, 1]))
+write('build/wr_ws_verhaeltnis.tex', make_table([ex, C_k*10**(9), wr*10**(-3), ws*10**(-3),verh, rel_fehler], [1,1,1,1,1,1,1,1,1, 2]))
+
+w2_neu = 1/unp.sqrt(L*( (1/C + 2/C_k)**(-1) + Cs ) )
+w1_neu = w2_neu*0 + 1/unp.sqrt(L* (C+Cs))
+ws_neu = (abs(w1_neu - w2_neu))/2 #Schwebungsfrequenzen
+wr_neu = (w1_neu + w2_neu)/2 # Resonanzfrequenzen
+verh_neu = wr_neu/ws_neu
+
+rel_fehler_neu = unp.nominal_values((abs(ex-verh_neu))/verh_neu)
+
+write('build/wr_ws_verhaeltnis_neu.tex', make_table([ex, C_k*10**(9), wr_neu*10**(-3), ws_neu*10**(-3),verh_neu, rel_fehler_neu], [1,1,1,1,1,1,1,1,1, 2]))
 
 
 

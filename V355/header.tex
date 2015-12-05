@@ -47,7 +47,7 @@
   locale=DE,                 % deutsche Einstellungen
   separate-uncertainty=true, % immer Fehler mit \pm
   per-mode=reciprocal,       % ^-1 für inverse Einheiten
-  output-decimal-marker=,,   % . statt , für Dezimalzahlen
+  %output-decimal-marker=.,   % . statt , für Dezimalzahlen
 ]{siunitx}
 
 % chemische Formeln
@@ -139,6 +139,9 @@
 \tikzset{circuit declare symbol = voltmeter}
 \tikzset{set voltmeter graphic ={draw,generic circle IEC, minimum size=5mm,info=center:V}}
 
+
+\NewDocumentCommand \OverfullCenter {+m} {
+  \noindent\makebox[\linewidth]{#1} }
 
 \author{
   Johannes Kollek%
