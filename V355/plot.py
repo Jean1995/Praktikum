@@ -26,7 +26,7 @@ ws = (abs(w1 - w2))/2 #Schwebungsfrequenzen
 wr = (w1 + w2)/2 # Resonanzfrequenzen
 verh = wr/ws
 
-rel_fehler = unp.nominal_values((abs(ex-verh))/verh)
+rel_fehler = unp.nominal_values((abs(ex-verh))/verh*100)
 
 
 write('build/wr_ws_verhaeltnis.tex', make_table([ex, C_k*10**(9), wr*10**(-3), ws*10**(-3),verh, rel_fehler], [1,1,1,1,1,1,1,1,1, 2]))
@@ -37,7 +37,7 @@ ws_neu = (abs(w1_neu - w2_neu))/2 #Schwebungsfrequenzen
 wr_neu = (w1_neu + w2_neu)/2 # Resonanzfrequenzen
 verh_neu = wr_neu/ws_neu
 
-rel_fehler_neu = unp.nominal_values((abs(ex-verh_neu))/verh_neu)
+rel_fehler_neu = unp.nominal_values((abs(ex-verh_neu))/verh_neu*100)
 
 write('build/wr_ws_verhaeltnis_neu.tex', make_table([ex, C_k*10**(9), wr_neu*10**(-3), ws_neu*10**(-3),verh_neu, rel_fehler_neu], [1,1,1,1,1,1,1,1,1, 2]))
 
