@@ -14,18 +14,22 @@ from uncertainties import ufloat
 
 #a)
 C_k = np.array([9.99, 8, 6.47, 5.02, 4, 3, 2.03, 1.01])
-m   = np.array([14, 11, 9, 8, 6, 5, 3, 2])
-write('build/atabelle.tex', make_table([C_k, m], [2,0]))
+C_k_err = C_k * 0.005
+ex   = np.array([27, 21, 17, 14, 11, 9, 6, 3])
+ex_err = ex*0+1 # Kein Fehler beim ablesen? Oder etwa doch?
+write('build/atabelle.tex', make_table([C_k, C_k_err, ex, ex_err], [3,3, 3, 3]))
 C_k = C_k*10**(-9)
-np.savetxt('a.txt', np.column_stack([C_k, m]), header="C_k [F], maxima []")
+C_k_err = C_k_err*10**(-9)
+
+np.savetxt('a.txt', np.column_stack([C_k, C_k_err, ex, ex_err]), header="C_k [F], C_k_err, ex, ex_err")
 
 #b)
 C_k = np.array([9.99, 8, 6.47, 5.02, 4, 3, 2.03, 1.01])
 f   = np.array([32.3, 33.33, 34.25, 34.72, 35.71, 37.31, 40.32, 46.73])
-write('build/atabelle.tex', make_table([C_k, f], [2,2]))
+write('build/btabelle.tex', make_table([C_k, f], [2,2])) # Hier stand vorher, dass er atabelle.tex Überschreiben soll -> I hate you for that! I just hate you!
 C_k = C_k*10**(-9)
 f   = f*10**(3)
-np.savetxt('b.txt', np.column_stack([C_k, m]), header="C_k [F], frequenz [Hz]")
+np.savetxt('b.txt', np.column_stack([C_k, f]), header="C_k [F], frequenz [Hz]")
 
 #c)
 t1 = 360*10**(-3)

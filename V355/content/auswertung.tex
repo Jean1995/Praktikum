@@ -1,28 +1,48 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
-\begin{figure}
-  \centering
-  \includegraphics{plot.pdf}
-  \caption{Plot.}
-  \label{fig:plot}
-\end{figure}
 
 \begin{table}
   \centering
-  \caption{Beispieltabelle}
-  \label{tab:tabelle_beispiel}
-  \sisetup{table-format=1.2}
-  \begin{tabular}{c c}
+  \caption{Messdaten für die Messung der Schwebungsfrequenzen}
+  \label{tab:1}
+  \sisetup{table-format=3.4}
+  \begin{tabular}{c c c c c c c c c c c c}
     \toprule
-    {$a [\si{\second}]$} & {$b [\si{\kelvin}]$}\\
+    {$\frac{\omega_r}{\omega_s}$} & {$\increment \frac{\omega_r}{\omega_s} $} & {$ C_k [\si{\nano\farad}] $} & {$\increment C_k [\si{\nano\farad}] $} & {$ \omega_r [\si{\kilo\second\tothe{-1}}] $} & {$\increment \omega_r [\si{\kilo\second\tothe{-1}}] $} & {$ \omega_s [\si{\kilo\per\second}] $} & {$\increment \omega_s [\si{\kilo\per\second}] $} & {$\frac{\omega_r}{\omega_s}_{\text{}}$} & {$\increment \frac{\omega_r}{\omega_s}_{\text{}}$} & {f [\%]} \\
     \midrule
-    \input{build/tabelle.tex}
+    \input{build/wr_ws_verhaeltnis.tex}
     \bottomrule
   \end{tabular}
 \end{table}
 
-Es ergibt sich
-\begin{align}
-  a &= \input{build/wert_a.tex} \\
-\end{align}
+%
+%
+%
+%
+%\begin{figure}
+%  \centering
+%  \includegraphics{plot.pdf}
+%  \caption{Plot.}
+%  \label{fig:plot}
+%\end{figure}
+%
+%\begin{table}
+%  \centering
+%  \caption{Beispieltabelle}
+%  \label{tab:tabelle_beispiel}
+%  \sisetup{table-format=1.2}
+%  \begin{tabular}{c c}
+%    \toprule
+%    {$a [\si{\second}]$} & {$b [\si{\kelvin}]$}\\
+%    \midrule
+%    \input{build/tabelle.tex}
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
+%
+%Es ergibt sich
+%\begin{align}
+%  a &= \input{build/wert_a.tex} \\
+%\end{align}
+%
