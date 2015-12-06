@@ -57,7 +57,11 @@ C_k, f1, f2 = np.genfromtxt('b.txt', unpack=True)
 C_k = C_k*10**(-9)
 f1   = f1*10**(-3)
 f2   = f2*10**(-3)
-write('build/vergleichdirekt.tex', make_table([f1, w1_neu*10**(-3)/(2*math.pi), f2, w2_neu*10**(-3)/(2*math.pi)], [2,2,2,2]))
+
+rel_fehler_1 = ((abs(f1-w1_neu*10**(-3)/(2*math.pi)))/(w1_neu*10**(-3)/(2*math.pi))*100)
+rel_fehler_2 = unp.nominal_values((abs(f2-w2_neu*10**(-3)/(2*math.pi)))/(w2_neu*10**(-3)/(2*math.pi))*100)
+
+write('build/vergleichdirekt.tex', make_table([f1, w1_neu*10**(-3)/(2*math.pi),rel_fehler_1, f2, w2_neu*10**(-3)/(2*math.pi), rel_fehler_2], [2,2,2,2,2,2]))
 
 
 
