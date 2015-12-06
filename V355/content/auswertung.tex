@@ -1,14 +1,14 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
-Zunächst wird die in der Durchführung beschriebene Justierung durchgeführt.
+Zunächst wird die in der Durchführung (\ref{sec:d0}) beschriebene Justierung durchgeführt.
 Nach Bestimmung der Resonanzfrequenz des fest justieren Stromkreises sowie der Jusitierung des regelbaren Stormkreises ergibt sich eine Resonanzfrequenz von
 \begin{align*}
 \nu_{\text{resonanz}} = \SI{30.49}{\kilo\hertz}
 \end{align*}
 
 \subsection{Bestimmung der Schwebungsfrequenzen}
-Das Verhältnis der Resonanzfrequenzen $\omega_r$ und der Schwebungsfrequenzen $\omega_s$ wird, wie in der Durchführung beschrieben sowie in Abbildung \ref{fig:4} skizziert, bestimmt.
+Das Verhältnis der Resonanzfrequenzen $\omega_r$ und der Schwebungsfrequenzen $\omega_s$ wird, wie in der Durchführung (\ref{sec:d1}) beschrieben sowie in Abbildung \ref{fig:4} skizziert, bestimmt.
 Dabei werden dem Versuchsaufbau die Werte
 \begin{align*}
   L &= \SI{32.351}{\milli\henry} \\
@@ -17,8 +17,7 @@ Dabei werden dem Versuchsaufbau die Werte
   \increment C_k &= \SI{\pm 0.5}{\percent}
 \end{align*}
 entnommen.
-
-Tabelle \ref{tab:1} gibt die  Messdaten sowie Theoriewerte an.
+Tabelle \ref{tab:1} gibt die Messdaten sowie Theoriewerte an.
 
 %\OverfullCenter{
 \begin{table}
@@ -36,14 +35,39 @@ Tabelle \ref{tab:1} gibt die  Messdaten sowie Theoriewerte an.
 \end{table}
 %}
 
+
 Hierbei beschreibt $N$ die Anzahl der Maxima der Resonanzfrequenz pro halber Persiode der Schwebungsfrequenz, $C_K$ beschreibt die jeweils betrachtete Justierung des Koppelkondensators $C_k$.
-Die Werte für $\omega_r$ und $\omega_s$ berechnen sich nach \eqref{eqn:omega_r} und \eqref{eqn:omega_s}, $\frac{\omega_r}{\omega_s}$ gibt das Verhältnis der beiden theoretischen Größen an.
+Die Werte für $\omega_r$ und $\omega_s$ berechnen sich nach \eqref{eqn:omega_s} und \eqref{eqn:omega_r}, $\frac{\omega_r}{\omega_s}$ gibt das Verhältnis der beiden theoretischen Größen an.
 Zuletzt wird die relative Abweichung
 \begin{equation}
 f = \frac{\lvert N - x \rvert }{x}
+\label{eqn:rel_err}
 \end{equation}
-mit $x = \frac{\omega_r}{\omega_s}$ der experimentell abgelesenen Werte zu den Theoriewerten angegeben.
+mit $x = \frac{\omega_r}{\omega_s}$ der experimentell abgelesenen Werte zu den Theoriewerten angegeben.\\
 
+Die hier berechneten Fehler sowie alle folgenden fehlerbehafteten Messgrößen berechnen sich nach dem Gaußschen Fehlerfortpflanzungsgesetz
+\begin{equation}
+\increment{f} = \sqrt{\Bigl(\frac{\partial f}{\partial x_1}\increment{x_1}\Bigr)^2 + \Bigl(\frac{\partial f}{\partial x_2}\increment{x_2}\Bigr)^2 + \dotsc + \Bigl(\frac{\partial f}{\partial x_n}\increment{x_n}\Bigr)^2}
+\end{equation}
+für eine Funktion $f(x_1,x_2, \dotsc ,x_n)$, bei der die Größen $x_1, x_2, \dotsc , x_n$ voneinander unabhängig sind.
+Für den Fehler von $\omega_r$ von $\omega_s$ ergibt sich die Fehlerformel
+\begin{equation}
+\increment{\omega_{r/s} = \frac{1}{ C_k^2 L \sqrt{ \frac{\frac{1}{C} + \frac{2}{C_k }}{L} } }   \increment{C_k}}.
+%  \increment{\omega_r} = \sqrt{ \Biggl( \frac{1}{2} \biggl( \frac{-C}{2 \sqrt{LC}^3 } - \frac{\frac{1}{C} + \frac{2}{C_k} }{2 L^2 \sqrt{ \frac{\frac{1}{C} + \frac{2}{C_k }}{L} } } \biggr)   \increment{L} \Biggr)^2 + \Biggl( \frac{1}{2} \biggl( \frac{-L}{2 \sqrt{LC}^3 } - \frac{1}{2 C^2 L \sqrt{ \frac{\frac{1}{C} + \frac{2}{C_k }}{L} } } \biggr)   \increment{C} \Biggr)^2  + \Biggl(\frac{-1}{ C_k^2 L \sqrt{ \frac{\frac{1}{C} + \frac{2}{C_k }}{L} } } \biggr)   \increment{C_k} \Biggr)^2   }
+\end{equation}
+Bei dem direkten Vergleich der Theoriewerte mit den abgelesenen Werten fällt ein systematischer Fehler auf, so dass $N$, abgesehen von den beiden Kondensatoren mit den größen Kapazitäten, eine Abweichung nach unten besitzt.
+Um diesen Fehler zu beheben, wird nun bei der Berechnung der Theoriewerte ebenfalls die reale Kapazität $C_{\text{sp}}$ der Spule berücksichtigt.
+Im Gegensatz zu \eqref{eqn:omega1} und \eqref{eqn:omega1} ergeben sich nun für die korrigierte Bestimmung
+\begin{equation}
+  \omega_{1'} = \frac{1}{\sqrt{L(C+C_{\text{sp}})}}
+  \label{eqn:omega1_neu}
+\end{equation}
+sowie
+\begin{equation}
+  \omega_{2'} = \sqrt{\frac{ \frac{1}{C+C_{\text{sp}}} + \frac{2}{C_k} }{ L }}.
+  \label{eqn:omega2_neu}
+\end{equation}
+Hiermit ergeben sich die in Tabelle \ref{tab:2} angegebenen Werte.
 \begin{table}
   \centering
   \caption{Messdaten für die Messung der Schwebungsfrequenzen unter Berücksichtigung von $C_{\text{sp}}$}
@@ -58,8 +82,11 @@ mit $x = \frac{\omega_r}{\omega_s}$ der experimentell abgelesenen Werte zu den T
   \end{tabular}
 \end{table}
 
-\subsection{Gegenüberstellung von gemessenen und berechneten Werten}
+\subsection{Bestimmung der Fundamentalfrequenzen}
 
+Die Fundamentalfrequenzen werden, wie in der Durchführung (\ref{sec:d2}) beschrieben mithilfe von Lissajous-Figuren bestimmt.
+In Tabelle \ref{tab:3} werden die gemessenen Fundamentalfrequenzen $f_{1,\text{gem}}$ und $f_{2,\text{gem}}$ sowie die mit Hilfe von \eqref{eqn:omega1_neu} und \eqref{eqn:omega2_neu} bestimmten Werte $f_{1,\text{ber}}$ und $f_{2,\text{ber}}$ angegeben.
+Zusätzlich wird der relative Fehler der gemessenen zu den berechneten Frequenzwerten nach \eqref{eqn:rel_err} berechnet und angegeben.
 \begin{table}
   \centering
   \caption{Gemessene und berechnete Frequenzen}
@@ -73,6 +100,10 @@ mit $x = \frac{\omega_r}{\omega_s}$ der experimentell abgelesenen Werte zu den T
     \bottomrule
   \end{tabular}
 \end{table}
+Der Fehler von $f_{2,\text{ber}}$ berechnet sich zu
+\begin{equation}
+\increment{f_{2,\text{ber}}} = \frac{1}{2 \pi\, C_k^2 L \sqrt{ \frac{\frac{1}{C+C_s} + \frac{2}{C_k}}{L} } } \increment{C_k}.
+\end{equation}
 %
 %
 %
