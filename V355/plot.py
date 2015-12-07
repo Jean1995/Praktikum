@@ -36,7 +36,7 @@ np.savetxt('daten2.txt', np.column_stack([unp.nominal_values(w1/(2*math.pi)), un
 rel_fehler = unp.nominal_values((abs(ex-verh))/verh*100)
 
 
-write('build/wr_ws_verhaeltnis.tex', make_table([ex, C_k*10**(9), wr*10**(-3), ws*10**(-3),verh, rel_fehler], [1,1,1,1,1,1,1,1,1, 2]))
+#write('build/wr_ws_verhaeltnis.tex', make_table([ex, C_k*10**(9), wr*10**(-3), ws*10**(-3),verh, rel_fehler], [1,1,1,1,1,1,1,1,1, 2]))
 
 w2_neu = unp.sqrt(( (1/(C+Cs) + 2/C_k))/L ) #da C_alt ersetzt wurde durch C_ges = C_alt + Cs
 w1_neu = w2_neu*0 + 1/unp.sqrt(L* (C+Cs))
@@ -46,7 +46,7 @@ verh_neu = wr_neu/ws_neu
 
 rel_fehler_neu = unp.nominal_values((abs(ex-verh_neu))/verh_neu*100)
 
-write('build/wr_ws_verhaeltnis_neu.tex', make_table([ex, C_k*10**(9), wr_neu*10**(-3), ws_neu*10**(-3),verh_neu, rel_fehler_neu], [1,1,1,1,1,1,1,1,1, 2]))
+#write('build/wr_ws_verhaeltnis_neu.tex', make_table([ex, C_k*10**(9), wr_neu*10**(-3), ws_neu*10**(-3),verh_neu, rel_fehler_neu], [1,1,1,1,1,1,1,1,1, 2]))
 np.savetxt('daten3.txt', np.column_stack([unp.nominal_values(w1_neu), unp.nominal_values(w2_neu)]), header="w1neu, w2neu")
 np.savetxt('daten4.txt', np.column_stack([unp.nominal_values(w1_neu/(2*math.pi)), unp.nominal_values(w2_neu/(2*math.pi))]), header="v1neu, v2neu")
 
@@ -61,7 +61,7 @@ f2   = f2*10**(-3)
 rel_fehler_1 = ((abs(f1-w1_neu*10**(-3)/(2*math.pi)))/(w1_neu*10**(-3)/(2*math.pi))*100)
 rel_fehler_2 = unp.nominal_values((abs(f2-w2_neu*10**(-3)/(2*math.pi)))/(w2_neu*10**(-3)/(2*math.pi))*100)
 
-write('build/vergleichdirekt.tex', make_table([f1, w1_neu*10**(-3)/(2*math.pi),rel_fehler_1, f2, w2_neu*10**(-3)/(2*math.pi), rel_fehler_2], [2,2,2,2,2,2]))
+#write('build/vergleichdirekt.tex', make_table([f1, w1_neu*10**(-3)/(2*math.pi),rel_fehler_1, f2, w2_neu*10**(-3)/(2*math.pi), rel_fehler_2], [2,2,2,2,2,2]))
 
 
 
