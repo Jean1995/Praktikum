@@ -4,7 +4,7 @@
 Zunächst wird die in der Durchführung (\ref{sec:d0}) beschriebene Justierung durchgeführt.
 Nach Bestimmung der Resonanzfrequenz des fest justieren Stromkreises sowie der Jusitierung des regelbaren Stormkreises ergibt sich eine Resonanzfrequenz von
 \begin{align*}
-\nu_{\text{resonanz}} = \SI{30.49}{\kilo\hertz}
+\nu_{\text{resonanz}} = \SI{30.49}{\kilo\hertz}.
 \end{align*}
 
 \subsection{Bestimmung der Schwebungsfrequenzen}
@@ -55,7 +55,7 @@ Für den Fehler von $\omega_r$ von $\omega_s$ ergibt sich die Fehlerformel
 \increment{\omega_{r/s} = \frac{1}{ C_k^2 L \sqrt{ \frac{\frac{1}{C} + \frac{2}{C_k }}{L} } }   \increment{C_k}}.
 %  \increment{\omega_r} = \sqrt{ \Biggl( \frac{1}{2} \biggl( \frac{-C}{2 \sqrt{LC}^3 } - \frac{\frac{1}{C} + \frac{2}{C_k} }{2 L^2 \sqrt{ \frac{\frac{1}{C} + \frac{2}{C_k }}{L} } } \biggr)   \increment{L} \Biggr)^2 + \Biggl( \frac{1}{2} \biggl( \frac{-L}{2 \sqrt{LC}^3 } - \frac{1}{2 C^2 L \sqrt{ \frac{\frac{1}{C} + \frac{2}{C_k }}{L} } } \biggr)   \increment{C} \Biggr)^2  + \Biggl(\frac{-1}{ C_k^2 L \sqrt{ \frac{\frac{1}{C} + \frac{2}{C_k }}{L} } } \biggr)   \increment{C_k} \Biggr)^2   }
 \end{equation}
-Bei dem direkten Vergleich der Theoriewerte mit den abgelesenen Werten fällt ein systematischer Fehler auf, so dass $N$, abgesehen von den beiden Kondensatoren mit den größen Kapazitäten, eine Abweichung nach unten besitzt.
+Bei dem direkten Vergleich der Theoriewerte mit den abgelesenen Werten fällt eine systematische Abweichung auf, so dass $N$, abgesehen von den beiden Kondensatoren mit den größen Kapazitäten, eine Abweichung nach unten besitzt.
 Um diesen Fehler zu beheben, wird nun bei der Berechnung der Theoriewerte ebenfalls die reale Kapazität $C_{\text{sp}}$ der Spule berücksichtigt.
 Im Gegensatz zu \eqref{eqn:omega1} und \eqref{eqn:omega1} ergeben sich nun für die korrigierte Bestimmung
 \begin{equation}
@@ -85,24 +85,24 @@ Hiermit ergeben sich die in Tabelle \ref{tab:2} angegebenen Werte.
 \subsection{Bestimmung der Fundamentalfrequenzen}
 
 Die Fundamentalfrequenzen werden, wie in der Durchführung (\ref{sec:d2}) beschrieben mithilfe von Lissajous-Figuren bestimmt.
-In Tabelle \ref{tab:3} werden die gemessenen Fundamentalfrequenzen $f_{1,\text{gem}}$ und $f_{2,\text{gem}}$ sowie die mit Hilfe von \eqref{eqn:omega1_neu} und \eqref{eqn:omega2_neu} bestimmten Werte $f_{1,\text{ber}}$ und $f_{2,\text{ber}}$ angegeben.
-Zusätzlich wird der relative Fehler der gemessenen zu den berechneten Frequenzwerten nach \eqref{eqn:rel_err} berechnet und angegeben.
-\begin{table}
+In Tabelle \ref{tab:3} werden die gemessenen Fundamentalfrequenzen $\nu_{1,\text{gem}}$ und $\nu_{2,\text{gem}}$ sowie die mit Hilfe von \eqref{eqn:omega1_neu} und \eqref{eqn:omega2_neu} bestimmten Werte $\nu_{1,\text{ber}}$ und $\nu_{2,\text{ber}}$ angegeben.
+Zusätzlich wird die relative Abweichung der gemessenen zu den berechneten Frequenzwerten nach \eqref{eqn:rel_err} berechnet und angegeben.
+\begin{table}[H]
   \centering
   \caption{Gemessene und berechnete Frequenzen}
   \label{tab:3}
   \sisetup{table-format=2.2}
   \begin{tabular}{c c c c c c c}
     \toprule
-    {$f_{1,\text{gem}} [\si{\kilo\hertz}]$} & {$f_{1,\text{ber}} [\si{\kilo\hertz}]$} & {$\text{Fehler in \%}$} & {$f_{2,\text{gem}} [\si{\kilo\hertz}]$} & {$f_{2,\text{ber}} [\si{\kilo\hertz}]$} & {$\increment f_{2,\text{ber}} [\si{\kilo\hertz}]$} & {$\text{Fehler in \%}$} \\
+    {$\nu_{1,\text{gem}} [\si{\kilo\hertz}]$} & {$\nu_{1,\text{ber}} [\si{\kilo\hertz}]$} & {$f [\%]$} & {$\nu_{2,\text{gem}} [\si{\kilo\hertz}]$} & {$\nu_{2,\text{ber}} [\si{\kilo\hertz}]$} & {$\increment f_{2,\text{ber}} [\si{\kilo\hertz}]$} & {$f [\%]$} \\
     \midrule
     \input{build/vergleichdirekt.tex}
     \bottomrule
   \end{tabular}
 \end{table}
-Der Fehler von $f_{2,\text{ber}}$ berechnet sich zu
+Der Fehler von $\nu_{2,\text{ber}}$ berechnet sich zu
 \begin{equation}
-\increment{f_{2,\text{ber}}} = \frac{1}{2 \pi\, C_k^2 L \sqrt{ \frac{\frac{1}{C+C_s} + \frac{2}{C_k}}{L} } } \increment{C_k}.
+\increment{\nu_{2,\text{ber}}} = \frac{1}{2 \pi\, C_k^2 L \sqrt{ \frac{\frac{1}{C+C_s} + \frac{2}{C_k}}{L} } } \increment{C_k}.
 \end{equation}
 %
 %
