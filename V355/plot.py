@@ -63,6 +63,48 @@ rel_fehler_2 = unp.nominal_values((abs(f2-w2_neu*10**(-3)/(2*math.pi)))/(w2_neu*
 
 #write('build/vergleichdirekt.tex', make_table([f1, w1_neu*10**(-3)/(2*math.pi),rel_fehler_1, f2, w2_neu*10**(-3)/(2*math.pi), rel_fehler_2], [2,2,2,2,2,2]))
 
+# U=30V
+vpeak1 = 30395.15
+vpeak2 = 46589.89
+
+f = open("vpeak1.txt", "w")
+f.seek (10)
+f.write(str(vpeak1))
+f.close ()
+
+f = open("vpeak2.txt", "w")
+f.seek (10)
+f.write(str(vpeak2))
+f.close ()
+
+def I2(w, K, R, U, C, L):
+    return U * 1/np.sqrt( 4*w**2 * K**2 * R**2 * Z(w, C, L)**2 + (1/(w*K) - w*K*Z(w, C, L)**2 + w*R**2*K )**2 )
+
+def Z(w, C, L):
+    return w*L - (1/w) * (1/C + 1/K)
+
+K = 1.01*10**(-9)
+R = 48
+U = 30
+C = 0.8015**10**(-9)
+L = 32.351*10**(-3)
+
+
+I1_amp = I2(vpeak1, K, R, U, C, L)
+I2_amp = I2(vpeak2, K, R, U, C, L)
+
+f = open("I_vpeak1.txt", "w")
+f.seek (10)
+f.write(str(I1_amp))
+f.close ()
+
+f = open("I_vpeak2.txt", "w")
+f.seek (10)
+f.write(str(I2_amp))
+f.close ()
+#write('build/I2_amp.tex', make_SI(Z(blabla), r'\volt' ))
+
+
 
 
 

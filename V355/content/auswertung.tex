@@ -104,6 +104,32 @@ Der Fehler von $\nu_{2,\text{ber}}$ berechnet sich zu
 \begin{equation}
 \increment{\nu_{2,\text{ber}}} = \frac{1}{2 \pi\, C_k^2 L \sqrt{ \frac{\frac{1}{C+C_s} + \frac{2}{C_k}}{L} } } \increment{C_k}.
 \end{equation}
+
+\subsection{Bestimmung eines Frequenzspektrums}
+Das Frequenzspektrum wird, wie in der Durchführung (\ref{sec:d3}) beschrieben, aufgenommen.
+Der Koppelkondensator wird bei der durchgeführten Messung auf $C_k = \SI{1.01}{\nano\farad}$ eingestellt.
+Der Frequenzgenerator erzeugt dabei eine Sinusspannung der Amplitude $U_0 = \SI{30}{\volt}$.
+Innerhalb von einer Sekunde durchläuft der Frequenzgenerator den Bereich von $\nu_{\text{start}}$ bis $\nu_{\text{end}}$ mit
+\begin{align*}
+  \nu_{\text{start}} &= \SI{14.75}{\hertz} \\
+  \nu_{\text{end}} &= \SI{84.39}{\kilo\hertz}.
+\end{align*}
+Die Peaks treten für
+\begin{align*}
+  \tau_1 &= \SI{360}{\milli\second} \\
+  \tau_2 &= \SI{552}{\milli\second}.
+\end{align*}
+auf, wobei $\tau_1$ die Zeit vom Beginn des Frequenzdurchlaufes zum ersten Peak ist sowie $\tau_2$ die Zeit bis zum zweiten Peak.
+Hieraus lassen sich die Frequenzen der Peaks bestimmen zu
+\begin{align*}
+  \nu_1 &= \SI{30395}{\hertz} \\
+  \nu_2 &= \SI{46590}{\hertz}.
+\end{align*}
+Berechnet man zusätzlich die zu diesen Frequenzen erreichten Stromwerte, so erhalten wir nach \eqref{eqn:idoof}
+\begin{align*}
+  I_{2,1} &= \SI{0.0155}{\ampere} \\
+  I_{2,2} &= \SI{0.0103}{\ampere}.
+\end{align*}
 %
 %
 %
