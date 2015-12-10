@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 import uncertainties.unumpy as unp
 from uncertainties.unumpy import (
     nominal_values as noms,
@@ -11,6 +12,59 @@ from table import (
     write,
 )
 from uncertainties import ufloat
+
+
+
+
+
+
+
+
+
+
+#b)
+U_0 = 9.5 #haben vergessen U_0 aufzunehmen xD, laut Bildern aber so ca 9.5, da wir daran ja nicht rumgeschraubt haben
+f, U_C, a, b = np.genfromtxt('bc.txt', unpack=True)
+
+U = U_C/U_0
+plt.plot(f, U,'xr', label=r'$\text{Messwerte} U_C \ /\  U_0$')
+plt.xscale('log')
+#plt.ylim(0,0.4)
+#x_plot = np.linspace(0.01, 100, 1000000)
+#plt.plot(x_plot, f(x_plot), 'r-', label=r'\text{Theoriekurve} $U_{Br} \ /\  U_s$', linewidth=0.5)
+plt.savefig('build/bplot.pdf')
+plt.ylabel(r'$U_C \ /\  U_0$')
+plt.xlabel(r'$f$')
+plt.legend(loc='best')
+
+
+plt.clf()
+
+#c)
+phi = a/b * 2 * math.pi
+plt.plot(f, phi,'xr', label=r'$\text{Messwerte}  \phi$')
+plt.xscale('log')
+#plt.ylim(0,0.4)
+#x_plot = np.linspace(0.01, 100, 1000000)
+#plt.plot(x_plot, f(x_plot), 'r-', label=r'\text{Theoriekurve} $U_{Br} \ /\  U_s$', linewidth=0.5)
+plt.savefig('build/cplot.pdf')
+plt.ylabel(r'$\phi$')
+plt.xlabel(r'$f$')
+plt.legend(loc='best')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Beispielplot
 x = np.linspace(0, 10, 1000)
