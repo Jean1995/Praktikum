@@ -51,20 +51,38 @@ plt.savefig('build/bplot.pdf')
 plt.clf()
 
 #c)
-phi = a/b * 2
+phi = a/b * 2 * np.pi
 
 plt.plot(v, phi,'xr', label=r'$\text{Messwerte}  \phi $')
-def g(x, c):
-    return np.arctan(c*x)
+plt.xscale('log')
+plt.ylim(0, 1.6)
+plt.yticks([0, np.pi/4, np.pi/2],[r"$0$", r"$\frac{\pi}{4}$", r"$\frac{\pi}{2}$"])
+def f(x, a):
+    return np.arctan(a*x)
 
-parameter, covariance = curve_fit(g, v, phi)
+parameter, covariance = curve_fit(f, v, phi)
 x_plot = np.linspace(0, 10**5, 1000000)
 
-plt.plot(x_plot, g(x_plot, parameter[0]), 'r-', label=r'Ausgleichskurve', linewidth=1)
+plt.plot(x_plot, f(x_plot, parameter[0]), 'r-', label=r'Ausgleichskurve', linewidth=1)
 
 fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
-plt.xscale('log')
-np.savetxt('ausgleichswerte_c.txt', np.column_stack([parameter, fehler]), header="c c-Fehler")
+
+np.savetxt('ausgleichswerte_cneu.txt', np.column_stack([parameter, fehler]), header="a a-Fehler")
+
+
+
+
+#def g(x, k):
+#    return np.arctan(k*x)
+#
+#parameter, covariance = curve_fit(g, v, phi)
+#x_plot = np.linspace(0, 10**5, 1000)
+#
+#plt.plot(x_plot, g(x_plot, parameter[0]), 'r-', label=r'Ausgleichskurve', linewidth=1)
+#
+#fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
+#plt.xscale('log')
+#np.savetxt('ausgleichswerte_c.txt', np.column_stack([parameter, fehler]), header="c c-Fehler")
 #plt.ylim(0,0.4)
 #x_plot = np.linspace(0.01, 100, 1000000)
 #plt.plot(x_plot, f(x_plot), 'r-', label=r'\text{Theoriekurve} $U_{Br} \ /\  U_s$', linewidth=0.5)
@@ -74,6 +92,15 @@ plt.legend(loc='best')
 plt.savefig('build/cplot.pdf')
 
 
+plt.clf()
+
+
+#d)
+plt.polar(phi, U,'xr', label=r'$\text{Messwerte}  \phi $')
+def q(x , RC):
+    return -((x*RC)/(np.sqrt(1+x**2*(RC)**2)))/(x*RC)
+plt.polar(x_plot, f(x_plot, 5.47 *10**(-3)), 'r-', label=r'Theoriekurve', linewidth=1)
+plt.savefig('build/dplot.pdf')
 
 
 
