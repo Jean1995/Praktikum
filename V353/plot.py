@@ -137,3 +137,28 @@ write('build/tabelle.tex', make_table([a, b], [4, 2]))   # [4,2] = Nachkommastel
 
 c = ufloat(0, 0)
 write('build/wert_a.tex', make_SI(c*1e3, r'\joule\per\kelvin\per\gram' ))
+
+plt.clf()
+
+
+t, U = np.genfromtxt('a.txt', unpack=True)
+plt.plot(t, U,'xr', label=r'$\text{Messwerte} U_C \ /\  U_0$')
+plt.xscale('log')
+plt.ylabel(r'$\phi [\pi]$')
+plt.xlabel(r'$f [Hz]$')
+plt.legend(loc='best')
+
+U_log = np.log(U)
+
+def lin(x, m, b):
+    return m*x+b
+
+parameter, covariance = curve_fit(lin, t, U_log)
+x_plot = np.linspace(t[0], t[10], 1000000)
+
+#plt.plot(x_plot, lin(x_plot, parameter[0], parameter[1]), 'r-', label=r'Ausgleichskurve', linewidth=1)
+
+fehler_2 = np.sqrt(np.diag(covariance))
+np.savetxt('ausgleichswerte_a.txt', np.column_stack([parameter, fehler_2]), header="m m-Fehler")
+
+plt.savefig('build/aplot.pdf')
