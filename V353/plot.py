@@ -12,7 +12,7 @@ from table import (
     write,
 )
 from uncertainties import ufloat
-
+from scipy.optimize import curve_fit
 
 
 
@@ -23,35 +23,55 @@ from uncertainties import ufloat
 
 
 #b)
-U_0 = 9.5 #haben vergessen U_0 aufzunehmen xD, laut Bildern aber so ca 9.5, da wir daran ja nicht rumgeschraubt haben
+U_0 = 19 #haben vergessen U_0 aufzunehmen xD, laut Bildern aber so ca 9.5, da wir daran ja nicht rumgeschraubt haben
 f, U_C, a, b = np.genfromtxt('bc.txt', unpack=True)
 
 U = U_C/U_0
 plt.plot(f, U,'xr', label=r'$\text{Messwerte} U_C \ /\  U_0$')
+v=f
+def h(x, m):
+    return 1/np.sqrt(1+m**2*x**2)
+
+parameter, covariance = curve_fit(h, v, U)
+x_plot = np.linspace(10, 10**5, 1000000)
+
+plt.plot(x_plot, h(x_plot, parameter[0]), 'r-', label=r'Ausgleichskurve', linewidth=1)
 plt.xscale('log')
+fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
+
+np.savetxt('ausgleichswerte_b.txt', np.column_stack([parameter, fehler]), header="m m-Fehler")
 #plt.ylim(0,0.4)
 #x_plot = np.linspace(0.01, 100, 1000000)
 #plt.plot(x_plot, f(x_plot), 'r-', label=r'\text{Theoriekurve} $U_{Br} \ /\  U_s$', linewidth=0.5)
-plt.savefig('build/bplot.pdf')
 plt.ylabel(r'$U_C \ /\  U_0$')
 plt.xlabel(r'$f$')
 plt.legend(loc='best')
-
+plt.savefig('build/bplot.pdf')
 
 plt.clf()
 
 #c)
-phi = a/b * 2 * math.pi
-plt.plot(f, phi,'xr', label=r'$\text{Messwerte}  \phi$')
+phi = a/b * 2
+
+plt.plot(v, phi,'xr', label=r'$\text{Messwerte}  \phi $')
+def g(x, c):
+    return np.arctan(c*x)
+
+parameter, covariance = curve_fit(g, v, phi)
+x_plot = np.linspace(0, 10**5, 1000000)
+
+plt.plot(x_plot, g(x_plot, parameter[0]), 'r-', label=r'Ausgleichskurve', linewidth=1)
+
+fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
 plt.xscale('log')
+np.savetxt('ausgleichswerte_c.txt', np.column_stack([parameter, fehler]), header="c c-Fehler")
 #plt.ylim(0,0.4)
 #x_plot = np.linspace(0.01, 100, 1000000)
 #plt.plot(x_plot, f(x_plot), 'r-', label=r'\text{Theoriekurve} $U_{Br} \ /\  U_s$', linewidth=0.5)
-plt.savefig('build/cplot.pdf')
-plt.ylabel(r'$\phi$')
-plt.xlabel(r'$f$')
+plt.ylabel(r'$\phi [\pi]$')
+plt.xlabel(r'$f [Hz]$')
 plt.legend(loc='best')
-
+plt.savefig('build/cplot.pdf')
 
 
 
