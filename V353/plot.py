@@ -23,7 +23,7 @@ from scipy.optimize import curve_fit
 
 
 #b)
-U_0 = 19 #haben vergessen U_0 aufzunehmen xD, laut Bildern aber so ca 9.5, da wir daran ja nicht rumgeschraubt haben
+U_0 = 9.5 #haben vergessen U_0 aufzunehmen xD, laut Bildern aber so ca 9.5, da wir daran ja nicht rumgeschraubt haben
 f, U_C, a, b = np.genfromtxt('bc.txt', unpack=True)
 
 U = U_C/U_0
@@ -95,12 +95,18 @@ plt.savefig('build/cplot.pdf')
 plt.clf()
 
 
+
 #d)
-x_plot = np.linspace(0, 0.5, 1000)
 plt.polar(phi, U,'xr', label=r'$\text{Messwerte}  \phi $')
-def q(x , RC):
-    return -((x*RC)/(np.sqrt(1+x**2*(RC)**2)))
-plt.polar(x_plot, q(x_plot, 5.47 *10**(-3)), 'r-', label=r'Theoriekurve', linewidth=1)
+RC = 4.9462 *10**(-3)
+#def q(x , RC):
+#    return -((x*RC)/(np.sqrt(1+x**2*(RC)**2)))/(x*RC)
+#plt.polar(x_plot, f(x_plot, 5.47 *10**(-3)), 'r-', label=r'Theoriekurve', linewidth=1)
+x = np.linspace(0, 50000, 10000000)
+phi = ((x*RC)/(np.sqrt(1+x**2*(RC)**2)))
+y = 1/(np.sqrt(1+x**2*(RC)**2))
+plt.polar(y,phi,'b-')
+>>>>>>> V353: Fucking Arschloch Polarplot am Arsch
 plt.savefig('build/dplot.pdf')
 
 
