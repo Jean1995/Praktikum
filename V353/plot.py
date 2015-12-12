@@ -97,15 +97,18 @@ plt.clf()
 
 
 #d)
+r, k, s, i = np.genfromtxt('beispielwerted.txt', unpack=True)
+U = (k/2)/U_0
+phi = s/i * 2 * np.pi
 plt.polar(phi, U,'xr', label=r'$\text{Messwerte}  \phi $')
-RC = 4.9462 *10**(-3)
+RC = 5.47644 *10**(-3)
 #def q(x , RC):
 #    return -((x*RC)/(np.sqrt(1+x**2*(RC)**2)))/(x*RC)
 #plt.polar(x_plot, f(x_plot, 5.47 *10**(-3)), 'r-', label=r'Theoriekurve', linewidth=1)
 x = np.linspace(0, 50000, 10000000)
-phi = ((x*RC)/(np.sqrt(1+x**2*(RC)**2)))
+phi = np.arcsin(((x*RC)/(np.sqrt(1+x**2*(RC)**2))))
 y = 1/(np.sqrt(1+x**2*(RC)**2))
-plt.polar(y,phi,'b-')
+plt.polar(phi,y,'b-')
 plt.savefig('build/dplot.pdf')
 
 
