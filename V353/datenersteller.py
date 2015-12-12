@@ -28,7 +28,7 @@ np.savetxt('bc.txt', np.column_stack([f, U_C, a, b]), header="f [Hz], U_c [V], a
 #52 Messwerte
 
 t = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ,11, 12])
-t = t*10**(-6)
+t = t*200*10**(-6)
 U = np.array([0.95, 1.65, 2.1, 2.5, 2.8, 3.1, 3.3, 3.45, 3.5, 3.55, 3.65, 3.7]) # In Sekunden
 U = U*5 # Volt
 

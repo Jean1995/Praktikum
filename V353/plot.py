@@ -96,10 +96,11 @@ plt.clf()
 
 
 #d)
+x_plot = np.linspace(0, 0.5, 1000)
 plt.polar(phi, U,'xr', label=r'$\text{Messwerte}  \phi $')
 def q(x , RC):
-    return -((x*RC)/(np.sqrt(1+x**2*(RC)**2)))/(x*RC)
-plt.polar(x_plot, f(x_plot, 5.47 *10**(-3)), 'r-', label=r'Theoriekurve', linewidth=1)
+    return -((x*RC)/(np.sqrt(1+x**2*(RC)**2)))
+plt.polar(x_plot, q(x_plot, 5.47 *10**(-3)), 'r-', label=r'Theoriekurve', linewidth=1)
 plt.savefig('build/dplot.pdf')
 
 
@@ -142,10 +143,10 @@ plt.clf()
 
 
 t, U = np.genfromtxt('a.txt', unpack=True)
-plt.plot(t, U,'xr', label=r'$\text{Messwerte} U_C \ /\  U_0$')
-plt.xscale('log')
-plt.ylabel(r'$\phi [\pi]$')
-plt.xlabel(r'$f [Hz]$')
+plt.plot(t, np.log(U),'xr', label=r'$\text{Messwerte} U_C \ /\  U_0$')
+#plt.yscale('log')
+plt.ylabel(r'$U(t) [V]$')
+plt.xlabel(r'$t [s]$')
 plt.legend(loc='best')
 
 U_log = np.log(U)
@@ -153,12 +154,24 @@ U_log = np.log(U)
 def lin(x, m, b):
     return m*x+b
 
-parameter, covariance = curve_fit(lin, t, U_log)
+def Uc_back(x, RC, U0):
+    return (U0 * (1-np.exp(-x/RC)))
+
+parameter2, covariance2 = curve_fit(lin, t, np.log(U))
 x_plot = np.linspace(t[0], t[10], 1000000)
 
-#plt.plot(x_plot, lin(x_plot, parameter[0], parameter[1]), 'r-', label=r'Ausgleichskurve', linewidth=1)
 
-fehler_2 = np.sqrt(np.diag(covariance))
-np.savetxt('ausgleichswerte_a.txt', np.column_stack([parameter, fehler_2]), header="m m-Fehler")
+fehler_2 = np.sqrt(np.diag(covariance2))
+RC = 1/parameter2[0]
+U0 = np.exp(parameter2[1])
+RC_err = 1/fehler_2[0]
+U0_err = np.exp(fehler_2[1])
 
+np.savetxt('ausgleichswerte_a.txt', np.column_stack([RC, RC_err]), header="m m-Fehler") # -1/m = RC weil wegen ist so
+
+#plt.plot(x_plot, Uc_back(x_plot, RC,U0), 'r-', label=r'Ausgleichskurve', linewidth=1)
+
+plt.plot(x_plot, lin(x_plot, parameter2[0], parameter2[1]), 'b-', label=r'Ausgleichskurve', linewidth=1)
+
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/aplot.pdf')
