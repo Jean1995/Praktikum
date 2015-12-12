@@ -106,7 +106,6 @@ x = np.linspace(0, 50000, 10000000)
 phi = ((x*RC)/(np.sqrt(1+x**2*(RC)**2)))
 y = 1/(np.sqrt(1+x**2*(RC)**2))
 plt.polar(y,phi,'b-')
->>>>>>> V353: Fucking Arschloch Polarplot am Arsch
 plt.savefig('build/dplot.pdf')
 
 
