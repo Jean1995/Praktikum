@@ -119,39 +119,38 @@ plt.savefig('build/dplot.pdf')
 
 
 
-
-
-
-# Beispielplot
-x = np.linspace(0, 10, 1000)
-y = x ** np.sin(x)
-plt.plot(x, y, label='Kurve')
-plt.xlabel(r'$\alpha \:/\: \si{\ohm}$')
-plt.ylabel(r'$y \:/\: \si{\micro\joule}$')
-plt.legend(loc='best')
-
-# in matplotlibrc leider (noch) nicht möglich
-plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('build/plot.pdf')
+#
+#
+#
+## Beispielplot
+#x = np.linspace(0, 10, 1000)
+#y = x ** np.sin(x)
+#plt.plot(x, y, label='Kurve')
+#plt.xlabel(r'$\alpha \:/\: \si{\ohm}$')
+#plt.ylabel(r'$y \:/\: \si{\micro\joule}$')
+#plt.legend(loc='best')
+#
+## in matplotlibrc leider (noch) nicht möglich
+#plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+#plt.savefig('build/plot.pdf')
 
 
 # Beispieltabelle
-a = np.linspace(1, 10, 10)
-b = np.linspace(11, 20, 10)
-write('build/tabelle.tex', make_table([a, b], [4, 2]))   # [4,2] = Nachkommastellen
+#a = np.linspace(1, 10, 10)
+#b = np.linspace(11, 20, 10)
+#write('build/tabelle.tex', make_table([a, b], [4, 2]))   # [4,2] = Nachkommastellen
 
 
 # Beispielwerte
 
 
-c = ufloat(0, 0)
-write('build/wert_a.tex', make_SI(c*1e3, r'\joule\per\kelvin\per\gram' ))
+#c = ufloat(0, 0)
+#write('build/wert_a.tex', make_SI(c*1e3, r'\joule\per\kelvin\per\gram' ))
 
 plt.clf()
 
-
 t, U = np.genfromtxt('a.txt', unpack=True)
-plt.plot(t, np.log(U),'xr', label=r'$\text{Messwerte} U_C \ /\  U_0$')
+plt.plot(t, U,'xr', label=r'$\text{Messwerte} U_C \ /\  U_0$')
 #plt.yscale('log')
 plt.ylabel(r'$U(t) [V]$')
 plt.xlabel(r'$t [s]$')
@@ -165,21 +164,22 @@ def lin(x, m, b):
 def Uc_back(x, RC, U0):
     return (U0 * (1-np.exp(-x/RC)))
 
-parameter2, covariance2 = curve_fit(lin, t, np.log(U))
-x_plot = np.linspace(t[0], t[10], 1000000)
+parameter2, covariance2 = curve_fit(Uc_back, t, U)
+x_plot = np.linspace(t[0], t[8], 1000000)
 
 
 fehler_2 = np.sqrt(np.diag(covariance2))
-RC = 1/parameter2[0]
-U0 = np.exp(parameter2[1])
-RC_err = 1/fehler_2[0]
-U0_err = np.exp(fehler_2[1])
+RC = parameter2[0]
+U0 = parameter2[1]
+RC_err = fehler_2[0]
+U0_err = fehler_2[1]
 
 np.savetxt('ausgleichswerte_a.txt', np.column_stack([RC, RC_err]), header="m m-Fehler") # -1/m = RC weil wegen ist so
+np.savetxt('ausgleichswerte_a2.txt', np.column_stack([U0, U0_err]), header="m m-Fehler") # -1/m = RC weil wegen ist so
 
-#plt.plot(x_plot, Uc_back(x_plot, RC,U0), 'r-', label=r'Ausgleichskurve', linewidth=1)
+plt.plot(x_plot, Uc_back(x_plot, RC,U0), 'r-', label=r'Ausgleichskurve', linewidth=1)
 
-plt.plot(x_plot, lin(x_plot, parameter2[0], parameter2[1]), 'b-', label=r'Ausgleichskurve', linewidth=1)
+#plt.plot(x_plot, lin(x_plot, parameter2[0], parameter2[1]), 'b-', label=r'Ausgleichskurve', linewidth=1)
 
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/aplot.pdf')

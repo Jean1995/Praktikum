@@ -37,8 +37,11 @@ np.savetxt('beispielwerted.txt', np.column_stack([r, k, s, i]), header="f [Hz], 
 #52 Messwerte
 
 t = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ,11, 12])
-t = t*200*10**(-6)
+t = (t)*200*10**(-6)
 U = np.array([0.95, 1.65, 2.1, 2.5, 2.8, 3.1, 3.3, 3.45, 3.5, 3.55, 3.65, 3.7]) # In Sekunden
 U = U*5 # Volt
 
+#t = np.array([0.4, 0.6, 1, 2, 3, 4, 5, 6, 10])
+#t = t * 500 * 10**(-6)
+#U = np.array([5, 6.5, 9.5, 14, 17, 18.5, 19, 19.3, 19.45])
 np.savetxt('a.txt', np.column_stack([t, U]), header="t [s], U [V]")
