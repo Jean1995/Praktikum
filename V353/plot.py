@@ -40,7 +40,7 @@ plt.xscale('log')
 fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
 
 e = unp.uarray(parameter*(-1)*10**(3), fehler*10**(3))
-write('build/wert_rc_b', make_SI(e[0], r'\milli\second', figures=1))
+write('build/wert_rc_b.tex', make_SI(e[0], r'\milli\second', figures=1))
 np.savetxt('ausgleichswerte_b.txt', np.column_stack([parameter, fehler]), header="m m-Fehler")
 #plt.ylim(0,0.4)
 #x_plot = np.linspace(0.01, 100, 1000000)
@@ -71,7 +71,7 @@ plt.plot(x_plot, f(x_plot, parameter[0]), 'r-', label=r'Ausgleichskurve', linewi
 fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
 
 e = unp.uarray(parameter*(-1)*10**(3), fehler*10**(3))
-write('build/wert_rc_c', make_SI(e[0], r'\milli\second', figures=1))
+write('build/wert_rc_c.tex', make_SI(e[0], r'\milli\second', figures=1))
 np.savetxt('ausgleichswerte_cneu.txt', np.column_stack([parameter, fehler]), header="a a-Fehler")
 
 
