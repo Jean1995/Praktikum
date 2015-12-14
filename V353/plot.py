@@ -27,7 +27,7 @@ U_0 = 9.5 #haben vergessen U_0 aufzunehmen xD, laut Bildern aber so ca 9.5, da w
 f, U_C, a, b = np.genfromtxt('bc.txt', unpack=True)
 
 U = U_C/U_0
-plt.plot(f, U,'xr', label=r'$\text{Messwerte} U_C \ /\  U_0$')
+plt.plot(f, U,'xr', label=r'$\text{Messwerte} \; U_C  /\  U_0$')
 v=f
 def h(x, m):
     return 1/np.sqrt(1+m**2*x**2)
@@ -46,8 +46,9 @@ np.savetxt('ausgleichswerte_b.txt', np.column_stack([parameter, fehler]), header
 #x_plot = np.linspace(0.01, 100, 1000000)
 #plt.plot(x_plot, f(x_plot), 'r-', label=r'\text{Theoriekurve} $U_{Br} \ /\  U_s$', linewidth=0.5)
 plt.ylabel(r'$U_C \ /\  U_0$')
-plt.xlabel(r'$\omega [Hz]$')
+plt.xlabel(r'$\omega \ /\ s^{-1}$')
 plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08) # Diese Zeile bitte in Zukunft nicht vergessen sonst unschön!
 plt.savefig('build/bplot.pdf')
 
 plt.clf()
@@ -55,7 +56,7 @@ plt.clf()
 #c)
 phi = a/b * 2 * np.pi
 
-plt.plot(v, phi,'xr', label=r'$\text{Messwerte}  \phi $')
+plt.plot(v, phi,'xr', label=r'$\text{Messwerte} \; \phi $')
 plt.xscale('log')
 plt.ylim(0, 1.6)
 plt.yticks([0, np.pi/4, np.pi/2],[r"$0$", r"$\frac{\pi}{4}$", r"$\frac{\pi}{2}$"])
@@ -90,9 +91,10 @@ np.savetxt('ausgleichswerte_cneu.txt', np.column_stack([parameter, fehler]), hea
 #plt.ylim(0,0.4)
 #x_plot = np.linspace(0.01, 100, 1000000)
 #plt.plot(x_plot, f(x_plot), 'r-', label=r'\text{Theoriekurve} $U_{Br} \ /\  U_s$', linewidth=0.5)
-plt.ylabel(r'$\phi [\pi]$')
-plt.xlabel(r'$\omega [\frac{1}{\text{s}}]$')
+plt.ylabel(r'$\phi  \ /\ \pi$')
+plt.xlabel(r'$\omega  \ /\ s^{-1}$')
 plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/cplot.pdf')
 
 
@@ -104,7 +106,7 @@ plt.clf()
 r, k, s, i = np.genfromtxt('beispielwerted.txt', unpack=True)
 U = (k/2)/U_0
 phi = s/i * 2 * np.pi
-plt.polar(phi, U,'xr', label=r'$\text{Messwerte}  \phi $')
+plt.polar(phi, U,'xr', label=r'$\text{Messwerte} \; \phi $')
 RC = 5.47644 *10**(-3)
 #def q(x , RC):
 #    return -((x*RC)/(np.sqrt(1+x**2*(RC)**2)))/(x*RC)
@@ -114,6 +116,7 @@ phi = np.arcsin(((x*RC)/(np.sqrt(1+x**2*(RC)**2))))
 y = 1/(np.sqrt(1+x**2*(RC)**2))
 plt.polar(phi,y,'b-')
 plt.xticks([0, np.pi/4, np.pi/2,  3*np.pi/4, np.pi, 5*np.pi/4, 3*np.pi/2, 7*np.pi/4],[r"$0$", r"$\frac{\pi}{4}$", r"$\frac{\pi}{2}$",  r"$\frac{3\pi}{4}$", r"$\pi$", r"$\frac{5\pi}{4}$", r"$\frac{3\pi}{2}$", r"$\frac{7\pi}{4}$"])
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08) # Diese Zeile bitte in Zukunft nicht vergessen sonst unschön!
 plt.savefig('build/dplot.pdf')
 
 
@@ -161,12 +164,7 @@ U = (-1)*(U-Umax) # Umformen zu einer Entladekurve #LikeABoss
 
 write('build/atabelle_neu.tex', make_table([t*10**3, U], [1,1]))
 
-plt.plot(t*10**(3), U,'xr', label=r'$\text{Messwerte}  /\ U_C \ /\  U_0$')
-plt.yscale('log')
-plt.ylabel(r'$U_{c} \ /\ V$')
-plt.xlabel(r'$t \ /\ ms$')
-plt.legend(loc='best')
-plt.xlim(0, 4.25)
+
 
 
 
@@ -189,6 +187,13 @@ x_plot = np.linspace(t[0], t[8], 10000)
 def Uc_back(x, RC, U0):
     return (U0 * np.exp(-x/RC))
 plt.plot(x_plot*10**(3), Uc_back(x_plot, 1/RC, U0), 'r-', label=r'Ausgleichskurve', linewidth=1)
+
+plt.plot(t*10**(3), U,'xr', label=r'$\text{Messwerte}  \; U_C \ /\  U_0$')
+plt.yscale('log')
+plt.ylabel(r'$U_{c} \ /\ V$')
+plt.xlabel(r'$t \ /\ ms$')
+plt.legend(loc='best')
+plt.xlim(0, 4.25)
 
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/aplot.pdf')

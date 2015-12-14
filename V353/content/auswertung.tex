@@ -29,7 +29,7 @@ Um nun eine lineare Ausgleichsrechnung zur Bestimmung der Zeitkonstante $\tau$ d
   \end{tabular}
 \end{table}
 
-Da sich die Werte wie in \eqref{eqn:gl} angegeben verhalten, kann nicht direkt eine lineare Ausgleichsrechnung durchgeführt werden.
+Da sich die Werte wie in \eqref{eqn:gl2} angegeben verhalten, kann nicht direkt eine lineare Ausgleichsrechnung durchgeführt werden.
 Zuerst müssen die Werte in die Form
 \begin{equation}
   U_c' = U_0 \mathrm{e}^{\frac{-t}{RC}}
@@ -62,9 +62,9 @@ Mit
 \begin{equation}
   RC = \frac{-1}{m}
 \end{equation}
-ergibt sich der bestimmte RC-Wert zu
+ergibt sich der zu bestimmende RC-Wert zu
 \begin{align}
-  a &= \input{build/wert_rc_a.tex}. \\
+  a &= \input{build/wert_rc_a.tex}.
 \end{align}
 \begin{figure}[H]
   \centering
@@ -76,23 +76,100 @@ ergibt sich der bestimmte RC-Wert zu
 \subsection{Methode der Kondensatoramplitude und Phasenverschiebung}
 Abgesehen vom Betrachten der Aufladekurve, kann die Zeitkonstante $RC$ auch durch die Amplitude der Kondensatorspannung $U_C$ und die Phasenverschiebung $\phi$ der beiden Spannungen berechnet werden.
 In Tabelle \ref{tab:2} sind die nötigen Messdaten aufgelistet.
+%
+%\begin{table}
+%  \centering
+%  \caption{Messdaten zur Frequenzabhängigen Amplituden und Phasenverschiebungsbestimmung.}
+%  \label{tab:2}
+%  \sisetup{table-format=5.2}
+%  \begin{tabular}{c c c c}
+%    \toprule
+%    {$f [\si{\hertz}]$} & {$U_C [\si{\milli\volt}]$} & {$a [\si{\micro\second}]$} & {$b [\si{\micro\second}]$}\\
+%    \midrule
+%    \input{build/bctabelle.tex}
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
+%
 
 \begin{table}
+  \hspace*{\fill}
+  \begin{subfigure}{0.40\textwidth}
   \centering
-  \caption{Messdaten}
-  \label{tab:2}
-  \sisetup{table-format=5.2}
+  \caption{Messdaten Teil 1.}
+  \label{tab:2a}
+  \sisetup{table-format=3.4}
   \begin{tabular}{c c c c}
     \toprule
-    {$\omega [\si{\hertz}]$} & {$U_C [\si{\milli\volt}]$} & {$a [\si{\micro\second}]$} & {$b [\si{\micro\second}]$}\\
+     {$f [\si{\hertz}]$} & {$U_C [\si{\milli\volt}]$} & {$a [\si{\micro\second}]$} & {$b [\si{\micro\second}]$}\\
     \midrule
-    \input{build/bctabelle.tex}
+    \input{build/frequenztabelle1.tex}
     \bottomrule
   \end{tabular}
+\end{subfigure}
+\hspace*{\fill}
+\begin{subfigure}{0.40\textwidth}
+  \centering
+  \caption{Messdaten Teil 2.}
+  \label{tab:2b}
+  \sisetup{table-format=3.4}
+  \begin{tabular}{c c c c}
+    \toprule
+    {$f [\si{\hertz}]$} & {$U_C [\si{\milli\volt}]$} & {$a [\si{\micro\second}]$} & {$b [\si{\micro\second}]$}\\
+    \midrule
+    \input{build/frequenztabelle2.tex}
+    \bottomrule
+  \end{tabular}
+\end{subfigure}
+\\
+\hspace*{\fill}
+\hspace*{\fill}
+\caption{Messdaten zur Frequenzabhängigen Amplituden und Phasenverschiebungsbestimmung.}
+\label{tab:2}
 \end{table}
+%\begin{table}
+%  \centering
+%  \caption{Messdaten zur Frequenzabhängigen Amplituden und Phasenverschiebungsbestimmung.}
+%  \label{tab:2}
+%  \sisetup{table-format=5.2}
+%  \begin{tabular}{c c c c c c c c}
+%    \toprule
+%    {$f [\si{\hertz}]$} & {$U_C [\si{\milli\volt}]$} & {$a [\si{\micro\second}]$} & {$b [\si{\micro\second}]$} & {$f [\si{\hertz}]$} & {$U_C [\si{\milli\volt}]$} & {$a [\si{\micro\second}]$} & {$b [\si{\micro\second}]$}\\
+%    \midrule
+%    \input{build/frequenztabelle.tex}
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
 
+
+%
+%\begin{table}
+%  \centering
+%  \caption{Messdaten zur Frequenzabhängigen Amplituden und Phasenverschiebungsbestimmung.}
+%  \label{tab:8}
+%  \sisetup{parse-numbers=false}
+%  \begin{tabular}{
+%    S[table-format=1.3]
+%    S[table-format=1.3]
+%    @{${}{}{}{}$}
+%    %S[table-format=1.2]
+%    @{\hspace*{3em}\hspace*{\tabcolsep}}
+%    S[table-format=1.3]
+%    S[table-format=1.3]
+%    @{${}{}{}{}$}
+%    %S[table-format=1.2]
+%  }
+%    \toprule
+%    {$v \:/\: \si{\hertz}$} & {$U_{\text{Br}} \:/\: \si{\volt}$} & {$v \:/\: \si{\hertz}$} & {$U_{\text{Br}} \:/\: \si{\volt}$} &
+%    {$v \:/\: \si{\hertz}$} & {$U_{\text{Br}} \:/\: \si{\volt}$} & {$v \:/\: \si{\hertz}$} & {$U_{\text{Br}} \:/\: \si{\volt}$} \\
+%    \midrule
+%    \input{build/frequenztabelle.tex}
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
+%
 Dabei bezeichnet $f$ die Erregerfrequenz, $a$ den Abstand zweier Nulldurchläufe und $b$ die Periodendauer der Erregerfrequenz.
-In Abbildung \ref{abb:3} werden die gemessenen mit der Erregerspannung normierten Amplituden gegen die Erregerfrequenz halblogarithmisch eingetragen.
+In Abbildung \ref{abb:3} werden die gemessenen mit der Erregerspannung normierten Amplituden gegen die Kreisfrequenz der Erregerspannung halblogarithmisch eingetragen.
 
 \begin{figure}[H]
   \centering
@@ -105,7 +182,7 @@ Mittels eines Fits der Form
 \begin{equation}
   f = \frac{1}{\sqrt{1+x²m²}},
 \end{equation}
-bekannt aus der Theorie (\ref{fuck1}), wird über eine nicht-lineare Ausgleichsrechnung die Zeitkonstante $RC$ auf
+bekannt aus der Theorie (\ref{fuck1}), wird über eine nicht-lineare Ausgleichsrechnung die Zeitkonstante $RC$ zu
 \begin{equation}
   RC = \input{build/wert_rc_b.tex}
 \end{equation}
@@ -115,7 +192,7 @@ Die Phasenverschiebung $\phi$ kann über die Formel
   \phi = \frac{a}{b} \cdot 2\pi
 \end{equation}
 bestimmt werden.
-Diese wird ebenfalls halblogarithmisch gegen die Erregerfrequenz aufgetragen.
+Diese wird ebenfalls halblogarithmisch gegen die Erregerkreisfrequenz aufgetragen.
 Dies realisiert Abbildung \ref{abb:4}.
 
 \begin{figure}[H]
@@ -147,7 +224,7 @@ Es resultiert der Polarplot in Abbildung \ref{abb:5} mit $RC = \input{build/wert
   \label{abb:5}
 \end{figure}
 
-Darin sind ein paar Probewerte eingezeichnet.
+Es werden mehrere Probewerte eingezeichnet.
 
 \subsection{Nutzung des RC-Gliedes zur Integration}
 Das RC-Glied wird, wie in der Durchführung beschrieben, zur Integration der angelegten Spannung genutzt.
@@ -185,7 +262,7 @@ Abbildung \ref{fig:rechteck_s} zeigt das am Oszillographen abgelesene Bild.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[height=4.5cm]{oz6.png}
+  \includegraphics[height=4.5cm]{oz7.png}
   \caption{Erhaltene Kurven für Rechteckspannung.}
   \label{fig:rechteck_s}
 \end{figure}
@@ -208,7 +285,7 @@ Abbildung \ref{fig:s_s} zeigt das abgelesene Bild.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[height=4.5cm]{oz7.png}
+  \includegraphics[height=4.5cm]{oz6.png}
   \caption{Erhaltene Kurven für Dreieckspannung.}
   \label{fig:s_s}
 \end{figure}

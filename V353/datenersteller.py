@@ -19,19 +19,23 @@ b   = f*0 + 1/f*10**(6)
 U_C = np.array([18400, 17200, 15200, 13600, 12200, 10800, 9360, 8560, 7760, 7040, 6480, 6000, 5600, 5200, 4920, 4640, 4360, 4120, 3920, 3760, 3440, 3180, 2880, 2700, 2540, 2380, 2220, 2100, 2020, 1900, 1540, 1270, 1100, 960, 856, 768, 628, 544, 476, 424, 380, 300, 256, 192, 154, 128, 110, 97.6, 86.4, 77.6, 52, 39.2])
 U_C = U_C/2
 f = f*2*np.pi
-write('build/bctabelle.tex', make_table([f, U_C, a, b], [0,0,0,0]))
+write('build/bctabelle.tex', make_table([f/(2*np.pi), U_C, a, b], [0,0,0,0]))
+
+
+ftab1, ftab2 = np.array_split(f/(2*np.pi), 2)
+atab1, atab2 = np.array_split(a, 2)
+btab1, btab2 = np.array_split(b, 2)
+Utab1, Utab2 = np.array_split(U_C, 2)
+
+write('build/frequenztabelle1.tex', make_table([ftab1, atab1, btab1, Utab1], [0, 0, 0 ,0]))
+write('build/frequenztabelle2.tex', make_table([ftab2, atab2, btab2, Utab2], [0, 0, 0 ,0]))
+
+
 U_C = U_C * 10**(-3)
 a   = a * 10**(-6)
 b   = b * 10**(-6)
 np.savetxt('bc.txt', np.column_stack([f, U_C, a, b]), header="f [Hz], U_c [V], a [s], b [s]")
 
-
-ftab1, ftab2 = np.array_split(f, 2)
-atab1, atab2 = np.array_split(a, 2)
-btab1, btab2 = np.array_split(b, 2)
-Utab1, Utab2 = np.array_split(U_C, 2)
-
-write('build/frequenztabelle.tex', make_table([ftab1, atab1, btab1, Utab1, ftab2, atab2, btab2, Utab2], [0, 4, 0, 4, 0, 4, 0 ,4]))
 
 
 r = np.array([50, 100, 150, 200, 250, 300, 400, 500, 600, 1000, 1500, 2500, 7000, 40000, 100000])
