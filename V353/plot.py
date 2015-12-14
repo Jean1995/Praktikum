@@ -25,29 +25,28 @@ from scipy import signal
 #b)
 U_0 = 9.5 #haben vergessen U_0 aufzunehmen xD, laut Bildern aber so ca 9.5, da wir daran ja nicht rumgeschraubt haben
 f, U_C, a, b = np.genfromtxt('bc.txt', unpack=True)
-w = 2*np.pi*f
 
 U = U_C/U_0
-plt.plot(w, U,'xr', label=r'$\text{Messwerte} U_C \ /\  U_0$')
+plt.plot(f, U,'xr', label=r'$\text{Messwerte} U_C \ /\  U_0$')
 v=f
 def h(x, m):
     return 1/np.sqrt(1+m**2*x**2)
 
-parameter, covariance = curve_fit(h, w, U)
-x_plot = np.linspace(10, 10**5, 1000000)
+parameter, covariance = curve_fit(h, f, U)
+x_plot = np.linspace(10, 10**6, 1000000)
 
 plt.plot(x_plot, h(x_plot, parameter[0]), 'r-', label=r'Ausgleichskurve', linewidth=1)
 plt.xscale('log')
 fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
 
+e = unp.uarray(parameter*(-1)*10**(3), fehler*10**(3))
+write('build/wert_rc_b', make_SI(e[0], r'\milli\second', figures=1))
 np.savetxt('ausgleichswerte_b.txt', np.column_stack([parameter, fehler]), header="m m-Fehler")
-c = ufloat(parameter[0], fehler[0])
-write('build/wert_rc_b.tex', make_SI(-c*10**3, r'\milli\second' ))
 #plt.ylim(0,0.4)
 #x_plot = np.linspace(0.01, 100, 1000000)
 #plt.plot(x_plot, f(x_plot), 'r-', label=r'\text{Theoriekurve} $U_{Br} \ /\  U_s$', linewidth=0.5)
 plt.ylabel(r'$U_C \ /\  U_0$')
-plt.xlabel(r'$\omega$')
+plt.xlabel(r'$\omega [Hz]$')
 plt.legend(loc='best')
 plt.savefig('build/bplot.pdf')
 
@@ -56,23 +55,23 @@ plt.clf()
 #c)
 phi = a/b * 2 * np.pi
 
-plt.plot(w, phi,'xr', label=r'$\text{Messwerte}  \phi $')
+plt.plot(v, phi,'xr', label=r'$\text{Messwerte}  \phi $')
 plt.xscale('log')
 plt.ylim(0, 1.6)
 plt.yticks([0, np.pi/4, np.pi/2],[r"$0$", r"$\frac{\pi}{4}$", r"$\frac{\pi}{2}$"])
 def f(x, a):
     return np.arctan(a*x)
 
-parameter, covariance = curve_fit(f, w, phi)
-x_plot = np.linspace(0, 10**5, 1000000)
+parameter, covariance = curve_fit(f, v, phi)
+x_plot = np.linspace(0, 10**6, 1000000)
 
 plt.plot(x_plot, f(x_plot, parameter[0]), 'r-', label=r'Ausgleichskurve', linewidth=1)
 
 fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
 
+e = unp.uarray(parameter*(-1)*10**(3), fehler*10**(3))
+write('build/wert_rc_c', make_SI(e[0], r'\milli\second', figures=1))
 np.savetxt('ausgleichswerte_cneu.txt', np.column_stack([parameter, fehler]), header="a a-Fehler")
-c = ufloat(-parameter[0], fehler[0])
-write('build/wert_rc_c.tex', make_SI(-c*10**3, r'\milli\second' ))
 
 
 
@@ -114,6 +113,7 @@ x = np.linspace(0, 50000, 10000000)
 phi = np.arcsin(((x*RC)/(np.sqrt(1+x**2*(RC)**2))))
 y = 1/(np.sqrt(1+x**2*(RC)**2))
 plt.polar(phi,y,'b-')
+plt.xticks([0, np.pi/4, np.pi/2,  3*np.pi/4, np.pi, 5*np.pi/4, 3*np.pi/2, 7*np.pi/4],[r"$0$", r"$\frac{\pi}{4}$", r"$\frac{\pi}{2}$",  r"$\frac{3\pi}{4}$", r"$\pi$", r"$\frac{5\pi}{4}$", r"$\frac{3\pi}{2}$", r"$\frac{7\pi}{4}$"])
 plt.savefig('build/dplot.pdf')
 
 

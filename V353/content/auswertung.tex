@@ -73,9 +73,81 @@ ergibt sich der bestimmte RC-Wert zu
   \label{fig:plot_a}
 \end{figure}
 
-\subsection{Messung der Spannungsamplitude und Phasenverschiebung in Abhängigkeit von der Frequenz}
+\subsection{Methode der Kondensatoramplitude und Phasenverschiebung}
+Abgesehen vom Betrachten der Aufladekurve, kann die Zeitkonstante $RC$ auch durch die Amplitude der Kondensatorspannung $U_C$ und die Phasenverschiebung $\phi$ der beiden Spannungen berechnet werden.
+In Tabelle \ref{tab:2} sind die nötigen Messdaten aufgelistet.
 
-% Tabelle und so hier bla
+\begin{table}
+  \centering
+  \caption{Messdaten}
+  \label{tab:2}
+  \sisetup{table-format=5.2}
+  \begin{tabular}{c c c c}
+    \toprule
+    {$\omega [\si{\hertz}]$} & {$U_C [\si{\milli\volt}]$} & {$a [\si{\micro\second}]$} & {$b [\si{\micro\second}]$}\\
+    \midrule
+    \input{build/bctabelle.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Dabei bezeichnet $f$ die Erregerfrequenz, $a$ den Abstand zweier Nulldurchläufe und $b$ die Periodendauer der Erregerfrequenz.
+In Abbildung \ref{abb:3} werden die gemessenen mit der Erregerspannung normierten Amplituden gegen die Erregerfrequenz halblogarithmisch eingetragen.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{bplot.pdf}
+  \caption{Normierte Kondensatoramplituden.}
+  \label{abb:3}
+\end{figure}
+
+Mittels eines Fits der Form
+\begin{equation}
+  f = \frac{1}{\sqrt{1+x²m²}},
+\end{equation}
+bekannt aus der Theorie (\ref{fuck1}), wird über eine nicht-lineare Ausgleichsrechnung die Zeitkonstante $RC$ auf
+\begin{equation}
+  RC = \input{build/wert_rc_b.tex}
+\end{equation}
+bestimmt.\\
+Die Phasenverschiebung $\phi$ kann über die Formel
+\begin{equation}
+  \phi = \frac{a}{b} \cdot 2\pi
+\end{equation}
+bestimmt werden.
+Diese wird ebenfalls halblogarithmisch gegen die Erregerfrequenz aufgetragen.
+Dies realisiert Abbildung \ref{abb:4}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{cplot.pdf}
+  \caption{Phasenverschiebungen.}
+  \label{abb:4}
+\end{figure}
+
+Erneut wird eine Funktion der Art
+\begin{equation}
+  f = \arctan(mx),
+\end{equation}
+identisch (\ref{eqn:4}), gefittet.
+Die nicht-lineare Ausgleichsrechnung lässt auf den Wert
+\begin{equation}
+  RC = \input{build/wert_rc_c.tex}
+\end{equation}
+schließen.\\
+Mit letzterem Wert kann ein Polarplot erstellt werden.
+Der Winkel $\phi$ beschreibt die Phasenverschiebung, der Radius hingegen die normierte Amplitude der Kondensatorspannung.
+Die Phasenverschiebung wird nach Formel (\ref{fuck2}) berechnet und die normierte Amplitude ergibt sich aus Gleichung (\ref{fuck1}).
+Es resultiert der Polarplot in Abbildung \ref{abb:5} mit $RC = \input{build/wert_rc_c.tex}$.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{dplot.pdf}
+  \caption{Polarplot.}
+  \label{abb:5}
+\end{figure}
+
+Darin sind ein paar Probewerte eingezeichnet.
 
 \subsection{Nutzung des RC-Gliedes zur Integration}
 Das RC-Glied wird, wie in der Durchführung beschrieben, zur Integration der angelegten Spannung genutzt.
