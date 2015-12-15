@@ -35,7 +35,7 @@ def h(x, m):
 parameter, covariance = curve_fit(h, f, U)
 x_plot = np.linspace(10, 10**6, 1000000)
 
-plt.plot(x_plot, h(x_plot, parameter[0]), 'r-', label=r'Ausgleichskurve', linewidth=1)
+plt.plot(x_plot, h(x_plot, parameter[0]), 'b-', label=r'Ausgleichskurve', linewidth=1)
 plt.xscale('log')
 fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
 
@@ -66,7 +66,7 @@ def f(x, a):
 parameter, covariance = curve_fit(f, v, phi)
 x_plot = np.linspace(0, 10**6, 1000000)
 
-plt.plot(x_plot, f(x_plot, parameter[0]), 'r-', label=r'Ausgleichskurve', linewidth=1)
+plt.plot(x_plot, f(x_plot, parameter[0]), 'b-', label=r'Ausgleichskurve', linewidth=1)
 
 fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
 
@@ -186,7 +186,7 @@ write('build/wert_rc_a.tex', make_SI(c*10**3, r'\milli\second' ))
 x_plot = np.linspace(t[0], t[8], 10000)
 def Uc_back(x, RC, U0):
     return (U0 * np.exp(-x/RC))
-plt.plot(x_plot*10**(3), Uc_back(x_plot, 1/RC, U0), 'r-', label=r'Ausgleichskurve', linewidth=1)
+plt.plot(x_plot*10**(3), Uc_back(x_plot, 1/RC, U0), 'b-', label=r'Ausgleichskurve', linewidth=1)
 
 plt.plot(t*10**(3), U,'xr', label=r'$\text{Messwerte}  \; U_C \ /\  U_0$')
 plt.yscale('log')
