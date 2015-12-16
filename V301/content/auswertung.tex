@@ -1,6 +1,6 @@
 \section{Auswertung}
 \label{sec:Auswertung}
-Der Eigenwiderstand des verwendeten Voltmeters beträgt $R_v=\SI{10}{\mega\ohm}$, dessen systematischer Fehler liegt bei $\num{+-1.5}\%$, der des Amperemeters beträgt $\num{+-3}\%$.
+Der Eigenwiderstand des verwendeten Voltmeters beträgt $R_v=\SI{10}{\mega\ohm}$, dessen statistischer Fehler liegt bei $\num{+-1.5}\%$, der des Amperemeters beträgt $\num{+-3}\%$.
 \subsection{Monozelle und Gegenspannung}
 \label{ch:auswertung}
 Der wie in der Durchführung beschriebene gemessene Wert für die Leerlaufspannung der Monozelle beträgt $U_{0,\text{mono}} = \SI{1.55}{\volt}$.
@@ -74,24 +74,24 @@ und für die gegenläufige Schaltung
   U_k(I) = U_0 + R_iI
 \end{equation}
 gilt.
-Zur Berechnung der jeweiligen Leerspannung und des Innenwiderstandes wird die Methode der linearen Regression,
-\begin{align}
-  m &= \frac{ n \sum_{i=1}^n x_i y_i - \sum_{i=1}^n x_i \sum_{i=1}^n y_i }{n\sum_{i=1}^n x_i^2 - ( \sum_{i=1}^n x_i )^2}  \label{eqn:2}\\
-  \notag\\
-  b &= \frac{ \sum_{i=1}^n x_i^2 \cdot \sum_{i=1}^n y_i - \sum_{i=1}^n x_i \cdot \sum_{i=1}^n x_i y_i}{n\sum_{i=1}^n x_i^2 - ( \sum_{i=1}^n x_i )^2},
-  \label{eqn:3}
-\end{align}
-bei $n$ Messwerten, gewählt.
-\\
-Die Standardabweichungen berechnen sich zu
-\begin{align}
-  \sigma_m &= \sqrt{ \sigma_y^2 \frac{n}{n \sum_{i=1}^n x_i^2 - (\sum_{i=1}^n x)^2} }
-  \label{eqn:4}\\
-  \notag\\
-  \sigma_b &= \sqrt{ \sigma_y^2 \frac{\sum_{i=1}^n x_i^2}{n \sum_{i=1}^n x_i^2 - (\sum_{i=1}^n x)^2} }
-  \label{eqn:5}
-\end{align}
-für die Steigung $m$, welche für den Innenwiderstand $R_i$ steht, und für den y-Achsenabschnitt $b$, der die Leerlaufspannung $U_0$ darstellt.\cite{fehler}
+%Zur Berechnung der jeweiligen Leerspannung und des Innenwiderstandes %wird die Methode der linearen Regression,
+%\begin{align}
+%  m &= \frac{ n \sum_{i=1}^n x_i y_i - \sum_{i=1}^n x_i \sum_{i=1}^n %y_i }{n\sum_{i=1}^n x_i^2 - ( \sum_{i=1}^n x_i )^2}  \label{eqn:2}\\
+%  \notag\\
+%  b &= \frac{ \sum_{i=1}^n x_i^2 \cdot \sum_{i=1}^n y_i - \sum_{i=1}^n %x_i \cdot \sum_{i=1}^n x_i y_i}{n\sum_{i=1}^n x_i^2 - ( \sum_{i=1}^n %x_i )^2},
+%  \label{eqn:3}
+%\end{align}
+%bei $n$ Messwerten, gewählt.
+%\\
+%Die Standardabweichungen berechnen sich zu
+%\begin{align}
+%  \sigma_m &= \sqrt{ \sigma_y^2 \frac{n}{n \sum_{i=1}^n x_i^2 - %(\sum_{i=1}^n x)^2} }
+%  \label{eqn:4}\\
+%  \notag\\
+%  \sigma_b &= \sqrt{ \sigma_y^2 \frac{\sum_{i=1}^n x_i^2}{n %\sum_{i=1}^n x_i^2 - (\sum_{i=1}^n x)^2} }
+%  \label{eqn:5}
+%\end{align}
+%für die Steigung $m$, welche für den Innenwiderstand $R_i$ steht, und %für den y-Achsenabschnitt $b$, der die Leerlaufspannung $U_0$ %darstellt.\cite{fehler}
 Daraus folgen die jeweiligen Werte
 \begin{align*}
   U_{0,{\text{mono}}}  &= \input{build/mono_u0.tex}  & R_{i,\text{mono}}  &= \input{build/mono_ri.tex},\\
@@ -166,12 +166,12 @@ Hieraus ergibt sich für die Messung der Rechteckspannung der in Abbildung \ref{
 \end{figure}
 Analog zur Rechnung bei der Monozelle sowie bei der Gegenspannung werden mit SciPy Ausgleichsgeraden erstellt.
 Dabei werden die Messwerte an die Funktion \ref{eqn:mxb} gefittet, so dass aus den errechneten Parametern nach \ref{eqn:uk} der Innenwiderstand $R_i$ und die Leerspannung $U_0$ abgelesen werden können.
-Der y-Achsenabschnitt, die Steigung sowie deren Fehler berechnen sich nach (\ref{eqn:2}), (\ref{eqn:3}), (\ref{eqn:4}) und (\ref{eqn:5}), so dass sich die Werte
+Der y-Achsenabschnitt, die Steigung sowie deren Fehler werden mit SciPy bestimmt, so dass sich die Werte
 \begin{align*}
   U_{0,{\text{rechteck}}}  &= \input{build/rechteck_u0.tex},  & R_{i,\text{rechteck}}  &= \input{build/rechteck_ri.tex},\\
   U_{0,{\text{sinus}}} &= \input{build/sinus_u0.tex}, & R_{i,\text{sinus}} &= \input{build/sinus_ri.tex}
 \end{align*}
-ergeben
+ergeben.
 
 \subsection{Leistung im Belastungswiderstand}
 Im Folgenden werden die Messergebnisse der Monozellenmessung aus Tabelle \ref{tab:1} betrachtet.
