@@ -24,6 +24,9 @@ Cs = 0.037*10**(-9)
 R = 48
 
 
+
+
+
 w2 = unp.sqrt((1/C + 2/C_k)/L) #kk die angegebene Formel war falsch, BESTE  w+
 w1 = w2*0 + 1/np.sqrt(L*C) # Ich benutze das Array w2 um ein leeres Array w2 zu bekommen was die richtige Anzahl an Elemente hat #ThugLife  w-
 ws = (abs(w2 - w1))/2 #Schwebungsfrequenzen
@@ -36,9 +39,10 @@ np.savetxt('daten2.txt', np.column_stack([unp.nominal_values(w1/(2*math.pi)), un
 rel_fehler = unp.nominal_values((abs(ex-verh))/verh*100)
 
 
-#write('build/wr_ws_verhaeltnis.tex', make_table([ex, C_k*10**(9), wr*10**(-3), ws*10**(-3),verh, rel_fehler], [1,1,1,1,1,1,1,1,1, 2]))
+write('build/wr_ws_verhaeltnis.tex', make_table([unp.nominal_values(ex), C_k*10**(9), unp.nominal_values(wr*10**(-3)), unp.nominal_values(ws*10**(-3)),verh, rel_fehler], [0,1,2,2,2,1,2]))
 
-w2_neu = unp.sqrt(( (1/(C+Cs) + 2/C_k))/L ) #da C_alt ersetzt wurde durch C_ges = C_alt + Cs
+#w2_neu = unp.sqrt(( (1/(C+Cs) + 2/C_k))/L ) #da C_alt ersetzt wurde durch C_ges = C_alt + Cs
+w2_neu = 1 / unp.sqrt( L * ( (1/C + 2/C_k)**(-1) + Cs )  )
 w1_neu = w2_neu*0 + 1/unp.sqrt(L* (C+Cs))
 ws_neu = (abs(w1_neu - w2_neu))/2 #Schwebungsfrequenzen
 wr_neu = (w1_neu + w2_neu)/2 # Resonanzfrequenzen
@@ -46,7 +50,7 @@ verh_neu = wr_neu/ws_neu
 
 rel_fehler_neu = unp.nominal_values((abs(ex-verh_neu))/verh_neu*100)
 
-#write('build/wr_ws_verhaeltnis_neu.tex', make_table([ex, C_k*10**(9), wr_neu*10**(-3), ws_neu*10**(-3),verh_neu, rel_fehler_neu], [1,1,1,1,1,1,1,1,1, 2]))
+write('build/wr_ws_verhaeltnis_neu.tex', make_table([unp.nominal_values(ex), C_k*10**(9), unp.nominal_values(wr_neu*10**(-3)), unp.nominal_values(ws_neu*10**(-3)),verh_neu, rel_fehler_neu], [0,1,2,2,2,1,2]))
 np.savetxt('daten3.txt', np.column_stack([unp.nominal_values(w1_neu), unp.nominal_values(w2_neu)]), header="w1neu, w2neu")
 np.savetxt('daten4.txt', np.column_stack([unp.nominal_values(w1_neu/(2*math.pi)), unp.nominal_values(w2_neu/(2*math.pi))]), header="v1neu, v2neu")
 
@@ -54,14 +58,14 @@ np.savetxt('daten4.txt', np.column_stack([unp.nominal_values(w1_neu/(2*math.pi))
 #b)
 
 C_k, f1, f2 = np.genfromtxt('b.txt', unpack=True)
-C_k = C_k*10**(-9)
+#C_k = C_k*10**(-9)
 f1   = f1*10**(-3)
 f2   = f2*10**(-3)
 
 rel_fehler_1 = ((abs(f1-w1_neu*10**(-3)/(2*math.pi)))/(w1_neu*10**(-3)/(2*math.pi))*100)
 rel_fehler_2 = unp.nominal_values((abs(f2-w2_neu*10**(-3)/(2*math.pi)))/(w2_neu*10**(-3)/(2*math.pi))*100)
 
-#write('build/vergleichdirekt.tex', make_table([f1, w1_neu*10**(-3)/(2*math.pi),rel_fehler_1, f2, w2_neu*10**(-3)/(2*math.pi), rel_fehler_2], [2,2,2,2,2,2]))
+write('build/vergleichdirekt.tex', make_table([C_k*10**9, f2, w2_neu*10**(-3)/(2*math.pi), rel_fehler_2], [3,2,2,2,2]))
 
 # U=30V
 vpeak1 = 30395.15

@@ -4,19 +4,26 @@
 Zunächst wird die in der Durchführung (\ref{sec:d0}) beschriebene Justierung durchgeführt.
 Nach Bestimmung der Resonanzfrequenz des fest justieren Stromkreises sowie der Justierung des regelbaren Stromkreises ergibt sich eine Resonanzfrequenz von
 \begin{align*}
-\nu_{\text{resonanz}} = \SI{30.49}{\kilo\hertz}.
+\nu_{\text{res}} = \SI{30.49}{\kilo\hertz}.
 \end{align*}
-
+Der Theoriewert der Resonanzfrequenz berechnet sich nach \eqref{eqn:omega1} zu
+\begin{align*}
+  \nu_{\text{res,t}} = \SI{31.26}{\kilo\hertz},
+\end{align*}
+so dass sich eine relative Abweichung von $\nu_{\text{res}}$ zu $\nu_{\text{res,t}}$ von
+\begin{align*}
+  f_{\text{res}} = \SI{2.46}{\percent}
+\end{align*}
+ergibt.
+Dabei wird die relative Abweichung eines Messwertes zu seinem Theoriewert hier und in allen folgenden Rechnungen nach
+\begin{equation}
+f = \frac{\lvert N - x \rvert }{N}
+\label{eqn:rel_err}
+\end{equation}
+mit einem Theoriewert $N$ sowie einem Messwert $x$ berechnet.
 \subsection{Bestimmung der Schwebungsfrequenzen}
 Das Verhältnis der Resonanzfrequenzen $\omega_r$ und der Schwebungsfrequenzen $\omega_s$ wird, wie in der Durchführung (\ref{sec:d1}) beschrieben sowie in Abbildung \ref{fig:4} skizziert, bestimmt.
-Dabei werden dem Versuchsaufbau die Werte
-\begin{align*}
-  L &= \SI{32.351}{\milli\henry} \\
-  C &= \SI{0.8015}{\nano\farad} \\
-  C_{\text{sp}} &= \SI{0.037}{\nano\farad} \\
-  \increment C_k &= \SI{\pm 0.5}{\percent}
-\end{align*}
-entnommen.
+
 Tabelle \ref{tab:1} gibt die Messdaten sowie Theoriewerte an.
 
 %\OverfullCenter{
@@ -25,9 +32,9 @@ Tabelle \ref{tab:1} gibt die Messdaten sowie Theoriewerte an.
   \caption{Messdaten für die Messung der Schwebungsfrequenzen}
   \label{tab:1}
   \sisetup{table-format=3.4}
-  \begin{tabular}{c c c c c c c c c c c c}
+  \begin{tabular}{c c c c c c c c c}
     \toprule
-    {$N$} & {$\increment N $} & {$ C_k [\si{\nano\farad}] $} & {$\increment C_k [\si{\nano\farad}] $} & {$ \omega_r [\si{\kilo\second\tothe{-1}}] $} & {$\increment \omega_r [\si{\kilo\second\tothe{-1}}] $} & {$ \omega_s [\si{\kilo\per\second}] $} & {$\increment \omega_s [\si{\kilo\per\second}] $} & {$\frac{\omega_r}{\omega_s}_{\text{}}$} & {$\increment \frac{\omega_r}{\omega_s}_{\text{}}$} & {f [\%]} \\
+    {$N$} & {$ C_k [\si{\nano\farad}] $} & {$\increment C_k [\si{\nano\farad}] $} & {$ \omega_r [\si{\kilo\hertz}] $} & {$ \omega_s [\si{\kilo\hertz}] $} & {$\frac{\omega_r}{\omega_s}_{\text{}}$} & {$\increment \frac{\omega_r}{\omega_s}_{\text{}}$} & {f [\%]} \\
     \midrule
     \input{build/wr_ws_verhaeltnis.tex}
     \bottomrule
@@ -38,33 +45,23 @@ Tabelle \ref{tab:1} gibt die Messdaten sowie Theoriewerte an.
 
 Hierbei beschreibt $N$ die Anzahl der Maxima der Resonanzfrequenz pro halber Periode der Schwebungsfrequenz, $C_K$ beschreibt die jeweils betrachtete Justierung des Koppelkondensators $C_k$.
 Die Werte für $\omega_r$ und $\omega_s$ berechnen sich nach \eqref{eqn:omega_s} und \eqref{eqn:omega_r}, $\frac{\omega_r}{\omega_s}$ gibt das Verhältnis der beiden theoretischen Größen an.
-Zuletzt wird die relative Abweichung
-\begin{equation}
-f = \frac{\lvert N - x \rvert }{x}
-\label{eqn:rel_err}
-\end{equation}
-mit $x = \frac{\omega_r}{\omega_s}$ der experimentell abgelesenen Werte zu den Theoriewerten angegeben.\\
-
-Die hier berechneten Fehler sowie alle folgenden fehlerbehafteten Messgrößen berechnen sich nach dem Gaußschen Fehlerfortpflanzungsgesetz
-\begin{equation}
-\increment{f} = \sqrt{\Bigl(\frac{\partial f}{\partial x_1}\increment{x_1}\Bigr)^2 + \Bigl(\frac{\partial f}{\partial x_2}\increment{x_2}\Bigr)^2 + \dotsc + \Bigl(\frac{\partial f}{\partial x_n}\increment{x_n}\Bigr)^2}
-\end{equation}
-für eine Funktion $f(x_1,x_2, \dotsc ,x_n)$, bei der die Größen $x_1, x_2, \dotsc , x_n$ voneinander unabhängig sind.
+Zuletzt wird die relative Abweichung der experimentell abgelesenen Werte zu den Theoriewerten angegeben.\\
+Die hier berechneten Fehler sowie alle folgenden fehlerbehafteten Messgrößen berechnen sich nach dem Gaußschen Fehlerfortpflanzungsgesetz.
 Für den Fehler von $\omega_r$ von $\omega_s$ ergibt sich die Fehlerformel
 \begin{equation}
-\increment{\omega_{r/s} = \frac{1}{ C_k^2 L \sqrt{ \frac{\frac{1}{C} + \frac{2}{C_k }}{L} } }   \increment{C_k}}.
+\increment{\omega_{r/s} = \frac{1}{ C_k^2 L \sqrt{ \frac{1}{C} + \frac{2}{C_k }  }   \increment{C_k}}}.
 %  \increment{\omega_r} = \sqrt{ \Biggl( \frac{1}{2} \biggl( \frac{-C}{2 \sqrt{LC}^3 } - \frac{\frac{1}{C} + \frac{2}{C_k} }{2 L^2 \sqrt{ \frac{\frac{1}{C} + \frac{2}{C_k }}{L} } } \biggr)   \increment{L} \Biggr)^2 + \Biggl( \frac{1}{2} \biggl( \frac{-L}{2 \sqrt{LC}^3 } - \frac{1}{2 C^2 L \sqrt{ \frac{\frac{1}{C} + \frac{2}{C_k }}{L} } } \biggr)   \increment{C} \Biggr)^2  + \Biggl(\frac{-1}{ C_k^2 L \sqrt{ \frac{\frac{1}{C} + \frac{2}{C_k }}{L} } } \biggr)   \increment{C_k} \Biggr)^2   }
 \end{equation}
 Bei dem direkten Vergleich der Theoriewerte mit den abgelesenen Werten fällt eine systematische Abweichung auf, so dass $N$, abgesehen von den beiden Kondensatoren mit den größten Kapazitäten, eine Abweichung nach unten besitzt.
 Um diesen Fehler zu beheben, wird nun bei der Berechnung der Theoriewerte ebenfalls die reale Kapazität $C_{\text{sp}}$ der Spule berücksichtigt.
-Im Gegensatz zu \eqref{eqn:omega1} und \eqref{eqn:omega1} ergeben sich nun für die korrigierte Bestimmung
+Im Gegensatz zu \eqref{eqn:omega1} und \eqref{eqn:omega2} ergeben sich nun für die korrigierte Bestimmung
 \begin{equation}
   \omega_{1'} = \frac{1}{\sqrt{L(C+C_{\text{sp}})}}
   \label{eqn:omega1_neu}
 \end{equation}
 sowie
 \begin{equation}
-  \omega_{2'} = \sqrt{\frac{ \frac{1}{C+C_{\text{sp}}} + \frac{2}{C_k} }{ L }}.
+  \omega_{2'} = \frac{ 1}{  \sqrt{\Bigl( \bigl( \frac{1}{C} + \frac{2}{C_k}  \bigr)^{-1} + C_{\text{sp}} \Bigr) L }}.
   \label{eqn:omega2_neu}
 \end{equation}
 Hiermit ergeben sich die in Tabelle \ref{tab:2} angegebenen Werte.
@@ -73,9 +70,9 @@ Hiermit ergeben sich die in Tabelle \ref{tab:2} angegebenen Werte.
   \caption{Messdaten für die Messung der Schwebungsfrequenzen unter Berücksichtigung von $C_{\text{sp}}$}
   \label{tab:2}
   \sisetup{table-format=3.4}
-  \begin{tabular}{c c c c c c c c c c c c}
+  \begin{tabular}{c c c c c c c c c}
     \toprule
-    {$N'$} & {$\increment N' $} & {$ C_k' [\si{\nano\farad}] $} & {$\increment C_k' [\si{\nano\farad}] $} & {$ \omega_r' [\si{\kilo\second\tothe{-1}}] $} & {$\increment \omega_r' [\si{\kilo\second\tothe{-1}}] $} & {$ \omega_s' [\si{\kilo\per\second}] $} & {$\increment \omega_s' [\si{\kilo\per\second}] $} & {$\frac{\omega_r'}{\omega_s'}_{\text{}}$} & {$\increment \frac{\omega_r'}{\omega_s'}_{\text{}}$} & {f' [\%]} \\
+    {$N'$} & {$ C_k' [\si{\nano\farad}] $} & {$\increment C_k' [\si{\nano\farad}] $} & {$ \omega_r' [\si{\kilo\hertz}] $} & {$ \omega_s' [\si{\kilo\hertz}] $} & {$\frac{\omega_r'}{\omega_s'}_{\text{}}$} & {$\increment \frac{\omega_r'}{\omega_s'}_{\text{}}$} & {f' [\%]} \\
     \midrule
     \input{build/wr_ws_verhaeltnis_neu.tex}
     \bottomrule
@@ -85,16 +82,30 @@ Hiermit ergeben sich die in Tabelle \ref{tab:2} angegebenen Werte.
 \subsection{Bestimmung der Fundamentalfrequenzen}
 
 Die Fundamentalfrequenzen werden, wie in der Durchführung (\ref{sec:d2}) beschrieben mithilfe von Lissajous-Figuren bestimmt.
-In Tabelle \ref{tab:3} werden die gemessenen Fundamentalfrequenzen $\nu_{1,\text{gem}}$ und $\nu_{2,\text{gem}}$ sowie die mit Hilfe von \eqref{eqn:omega1_neu} und \eqref{eqn:omega2_neu} bestimmten Werte $\nu_{1,\text{ber}}$ und $\nu_{2,\text{ber}}$ angegeben.
+Der gemessene Wert von $\nu_{1,\text{gem}}$ wird für alle Koppelkondensatoren zu
+\begin{align*}
+  \nu_{1,\text{gem}} = \SI{30.30}{\kilo\hertz}
+\end{align*}
+bestimmt. Nach Formel \ref{eqn:omega1_neu} ergibt sich ein Theoriewert von
+\begin{align*}
+   \nu_{1,\text{ber}} = \SI{30.56}{\kilo\hertz},
+\end{align*}
+so dass sich eine relative Abweichung des experimentell bestimmten Wertes von $\nu_1$ zum Theoriewert von
+\begin{align*}
+  f_{\nu_1} = \SI{0.84}{\percent}
+\end{align*}
+ergibt.\\
+Die Werte der zweiten Fundamentalfrequenz $\nu_2$ sind nach Formel \ref{eqn:omega2_neu} von der Kapazität des Koppelkondensators abhängig.
+Dementsprechend werden in Tabelle \ref{tab:3} die gemessenen Fundamentalfrequenzen $\nu_{2,\text{gem}}$ sowie die mit Hilfe von \eqref{eqn:omega2_neu} bestimmten Werte $\nu_{2,\text{ber}}$ angegeben.
 Zusätzlich wird die relative Abweichung der gemessenen zu den berechneten Frequenzwerten nach \eqref{eqn:rel_err} berechnet und angegeben.
 \begin{table}[H]
   \centering
   \caption{Gemessene und berechnete Frequenzen}
   \label{tab:3}
   \sisetup{table-format=2.2}
-  \begin{tabular}{c c c c c c c}
+  \begin{tabular}{c c c c c}
     \toprule
-    {$\nu_{1,\text{gem}} [\si{\kilo\hertz}]$} & {$\nu_{1,\text{ber}} [\si{\kilo\hertz}]$} & {$f [\%]$} & {$\nu_{2,\text{gem}} [\si{\kilo\hertz}]$} & {$\nu_{2,\text{ber}} [\si{\kilo\hertz}]$} & {$\increment f_{2,\text{ber}} [\si{\kilo\hertz}]$} & {$f [\%]$} \\
+    {$C_k [\si{\nano\farad}]$} & {$\nu_{2,\text{gem}} [\si{\kilo\hertz}]$} & {$\nu_{2,\text{ber}} [\si{\kilo\hertz}]$} & {$\increment \nu_{2,\text{ber}} [\si{\kilo\hertz}]$} & {$f [\%]$} \\
     \midrule
     \input{build/vergleichdirekt.tex}
     \bottomrule
@@ -102,7 +113,7 @@ Zusätzlich wird die relative Abweichung der gemessenen zu den berechneten Frequ
 \end{table}
 Der Fehler von $\nu_{2,\text{ber}}$ berechnet sich zu
 \begin{equation}
-\increment{\nu_{2,\text{ber}}} = \frac{1}{2 \pi\, C_k^2 L \sqrt{ \frac{\frac{1}{C+C_s} + \frac{2}{C_k}}{L} } } \increment{C_k}.
+\increment{\nu_{2,\text{ber}}} =  \frac{C^2 L}{2\pi (2C+C_k)^2 \Bigl( \frac{L(C C_k + 2 C C_s + C_k C_s)}{2C+C_k} \Bigr)^{1.5} } \increment{C_k}.
 \end{equation}
 
 \subsection{Bestimmung eines Frequenzspektrums}
@@ -120,16 +131,25 @@ Die Peaks treten für
   \tau_2 &= \SI{552}{\milli\second}.
 \end{align*}
 auf, wobei $\tau_1$ die Zeit vom Beginn des Frequenzdurchlaufes zum ersten Peak ist sowie $\tau_2$ die Zeit bis zum zweiten Peak.
+Die Frequenzen der Peaks bestimmen sich für einen linearen Frequenzdurchlauf innerhalb von einer Sekunde durch
+\begin{align}
+  \nu_{\text{peak}} = (\nu_{\text{end}} - \nu_{\text{start}}) \tau + \nu_{\text{start}}.
+\end{align}
 Hieraus lassen sich die Frequenzen der Peaks bestimmen zu
 \begin{align*}
-  \nu_1 &= \SI{30395}{\hertz} \\
+  \nu_1 &= \SI{30390}{\hertz} \\
   \nu_2 &= \SI{46590}{\hertz}.
 \end{align*}
-Berechnet man zusätzlich die zu diesen Frequenzen erreichten Stromwerte, so erhalten wir nach \eqref{eqn:idoof}
+Die relativen Abweichungen zu den nach \ref{eqn:omega1_neu} bzw. \ref{eqn:omega2_neu} bestimmten Theoriewerten ergeben sich nach \eqref{eqn:rel_err} zu
 \begin{align*}
-  I_{2,1} &= \SI{0.0155}{\ampere} \\
-  I_{2,2} &= \SI{0.0103}{\ampere}.
+  f_{\nu_1} &= \SI{0.56}{\percent} \\
+  f_{\nu_2} &= \SI{1.95}{\percent}.
 \end{align*}
+%Berechnet man zusätzlich die zu diesen Frequenzen erreichten Stromwerte, so erhalten wir nach \eqref{eqn:idoof}
+%\begin{align*}
+%  I_{2,1} &= \SI{0.0155}{\ampere} \\
+%  I_{2,2} &= \SI{0.0103}{\ampere}.
+%\end{align*}
 %
 %
 %

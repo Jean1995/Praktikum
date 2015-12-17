@@ -1,18 +1,19 @@
-\section{Durchführung}
+\section{Aufbau und Durchführung}
 \label{sec:Durchführung}
 %\subsection{Aufbau}
-%Die Schwebungen werden mit einem Schwingkreis, wie in Abbildung \ref{fig:1}, untersucht.
-
-
-
-
-
-
+Die Schwebungen werden mit einem Schwingkreis, wie in Abbildung \ref{fig:schwingkreis} aus der Theorie, untersucht.
+Dabei werden dem Versuchsaufbau die Werte
+\begin{align*}
+  L &= \SI{32.351}{\milli\henry} \\
+  C &= \SI{0.8015}{\nano\farad} \\
+  C_{\text{sp}} &= \SI{0.037}{\nano\farad} \\
+  \increment C_k &= \SI{\pm 0.5}{\percent}
+\end{align*}
+entnommen, wobei $C$ die Kapatät der Kondensatoren, $\increment C_k$ den Fehler der jeweiligen Koppelkondensatoren, $L$ die Induktivität der Spule und $C_{\text{sp}}$ dessen reale Kapazität angibt.
 
 
 \subsection{Justierungen}
 \label{sec:d0}
-Die Schwebungen werden mit einem Schwingkreis, wie in Abbildung \ref{fig:schwingkreis} aus der Theorie, untersucht.
 Bevor die Messreihen beginnen, müssen gewisse Justierungen getroffen werden.
 Um, wie in der Theorie beschrieben, einen möglichst guten Energieaustausch zu gewährleisten, sollten die beiden Schwingkreise die selbe Resonanzfrequenz besitzen.
 Dazu wird zuerst die Schaltung aus Abbildung \ref{fig:2} nachgebaut.
@@ -56,7 +57,7 @@ Die Abbildung \ref{fig:4} realisiert dies.
 \begin{figure}[H]
   \centering
   \includegraphics[height=6cm]{a.png}
-  \caption{1. Messreihe. \cite{sample}}
+  \caption{Aufbau zur Bestimmung der Schwebungsfrequenzen. \cite{sample}}
   \label{fig:4}
 \end{figure}
 
@@ -73,13 +74,13 @@ Hierzu wird die Schaltung aus Abbildung \ref{fig:5} nachgebaut.
 \begin{figure}[H]
   \centering
   \includegraphics[height=6cm]{b.png}
-  \caption{2. und 3. Messreihe.}
+  \caption{Aufbau zur Bestimmung der Fundamentalfrequenzen sowie des Frequenzspektrums. \cite{sample}}
   \label{fig:5}
 \end{figure}
 
 Der Generator führt dem Stromkreis wieder eine Sinusspannung zu, die von dem X-Eingang des Oszilloskops abgegriffen wird.
 Jetzt wird über die Lissajous-Figur die Resonanzfrequenz ermittelt.
-Dies wird wider für verschiedene $C_k$ wiederholt.\\
+Dies wird wieder für verschiedene $C_k$ wiederholt.\\
 \subsection{Bestimmung eines Frequenzspektrums}
 \label{sec:d3}
 Zuletzt soll der Verlauf der beiden Ströme $I_2$ und $I_k$ untersucht werden.
