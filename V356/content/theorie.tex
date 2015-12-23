@@ -1,5 +1,5 @@
 \section{Theorie}
-Im vorliegenden Experiment wird eine LC-Kette, bestehend aus alternierenden Kapazitäten $C_1$ und $C_2$, genauer im Kapitel \ref{sec:Aufbau} beschrieben, untersucht werden.
+Im vorliegenden Experiment wird eine LC-Kette, bestehend aus alternierenden Kapazitäten $C_1$ und $C_2$, genauer im Kapitel \ref{sec:Aufbau} beschrieben, untersucht.
 Bevor die theoretischen Grundlagen dieser Schaltung erläutert werden, sollen zunächst grundlegendere Zusammenhänge erklärt werden, die für die weitere Erläuterungen vonnöten sind.
 \label{sec:Theorie}
 \subsection{Theoretische Grundlagen}
@@ -36,6 +36,7 @@ sowie
 \end{equation}
 
 \subsection{Dispersionsrelation einer LC-Kette}
+\label{sec:dispersion}
 Ein repräsentativer Ausschnitt der LC-Kette ist in Abbildung \ref{tfig:1} dargestellt.
 \begin{figure}[H]
   \centering
@@ -64,7 +65,7 @@ Hierbei bezeichnet $\theta$ die Phasenänderung pro Kettenglied sowie $\omega$ d
 Durch Einsetzen von \eqref{eqn:l1} in \eqref{eqn:dif1} sowie \eqref{eqn:l2} in \eqref{eqn:dif2} erhält man durch Umformungen und Anwendung der Eulerformel die Beziehungen
 \begin{align}
 U_{0,1} \Bigl( \frac{2}{L} - \omega^2 C_1  \Bigr) - U_{0,2} \frac{2 \cos (\theta)}{L} &= 0, \\
--U_{0,1} \frac{2 \cos (\theta)}{L} - \omega^2 C_1 + U_{0,2} \Bigl( \frac{2}{L} - \omega^2 C_2  \Bigr)  &= 0.
+-U_{0,1} \frac{2 \cos (\theta)}{L} + U_{0,2} \Bigl( \frac{2}{L} - \omega^2 C_2  \Bigr)  &= 0.
 \end{align}
 Dieses Gleichungssystem lässt sich schreiben als
 \begin{align*}
@@ -144,7 +145,7 @@ ergibt sich
 A(t) + A'(t) = 2 A_0 \cos{(\omega t - \theta)} \cos{(\frac{1}{2} (\omega - \omega')t - (\theta - \theta'))}.
 \end{equation}
 Dieses Phänomen, bei dem eine Welle mit Überlagerungsfrequenz durch eine einhüllende Welle mit Resonanzfrequenz entsteht, bezeichnet man als Schwebung.
-Die Gruppengeschindigkeit $v_{\text{gr}}$ entspricht nun der Ausbreitungsgeschwindigkeit eines Schwebungsmaximas.
+Die Gruppengeschwindigkeit $v_{\text{gr}}$ entspricht nun der Ausbreitungsgeschwindigkeit eines Schwebungsmaximums.
 Dieses ergibt sich somit zu
 \begin{equation}
   \label{eqn:gruppe}
@@ -155,4 +156,96 @@ Angewendet auf die in Formel \ref{eqn:dispersion} gefundene Dispersionsrelation 
   v_{\text{Ph}} = \frac{\omega}{\arcsin{\Bigl( \frac{1}{2} L \omega^2 (C_1 + C_2) - \frac{1}{4} L^2 \omega^4 C_1 C_2   \Bigr)}}
 \end{equation}
 als Phasengeschwindigkeit sowie nach kurzer Rechnung auch die Gruppengeschwingkeit.
-Diese Rechnung sei dem aufmerksamen Leser als Übung überlassen.
+Letztere Rechnung sei dem aufmerksamen Leser als Übung überlassen.
+\subsection{Widerstand der LC-Kette}
+\label{sec:widerstand}
+Von Interesse bei der LC-Kette ist ebenfalls der sogenannte Eingangswiderstand $Z$, welcher das Verhältnis des am ersten Kondensator der Kette anliegenden Spannung und des in die LC-Kette fließenden Stromes angibt.
+Betrachtet man exemplarisch eine in Abbildung \ref{tfig:4} dargestellte normale LC-Kette mit Kapazität $\frac{C}{2}$ am ersten Kondensator, so gilt am eingezeichneten Punkt $P_0$ mithilfe der Knotenregel \eqref{eqn:knotenregel}
+\begin{equation}
+  I_0 - i \omega \frac{C}{2} U_0 + \frac{U_1 - U_0}{i \omega L} = 0.
+\end{equation}
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=5cm]{wellenwiderstand.png}
+  \caption{Exemplarischer Ausschnitt des Anfangs einer normalen LC-Kette.}
+  \label{tfig:4}
+\end{figure}
+Mithilfe des Ansatzes
+\begin{equation}
+  U_1 = U_0 \mathrm{e}^{-i \theta}
+\end{equation}
+sowie der Dispersionsrelation
+\begin{equation}
+  \omega^2 = \frac{2}{LC} (1-\cos{(\theta)})
+\end{equation}
+für eine normale LC-Kette ohne alternierende Kapazitäten, welche wie im Kapitel \ref{sec:Theorie} beschrieben analog bestimmt werden kann, folgt für den Eingangswiderstand der Wert
+\begin{equation}
+Z(\omega) = \sqrt{\frac{L}{C}} \frac{1}{1 - \frac{1}{4} \omega^2 L C}.
+\end{equation}
+Dieser ist reell, so dass es zu keiner Phasenverschiebung zwischen Eingangsspannung und Eingangsstrom kommt.
+Zudem fällt auf, dass für Frequenzen unterhalb der Grenzfrequenz
+\begin{align*}
+  \omega_G = \sqrt{\frac{2}{LC}}
+\end{align*}
+der Wellenwiderstand annähernd $\frac{L}{C}$ beträgt.
+Analog zu dieser Überlegung soll für $\omega << \omega_G$ die Näherung
+\begin{equation}
+  \label{eqn:irgendwas}
+  Z(\omega) = \sqrt{\frac{2L}{C_1 + C_2}}
+\end{equation}
+für die LC-Kette mit alternierenden Kapazitäten genügen.
+Es bleibt zu erwähnen, dass man mithilfe eines ohmschen Widerstandes mit ebendiesen Wert als Abschluss der LC-Kette eine unendliche LC-Kette simulieren kann.
+Dies wird dann als Abschluss der LC-Kette mit dem Wellenwiderstand $Z$ bezeichnet.
+Genauer wird dieses Verhalten im folgenden Kapitel \ref{sec:verhalten} analysiert.
+\subsection{Verhalten der LC-Kette in Abhängigkeit des Abschlusswiderstandes}
+\label{sec:verhalten}
+Es wird nun das Reflexionsverhalten des Endes einer LC-Kette, über welches eine reale LC-Kette verständlicherweise verfügen muss, diskutiert.
+Am Ende der Kette, an welcher sich ein im Allgemeinen komplexer Abschlusswiderstand $R$ befinden soll, gelten nach der Knotenregel \eqref{eqn:knotenregel} sowie der Maschenregel \eqref{eqn:maschenregel} die Beziehungen
+\begin{align}
+  U_R &= U_e + U_{\text{ref}}, \\
+  I_R &= I_e + I_{\text{ref}},
+\end{align}
+wobei $U_R$ die am Abschlusswiderstand anliegende Spannung, $U_e$ die Spannung der einlaufenden Welle sowie $U_ref$ die Spannung der gegebenenfalls reflektierten Welle beschreibt.
+Analoges gilt für die Ströme.
+Mithilfe des in Kapitel \ref{sec:Theorie} hergeleiteten Begriffs des Wellenwiderstandes $Z$, welcher für die LC-Kette gültig sein soll, folgt für das Verhältnis der Spannungen der eingehenden sowie reflektierten Welle das Verhältnis
+\begin{equation}
+  \frac{U_{\text{ref}}}{U_e} = \frac{R - Z}{R + Z}.
+\end{equation}
+Durch geeignete Wahl von $R$ kann das Reflexionsverhalten nun beeinflusst werden.
+So folgt, dass bei der Wahl $R=\infty$, welches einem offenen Ende der Kette entspricht, die eingehende Spannung ohne Phasensprung vollständig reflektiert wird, während bei $R=0$, welches einem kurzgeschlossenen Ende entspricht, die eingehende Spannung mit Phasensprung von $\pi$ vollständig reflektiert wird.
+Eine weitere Möglichkeit ist der in Kapitel \ref{sec:widerstand} bereits besprochene Abschluss mit dem Wellenwiderstand, wobei hier $U_{\text{ref}} = 0$ folgt und somit keine Reflexion der eingehenden Welle stattfindet.
+Wird nun das offene bzw. kurzgeschlossene Ende betrachtet, so erhält man eine hinlaufende Welle der Form
+\begin{align*}
+  A_h = A_0 \cos{(\omega t - n \theta)}
+\end{align*}
+sowie eine rücklaufende Welle mit
+\begin{align*}
+  A_{r, \infty} = A_0 \cos{(\omega t + n \theta)}
+\end{align*}
+für das offene Ende, bzw.
+\begin{align*}
+  A_{r, 0} = - A_0 \cos{(\omega t + n \theta)}
+\end{align*}
+für das kurzgeschlossene Ende.
+Mit Hilfe von Additionstheroemen lässt sich die Überlagerung dieser Wellen beschreiben, was zu stehenden Wellen der Form
+\begin{equation}
+  A_{\text{ges}, \infty} = 2 A_0 \cos{(\omega t)} \cos{(n \theta)}
+  A_{\text{ges}, 0} = 2 A_0 \sin{(\omega t)} \sin{(n \theta)}
+\end{equation}
+führt.
+Für das offene Ende folgt also, dass sich Schwingungskonten, d.h. Orte mit dauerhaft verschwindener Amplitude, für
+\begin{align*}
+  n_{(2k+1)} \theta = (2k+1) \frac{\pi}{2}, \quad k \in \mathbb{N}
+\end{align*}
+auftreten.
+Am Ende der Kette muss dementsprechend ein Spannungsbauch auftreten, damit eine stehende Welle entstehen kann.
+Analog hierzu kann man sehen, dass bei dem kurzgeschlossenen Ende Schwingungsknoten für
+\begin{align*}
+  n_{k} \theta = k \pi, \quad k \in \mathbb{N}
+\end{align*}
+auftreten, am Ende der Kette muss ein Spannungsknoten herrschen.
+Außerdem folgt, dass für beide Fälle die Bedingung
+\begin{align*}
+  n_{\text{max}} \theta_k = k \pi, \quad k = 1, 2, \ldots, n_{\text{max}}
+\end{align*}
+erfüllt sein muss.
