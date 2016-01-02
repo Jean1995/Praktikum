@@ -77,7 +77,7 @@ Hieraus wird geschlussfolgert, dass der Messwert für die Phasenverschiebung $\a
 Dementsprechend ist für dieses $\alpha$ kein Messwert angegeben.
 Mithilfe von Formel \ref{eqn:dispersion} können die Theoriekurven der Dispersionsrelation bestimmt werden.
 Diese sind zusammen mit den gemessenen Werten in Abbildung \ref{fig:dispersion_fertig} dargestellt.
-\begin{figure}
+\begin{figure}[H]
   \centering
   \includegraphics{dispersionsrelation.pdf}
   \caption{Gemessene sowie theoretisch bestimmte Dispersionsrelation der alternierenden Kette.}
@@ -102,3 +102,75 @@ Die gemessenen Werte sind in Tabelle \ref{tab:eigenfrequenzen} angegeben.
     \bottomrule
   \end{tabular}
 \end{table}
+Diese Daten werden nun zusammen mit den Theoriewerten der Phasengeschwindigkeit, welche sich nach Formel \ref{eqn:pha} berechnen, in Abbildung \ref{fig:phasengeschwindigkeiten} dargestellt.
+\begin{figure}[H]
+  \centering
+  \includegraphics{eigenfrequenzen.pdf}
+  \caption{Phasengeschwindigkeiten der Eigenfrequenzen der LC-Kette sowie dazugehörige Theoriewerte.}
+  \label{fig:dispersion_fertig}
+\end{figure}
+Für die Theoriekurve ergeben sich zwei Abschnitte des Graphen, da die Phasengeschwindigkeit im Bereich der Grenzfrequenzen nicht definiert ist.
+
+\subsection{Bestimmung der Form der stehenden Wellen}
+Um die Form der stehenden Wellen zu analyiseren, werden, wie in der Durchführung beschrieben, die Amplituden der einzelnen Kondensatoren betrachtet.
+Exemplarisch wird die Form der stehenden Wellen für die Frequenzen
+\begin{align*}
+  \nu_1 &= \SI{7806}{\hertz} & \nu_2 &= \SI{15540}{\hertz}
+\end{align*}
+betrachtet.
+Hierzu werden die gemessenen Spannungen an den Kapatitäten gegen die jeweilige Nummer $n$ des Kondensators abgetragen, wobei zu beachten ist, dass die Spannungen jeweils den Effektivwert der Spannung darstellen.
+In Tabelle \ref{tab:stehend1} sind die gemessenen Werte angegeben.
+\begin{table}
+  \centering
+  \caption{Gemessene Spannungen an den einzelnen Kondensatoren der $LC$-Kette für die Eigenfrequenzen $\nu_1$ und $\nu_2$.}
+  \label{tab:stehend}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c c c}
+    \toprule
+    {$n$} & {$U_{\nu_1} [\si{\volt}]$} & {$U_{\nu_2} [\si{\volt}]$}\\
+    \midrule
+    \input{build/dtabelle.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Zudem wird die erwartete stehende Welle, welche sich nach Formel \ref{eqn:ste_1} berechnet, eingetragen.
+Die Daten sind in den Abbildungen \ref{fig:stehend1} sowie \ref{fig:stehend2} dargestellt.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{stehende_welle_1.pdf}
+  \caption{Form der stehenden Welle für die Eigenfrequenz $\nu_1$.}
+  \label{fig:stehend1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{stehende_welle_2.pdf}
+  \caption{Form der stehenden Welle für die Eigenfrequenz $\nu_2$.}
+  \label{fig:stehend2}
+\end{figure}
+
+Wird das Experiment, wie in der Durchführung beschrieben, mit zugeschalteten Wellenwiderstand für $\nu_1$ durchgeführt, ergeben sich erwartungsgemäßg stehende Wellen der in Formel \ref{eqn:ste_2} angegebenen Form, das heißt mit Spannungsknoten am Ende und Anfang der $LC$-Kette.
+Die gemessenen Werte sind in Tabelle \ref{tab:stehend2} angegeben.
+\begin{table}[H]
+  \centering
+  \caption{Gemessene Spannungen an den einzelnen Kondensatoren der $LC$-Kette für die Eigenfrequenz $\nu_1$ bei zugeschalteten Wellenwiderstand.}
+  \label{tab:stehend2}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c c}
+    \toprule
+    {$n$} & {$U_{\nu_1} [\si{\milli\volt}]$}\\
+    \midrule
+    \input{build/dtabelle2.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+Da sich ein nicht unerheblicher Offset bei der Spannung ergibt, werden in Abbildung \ref{fig:stehend3} die gemessenen Werte ohne Theoriekurve angegeben.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics{stehende_welle_3.pdf}
+  \caption{Form der stehenden Welle für die Eigenfrequenz $\nu_1$ mit zugeschaltetem Wellenwiderstand.}
+  \label{fig:stehend3}
+\end{figure}

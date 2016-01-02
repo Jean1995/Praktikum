@@ -90,19 +90,63 @@ def vph(x):
     return x/np.arcsin( np.sqrt( -0.25*x**4*L**2*C1*C2+0.5*x**2*L*C1*C2*(1/C1 + 1/C2)  ))
 xplot = np.linspace(1000, 50000, 100000)
 xplot2 = np.linspace(67000, 80000, 100000)
-plt.plot(xplot, vph(2*np.pi*xplot), '-b', label='Theoriekurve: Phasengeschwindigkeit')
-plt.plot(xplot2, vph(2*np.pi*xplot), '-b', label='Theoriekurve: Phasengeschwindigkeit')
-plt.plot(c, v_ph, 'xr', label='Abgelesene Werte')
+plt.plot(0.001*xplot, 0.001*vph(2*np.pi*xplot), '-b', label='Theoriekurve: Phasengeschwindigkeit')
+plt.plot(0.001*xplot2, 0.001*vph(2*np.pi*xplot), '-b', label='Theoriekurve: Phasengeschwindigkeit')
+plt.plot(0.001*c, 0.001*v_ph, 'xr', label='Abgelesene Werte')
 plt.xlabel(r'$\nu \:/\: \si{\kilo\hertz} $')
 plt.ylabel(r'$v_{\text{Ph}} \:/\: \si{\kilo\metre\per\second}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/eigenfrequenzen.pdf')
 
+plt.clf()
+
+# D: Die (perfekte) stehende Welle
+
+d1 = np.genfromtxt('d1.txt', unpack=True)
+d1_num = np.arange(0, 15)
+plt.plot(d1_num, d1, 'xr', label='Abgelesene Werte')
+
+xplot = np.linspace(0, 14, 1000)
+plt.plot(xplot, np.abs(2.1*np.cos(np.pi*xplot/14)), '-b', label='Theoriekurve: Stehende Welle')
+
+plt.ylabel(r'$U \:/\: \si{\volt} $')
+plt.xlabel(r'$n_{\text{Kondensator}}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/stehende_welle_1.pdf')
 
 
+plt.clf()
+
+d2 = np.genfromtxt('d2.txt', unpack=True)
+d2_num = np.arange(0, 15)
+plt.plot(d2_num, d2, 'xr', label='Abgelesene Werte')
+
+xplot = np.linspace(0, 14, 1000)
+plt.plot(xplot, np.abs(1.7*np.cos(2*np.pi*xplot/14)), '-b', label='Theoriekurve: Stehende Welle')
+
+plt.ylabel(r'$U \:/\: \si{\volt} $')
+plt.xlabel(r'$n_{\text{Kondensator}}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/stehende_welle_2.pdf')
 
 
+plt.clf()
+
+d3 = np.genfromtxt('d3.txt', unpack=True)
+d3_num = np.arange(0, 15)
+plt.plot(d3_num, d3, 'xr', label='Abgelesene Werte')
+
+#xplot = np.linspace(0, 14, 1000)
+#plt.plot(xplot, 300+np.abs(300*np.sin(np.pi*xplot/14)), '-b', label='Theoriekurve: Stehende Welle')
+
+plt.ylabel(r'$U \:/\: \si{\milli\volt} $')
+plt.xlabel(r'$n_{\text{Kondensator}}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/stehende_welle_3.pdf')
 
 # Beispieltabelle
 a = np.linspace(1, 10, 10)

@@ -153,8 +153,12 @@ Dieses ergibt sich somit zu
   v_{\text{gr}} = \frac{\omega - \omega'}{\theta - \theta'} \: \stackrel{\stackrel{\omega \to \omega'}{\theta \to \theta'}}{=} \: \frac{\symup{d}\omega}{\symup{d}\theta}.
 \end{equation}
 Angewendet auf die in Formel \ref{eqn:dispersion} gefundene Dispersionsrelation für die alternierende LC-Kette ergibt sich
+%\begin{equation}
+%  v_{\text{Ph}} = \frac{\omega}{\arcsin{\Bigl( \frac{1}{2} L \omega^2 (C_1 + C_2) - \frac{1}{4} L^2 \omega^4 %C_1 C_2   \Bigr)}}
+%\end{equation}
 \begin{equation}
-  v_{\text{Ph}} = \frac{\omega}{\arcsin{\Bigl( \frac{1}{2} L \omega^2 (C_1 + C_2) - \frac{1}{4} L^2 \omega^4 C_1 C_2   \Bigr)}}
+  \label{eqn:pha}
+  v_{\text{Ph}} = \frac{\omega}{\arcsin{\Bigl( \sqrt{ \frac{-1}{4} \omega^4 L^2 C_1 C_2 + \frac{1}{2} \omega^2 L C_1 C_2 \bigl( \frac{1}{C_1}+\frac{1}{C_2}  \bigr)  }  \Bigr)}}
 \end{equation}
 als Phasengeschwindigkeit sowie nach kurzer Rechnung auch die Gruppengeschwingkeit.
 Letztere Rechnung sei dem aufmerksamen Leser als Übung überlassen.
@@ -229,10 +233,14 @@ für das offene Ende, bzw.
 \end{align*}
 für das kurzgeschlossene Ende.
 Mit Hilfe von Additionstheroemen lässt sich die Überlagerung dieser Wellen beschreiben, was zu stehenden Wellen der Form
-\begin{gather}
-  A_{\text{ges}, \infty} = 2 A_0 \cos{(\omega t)} \cos{(n \theta)} \\
+\begin{equation}
+  \label{eqn:ste_1}
+  A_{\text{ges}, \infty} = 2 A_0 \cos{(\omega t)} \cos{(n \theta)}
+\end{equation}
+\begin{equation}
+    \label{eqn:ste_2}
   A_{\text{ges}, 0} = 2 A_0 \sin{(\omega t)} \sin{(n \theta)}
-\end{gather}
+\end{equation}
 führt.
 Für das offene Ende folgt also, dass sich Schwingungskonten, d.h. Orte mit dauerhaft verschwindener Amplitude, für
 \begin{align*}
