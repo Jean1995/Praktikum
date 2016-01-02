@@ -13,9 +13,9 @@ Sie folgt unmittelbar aus der Ladungserhaltung und besagt, dass in jedem Knotenp
 \end{equation}
 Die Spannungen werden durch die Maschenregel \eqref{eqn:maschenregel} beschrieben, welche die zweite Kirchhoffsche Regel darstellt.
 Sie folgt aus dem Induktionsgesetz im Vakuum
-\begin{equation}
+\begin{align*}
 \oint \vec{E} \cdot \vec{\symup{d}s} = 0
-\end{equation}
+\end{align*}
 und besagt, dass in jeder geschlossenen Masche der Schaltung die Summe der Spannungen null ergibt:
 \begin{equation}
   \sum_{i=1}^n U_i = 0.
@@ -41,7 +41,7 @@ Ein repräsentativer Ausschnitt der LC-Kette ist in Abbildung \ref{tfig:1} darge
 \begin{figure}[H]
   \centering
   \includegraphics[height=3cm]{theorie_1.png}
-  \caption{Schematischer Ausschnitt einer LC-Kette.}
+  \caption{Schematischer Ausschnitt einer LC-Kette. \cite{sample}}
   \label{tfig:1}
 \end{figure}
 Nach Anwendung der Knotenregel \eqref{eqn:knotenregel} sowie der Maschenregel \eqref{eqn:maschenregel} und unter Berücksichtigung der in Abschnitt \ref{sec:impedanzen} angegebenen Zusammenhänge folgen die beiden gekoppelten Gleichungen
@@ -90,14 +90,15 @@ Die Dispersionskurve wird in Abbildung \ref{tfig:2} schematisch dargestellt.
 \begin{figure}[H]
   \centering
   \includegraphics[height=8cm]{dispersionskurve.png}
-  \caption{Kurve der Dispersionsrelation einer LC-Kette mit alternierenden Kapazitäten.}
+  \caption{Kurve der Dispersionsrelation einer LC-Kette mit alternierenden Kapazitäten. \cite{sample}}
   \label{tfig:2}
 \end{figure}
 Es fällt auf, dass sich die Kurve in zwei Äste aufteilt, von denen der obere Ast in Analogie zur Kristallphysik als optischer Ast, der untere als akustischer Ast bezeichnet wird.
 Zudem ergibt sich ein Frequenzbereich
-\begin{align*}
+\begin{align}
+  \label{eqn:grenzfrequenzen}
   \sqrt{\frac{2}{LC_1}} < \omega < \sqrt{\frac{2}{LC_2}},
-\end{align*}
+\end{align}
 in dem Schwingungen nicht erzeugt werden können.
 \subsection{Ausbreitungsgeschwindigkeit der Wellen}
 Die Lösungen für die Spannungen $U_n$ besitzen die, in \eqref{eqn:l1} und \eqref{eqn:l2} spezifizierte, allgemeine Form
@@ -119,7 +120,7 @@ Schematisch ist eine solche Wellengruppe in Abbilidung \ref{tfig:3} dargestellt.
 \begin{figure}[H]
   \centering
   \includegraphics[height=5cm]{wellenpaket.png}
-  \caption{Schematische Darstellung eines Wellenpaketes.}
+  \caption{Schematische Darstellung eines Wellenpaketes. \cite{sample}}
   \label{tfig:3}
 \end{figure}
 Die Ausbreitung des Maximum dieses Wellenpaketes, welches aus mehreren Wellen mit verschiedenen Frequenzen und somit unterschiedlichen Phasengeschwindigkeiten besteht, wird als Gruppengeschwindigkeit $v_{\text{gr}}$ bezeichnet.
@@ -159,7 +160,7 @@ als Phasengeschwindigkeit sowie nach kurzer Rechnung auch die Gruppengeschwingke
 Letztere Rechnung sei dem aufmerksamen Leser als Übung überlassen.
 \subsection{Widerstand der LC-Kette}
 \label{sec:widerstand}
-Von Interesse bei der LC-Kette ist ebenfalls der sogenannte Eingangswiderstand $Z$, welcher das Verhältnis des am ersten Kondensator der Kette anliegenden Spannung und des in die LC-Kette fließenden Stromes angibt.
+Von Interesse bei der LC-Kette ist ebenfalls der sogenannte Eingangswiderstand $Z$, welcher das Verhältnis der am ersten Kondensator der Kette anliegenden Spannung und des in die LC-Kette fließenden Stromes angibt.
 Betrachtet man exemplarisch eine in Abbildung \ref{tfig:4} dargestellte normale LC-Kette mit Kapazität $\frac{C}{2}$ am ersten Kondensator, so gilt am eingezeichneten Punkt $P_0$ mithilfe der Knotenregel \eqref{eqn:knotenregel}
 \begin{equation}
   I_0 - i \omega \frac{C}{2} U_0 + \frac{U_1 - U_0}{i \omega L} = 0.
@@ -167,7 +168,7 @@ Betrachtet man exemplarisch eine in Abbildung \ref{tfig:4} dargestellte normale 
 \begin{figure}[H]
   \centering
   \includegraphics[height=5cm]{wellenwiderstand.png}
-  \caption{Exemplarischer Ausschnitt des Anfangs einer normalen LC-Kette.}
+  \caption{Exemplarischer Ausschnitt des Anfangs einer normalen LC-Kette. \cite{sample}}
   \label{tfig:4}
 \end{figure}
 Mithilfe des Ansatzes
@@ -205,9 +206,9 @@ Am Ende der Kette, an welcher sich ein im Allgemeinen komplexer Abschlusswiderst
   U_R &= U_e + U_{\text{ref}}, \\
   I_R &= I_e + I_{\text{ref}},
 \end{align}
-wobei $U_R$ die am Abschlusswiderstand anliegende Spannung, $U_e$ die Spannung der einlaufenden Welle sowie $U_ref$ die Spannung der gegebenenfalls reflektierten Welle beschreibt.
+wobei $U_R$ die am Abschlusswiderstand anliegende Spannung, $U_e$ die Spannung der einlaufenden Welle sowie $U_{\text{ref}}$ die Spannung der gegebenenfalls reflektierten Welle beschreibt.
 Analoges gilt für die Ströme.
-Mithilfe des in Kapitel \ref{sec:Theorie} hergeleiteten Begriffs des Wellenwiderstandes $Z$, welcher für die LC-Kette gültig sein soll, folgt für das Verhältnis der Spannungen der eingehenden sowie reflektierten Welle das Verhältnis
+Mithilfe des in Kapitel \ref{sec:widerstand} hergeleiteten Begriffs des Wellenwiderstandes $Z$, welcher für die LC-Kette gültig sein soll, folgt für das Verhältnis der Spannungen der eingehenden sowie reflektierten Welle das Verhältnis
 \begin{equation}
   \frac{U_{\text{ref}}}{U_e} = \frac{R - Z}{R + Z}.
 \end{equation}
@@ -228,10 +229,10 @@ für das offene Ende, bzw.
 \end{align*}
 für das kurzgeschlossene Ende.
 Mit Hilfe von Additionstheroemen lässt sich die Überlagerung dieser Wellen beschreiben, was zu stehenden Wellen der Form
-\begin{equation}
-  A_{\text{ges}, \infty} = 2 A_0 \cos{(\omega t)} \cos{(n \theta)}
+\begin{gather}
+  A_{\text{ges}, \infty} = 2 A_0 \cos{(\omega t)} \cos{(n \theta)} \\
   A_{\text{ges}, 0} = 2 A_0 \sin{(\omega t)} \sin{(n \theta)}
-\end{equation}
+\end{gather}
 führt.
 Für das offene Ende folgt also, dass sich Schwingungskonten, d.h. Orte mit dauerhaft verschwindener Amplitude, für
 \begin{align*}
