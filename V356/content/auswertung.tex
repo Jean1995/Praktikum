@@ -10,7 +10,7 @@ Diese wird für die Längeneinheiten auf der $x$-Achse und die Logarithmen der F
 Alle abgelesenen Werte sind wiederum nochmals in Tabelle \ref{tab:durchlass} angegeben.\\
 \begin{figure}
   \centering
-  \includegraphics[angle=90, width=\textwidth]{aderlasskurve.png}[H]
+  \includegraphics[angle=90, width=\textwidth]{aderlasskurve.png}
   \caption{Aufgenommene Durchlasskurve der alternierenden Kette.}
   \label{fig:durchlass}
 \end{figure}
@@ -44,7 +44,7 @@ Aus diesen Längenangaben und den in der linearen Regression bestimmten Paramete
   \nu = \mathrm{e}^{m g_i + b}
 \end{equation}
 die gesuchten Grenzfrequenzen.
-Vergleicht man diese mit den aus Formel \ref{eqn:grenzfrequenzen} bestimmten Grenzfrequenzen, ergeben sich die Werte
+Vergleicht man diese mit den aus Formel \ref{eqn:grenzfrequenzen} bestimmten theoretischen Grenzfrequenzen, ergeben sich die Werte
 \begin{align*}
   \nu_{1} &= \input{g1.tex}, \\
   \nu_{1, \text{theorie}} &= \input{g1_t.tex}, \\
@@ -54,6 +54,7 @@ Vergleicht man diese mit den aus Formel \ref{eqn:grenzfrequenzen} bestimmten Gre
 
 
 \subsection{Betrachtung der Dispersionsrelation}
+\label{sec:dis}
 Es wird nun die Dispersionsrelation, wie in der Durchführung beschrieben, betrachtet.
 Dazu werden alle Frequenzen $\omega$ betrachtet, bei denen die Phasenverschiebung zwischen dem ersten und letzten $LC$-Glied ein Vielfaches von $\pi$ ist.
 Aufgrund der Tatsache, dass die $LC$-Kette aus 14 alternierenden Gliedern besteht, folgt somit die jeweilige Phasenänderung pro Kettenglied $\theta$ zu $\frac{n \pi}{14}$.
@@ -73,7 +74,7 @@ Die gemessenen Werte sind in Tabelle \ref{tab:dispersion} angegeben.
 \end{table}
 Hierbei beschreibt $\alpha$ die gemessene Phasenverschiebung zwischen dem ersten und letzten $LC$-Glied sowie $\theta$ die aus den obrigen Beobachtungen folgende Phasenverschiebung pro einzelnem Glied.
 Bei der genaueren Auswertung der Messwerte ist aufgefallen, dass sich eine Unregelmäßigkeit zwischen dem siebten und achten Messwert ergeben hat.
-Hieraus wird geschlussfolgert, dass der Messwert für die Phasenverschiebung $\alpha = 8 \pi$ versehentlich übersprungen wurde.
+Hieraus wird geschlussfolgert, dass der Messwert für die Phasenverschiebung $\alpha = 8 \pi$ übersprungen wurde.
 Dementsprechend ist für dieses $\alpha$ kein Messwert angegeben.
 Mithilfe von Formel \ref{eqn:dispersion} können die Theoriekurven der Dispersionsrelation bestimmt werden.
 Diese sind zusammen mit den gemessenen Werten in Abbildung \ref{fig:dispersion_fertig} dargestellt.
@@ -107,9 +108,11 @@ Diese Daten werden nun zusammen mit den Theoriewerten der Phasengeschwindigkeit,
   \centering
   \includegraphics{eigenfrequenzen.pdf}
   \caption{Phasengeschwindigkeiten der Eigenfrequenzen der LC-Kette sowie dazugehörige Theoriewerte.}
-  \label{fig:dispersion_fertig}
+  \label{fig:phasengeschwindigkeiten}
 \end{figure}
 Für die Theoriekurve ergeben sich zwei Abschnitte des Graphen, da die Phasengeschwindigkeit im Bereich der Grenzfrequenzen nicht definiert ist.
+Es fällt direkt auf, dass es, abgesehen vom dritten Messwert, starke systematische Abweichungen der Phasengeschwindigkeiten nach unten gibt.
+Dieser Sachverhalt, und die Tatsache, dass es sich nicht um einen Fehler in der theoretischen Betrachtung handelt, werden in der Diskussion genauer beleuchtet.
 
 \subsection{Bestimmung der Form der stehenden Wellen}
 Um die Form der stehenden Wellen zu analyiseren, werden, wie in der Durchführung beschrieben, die Amplituden der einzelnen Kondensatoren betrachtet.
@@ -118,12 +121,12 @@ Exemplarisch wird die Form der stehenden Wellen für die Frequenzen
   \nu_1 &= \SI{7806}{\hertz} & \nu_2 &= \SI{15540}{\hertz}
 \end{align*}
 betrachtet.
-Hierzu werden die gemessenen Spannungen an den Kapatitäten gegen die jeweilige Nummer $n$ des Kondensators abgetragen, wobei zu beachten ist, dass die Spannungen jeweils den Effektivwert der Spannung darstellen.
+Hierzu werden die gemessenen Spannungen an den Kapazitäten gegen die jeweilige Nummer $n$ des Kondensators abgetragen, wobei zu beachten ist, dass die Spannungen jeweils den Effektivwert der Spannung darstellen.
 In Tabelle \ref{tab:stehend1} sind die gemessenen Werte angegeben.
 \begin{table}
   \centering
   \caption{Gemessene Spannungen an den einzelnen Kondensatoren der $LC$-Kette für die Eigenfrequenzen $\nu_1$ und $\nu_2$.}
-  \label{tab:stehend}
+  \label{tab:stehend1}
   \sisetup{table-format=1.2}
   \begin{tabular}{c c c}
     \toprule
