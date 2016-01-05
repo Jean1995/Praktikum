@@ -73,7 +73,7 @@ plt.xticks([0, np.pi/4, np.pi/2,  3*np.pi/4, np.pi],[r"$0$", r"$\frac{\pi}{4}$",
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/dispersionsrelation.pdf')
 
-write('build/btabelle.tex', make_table([v*2*np.pi, theta/np.pi, theta/(14*np.pi)], [0,0, 2]))
+#write('build/btabelle.tex', make_table([v*2*np.pi, theta/np.pi, theta/(14*np.pi)], [0,0, 2]))
 
 plt.clf()
 
@@ -84,7 +84,7 @@ theta = np.array([np.pi, 2*np.pi, 3*np.pi, 4*np.pi, 5*np.pi, 6*np.pi, 7*np.pi, 9
 #theta = np.array([1 * 0.5*np.pi, 3 * 0.5*np.pi, 5 * 0.5*np.pi, 7 * 0.5*np.pi, 9 * 0.5*np.pi, 11 * 0.5*np.pi, 13 * 0.5*np.pi , 15 * 0.5*np.pi , 17 * 0.5*np.pi])
 theta = theta/14
 v_ph = (c*2*np.pi)/theta
-write('build/ctabelle.tex', make_table([c*2*np.pi, theta/np.pi, 0.001*v_ph], [0,2,0]))
+#write('build/ctabelle.tex', make_table([c*2*np.pi, theta/np.pi, 0.001*v_ph], [0,2,0]))
 
 def vph(x):
     return x/np.arcsin( np.sqrt( -0.25*x**4*L**2*C1*C2+0.5*x**2*L*C1*C2*(1/C1 + 1/C2)  ))
@@ -151,7 +151,7 @@ plt.savefig('build/stehende_welle_3.pdf')
 # Beispieltabelle
 a = np.linspace(1, 10, 10)
 b = np.linspace(11, 20, 10)
-write('build/tabelle.tex', make_table([a, b], [4, 2]))   # [4,2] = Nachkommastellen
+#write('build/tabelle.tex', make_table([a, b], [4, 2]))   # [4,2] = Nachkommastellen
 
 
 # Beispielwerte
