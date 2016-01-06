@@ -1,5 +1,6 @@
 \section{Theorie}
 \label{sec:Theorie}
+\subsection{Herleitung der Relaxationsgleichung}
 Relaxation ist ein Phänomen, welches auftritt, wenn ein System aus einem Ausgangszustand entfernt wird und nicht-oszillatorisch wieder in denselben zurückkehrt.
 Mit anderen Worten bezeichnet es einen nicht schwingenden Übergang in einen neuen Gleichgewichtszustand.
 Auf eine physikalische Größe bezogen bedeutet dies, dass deren Änderung zu einem bestimmten Zeitpunkt proportional zur Differenz der Größe zum jetzigen Zeitpunkt und eben dieser im Endzustand ist.
@@ -22,6 +23,7 @@ Daraus tropft die endgültige Relaxationsgleichung,
 \end{equation}
 
 mit der Bedingung, dass $c<0$ ist, damit A beschränkt ist, heraus.\\
+\subsection{Phänomen der Relaxation am Beispiel eines eines RC-Kreises}
 Der Relaxationsvorgang kann beispielsweise an einem RC-Kreis, wie in Abbildung \ref{fig:1}, untersucht werden.
 
 \begin{figure}[H]
@@ -33,8 +35,8 @@ Der Relaxationsvorgang kann beispielsweise an einem RC-Kreis, wie in Abbildung \
 
 Er besteht aus einem RC-Glied und einer dazu in Reihe geschalteter Spannungsquelle, die mittels Schalter überbrückt werden kann.
 Nun ist es möglich, das Relaxationsverhalten am Entlade- oder Aufladevorgang zu repräsentieren.
-Im Folgenden wird die Theorie des Aufladevorgangs erklärt.\\
-Der Schalter befindet sich dabei in Stellung 2.
+\subsubsection{Aufladevorgang des RC-Kreises}
+Beim Aufladevorgang befindet sich der Schalter in Abbildung \ref{fig:1} in Stellung 2.
 Aus der Maschenregel geht der Zusammenhang
 
 \begin{equation}
@@ -66,7 +68,8 @@ bzw.
 \end{equation}
 Daraus folgt, dass $U_C(\infty) = U_0$ und $U_C(0) = 0$, im Vergleich zu der Relaxationsgleichung (\ref{eqn:gl}).
 Die Konstante $RC$ wird Zeitkonstante des Relaxationsverhalten genannt, da sie die Geschwindigkeit beschreibt, mit der das System seinem Endzustand bzw. Gleichgewichtszustand, wie oben genannt, entgegenstrebt.\\
-Von Interesse ist auch, inwiefern sich das Relaxationsphänomen bei einer periodischen Anregung verhält.
+\subsubsection{Periodische Anregung des RC-Kreises}
+Von Interesse ist auch, inwiefern sich das Relaxationsphänomen bei einer erzwungenen Schwingung verhält.
 Es wird die Schaltung aus Abbildung \ref{fig:2} betrachtet.
 
 \begin{figure}[H]
@@ -81,7 +84,7 @@ Bei hinreichend niedrigen Frequenzen im Vergleich zur Eigenfrequenz liegt am Kon
 Bei steigender Erregerfrequenz fällt zunehmend mehr Spannung am Widerstand ab.
 Dies wird dadurch begründet, dass die Ladung eine gewisse Zeit braucht, um auf den Kondensator zu fließen.
 Wenn nun aber die Orientierung zunehmend schneller geändert wird, kommt weniger Ladung auf den Kondensator.
-Sein Widerstand strebt gegen $\infty$.
+Sein Widerstand strebt gegen Unendlich.
 Das Bauelement verhält sich somit wie ein Tiefpass.
 Aus diesen Gründen folgt, dass die Amplitude $A(\omega)$ der Kondensatorspannung $U_C$ mit zunehmender Erregerfrequenz $\omega$ erstens sinkt und sich zweitens zeitlich immer weiter asymptotisch von der Erregeramplitude $U_0$ entfernt.\\
 Nach dem Ansatz
@@ -92,7 +95,7 @@ resultiert eingesetzt in Gleichung (\ref{eqn:1}) modifiziert mit (\ref{eqn:2})
 \begin{equation}
   U_0\cos(\omega t) = -A(\omega)\omega RC\sin(\omega t + \phi) + A(\omega)\cos(\omega t+\phi). \label{eqn:3}
 \end{equation}
-Da diese Gleichung in jeder Lebenslage gelten muss, ergibt sich, nach dem Einsetzten einer Beispielzeit, der Zusammenhang
+Da diese Gleichung zu jedem Zeitpunkt gelten muss, ergibt sich, nach dem Einsetzten einer Beispielzeit, der Zusammenhang
 \begin{equation}
   \phi(\omega) = \arctan(-\omega RC). \label{eqn:4}
 \end{equation}
@@ -119,12 +122,13 @@ für die Amplitude $A(\omega)$ der Kondensatorspannung $U_C$, da für den Sinus 
   \sin(\phi) = \frac{\omega RC}{\sqrt{1 + \omega² R²C²}} \label{fuck2}
 \end{equation}
 gilt.\\
+\subsubsection{Integriereigenschaft des RC-Kreises}
 Die Formel (\ref{eqn:gl2}) im Bezug auf die Relaxationsgleichung, lässt die Vermutung aufkommen, dass es sogar möglich ist, mit einem RC-Kreis zu integrieren.
 Die bereits erwähnte Gleichung,
 \begin{equation}
   U(t) = RC\frac{\symup{d} U_C}{\symup{d} t} + U_C
 \end{equation}
-legt nahe, dass, wenn $\omega>>\frac{1}{RC}$ ist und dadurch $|U_C| << |U_R|$, sowie $|U_C| << |U|$ sind,
+legt nahe, dass, wenn $\omega \gg \frac{1}{RC}$ ist und dadurch $|U_C| \ll |U_R|$, sowie $|U_C| \ll |U|$ sind,
 \begin{equation}
   U(t) = RC\frac{\symup{d} U_C}{\symup{d} t}
 \end{equation}

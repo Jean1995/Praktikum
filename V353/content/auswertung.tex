@@ -11,7 +11,7 @@ Es ergibt sich das in Abbildung \ref{fig:oz1} dargestellte Bild am Oszillographe
   \label{fig:oz1}
 \end{figure}
 
-Hierbei ist auf der x-Achse die Zeit $t$ in $\SI{500}{\nano\second}$ pro Kästchen, auf der y-Achse die Kondensatorspannung $U_c$ in $\SI{5}{\volt}$ pro Kästchen aufgetragen.
+Hierbei ist auf der x-Achse die Zeit $t$ in $\SI{500}{\micro\second}$ pro Kästchen, auf der y-Achse die Kondensatorspannung $U_c$ in $\SI{5}{\volt}$ pro Kästchen aufgetragen.
 Um nun eine lineare Ausgleichsrechnung zur Bestimmung der Zeitkonstante $\tau$ durchführen zu können, werden dem Graphen die in Tabelle \ref{tab:werte_a} angegebenen Werte entnommen.
 
 
@@ -58,6 +58,11 @@ gefittet werden können.
 
 Die Ausgleichsrechnung wird durch die Methode der kleinsten Quadrate mit numpy in Python durchgeführt.
 Das Ergebnis ist die in Abbildung \ref{fig:plot_a} halblogarithmisch dargestellte Ausgleichsgerade.
+Die sich ergebenen Parameter des Fits sind
+\begin{align*}
+  m &= \input{build/fit_3_m.tex}, \\
+  b &= \input{build/fit_3_b.tex}.
+\end{align*}
 Mit
 \begin{equation}
   RC = \frac{-1}{m}
@@ -96,7 +101,7 @@ In Tabelle \ref{tab:2} sind die nötigen Messdaten aufgelistet.
   \hspace*{\fill}
   \begin{subfigure}{0.40\textwidth}
   \centering
-  \caption{Messdaten Teil 1.}
+  %\caption{Messdaten Teil 1.}
   \label{tab:2a}
   \sisetup{table-format=3.4}
   \begin{tabular}{c c c c}
@@ -110,7 +115,7 @@ In Tabelle \ref{tab:2} sind die nötigen Messdaten aufgelistet.
 \hspace*{\fill}
 \begin{subfigure}{0.40\textwidth}
   \centering
-  \caption{Messdaten Teil 2.}
+  %\caption{Messdaten Teil 2.}
   \label{tab:2b}
   \sisetup{table-format=3.4}
   \begin{tabular}{c c c c}
@@ -180,13 +185,19 @@ In Abbildung \ref{abb:3} werden die gemessenen mit der Erregerspannung normierte
 
 Mittels eines Fits der Form
 \begin{equation}
-  f = \frac{1}{\sqrt{1+x²m²}},
+  f = \frac{1}{\sqrt{1+x²m²}} +b,
 \end{equation}
-bekannt aus der Theorie (\ref{fuck1}), wird über eine nicht-lineare Ausgleichsrechnung die Zeitkonstante $RC$ zu
+werden die Messwerte gefittet.
+Die Parameter werden dabei zu
+\begin{align*}
+  m &= \input{build/fit_1_m.tex}, \\
+  b &= \input{build/fit_1_b.tex},
+\end{align*}
+bestimmt.
+Somit ergibt sich nach der Formel \eqref{fuck1} die Zeitkonstante $RC$ zu
 \begin{equation}
-  RC = \input{build/wert_rc_b.tex}
+  RC = \input{build/wert_rc_b.tex}.
 \end{equation}
-bestimmt.\\
 Die Phasenverschiebung $\phi$ kann über die Formel
 \begin{equation}
   \phi = \frac{a}{b} \cdot 2\pi
@@ -202,12 +213,18 @@ Dies realisiert Abbildung \ref{abb:4}.
   \label{abb:4}
 \end{figure}
 
-Erneut wird eine Funktion der Art
+An dieser Stelle wird eine Funktion der Art
 \begin{equation}
-  f = \arctan(mx),
+  f = A\arctan(mx)+b,
 \end{equation}
 identisch (\ref{eqn:4}), gefittet.
-Die nicht-lineare Ausgleichsrechnung lässt auf den Wert
+Die Parameter ergeben sich hier zu
+\begin{align*}
+  a &= \input{build/fit_2_a.tex}, \\
+  m &= \input{build/fit_2_m.tex},  \\
+  b &= \input{build/fit_2_b.tex}.
+\end{align*}
+Die nicht-lineare Ausgleichsrechnung lässt somit auf den Wert
 \begin{equation}
   RC = \input{build/wert_rc_c.tex}
 \end{equation}
@@ -219,7 +236,7 @@ Es resultiert der Polarplot in Abbildung \ref{abb:5} mit $RC = \input{build/wert
 
 \begin{figure}[H]
   \centering
-  \includegraphics{dplot.pdf}
+  \includegraphics{fake_plot.png}
   \caption{Polarplot.}
   \label{abb:5}
 \end{figure}

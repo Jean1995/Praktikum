@@ -27,22 +27,32 @@ U_0 = 9.5 #haben vergessen U_0 aufzunehmen xD, laut Bildern aber so ca 9.5, da w
 f, U_C, a, b = np.genfromtxt('bc.txt', unpack=True)
 
 U = U_C/U_0
+
 plt.plot(f, U,'xr', label=r'$\text{Messwerte} \; U_C  /\  U_0$')
+#plt.errorbar(f, U, xerr=0.0001, yerr=0.1, fmt='b.', label=r'$\text{Messwerte} \; U_C  /\  U_0$')
+
 v=f
-def h(x, m):
-    return 1/np.sqrt(1+m**2*x**2)
+def h(x, m, b):
+    return 1/np.sqrt(1+m**2*x**2) +b
 
 parameter, covariance = curve_fit(h, f, U)
 x_plot = np.linspace(10, 10**6, 1000000)
 
-plt.plot(x_plot, h(x_plot, parameter[0]), 'b-', label=r'Ausgleichskurve', linewidth=1)
+plt.plot(x_plot, h(x_plot, parameter[0], parameter[1]), 'b-', label=r'Ausgleichskurve', linewidth=1)
 plt.xscale('log')
 fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
+
+m_fit = ufloat(parameter[0], fehler[0])
+b_fit = ufloat(parameter[1], fehler[1])
+
+write('build/fit_1_m.tex', make_SI(m_fit*1000, r'\nothing\tothe{-3}', figures=1))
+write('build/fit_1_b.tex', make_SI(b_fit*1000, r'\nothing\tothe{-3}', figures=1))
+
 
 e = unp.uarray(parameter*(-1)*10**(3), fehler*10**(3))
 write('build/wert_rc_b.tex', make_SI(e[0], r'\milli\second', figures=1))
 np.savetxt('ausgleichswerte_b.txt', np.column_stack([parameter, fehler]), header="m m-Fehler")
-#plt.ylim(0,0.4)
+plt.ylim(-0.1,1.1)
 #x_plot = np.linspace(0.01, 100, 1000000)
 #plt.plot(x_plot, f(x_plot), 'r-', label=r'\text{Theoriekurve} $U_{Br} \ /\  U_s$', linewidth=0.5)
 plt.ylabel(r'$U_C \ /\  U_0$')
@@ -58,20 +68,29 @@ phi = a/b * 2 * np.pi
 
 plt.plot(v, phi,'xr', label=r'$\text{Messwerte} \; \phi $')
 plt.xscale('log')
-plt.ylim(0, 1.6)
+plt.ylim(0-0.1, np.pi*0.5+0.1)
 plt.yticks([0, np.pi/4, np.pi/2],[r"$0$", r"$\frac{\pi}{4}$", r"$\frac{\pi}{2}$"])
-def f(x, a):
-    return np.arctan(a*x)
+def f(x, a, m, b):
+    return a*np.arctan(m*x)+b
 
 parameter, covariance = curve_fit(f, v, phi)
 x_plot = np.linspace(0, 10**6, 1000000)
 
-plt.plot(x_plot, f(x_plot, parameter[0]), 'b-', label=r'Ausgleichskurve', linewidth=1)
+plt.plot(x_plot, f(x_plot, parameter[0], parameter[1], parameter[2]), 'b-', label=r'Ausgleichskurve', linewidth=1)
 
 fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
 
+
+a_fit = ufloat(parameter[0], fehler[0])
+m_fit = ufloat(parameter[1], fehler[1])
+b_fit = ufloat(parameter[2], fehler[2])
+
+write('build/fit_2_a.tex', make_SI(a_fit, r'', figures=1))
+write('build/fit_2_m.tex', make_SI(m_fit, r'', figures=1))
+write('build/fit_2_b.tex', make_SI(b_fit, r'', figures=2))
+
 e = unp.uarray(parameter*(1)*10**(3), fehler*10**(3))
-write('build/wert_rc_c.tex', make_SI(e[0], r'\milli\second', figures=1))
+write('build/wert_rc_c.tex', make_SI(e[1], r'\milli\second', figures=1))
 np.savetxt('ausgleichswerte_cneu.txt', np.column_stack([parameter, fehler]), header="a a-Fehler")
 
 
@@ -114,7 +133,7 @@ RC = 5.47644 *10**(-3)
 x = np.linspace(0, 50000, 10000000)
 phi = np.arcsin(((x*RC)/(np.sqrt(1+x**2*(RC)**2))))
 y = 1/(np.sqrt(1+x**2*(RC)**2))
-plt.polar(phi,y,'b-')
+plt.polar(phi,y,'b-', label=r'$\text{Messwerte}  \; U_C \ /\  U_0$')
 plt.xticks([0, np.pi/4, np.pi/2,  3*np.pi/4, np.pi, 5*np.pi/4, 3*np.pi/2, 7*np.pi/4],[r"$0$", r"$\frac{\pi}{4}$", r"$\frac{\pi}{2}$",  r"$\frac{3\pi}{4}$", r"$\pi$", r"$\frac{5\pi}{4}$", r"$\frac{3\pi}{2}$", r"$\frac{7\pi}{4}$"])
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08) # Diese Zeile bitte in Zukunft nicht vergessen sonst unschön!
 plt.savefig('build/dplot.pdf')
@@ -171,6 +190,8 @@ write('build/atabelle_neu.tex', make_table([t*10**3, U], [1,1]))
 def lin(x, m, b):
     return m*x+b
 
+
+
 parameter2, covariance2 = curve_fit(lin, t, np.log(U))
 fehler_2 = np.sqrt(np.diag(covariance2))
 RC = -parameter2[0]
@@ -178,22 +199,30 @@ U0 = np.exp(parameter2[1])
 RC_err = fehler_2[0]
 U0_err = np.exp(fehler_2[1])
 
+m_fit = ufloat(parameter2[0], fehler_2[0])
+b_fit = ufloat(parameter2[1], fehler_2[1])
+
+write('build/fit_3_m.tex', make_SI(m_fit, r'', figures=1))
+write('build/fit_3_b.tex', make_SI(b_fit, r'', figures=1))
+
 np.savetxt('ausgleichswerte_a.txt', np.column_stack([1/RC, 1/RC_err]), header="RC RC-Fehler")
 c = ufloat(RC, RC_err)
 c = 1/c
 write('build/wert_rc_a.tex', make_SI(c*10**3, r'\milli\second' ))
 
-x_plot = np.linspace(t[0], t[8], 10000)
+x_plot = np.linspace(t[0]-0.1, t[8]+0.1, 10000)
 def Uc_back(x, RC, U0):
     return (U0 * np.exp(-x/RC))
 plt.plot(x_plot*10**(3), Uc_back(x_plot, 1/RC, U0), 'b-', label=r'Ausgleichskurve', linewidth=1)
 
-plt.plot(t*10**(3), U,'xr', label=r'$\text{Messwerte}  \; U_C \ /\  U_0$')
+#plt.plot(t*10**(3), U,'xr', label=r'$\text{Messwerte}  \; U_C \ /\  U_0$')
+plt.errorbar(t*10**(3), U, xerr=0.0001, yerr=0.1, fmt='r.', label=r'$\text{Messwerte}  \; U_C \ /\  U_0$')
 plt.yscale('log')
 plt.ylabel(r'$U_{c} \ /\ V$')
 plt.xlabel(r'$t \ /\ ms$')
 plt.legend(loc='best')
 plt.xlim(0, 4.25)
+plt.ylim(0.001, 100)
 
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/aplot.pdf')
