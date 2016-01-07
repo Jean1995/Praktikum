@@ -2,10 +2,10 @@
 \subsection{Aufbau}
 \label{sec:Aufbau}
 Im vorliegenden Versuchsaufbau wird ein kleiner Wagen mit Rollen betrachtet, welcher sich auf einer Schiene befindet.
-Mithilfe eines befestigeten Seils, verbunden mit einem Synchronmotor, kann dieser Wagen auf der Strecke in zehn verschiedenen wählbaren konstanten Geschwindigkeitseinstellungen vorwärts oder rückwärts zurücklegen.
+Mithilfe eines befestigten Seils, verbunden mit einem Synchronmotor, kann dieser Wagen die Strecke in zehn verschiedenen konstanten Geschwindigkeitseinstellungen vorwärts oder rückwärts zurücklegen.
 Auf dem Wagen kann ein Lautsprecher befestigt werden, welcher Töne wiedergeben kann.
-Diese werden mithilfe einer frequenzstabilen Generators erzeugt.\\
-Am Ende der Strecke befindet sich ein Mikrophon, welches eine Signalspannung erzeugt die im Folgenden zur Betrachtung der aufgenommenen Wellen verwendet werden kann.\\
+Diese werden mithilfe eines frequenzstabilen Generators erzeugt.\\
+Am Ende der Strecke befindet sich ein Mikrophon, welches eine Signalspannung erzeugt, die im Folgenden zur Betrachtung der aufgenommenen Wellen verwendet werden kann.\\
 Zudem sind zwei Lichtschranken vorhanden, die an der Schiene montiert werden können und somit das Durchfahren des Wagens registrieren können.
 Sie funktionieren, indem eine Infrarot-Lichtquelle einen konstanten Lichtstrahl auf einen gegenüberliegenden Phototransistor sendet.
 Sobald die Verbindungsstrecke zwischen beiden Elementen unterbrochen wird, bricht der Strom im Transistor zusammen.
@@ -19,23 +19,24 @@ Die zehn verschidenen Wagengeschwindigkeiten können, da es sich um lineare Bewe
 Der Aufbau ist in Abbildung \ref{tfig:1} dargestellt.
 \begin{figure}
   \centering
-  \includegraphics[height=5cm]{aufbau1.png}
+  \includegraphics[height=7cm]{aufbau1.png}
   \caption{Aufbau zur Bestimmung der Wagengeschwindigkeiten.}
   \label{tfig:1}
 \end{figure}
 Mithilfe eines Maßbandes wird die Strecke zwischen zwei an der Strecke montierten Lichtschranken gemessen.
 Ein Zeitbasisgenerator liefert nun konstante Impuls im zeitlichen Abstand von $\SI{1}{\micro\second}$.
 Mithilfe eines dekadischen Untersetzes wird das Signal nun so verändert, dass die Häufigkeit der Impulse dem zeitlichen Rahmen des Experimentes angepasst wird.
-Hier sollen nur alle $\num{e-4}$ zeitliche Impulse abgegeben werden. \\
+Hier sollen nur alle $\SI{e-4}{\second}$ zeitliche Impulse abgegeben werden. \\
 Sobald der Wagen die erste Lichtschranke passiert, wird dieser Impuls von einer bistabilen Kippstufe registriert.
 Dieser speichert diesen Impuls und behält ihn solange, bis durch die zweite Lichtschranke ein weiterer Impuls abgegeben wird.
 Der gespeicherte Impuls äußert sich in einem anliegenden Potential.
-Dieses Potential wird mit einem UND-Gatter mit dem Zeitsignal des dekadischen Untersetzers verbunden und an ein Zählwerk weitergegeben.
-Dementsprechend misst das Zählwerk die Impulse und somit die Zeit die vergeht, während der Wagen sich zwischen den beiden Lichtschranken befindet.\\
-Die agegebene Messung wird für alle zehn Geschwindigkeiten jeweils fünf mal wiederholt.
+Dieses Potential wird an einem UND-Gatter mit dem Zeitsignal des dekadischen Untersetzers verbunden und an ein Zählwerk weitergegeben.
+Dementsprechend misst das Zählwerk die Impulse und somit die Zeit. die vergeht, während der Wagen sich zwischen den beiden Lichtschranken befindet.\\
+Die anegebene Messung wird für alle zehn Geschwindigkeiten jeweils fünf mal wiederholt.
 
 \subsubsection{Frequenzmessung}
-Um die Frequenzverschiebung zwischen einem bewegten Sender sowie einen festen Empfänger zu bestimmen, wird der Lautsprecher auf dem Wagen montiert.
+\label{sec:durch_fre}
+Um die Frequenzverschiebung zwischen einem bewegten Sender sowie einem festen Empfänger zu bestimmen, wird der Lautsprecher auf dem Wagen montiert.
 Es soll die Anzahl der Schwingungen, die der Empfänger in einem fest eingestellten Zeitraum registriert, bestimmt werden.
 Der Versuchsaufbau ist in Abbildung \ref{tfig:2} dargestellt.
 \begin{figure}
@@ -50,7 +51,35 @@ Mithilfe eines UND-Gatters werden, zusammen mit dem Zeitbasisgenerator, Zeitsign
 Dieser zählt die eingehenden Zeitimpulse und gibt solange ein Signal aus, bis der voreingesteller Untersetzungsfaktor erreicht ist.
 Mit ihm kann somit widerum das Zeitintervall der Messung eingestellt werden.
 Das konstante Signal des Untersetzers wird mit dem Signal der bistabilen Kippstufe an ein UND-Gatter angelegt und an das Zählwerk weitergegeben.
-Somit ist gewährleistet, dass nur während eines durch den Untersetzer festgelegten Zeitraumes die Schwingungen die der Empfänger erhält, gezählt werden.
+Somit ist gewährleistet, dass nur während eines, durch den Untersetzer festgelegten Zeitraumes, die Schwingungen, die der Empfänger erhält, gezählt werden.
 Aus der Kenntnis der Schwingungen pro Zeiteinheit kann nun die Frequenz bestimmt werden.\\
 Dieses Messverfahren wird für alle Geschwindigkeiten jeweils fünf mal für den sich vom Mikrophon entfernenden Sender sowie jeweils fünf mal für den sich zum Mikrophon zubewegenden Sender durchgeführt.
 Zusätzlich werden Messungen bei einem stehenden Wagen durchgeführt, um die Ruhefrequenz zu erhalten.
+
+\subsubsection{Bestimmung der Frequenzendifferenz mithilfe der Schwebungsmethode}
+Um die Frequenzdifferenz zwischen der Ruhefrequenz sowie der von einem ruhenden Empfänger aufgenommenen Frequenz zu ermitteln, wird die Schwebungsmethode verwendet.
+Der Versuchsaufbau ist in Abbildung \ref{tfig:3} skizziert.
+\begin{figure}
+  \centering
+  \includegraphics[height=5cm]{aufbau3.png}
+  \caption{Aufbau zur Bestimmung der Frequenzdifferenz mithilfe der Schwebungsmethode.}
+  \label{tfig:3}
+\end{figure}
+Der Lautsprecher wird neben dem Mikrofon am Ende der Schiene befestigt und in Richtung des Wagens ausgerichtet. Auf dem Wagen wird nun eine Metallplatte als Reflektor befestigt, welche die einfallenden Wellen in Richtung des Mikrofons reflektiert.
+Dementsprechend nimmt dieses sowohl die einfallenden Wellen, die direkt aus dem Lautsprecher stammen, als auch die Wellen, die von der Platte reflektiert werden, auf.
+Das aufgenommene Signal wird angemessen stark verstärkt, durch einen Gleichrichter mit Tiefpass sowie durch einen Impedanzwandler geleitet.
+Die Frequenzmessung mithilfe dieses Signals folgt analog zu dem in Kapitel \ref{sec:durch_fre} durchgeführten Vorgehen.
+
+\subsubsection{Bestimmung der Schallgeschwindigkeit}
+Zudem kann die Schallgeschwindigkeit mithilfe der Kenntnis der Ruhefrequenz $\nu_0$ und der Wellenlänge $\lambda$ bestimmt werden.
+Der dazugehörige Versuchsaufbau ist in Abbildung \ref{tfig:4} dargestellt.
+\begin{figure}
+  \centering
+  \includegraphics[height=5cm]{aufbau4.png}
+  \caption{Aufbau zur Bestimmung der Schallgeschwindigkeit.}
+  \label{tfig:4}
+\end{figure}
+Der Lautsprecher und ein Mikrophon werden hier auf einem Präzisionsschlitten mit Skala befestigt. Das vom Mikrophon aufgenommene Signal wird verstärkt und auf den Y-Eingang eines Oszillographen gegeben.
+Auf den X-Eingang wird die in den Lautsprecher eingespeiste Spannung gegeben, so dass man die Lissajous-Figuren betrachten kann.
+Der Wagen wird nun auf dem Schlitten verschoben, bis sich eine Gerade als Lissajous-Figur ergibt, die Phasenverschiebung also ein Vielfaches von $\frac{\pi}{2}$ beträgt.
+Die einzelnen Abstände zwischen diesen Punkten werden gemessen.
