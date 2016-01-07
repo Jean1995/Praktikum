@@ -1,4 +1,65 @@
 \section{Theorie}
 \label{sec:Theorie}
-
-\cite{sample}
+Der Doppler-Effekt wird beobachtet, wenn sich der Sender einer Welle und dessen Empfänger relativ zueinander bewegen.
+Der Empfänger jener Welle nimmt diese sobald eine Relativgeschwindigkeit $v$ vorliegt mit veränderter Frequenz war.
+Die Frequenzänderung $\increment \nu$ muss jedoch in Bezug auf zwei Fälle untersucht werden, wenn sich die Welle in einem Medium ausbreitet.\\
+\subsection{Empfänger bewegt sich relativ zum Ausbreitungsmedium}
+%Im ersten Fall bewegt sich der Empfänger relativ zum Ausbreitungsmedium.
+Die in diesem Fall ruhende Quelle sende die Frequenz $\nu_0$ aus, welche ohne Relativbewegung des Empfängers auch als solche wahrgenommen wird.
+Bewegt er sich aber, dann nimmt er je nach Bewegungsrichtung mehr oder weniger Wellenzüge $\increment z$ in der Zeit $\increment t$ wahr.
+Es folgt der Zusammenhang
+\begin{equation}
+  \increment z = \frac{\increment t v}{\lambda_0} \label{eqn:1},
+\end{equation}
+wobei $\lambda_0$ der Wellenlänge der ausgesendeten Welle im System der Senders entspricht.
+An einem ruhenden Empfänger laufen jedoch nur
+\begin{equation}
+  \increment n = \increment t \nu_0 \label{eqn:2}
+\end{equation}
+Schwingungen vorbei.
+Insgesamt nimmt er also
+\begin{equation}
+  \increment n + \increment z = \increment t \left( \nu_0 + \frac{v}{\lambda_0}\right) \label{eqn:3}
+\end{equation}
+Schwingungen wahr.
+Die empfangene Frequenz lautet demnach
+\begin{equation}
+  \nu_{\text{E}} = \nu_0 + \frac{v}{\lambda_0} \label{eqn:4}
+\end{equation}
+und in Bezug auf die Ausbreitungsgeschwindigkeit
+\begin{equation}
+  c = \nu_0 \lambda_0
+\end{equation}
+folgt
+\begin{equation}
+  \nu_{\text{E}} = \nu_0 \left(1 + \frac{v}{c} \right). \label{eqn:5}
+\end{equation}
+Die gesuchte Frequenzänderung $\increment \nu$ beträgt folglich
+\begin{equation}
+  \increment \nu = \nu_0 \frac{v}{c}. \label{eqn:5}
+\end{equation}
+Für eine Bewegnung zum Sender $(v>0)$ ist die empfangene Frequenz $\nu_{\text{E}}$ also größer als die Senderfequenz $\nu_0$, entsprechend anders herum kleiner.
+\subsection{Sender bewegt sich relativ zum Ausbreitungsmedium}
+Da der Sender nun in einer Zeit $\increment t$ eine gewisse Strecke zurücklegt, erscheint die Wellenlänge, die beim ruhenden Beobachter ankommt, um
+\begin{equation}
+  \increment \lambda = \frac{v}{\nu_0} \label{eqn:6}
+\end{equation}
+verkürzt.
+Für die wahrgenommene Frequenz folgt entsprechend der Zusammenhang
+\begin{equation}
+  \nu_{\text{Q}} = \frac{c}{\lambda_0-\increment \lambda}, \label{eqn:7}
+\end{equation}
+bzw.
+\begin{equation}
+  \nu_{\text{Q}} = \nu_0 \frac{1}{1-v/c}. \label{eqn:8}
+\end{equation}
+Wird dieser Ausdruck entwickelt, zeigt sich, dass je nach Art der Bewegung, unterschiedliche Frequenzen beim Beobachter ankommen.
+Ist der Betrag der Relativgeschwindigkeit sehr viel kleiner als die Ausbreitungsgeschwindigkeit wird der Unterschied zwischen (\ref{eqn:5}) und (\ref{eqn:8}) beliebig klein.
+\subsection{Der Doppler-Effekt bei elektromagnetischen Wellen}
+Wenn sich die Ausbreitungsgeschwindigkeit nun der Lichtgeschwindigkeit annähert, muss ein relativistischer Ansatz gewählt werden.
+Dies führt auf eine wahrgenommene Frequenz von
+\begin{equation}
+  \nu' = \nu_0 \frac{\sqrt{1-v²/c_0²}}{1-v/c_0}. \label{eqn:9}
+\end{equation}
+Es besteht nun kein Unterschied mehr, ob sich nun der Sender oder der Empfänger relativ zum Ausbreitungsmedium bewegt.
+Durch diesen Zusammenhang kann z.B auf eine Relativbewegung zwischen der Erde und Fixsternen oder Galaxien geschlossen werden.
