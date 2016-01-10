@@ -66,10 +66,10 @@ v = unp.uarray(rv, dv)
 
 rv = rv * 10**(2)
 dv = dv * 10**(2)
-write('build/vtabelle.tex', make_table([rv, dv], [2, 2])) # cm/s
+write('build/geschwtabelle.tex', make_table([rv, dv], [2, 2])) # cm/s
 rv = rv * 10**(-2)
 dv = dv * 10**(-2)
-np.savetxt('build/v.txt', np.column_stack([rv, dv]), header="v [m/s], Fehler [m/s]")
+np.savetxt('build/geschw.txt', np.column_stack([rv, dv]), header="v [m/s], Fehler [m/s]")
 
 
 s = np.genfromtxt('build/s.txt', unpack=True)
