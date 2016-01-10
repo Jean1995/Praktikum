@@ -55,7 +55,7 @@ np.savetxt('build/t.txt', np.column_stack([t6, t12, t18, t24, t30, t36, t42, t48
 # schon Frequenzen
 
 s = np.array([207414, 207414, 207413, 207415, 207414])
-s *=10**(-1)
+s = s*10**(-1)
 
 write('build/stabelle.tex', make_table([s], [1])) # in 1/s
 np.savetxt('build/s.txt', np.column_stack([s]), header="s [1/s]")
@@ -99,5 +99,5 @@ i18 = np.array([1.9, 1.9, 1.9])
 i24 = np.array([2.5, 2.5, 2.5])
 i30 = np.array([2.9, 2.8, 2.9])
 
-write('build/dtabelle.tex', make_table([i6, i12, i18, i24, i30], [1,1,1,1,1])) # in 1/s
-np.savetxt('build/d.txt', np.column_stack([i6, i12, i18, i24, i30]), header="i6 [1/s], i12 [1/s], i18 [1/s], i24 [1/s], i30 [1/s],")
+write('build/itabelle.tex', make_table([i6, i12, i18, i24, i30], [1,1,1,1,1])) # in 1/s
+np.savetxt('build/i.txt', np.column_stack([i6, i12, i18, i24, i30]), header="i6 [1/s], i12 [1/s], i18 [1/s], i24 [1/s], i30 [1/s],")

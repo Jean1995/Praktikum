@@ -72,7 +72,27 @@ dv = dv * 10**(-2)
 np.savetxt('build/v.txt', np.column_stack([rv, dv]), header="v [m/s], Fehler [m/s]")
 
 
+s = np.genfromtxt('build/s.txt', unpack=True)
+rf_0 = np.mean(s)
+write('build/rf_0.tex', make_SI(rf_0, r'\per\second', figures=5))
+df_0 = np.std(s)
+write('build/df_0.tex', make_SI(df_0, r'\per\second', figures=5))
+f_0 = ufloat(rf_0, df_0)
 
+write('build/f_0.tex', make_SI(f_0, r'\per\second', figures=5))
+
+d = np.genfromtxt('build/d.txt', unpack=True)
+wl = np.array([d[2]-d[0], d[3]-d[1], d[4]-d[2], d[5]-d[3]])
+rwl = np.mean(wl)
+dwl = np.std(wl)
+wl = ufloat(rwl*10**(3), dwl*10**(3))
+
+dc = np.sqrt((dwl/rwl)**2+(df_0/rf_0)**2)*(rwl*rf_0)
+rc = (rwl*rf_0)
+c = ufloat(rc, dc)
+
+write('build/wl.tex', make_SI(wl, r'\milli\metre', figures=2))
+write('build/c.tex', make_SI(c, r'\metre\per\second', figures=3))
 
 
 #write('build/rv6.tex', make_SI(rv6, r'\metre\per\second', figures=5))
