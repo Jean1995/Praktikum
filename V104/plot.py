@@ -115,11 +115,12 @@ rv = rv* 10**(2)
 
 write('build/divtabelle_1.tex', make_table([rv, dr], [2, 2 ,2 ,2])) # wird angezeigt in v [cm/s], delta v [cm/s], diff f [1/s], Fehler diff f [1/s]
 
+i6, i12, i18, i24, i30 = np.genfromtxt('build/i.txt', unpack=True)
+i = unp.uarray([np.mean(i30), np.mean(i24), np.mean(i18), np.mean(i12), np.mean(i6)], [np.std(i30), np.std(i24), np.std(i18), np.std(i12), np.std(i6)])
+rv = unp.uarray([rv30, rv24, rv18, rv12, rv6], [dv30, dv24, dv18, dv12, dv6])
+rv = rv* 10**(2)
 
-
-
-
-
+write('build/divtabelle_2.tex', make_table([rv, i*5], [2, 2 ,1 ,1])) # wird angezeigt in v [cm/s], delta v [cm/s], diff f [1/s], Fehler diff f [1/s]
 
 #write('build/rv6.tex', make_SI(rv6, r'\metre\per\second', figures=5))
 #write('build/dv6.tex', make_SI(dv6, r'\metre\per\second', figures=5))
