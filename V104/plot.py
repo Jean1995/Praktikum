@@ -98,11 +98,11 @@ write('build/c.tex', make_SI(c, r'\metre\per\second', figures=3))
 
 r6, r12, r18, r24, r30, r36, r42 = np.genfromtxt('build/r.txt', unpack=True)
 v6, v12, v18, v24, v30, v36 = np.genfromtxt('build/v.txt', unpack=True)
-||||||| merged common ancestors
+#||||||| merged common ancestors
 rr6 = np.mean(r6)
 rr12 = np.mean(r12)
 
-r = unp.uarray([rr6 = np.mean(r6)],[])
+#r = unp.uarray([rr6 = np.mean(r6)],[])
 
 
 r = unp.uarray([np.mean(v36), np.mean(v30), np.mean(v24), np.mean(v18), np.mean(v12), np.mean(v6), np.mean(r6), np.mean(r12), np.mean(r18), np.mean(r24), np.mean(r30), np.mean(r36), np.mean(r42)],[np.std(v36), np.std(v30), np.std(v24), np.std(v18), np.std(v12), np.std(v6), np.std(r6), np.std(r12), np.std(r18), np.std(r24), np.std(r30), np.std(r36), np.std(r42)])
@@ -112,6 +112,36 @@ dr = r - f_0
 #write('build/test.tex', make_SI(dr, r'\milli\metre', figures=1))
 rv = unp.uarray([rv36, rv30, rv24, rv18, rv12, rv6, -rv6, -rv12, -rv18, -rv24, -rv30, -rv36, -rv42], [dv36, dv30, dv24, dv18, dv12, dv6, dv6, dv12, dv18, dv24, dv30, dv36, dv42])
 rv = rv* 10**(2)
+
+z1 = np.array([rv36, rv30, rv24, rv18, rv12, rv6, -rv6, -rv12, -rv18, -rv24, -rv30, -rv36, -rv42])
+z2 = np.array([dv36, dv30, dv24, dv18, dv12, dv6, dv6, dv12, dv18, dv24, dv30, dv36, dv42])
+
+
+from scipy.optimize import curve_fit
+
+def h(x, m, b):
+    return m*x + b
+plt.errorbar(z1, unp.nominal_values(dr), xerr=z2, yerr=unp.std_devs(dr), fmt='r.', label=r'$\text{Messwerte} \; U_C  /\  U_0$')
+parameter, covariance = curve_fit(h, z1, unp.nominal_values(dr))
+x_plot = np.linspace(-36, 30, 10000)
+
+plt.plot(x_plot, h(x_plot, parameter[0], parameter[1]), 'b-', label=r'Ausgleichskurve', linewidth=1)
+fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
+
+m_fit = ufloat(parameter[0], fehler[0])
+b_fit = ufloat(parameter[1], fehler[1])
+
+#write('build/fit_1_m.tex', make_SI(m_fit*1000, r'\nothing\tothe{-3}', figures=1))
+#write('build/fit_1_b.tex', make_SI(b_fit*1000, r'\nothing\tothe{-3}', figures=1))
+plt.ylabel(r'$\increment f / s^{-1}$')
+plt.xlabel(r'$\v \ /\ cm/s^{-1}$')
+plt.legend(loc='best')
+#plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08) # Diese Zeile bitte in Zukunft nicht vergessen sonst unschön!
+plt.savefig('build/1plot.pdf')
+
+plt.clf()
+
+
 
 write('build/divtabelle_1.tex', make_table([rv, dr], [2, 2 ,2 ,2])) # wird angezeigt in v [cm/s], delta v [cm/s], diff f [1/s], Fehler diff f [1/s]
 
