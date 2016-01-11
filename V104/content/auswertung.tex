@@ -50,7 +50,7 @@ ergeben und somit der Ruhefrequenz entsprechen.
 
 
 \subsection{Bestimmung der Schallgeschwindigkeit}
-Die Schallgeschwindigkeit wird, wie in Kapitel \ref{sec:d2} beschrieben, mittels eines Präzisionsschlitten bestimmt.
+Die Schallgeschwindigkeit wird, wie in Kapitel \label{sec:schall} beschrieben, mittels eines Präzisionsschlitten bestimmt.
 Es werden dabei jeweils die Werte zwischen zwei benachbarten Extrema gleicher Phase verglichen.
 Der sich aus Mittelwert sowie Standardabweichung ergebene Wert für $\lambda_0$, der Wellenlänge der Ruhefrequenz, ergibt sich zu
 \begin{align*}
@@ -66,9 +66,27 @@ Aus der Formel \ref{eqn:4.5} sowie dem zuvor bestimmten Wert der Ruhefrequenz er
   c &= \input{build/c.tex},
 \end{align*}
 
-
-
-
+\subsection{Bestimmung der Frequenzdifferenzen}
+Im Folgenden wird der Wagen in Bewegung gesetzt und die Frequenzdifferenzen, wie in Kapitel \ref{sec:durch_fre} beschrieben, bestimmt.
+Für die zehn zuvor bestimmten Geschwindigkeiten werden die Anzahl der am Empfänger erreichten Schwingungen notiert.
+Der betrachtete Zeitraum beträgt wiederum $t = \SI{10}{\second}$.
+Aus den 5 Einzelmessungen wird jeweils ein Mittelwert sowie eine Standardabweichung gebildet.
+Dementsprechend ergeben sich die in Tabelle \ref{tab:diffe} angegebenen Differenzfrequenzen $\nu_{\text{diff}}$ zu den jeweiligen Geschwindigkeiten $v$, wobei die gemessenen Frequenzen im Vergleich zu den zuvor bestimmten Ruhefrequenzen betrachtet werden.
+\begin{table}
+  \centering
+  \caption{Frequenzdifferenzen durch Doppler-Effekt.}
+  \label{tab:diffe}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c c c c}
+    \toprule
+    {$v [\si{\centi\metre\per\second}]$} & {$\increment{v} [\si{\centi\metre\per\second}]$} & {$\nu_{\text{diff}} [\si{\hertz}]$} & {$\increment{\nu_{\text{diff}}} [\si{\hertz}]$}\\
+    \midrule
+    \input{build/divtabelle_1.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+Obwohl theoretisch 10 Geschwindigkeiten möglich sind, können bei der Vorwärtbewegung jeweils nur die ersten sieben sowie bei der Rückwärtsbewegung nur die ersten sechs Geschwindigkeiten betrachtet werden.
+Grund dafür ist, dass der Empfänger bei zu großer Distanz zum Lautsprecher keine zuverlässigen Werte mehr liefern kann.
 
 
 %\begin{figure}
