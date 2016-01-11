@@ -56,6 +56,13 @@ gefittet werden können.
   \end{tabular}
 \end{table}
 
+Der Fehler von $t$ wird zu $\SI{0.1}{\milli\second}$ angenommen, der Fehler von $U$ zu $\SI{0.1}{\volt}$.
+Für die Fehlerrechnung wird bei der vorliegenden Rechnung und bei allen folgenden Rechnungen das Gaußsche Fehlerfortpflanzungsgesetz
+\begin{equation}
+\increment{f} = \sqrt{\Bigl(\frac{\partial f}{\partial x_1}\increment{x_1}\Bigr)^2 + \Bigl(\frac{\partial f}{\partial x_2}\increment{x_2}\Bigr)^2 + \dotsc + \Bigl(\frac{\partial f}{\partial x_n}\increment{x_n}\Bigr)^2}
+\end{equation}
+für eine Funktion $f(x_1,x_2, \dotsc ,x_n)$, bei der die Größen $x_1, x_2, \dotsc , x_n$ voneinander unabhängig sind, verwendet.
+Hierfür wird uncertainties in Python genutzt.\\
 Die Ausgleichsrechnung wird durch die Methode der kleinsten Quadrate mit numpy in Python durchgeführt.
 Das Ergebnis ist die in Abbildung \ref{fig:plot_a} halblogarithmisch dargestellte Ausgleichsgerade.
 Die sich ergebenen Parameter des Fits sind
@@ -81,6 +88,10 @@ ergibt sich der zu bestimmende RC-Wert zu
 \subsection{Methode der Kondensatoramplitude und Phasenverschiebung}
 Abgesehen vom Betrachten der Aufladekurve, kann die Zeitkonstante $RC$ auch durch die Amplitude der Kondensatorspannung $U_C$ und die Phasenverschiebung $\phi$ der beiden Spannungen berechnet werden.
 In Tabelle \ref{tab:2} sind die nötigen Messdaten aufgelistet.
+
+Der Fehler von $U$ wird zu $\SI{5}{\percent}$ des gemessenen Werts angenommen.
+Der Fehler von $\omega$ ist zu gering, um ihn als Fehlerbalken darzustellen.
+Die Genauigkeit des Frequenzgenerators ist hinreichend angemessen.
 %
 %\begin{table}
 %  \centering
@@ -205,6 +216,8 @@ Die Phasenverschiebung $\phi$ kann über die Formel
 bestimmt werden.
 Diese wird ebenfalls halblogarithmisch gegen die Erregerkreisfrequenz aufgetragen.
 Dies realisiert Abbildung \ref{abb:4}.
+Die Frequenz lässt sich widerum nicht als Fehlerbalken darstellen da der Frequenzgenerator hinreichend genau Frequenzgenerator hinreichend genau ist.
+Der Fehler von $a$ und $b$ wird zu $\SI{5}{\percent}$ des gemessenen Wertes angenommen.
 
 \begin{figure}[H]
   \centering

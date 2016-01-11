@@ -28,8 +28,8 @@ f, U_C, a, b = np.genfromtxt('bc.txt', unpack=True)
 
 U = U_C/U_0
 
-plt.plot(f, U,'xr', label=r'$\text{Messwerte} \; U_C  /\  U_0$')
-#plt.errorbar(f, U, xerr=0.0001, yerr=0.1, fmt='b.', label=r'$\text{Messwerte} \; U_C  /\  U_0$')
+#plt.plot(f, U,'xr', label=r'$\text{Messwerte} \; U_C  /\  U_0$')
+plt.errorbar(f, U, xerr=0, yerr=U*0.05, fmt='r.', label=r'$\text{Messwerte} \; U_C  /\  U_0$')
 
 v=f
 def h(x, m, b):
@@ -66,7 +66,14 @@ plt.clf()
 #c)
 phi = a/b * 2 * np.pi
 
-plt.plot(v, phi,'xr', label=r'$\text{Messwerte} \; \phi $')
+a_f = unp.uarray(a, a*0.05)
+b_f = unp.uarray(b, b*0.05)
+
+ff = unp.uarray(phi, unp.std_devs((a_f)/(b_f) * 2 *np.pi))
+
+plt.errorbar(v, phi, xerr=0, yerr=unp.std_devs(ff), fmt='r.', label=r'$\text{Messwerte} \; \phi $')
+
+#plt.plot(v, phi,'xr', label=r'$\text{Messwerte} \; \phi $')
 plt.xscale('log')
 plt.ylim(0-0.1, np.pi*0.5+0.1)
 plt.yticks([0, np.pi/4, np.pi/2],[r"$0$", r"$\frac{\pi}{4}$", r"$\frac{\pi}{2}$"])
