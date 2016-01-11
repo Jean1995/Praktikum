@@ -1,11 +1,29 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
-
-
-
-
-
+Zunächst wird die Wagengeschwindigkeit bei den zehn verschiedenen Gangeinstellungen des Wagens bestimmt.
+Die Weglänge wird mithilfe eines Maßbandes zu
+\begin{align*}
+  s = \SI{43.8 +- 0.1}{\centi\metre}
+\end{align*}
+bestimmt.
+Der jeweilige nominelle Wert für $t$ wird aus dem Mittelwert der fünf Einzelmessungen bestimmt.
+Der Mittelwert berechnet sich dabei mithilfe der Formel
+\begin{equation}
+ \bar{x} = \frac{1}{n} \sum_{i=1}^n x_i.
+\end{equation}
+Der Fehler der Zeit wird mittels der Standardabweichung aus den fünf Einzelwerten bestimmt.
+Die Standardabweichung berechnet sich dabei nach
+\begin{equation}
+  s = \sqrt{\frac{1}{n+1} \sum_{i=1}^n (x_i - \bar{x}) }.
+\end{equation}
+Unter der Annahme einer linearen Bewegung wird die Geschwindigkeit nun mit dem Weg-Zeit-Gesetz berechnet.
+Für die Fehlerrechnung wird bei der vorliegenden Rechnung und bei allen folgenden Rechnungen das Gaußsche Fehlerfortpflanzungsgesetz
+\begin{equation}
+\increment{f} = \sqrt{\Bigl(\frac{\partial f}{\partial x_1}\increment{x_1}\Bigr)^2 + \Bigl(\frac{\partial f}{\partial x_2}\increment{x_2}\Bigr)^2 + \dotsc + \Bigl(\frac{\partial f}{\partial x_n}\increment{x_n}\Bigr)^2}
+\end{equation}
+für eine Funktion $f(x_1,x_2, \dotsc ,x_n)$, bei der die Größen $x_1, x_2, \dotsc , x_n$ voneinander unabhängig sind, verwendet.
+Es ergeben sich hieraus die in Tabelle \ref{tab:Geschwindigkeiten} angegebenen Werte.
 
 \begin{table}[H]
   \centering
