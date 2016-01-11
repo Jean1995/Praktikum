@@ -121,7 +121,7 @@ from scipy.optimize import curve_fit
 
 def h(x, m, b):
     return m*x + b
-plt.errorbar(z1, unp.nominal_values(dr), xerr=z2, yerr=unp.std_devs(dr), fmt='r.', label=r'$\text{Messwerte} \; U_C  /\  U_0$')
+plt.errorbar(z1, unp.nominal_values(dr), xerr=z2, yerr=unp.std_devs(dr), fmt='r.', label=r'$\text{Messwerte} \; \increment f')
 parameter, covariance = curve_fit(h, z1, unp.nominal_values(dr))
 x_plot = np.linspace(-36, 30, 10000)
 
@@ -131,10 +131,10 @@ fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix ste
 m_fit = ufloat(parameter[0], fehler[0])
 b_fit = ufloat(parameter[1], fehler[1])
 
-#write('build/fit_1_m.tex', make_SI(m_fit*1000, r'\nothing\tothe{-3}', figures=1))
+write('build/propfak_1.tex', make_SI(m_fit, r'\per\Square\metre', figures=1))
 #write('build/fit_1_b.tex', make_SI(b_fit*1000, r'\nothing\tothe{-3}', figures=1))
 plt.ylabel(r'$\increment f / s^{-1}$')
-plt.xlabel(r'$\v \ /\ cm/s^{-1}$')
+plt.xlabel(r'$v \ /\ cm/s^{-1}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08) # Diese Zeile bitte in Zukunft nicht vergessen sonst unschön! <--- Du hast sie wieder raus genommen!!! >.<
 plt.savefig('build/1plot.pdf')
@@ -149,8 +149,30 @@ i6, i12, i18, i24, i30 = np.genfromtxt('build/i.txt', unpack=True)
 i = unp.uarray([np.mean(i30), np.mean(i24), np.mean(i18), np.mean(i12), np.mean(i6)], [np.std(i30), np.std(i24), np.std(i18), np.std(i12), np.std(i6)])
 rv = unp.uarray([rv30, rv24, rv18, rv12, rv6], [dv30, dv24, dv18, dv12, dv6])
 rv = rv* 10**(2)
+i = i*5
 
-write('build/divtabelle_2.tex', make_table([rv, i*5], [2, 2 ,1 ,1])) # wird angezeigt in v [cm/s], delta v [cm/s], diff f [1/s], Fehler diff f [1/s]
+def h(x, m, b):
+    return m*x + b
+plt.errorbar(unp.nominal_values(rv), unp.nominal_values(i), xerr=unp.std_devs(rv), yerr=unp.std_devs(i), fmt='r.', label=r'$\text{Messwerte} \; \increment f$')
+parameter, covariance = curve_fit(h, unp.nominal_values(rv), unp.nominal_values(i))
+x_plot = np.linspace(5, 26, 10000)
+
+plt.plot(x_plot, h(x_plot, parameter[0], parameter[1]), 'b-', label=r'Ausgleichskurve', linewidth=1)
+fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
+
+m_fit = ufloat(parameter[0], fehler[0])
+b_fit = ufloat(parameter[1], fehler[1])
+
+write('build/propfak_2.tex', make_SI(m_fit, r'\per\Square\metre', figures=1))
+#write('build/fit_1_m.tex', make_SI(m_fit*1000, r'\nothing\tothe{-3}', figures=1))
+#write('build/fit_1_b.tex', make_SI(b_fit*1000, r'\nothing\tothe{-3}', figures=1))
+plt.ylabel(r'$\increment f / s^{-1}$')
+plt.xlabel(r'$v \ /\ cm/s^{-1}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08) # Diese Zeile bitte in Zukunft nicht vergessen sonst unschön! <--- Du hast sie wieder raus genommen!!! >.<
+plt.savefig('build/2plot.pdf')
+
+write('build/divtabelle_2.tex', make_table([rv, i], [2, 2 ,1 ,1])) # wird angezeigt in v [cm/s], delta v [cm/s], diff f [1/s], Fehler diff f [1/s]
 
 #write('build/rv6.tex', make_SI(rv6, r'\metre\per\second', figures=5))
 #write('build/dv6.tex', make_SI(dv6, r'\metre\per\second', figures=5))

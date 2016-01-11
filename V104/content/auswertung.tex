@@ -86,7 +86,16 @@ Dementsprechend ergeben sich die in Tabelle \ref{tab:diffe} angegebenen Differen
   \end{tabular}
 \end{table}
 Obwohl theoretisch 10 Geschwindigkeiten möglich sind, können bei der Vorwärtbewegung jeweils nur die ersten sieben sowie bei der Rückwärtsbewegung nur die ersten sechs Geschwindigkeiten betrachtet werden.
-Grund dafür ist, dass der Empfänger bei zu großer Distanz zum Lautsprecher keine zuverlässigen Werte mehr liefern kann.
+Grund dafür ist, dass der Empfänger bei zu großer Distanz zum Lautsprecher keine zuverlässigen Werte mehr liefern kann.\\
+
+Die berechneten Frequenzen können gegen die Geschwindigkeit aufgetragen werden.
+Es ergibt sich ein linearer Zusammenhang, welcher linear an die Funktion
+\begin{align*}
+  y = m x + b
+\end{align*}
+gefittet wird.
+Der Fit wird dabei in Python mit SciPy erstellt.
+
 
 
 %\begin{figure}
