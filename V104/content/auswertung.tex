@@ -1,7 +1,7 @@
 \section{Auswertung}
 \label{sec:Auswertung}
-
-Zunächst wird die Wagengeschwindigkeit bei den zehn verschiedenen Gangeinstellungen des Wagens bestimmt.
+\subsection{Bestimmung der Wagengeschwindigkeit}
+Zunächst wird die Wagengeschwindigkeit bei den zehn verschiedenen Gangeinstellungen des Wagens, wie in Kapitel \ref{sec:d1} beschrieben, bestimmt.
 Die Weglänge wird mithilfe eines Maßbandes zu
 \begin{align*}
   s = \SI{43.8 +- 0.1}{\centi\metre}
@@ -23,7 +23,7 @@ Für die Fehlerrechnung wird bei der vorliegenden Rechnung und bei allen folgend
 \increment{f} = \sqrt{\Bigl(\frac{\partial f}{\partial x_1}\increment{x_1}\Bigr)^2 + \Bigl(\frac{\partial f}{\partial x_2}\increment{x_2}\Bigr)^2 + \dotsc + \Bigl(\frac{\partial f}{\partial x_n}\increment{x_n}\Bigr)^2}
 \end{equation}
 für eine Funktion $f(x_1,x_2, \dotsc ,x_n)$, bei der die Größen $x_1, x_2, \dotsc , x_n$ voneinander unabhängig sind, verwendet.
-Es ergeben sich hieraus die in Tabelle \ref{tab:Geschwindigkeiten} angegebenen Werte.
+Es ergeben sich hieraus die in Tabelle \ref{tab:Geschwindigkeiten} angegebenen Werte.\\
 
 \begin{table}[H]
   \centering
@@ -39,23 +39,32 @@ Es ergeben sich hieraus die in Tabelle \ref{tab:Geschwindigkeiten} angegebenen W
   \end{tabular}
 \end{table}
 
+\subsection{Bestimmung der Ruhefrequenz}
+Als nächstes wird die Ruhefrequenz $\nu_0$, wie in der Durchführung in Kapitel \ref{sec:durch_fre} beschrieben, bestimmt.
+Dazu werden in einem Zeitintervall von $t = \SI{10}{\second}$ die im Empfänger aufgenommenen Schwingungen gemessen.
+Es werden 7 Messungen durchgeführt, dessen Mittelwert und Standardabweichung sich zu
+\begin{align*}
+  \nu_0 &= \input{build/f_0.tex}
+\end{align*}
+ergeben und somit der Ruhefrequenz entsprechen.
 
 
+\subsection{Bestimmung der Schallgeschwindigkeit}
+Die Schallgeschwindigkeit wird, wie in Kapitel \ref{sec:d2} beschrieben, mittels eines Präzisionsschlitten bestimmt.
+Es werden dabei jeweils die Werte zwischen zwei benachbarten Extrema gleicher Phase verglichen.
+Der sich aus Mittelwert sowie Standardabweichung ergebene Wert für $\lambda_0$, der Wellenlänge der Ruhefrequenz, ergibt sich zu
 \begin{align*}
   \lambda_0 &= \input{build/wl.tex}
 \end{align*}
-
-
-
-\begin{align*}
-  c &= \input{build/c.tex}
-\end{align*}
-
+sowie der Kehrwert der Wellenlänge zu
 \begin{align*}
   \frac{1}{\lambda_0} &= \input{build/einsdurchwl.tex}
 \end{align*}
 
-
+Aus der Formel \ref{eqn:4.5} sowie dem zuvor bestimmten Wert der Ruhefrequenz ergibt sich eine Schallgeschwindigkeit von
+\begin{align*}
+  c &= \input{build/c.tex},
+\end{align*}
 
 
 
