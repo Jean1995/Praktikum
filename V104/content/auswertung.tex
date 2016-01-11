@@ -95,9 +95,21 @@ Es ergibt sich ein linearer Zusammenhang, welcher linear an die Funktion
 \end{align*}
 gefittet wird.
 Der Fit wird dabei in Python mit SciPy erstellt.
+Es ergibt sich für die Ausgleichsgerade die Parameter
+\begin{align*}
+  c &= \input{build/propfak_1.tex},
+  b &= \text{to_be_bestimmt}.
+\end{align*}
+Der Parameter entspricht dabei laut Formel \ref{eqn:5} näherungsweise $\frac{nu_0}{c}$.
+Der sich ergebende Plot ist in Abbildung \ref{afig:1} dargestellt.
+\begin{figure}
+  \centering
+  \includegraphics{plot.pdf}
+  \caption{Frequenzdifferenz in Abhängigkeit der Relativgeschwindigkeit.}
+  \label{afig:1}
+\end{figure}
 
-
-
+\subsection{Bestimmung der Frequenzdifferenzen mittels Schwebungsmethode}
 %\begin{figure}
 %  \centering
 %  \includegraphics{plot.pdf}
