@@ -95,21 +95,51 @@ Es ergibt sich ein linearer Zusammenhang, welcher linear an die Funktion
 \end{align*}
 gefittet wird.
 Der Fit wird dabei in Python mit SciPy erstellt.
-Es ergibt sich für die Ausgleichsgerade die Parameter
+Es ergeben sich für die Ausgleichsgerade die Parameter
 \begin{align*}
-  c &= \input{build/propfak_1.tex},
-  b &= \text{to_be_bestimmt}.
+  c &= \input{build/propfak_1.tex}, \\
+  b &= \input{build/bwert1.tex}.
 \end{align*}
-Der Parameter entspricht dabei laut Formel \ref{eqn:5} näherungsweise $\frac{nu_0}{c}$.
+Der Parameter entspricht dabei laut Formel \ref{eqn:5} näherungsweise $\frac{ \nu_0}{c}$.
 Der sich ergebende Plot ist in Abbildung \ref{afig:1} dargestellt.
 \begin{figure}
   \centering
-  \includegraphics{plot.pdf}
+  \includegraphics{1plot.pdf}
   \caption{Frequenzdifferenz in Abhängigkeit der Relativgeschwindigkeit.}
   \label{afig:1}
 \end{figure}
 
 \subsection{Bestimmung der Frequenzdifferenzen mittels Schwebungsmethode}
+Zudem können die Frequenzdifferenzen mithilfe der in Kapitel \ref{sec:d3} beschriebenen Schwebungsmethode erfasst werden.
+Es können für die ersten fünf Geschwindigkeiten jeweils drei Messwerte aufgenommen werden, es wird nur die Rückwärtsbewegung der Reflexionsplatte betrachtet.
+Aus den drei Werten wird wiederum ein Mittelwert und eine Standardabweichung gebildet.
+Die Ergebnisse für die Frequenzdifferenz $\nu_{\text{diff}}$ wird mit den dazugehörigen Geschwindigkeiten in Tabelle \ref{tab:diffe2} dargestellt.
+\begin{table}
+  \centering
+  \caption{Frequenzdifferenzen durch Doppler-Effekt mithilfe der Schwebungsmethode.}
+  \label{tab:diffe2}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c c c c}
+    \toprule
+    {$v [\si{\centi\metre\per\second}]$} & {$\increment{v} [\si{\centi\metre\per\second}]$} & {$\nu_{\text{diff}} [\si{\hertz}]$} & {$\increment{\nu_{\text{diff}}} [\si{\hertz}]$}\\
+    \midrule
+    \input{build/divtabelle_2.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+Es ergeben sich Werte, für die eine lineare Ausgleichsrechnung analog zur vorherigen Rechnung durchgeführt wird.
+Hierbei ergeben sich die Fitparameter zu
+\begin{align*}
+  c &= \input{build/propfak_2.tex}, \\
+  b &= \input{build/bwert2.tex}.
+\end{align*}
+Die dargestellten Werte mit Ausgleichsgerade sind in Abbildung \ref{afig:2} dargestellt.
+\begin{figure}
+  \centering
+  \includegraphics{2plot.pdf}
+  \caption{Frequenzdifferenz in Abhängigkeit der Relativgeschwindigkeit aus Schwebungsmethode.}
+  \label{afig:2}
+\end{figure}
 %\begin{figure}
 %  \centering
 %  \includegraphics{plot.pdf}

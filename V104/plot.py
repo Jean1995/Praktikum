@@ -80,7 +80,7 @@ df_0 = np.std(s)
 write('build/df_0.tex', make_SI(df_0, r'\per\second', figures=5))
 f_0 = ufloat(rf_0, df_0)
 
-write('build/f_0.tex', make_SI(f_0, r'\per\second', figures=5))
+write('build/f_0.tex', make_SI(f_0, r'\per\second', figures=1))
 
 d = np.genfromtxt('build/d.txt', unpack=True)
 wl = np.array([d[2]-d[0], d[3]-d[1], d[4]-d[2], d[5]-d[3]])
@@ -131,10 +131,10 @@ fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix ste
 m_fit = ufloat(parameter[0], fehler[0])
 b_fit = ufloat(parameter[1], fehler[1])
 
-write('build/propfak_1.tex', make_SI(m_fit, r'\per\Square\metre', figures=1))
+write('build/propfak_1.tex', make_SI(m_fit, r'\metre\tothe{-1}', figures=1))
 write('build/bwert1.tex', make_SI(b_fit, r'\per\second', figures=1))
-plt.ylabel(r'$\increment f / s^{-1}$')
-plt.xlabel(r'$v \ /\ cm/s^{-1}$')
+plt.ylabel(r'$\increment f \ /\ s^{-1}$')
+plt.xlabel(r'$v \ /\ cm/s$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08) # Diese Zeile bitte in Zukunft nicht vergessen sonst unschön! <--- Du hast sie wieder raus genommen!!! >.<
 plt.savefig('build/1plot.pdf')
@@ -163,11 +163,11 @@ fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix ste
 m_fit = ufloat(parameter[0], fehler[0])
 b_fit = ufloat(parameter[1], fehler[1])
 
-write('build/propfak_2.tex', make_SI(m_fit, r'\per\Square\metre', figures=1))
+write('build/propfak_2.tex', make_SI(m_fit, r'\metre\tothe{-1}', figures=1))
 #write('build/fit_1_m.tex', make_SI(m_fit*1000, r'\nothing\tothe{-3}', figures=1))
 write('build/bwert2.tex', make_SI(b_fit, r'\per\second', figures=1))
-plt.ylabel(r'$\increment f / s^{-1}$')
-plt.xlabel(r'$v \ /\ cm/s^{-1}$')
+plt.ylabel(r'$\increment f \ /\ s^{-1}$')
+plt.xlabel(r'$v \ /\ cm/s$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08) # Diese Zeile bitte in Zukunft nicht vergessen sonst unschön! <--- Du hast sie wieder raus genommen!!! >.<
 plt.savefig('build/2plot.pdf')
