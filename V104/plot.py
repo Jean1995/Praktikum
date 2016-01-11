@@ -66,7 +66,8 @@ v = unp.uarray(rv, dv)
 
 rv = rv * 10**(2)
 dv = dv * 10**(2)
-write('build/geschwtabelle.tex', make_table([rv, dv], [2, 2])) # cm/s
+gang = np.array([6, 12, 18, 24, 30, 36, 42, 48, 54, 60])
+write('build/geschwtabelle.tex', make_table([gang, rv, dv], [1, 2, 2])) # cm/s
 rv = rv * 10**(-2)
 dv = dv * 10**(-2)
 np.savetxt('build/geschw.txt', np.column_stack([rv, dv]), header="v [m/s], Fehler [m/s]")
@@ -91,8 +92,23 @@ dc = np.sqrt((dwl/rwl)**2+(df_0/rf_0)**2)*(rwl*rf_0)
 rc = (rwl*rf_0)
 c = ufloat(rc, dc)
 
-write('build/wl.tex', make_SI(wl, r'\milli\metre', figures=2))
+write('build/wl.tex', make_SI(wl, r'\milli\metre', figures=1))
+write('build/einsdurchwl.tex', make_SI(1/wl, r'\per\milli\metre', figures=1))
 write('build/c.tex', make_SI(c, r'\metre\per\second', figures=3))
+
+r6, r12, r18, r24, r30, r36, r42 = np.genfromtxt('build/r.txt', unpack=True)
+rr6 = np.mean(r6)
+rr12 = np.mean(r12)
+
+r = unp.uarray([rr6 = np.mean(r6)],[])
+
+
+
+
+
+
+
+
 
 
 #write('build/rv6.tex', make_SI(rv6, r'\metre\per\second', figures=5))

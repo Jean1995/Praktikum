@@ -1,28 +1,71 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
-\begin{figure}
-  \centering
-  \includegraphics{plot.pdf}
-  \caption{Plot.}
-  \label{fig:plot}
-\end{figure}
 
-\begin{table}
+
+
+
+
+
+\begin{table}[H]
   \centering
-  \caption{Beispieltabelle}
-  \label{tab:tabelle_beispiel}
+  \caption{Wagengeschwindigkeiten}
+  \label{tab:Geschwindigkeiten}
   \sisetup{table-format=1.2}
-  \begin{tabular}{c c}
+  \begin{tabular}{c c c}
     \toprule
-    {$a [\si{\second}]$} & {$b [\si{\kelvin}]$}\\
+    {$\text{Gang}$} & {$v [\si{\centi\metre\per\second}]$} & {$\increment v [\si{\centi\metre\per\second}]$}\\
     \midrule
-    \input{build/tabelle.tex}
+    \input{build/geschwtabelle.tex}
     \bottomrule
   \end{tabular}
 \end{table}
 
-Es ergibt sich
-\begin{align}
-  a &= \input{build/wert_a.tex} \\
-\end{align}
+
+
+\begin{align*}
+  \lambda_0 &= \input{build/wl.tex}
+\end{align*}
+
+
+
+\begin{align*}
+  c &= \input{build/c.tex}
+\end{align*}
+
+\begin{align*}
+  \frac{1}{\lambda_0} &= \input{build/einsdurchwl.tex}
+\end{align*}
+
+
+
+
+
+
+
+
+%\begin{figure}
+%  \centering
+%  \includegraphics{plot.pdf}
+%  \caption{Plot.}
+%  \label{fig:plot}
+%\end{figure}
+%
+%\begin{table}
+%  \centering
+%  \caption{Beispieltabelle}
+%  \label{tab:tabelle_beispiel}
+%  \sisetup{table-format=1.2}
+%  \begin{tabular}{c c}
+%    \toprule
+%    {$a [\si{\second}]$} & {$b [\si{\kelvin}]$}\\
+%    \midrule
+%    \input{build/tabelle.tex}
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
+%
+%Es ergibt sich
+%\begin{align}
+%  a &= \input{build/wert_a.tex} \\
+%\end{align}
