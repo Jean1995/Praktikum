@@ -9,14 +9,14 @@ Am Ende der Strecke befindet sich ein Mikrophon, welches eine Signalspannung erz
 Zudem sind zwei Lichtschranken vorhanden, die an der Schiene montiert werden können und somit das Durchfahren des Wagens registrieren können.
 Sie funktionieren, indem eine Infrarot-Lichtquelle einen konstanten Lichtstrahl auf einen gegenüberliegenden Phototransistor sendet.
 Sobald die Verbindungsstrecke zwischen beiden Elementen unterbrochen wird, bricht der Strom im Transistor zusammen.
-Dieser Impuls kann ebenfalls im weiteren verwendet werden.\\
+Dieser Impuls kann ebenfalls im Weiteren verwendet werden.\\
 Um die genannten Impulse verarbeiten zu können, sind mehrere Bauteile mit logischen Funktionen vorhanden.
 Diese können die Impulse des Mikrophons sowie der Lichtschranke jedoch nur als TTL-Signale verarbeiten, so dass diese zunächst durch einen Schmitt-Trigger umgewandelt werden müssen.
 
 \subsection{Durchführung}
 \subsubsection{Bestimmung der Wagengeschwindigkeiten}
 \label{sec:d1}
-Die zehn verschidenen Wagengeschwindigkeiten können, da es sich um lineare Bewegungen handelt, mit dem Weg-Zeit-Gesetz bestimmt werden.
+Die zehn verschiedenen Wagengeschwindigkeiten können, da es sich um lineare Bewegungen handelt, mit dem Weg-Zeit-Gesetz bestimmt werden.
 Der Aufbau ist in Abbildung \ref{tfig:1} dargestellt.
 \begin{figure}
   \centering
@@ -26,14 +26,14 @@ Der Aufbau ist in Abbildung \ref{tfig:1} dargestellt.
 \end{figure}
 Mithilfe eines Maßbandes wird die Strecke zwischen zwei an der Strecke montierten Lichtschranken gemessen.
 Ein Zeitbasisgenerator liefert nun konstante Impuls im zeitlichen Abstand von $\SI{1}{\micro\second}$.
-Mithilfe eines dekadischen Untersetzes wird das Signal nun so verändert, dass die Häufigkeit der Impulse dem zeitlichen Rahmen des Experimentes angepasst wird.
+Mithilfe eines dekadischen Untersetzers wird das Signal nun so verändert, dass die Häufigkeit der Impulse dem zeitlichen Rahmen des Experimentes angepasst wird.
 Hier sollen nur alle $\SI{e-4}{\second}$ zeitliche Impulse abgegeben werden. \\
 Sobald der Wagen die erste Lichtschranke passiert, wird dieser Impuls von einer bistabilen Kippstufe registriert.
 Dieser speichert diesen Impuls und behält ihn solange, bis durch die zweite Lichtschranke ein weiterer Impuls abgegeben wird.
 Der gespeicherte Impuls äußert sich in einem anliegenden Potential.
 Dieses Potential wird an einem UND-Gatter mit dem Zeitsignal des dekadischen Untersetzers verbunden und an ein Zählwerk weitergegeben.
 Dementsprechend misst das Zählwerk die Impulse und somit die Zeit. die vergeht, während der Wagen sich zwischen den beiden Lichtschranken befindet.\\
-Die anegebene Messung wird für alle zehn Geschwindigkeiten jeweils fünf mal wiederholt.
+Die angegebene Messung wird für alle zehn Geschwindigkeiten jeweils fünfmal wiederholt.
 
 \subsubsection{Frequenzmessung}
 \label{sec:durch_fre}
@@ -49,15 +49,15 @@ Der Versuchsaufbau ist in Abbildung \ref{tfig:2} dargestellt.
 Es wird eine Lichtschranke benötigt, welche den Start der Messreihe darstellt.
 Sobald diese vom Wagen passiert wird, speichert die bistabile Kippstufe den Impuls.
 Mithilfe eines UND-Gatters werden, zusammen mit dem Zeitbasisgenerator, Zeitsignale an den Untersetzer geliefert.
-Dieser zählt die eingehenden Zeitimpulse und gibt solange ein Signal aus, bis der voreingesteller Untersetzungsfaktor erreicht ist.
-Mit ihm kann somit widerum das Zeitintervall der Messung eingestellt werden.
+Dieser zählt die eingehenden Zeitimpulse und gibt solange ein Signal aus, bis der voreingestellte Untersetzungsfaktor erreicht ist.
+Mit ihm kann somit wiederum das Zeitintervall der Messung eingestellt werden.
 Das konstante Signal des Untersetzers wird mit dem Signal der bistabilen Kippstufe an ein UND-Gatter angelegt und an das Zählwerk weitergegeben.
 Somit ist gewährleistet, dass nur während eines, durch den Untersetzer festgelegten Zeitraumes, die Schwingungen, die der Empfänger erhält, gezählt werden.
 Aus der Kenntnis der Schwingungen pro Zeiteinheit kann nun die Frequenz bestimmt werden.\\
-Dieses Messverfahren wird für alle Geschwindigkeiten jeweils fünf mal für den sich vom Mikrophon entfernenden Sender sowie jeweils fünf mal für den sich zum Mikrophon zubewegenden Sender durchgeführt.
+Dieses Messverfahren wird für alle Geschwindigkeiten jeweils fünfmal für den sich vom Mikrophon entfernenden Sender sowie jeweils fünfmal für den sich zum Mikrophon bewegenden Sender durchgeführt.
 Zusätzlich werden Messungen bei einem stehenden Wagen durchgeführt, um die Ruhefrequenz zu erhalten.
 
-\subsubsection{Bestimmung der Frequenzendifferenz mithilfe der Schwebungsmethode}
+\subsubsection{Bestimmung der Frequenzdifferenz mithilfe der Schwebungsmethode}
 \label{sec:d3}
 Um die Frequenzdifferenz zwischen der Ruhefrequenz sowie der von einem ruhenden Empfänger aufgenommenen Frequenz zu ermitteln, wird die Schwebungsmethode verwendet.
 Der Versuchsaufbau ist in Abbildung \ref{tfig:3} skizziert.
@@ -67,7 +67,7 @@ Der Versuchsaufbau ist in Abbildung \ref{tfig:3} skizziert.
   \caption{Aufbau zur Bestimmung der Frequenzdifferenz mithilfe der Schwebungsmethode. \cite{sample}}
   \label{tfig:3}
 \end{figure}
-Der Lautsprecher wird neben dem Mikrofon am Ende der Schiene befestigt und in Richtung des Wagens ausgerichtet. Auf dem Wagen wird nun eine Metallplatte als Reflektor befestigt, welche die einfallenden Wellen in Richtung des Mikrofons reflektiert.
+Der Lautsprecher wird neben dem Mikrophon am Ende der Schiene befestigt und in Richtung des Wagens ausgerichtet. Auf dem Wagen wird nun eine Metallplatte als Reflektor befestigt, welche die einfallenden Wellen in Richtung des Mikrophons reflektiert.
 Dementsprechend nimmt dieses sowohl die einfallenden Wellen, die direkt aus dem Lautsprecher stammen, als auch die Wellen, die von der Platte reflektiert werden, auf.
 Das aufgenommene Signal wird angemessen stark verstärkt, durch einen Gleichrichter mit Tiefpass sowie durch einen Impedanzwandler geleitet.
 Die Frequenzmessung mithilfe dieses Signals folgt analog zu dem in Kapitel \ref{sec:durch_fre} durchgeführten Vorgehen.

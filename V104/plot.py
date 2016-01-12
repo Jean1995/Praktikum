@@ -127,7 +127,7 @@ def h(x, m, b):
     return m*x + b
 plt.errorbar(z1, unp.nominal_values(dr), xerr=z2, yerr=unp.std_devs(dr), fmt='r.', label=r'$\text{Messwerte} \; \increment f')
 parameter, covariance = curve_fit(h, z1, unp.nominal_values(dr))
-x_plot = np.linspace(-36, 30, 10000)
+x_plot = np.linspace(-38, 32, 10000)
 
 plt.plot(x_plot, h(x_plot, parameter[0], parameter[1]), 'b-', label=r'Ausgleichskurve', linewidth=1)
 fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
@@ -135,7 +135,7 @@ fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix ste
 m_fit = ufloat(parameter[0], fehler[0])
 b_fit = ufloat(parameter[1], fehler[1])
 
-write('build/propfak_1.tex', make_SI(m_fit, r'\metre\tothe{-1}', figures=1))
+write('build/propfak_1.tex', make_SI(m_fit, r'\centi\metre\tothe{-1}', figures=1))
 write('build/bwert1.tex', make_SI(b_fit, r'\per\second', figures=1))
 plt.ylabel(r'$\increment f \ /\ s^{-1}$')
 plt.xlabel(r'$v \ /\ cm/s$')
@@ -159,7 +159,7 @@ def h(x, m, b):
     return m*x + b
 plt.errorbar(unp.nominal_values(rv), unp.nominal_values(i), xerr=unp.std_devs(rv), yerr=unp.std_devs(i), fmt='r.', label=r'$\text{Messwerte} \; \increment f$')
 parameter, covariance = curve_fit(h, unp.nominal_values(rv), unp.nominal_values(i))
-x_plot = np.linspace(5, 26, 10000)
+x_plot = np.linspace(3, 28, 10000)
 
 plt.plot(x_plot, h(x_plot, parameter[0], parameter[1]), 'b-', label=r'Ausgleichskurve', linewidth=1)
 fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
@@ -167,11 +167,12 @@ fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix ste
 m_fit = ufloat(parameter[0], fehler[0])
 b_fit = ufloat(parameter[1], fehler[1])
 
-write('build/propfak_2.tex', make_SI(m_fit, r'\metre\tothe{-1}', figures=1))
+write('build/propfak_2.tex', make_SI(m_fit, r'\centi\metre\tothe{-1}', figures=1))
 #write('build/fit_1_m.tex', make_SI(m_fit*1000, r'\nothing\tothe{-3}', figures=1))
 write('build/bwert2.tex', make_SI(b_fit, r'\per\second', figures=1))
 plt.ylabel(r'$\increment f \ /\ s^{-1}$')
 plt.xlabel(r'$v \ /\ cm/s$')
+plt.xlim(3, 28)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08) # Diese Zeile bitte in Zukunft nicht vergessen sonst unschön! <--- Du hast sie wieder raus genommen!!! >.<
 plt.savefig('build/2plot.pdf')
