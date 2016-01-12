@@ -92,9 +92,13 @@ dc = np.sqrt((dwl/rwl)**2+(df_0/rf_0)**2)*(rwl*rf_0)
 rc = (rwl*rf_0)
 c = ufloat(rc, dc)
 
+relc = ((c-343.2)/343.2)*100
+
 write('build/wl.tex', make_SI(wl, r'\milli\metre', figures=1))
 write('build/einsdurchwl.tex', make_SI(1/wl, r'\per\milli\metre', figures=1))
 write('build/c.tex', make_SI(c, r'\metre\per\second', figures=3))
+write('build/relc.tex', make_SI(c, r'\percent', figures=3))
+
 
 r6, r12, r18, r24, r30, r36, r42 = np.genfromtxt('build/r.txt', unpack=True)
 v6, v12, v18, v24, v30, v36 = np.genfromtxt('build/v.txt', unpack=True)
@@ -177,6 +181,11 @@ write('build/divtabelle_2.tex', make_table([rv, i], [2, 2 ,1 ,1])) # wird angeze
 #write('build/rv6.tex', make_SI(rv6, r'\metre\per\second', figures=5))
 #write('build/dv6.tex', make_SI(dv6, r'\metre\per\second', figures=5))
 #write('build/v6.tex', make_SI(v6, r'\metre\per\second', figures=5))
+
+
+deltanu_1 = unp.nominal_values(f_0)*rv60/343.2
+deltanu_2 = unp.nominal_values(f_0)-unp.nominal_values(f_0)/(1-(rv60)/(343.2))
+write('build/deltanu.tex', make_SI(np.abs(deltanu_1+deltanu_2), r'\per\second', figures=2))
 
 
 ## Beispielplot
