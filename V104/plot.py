@@ -176,7 +176,7 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08) # Diese Zeile bitte in Zukunft nicht vergessen sonst unschön! <--- Du hast sie wieder raus genommen!!! >.<
 plt.savefig('build/2plot.pdf')
 
-write('build/divtabelle_2.tex', make_table([rv, i], [2, 2 ,1 ,1])) # wird angezeigt in v [cm/s], delta v [cm/s], diff f [1/s], Fehler diff f [1/s]
+#write('build/divtabelle_2.tex', make_table([rv, i], [2, 2 ,1 ,1])) # wird angezeigt in v [cm/s], delta v [cm/s], diff f [1/s], Fehler diff f [1/s]
 
 #write('build/rv6.tex', make_SI(rv6, r'\metre\per\second', figures=5))
 #write('build/dv6.tex', make_SI(dv6, r'\metre\per\second', figures=5))
