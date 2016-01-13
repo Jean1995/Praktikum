@@ -1,4 +1,46 @@
 \section{Theorie}
 \label{sec:Theorie}
+Betrachtet man die Rotationsbewegung von ausgedehnten Körpern, so geht der Begriff der Punktmasse in das Trägheitsmoment $I$ über.
+Der Begriff der Kraft wird durch das Drehmoment $M$ abgelöst, welches durch die Formel
+\begin{equation}
+  \vec{M} = \vec{F} \times \vec{r}
+\end{equation}
+beschrieben wird, wobei $\vec{r}$ den Abstandsvektor und $\vec{F}$ die angreifende Kraft beschreibt.
+Das Trägheitsmoment berechnet sich bei der Rotation eines Systems von $n$ Massepunkten um eine feste Drehachse zu
+\begin{equation}
+  I = \sum_{i=1}^n r_{\perp, i}^2 m_i
+  \label{eqn:tm1}
+\end{equation}
+beziehungsweise im Falle einer kontinuirlichen Masseverteilung zu
+\begin{equation}
+  I = \int_V^{} \vec{r_{\perp}}^2 \rho{\vec{r}} \symup{d}V,
+  \label{eqn:tm2}
+\end{equation}
+wobei $r_{\perp, i}$ den Abstand der Masse $m_i$ zu der Drehachse ist.
+Im Falle einer Rotation um eine beliebige Achse geht das Trägheitsmoment in den Trägheitstensor $I_{\alpha \beta}$ über.\\
+Ist das Trägheitsmoment $I_s$ für die Drehung um die Schwerpunktsachse eines Körpers zusammen, so folgt mit dem Steinerschen Satz für das Trägheitsmoment $I$ für eine um $a$ parallel verschobene Achse
+\begin{equation}
+  I = I_s + m a^2,
+  \label{eqn:steiner}
+\end{equation}
+wobei $m$ die Masse des Körpers beschreibt.\\
+Im vorliegenden Versuch wird eine Feder betrachtet, welches bei einer Drehung aus der Ruhelage ein rücktreibendes Drehmoment von
+\begin{equation}
+  M = D \varphi
+\end{equation}
+bewirkt, sich also nach dem Hookschen Gesetz verhält.
+Wird nun ein Körper mit Trägheitsmoment $I$ in diesem System ausgelenkt, ergibt sich die Differentialgleichung
+\begin{equation}
+  I \ddot{\varphi} = D \varphi,
+\end{equation}
+dessen Lösung dementsprechend einem harmonischen Oszillator mit Kreisfrequenz
+\begin{equation}
+  \omega = \sqrt{\frac{D}{I}}
+\end{equation}
+beziehungsweise Umlaufzeit von
+\begin{equation}
+  T = 2 \pi \sqrt{\frac{I}{D}}
+\end{equation}
+entspricht.
 
-\cite{sample}
+%\cite{sample}
