@@ -30,8 +30,8 @@ Alle abgelesenen Werte sind wiederum nochmals in Tabelle \ref{tab:durchlass} ang
 Die lineare Regression wird nun mit der Methode der kleinsten Quadrate mit Hilfe von SciPy durchgeführt.
 Es ergeben sich die Parameter
 \begin{align*}
-  b &= \input{regres_b.tex}, \\
-  m &= \input{regres_m.tex}.
+  b &= (3,403 \pm 0.004) \ln{( \si{\kilo\hertz} )} \\
+  m &= (0,0476 \pm 0.0003) \frac{\ln( \si{\kilo\hertz}  )}{ \si{\centi\metre} }.
 \end{align*}
 Die Grenzfrequenzen werden an der Durchlasskurve zu
 \begin{align*}
@@ -44,14 +44,24 @@ Aus diesen Längenangaben und den in der linearen Regression bestimmten Paramete
   \nu = \mathrm{e}^{m g_i + b}
 \end{equation}
 die gesuchten Grenzfrequenzen.
-Vergleicht man diese mit den aus Formel \ref{eqn:grenzfrequenzen} bestimmten theoretischen Grenzfrequenzen, ergeben sich die Werte
+Vergleicht man diese mit den aus Formel \eqref{eqn:grenzfrequenzen} bestimmten theoretischen Grenzfrequenzen, ergeben sich die Werte
 \begin{align*}
   \nu_{1} &= \input{g1.tex}, \\
   \nu_{1, \text{theorie}} &= \input{g1_t.tex}, \\
   \nu_{2} &= \input{g2.tex}, \\
   \nu_{2, \text{theorie}} &= \input{g2_t.tex}.
 \end{align*}
-
+Es zeigt sich somit eine relative Abweichung der Messwerte zu den Theoriewerten von
+\begin{align*}
+  \increment\nu_{1} &= 1,3\:\%, \\
+  \increment\nu_{2} &= 0,9\:\%,
+\end{align*}
+wobei die relative Abweichung nach
+\begin{equation}
+f = \frac{\lvert N - x \rvert }{N}
+\label{eqn:rel_err}
+\end{equation}
+mit einem Theoriewert $N$ sowie einem Messwert $x$ berechnet werden.\\
 
 \subsection{Betrachtung der Dispersionsrelation}
 \label{sec:dis}
@@ -76,7 +86,7 @@ Hierbei beschreibt $\alpha$ die gemessene Phasenverschiebung zwischen dem ersten
 Bei der genaueren Auswertung der Messwerte ist aufgefallen, dass sich eine Unregelmäßigkeit zwischen dem siebten und achten Messwert ergeben hat.
 Hieraus wird geschlussfolgert, dass der Messwert für die Phasenverschiebung $\alpha = 8 \pi$ übersprungen wurde.
 Dementsprechend ist für dieses $\alpha$ kein Messwert angegeben.
-Mithilfe von Formel \ref{eqn:dispersion} können die Theoriekurven der Dispersionsrelation bestimmt werden.
+Mithilfe von Formel \eqref{eqn:dispersion} können die Theoriekurven der Dispersionsrelation bestimmt werden.
 Diese sind zusammen mit den gemessenen Werten in Abbildung \ref{fig:dispersion_fertig} dargestellt.
 \begin{figure}[H]
   \centering
@@ -97,13 +107,13 @@ Die gemessenen Werte sind in Tabelle \ref{tab:eigenfrequenzen} angegeben.
   \sisetup{table-format=1.2}
   \begin{tabular}{c c c}
     \toprule
-    {$\omega [\si{\hertz}]$} & {$\frac{\theta}{\pi} $} & {$v_{\text{Ph}} [\si{\kilo\metre\per\second}] $}\\
+    {$\omega [\si{\hertz}]$} & {$\frac{\theta}{\pi} $} & {$v_{\text{Ph}} [\si{\kilo\hertz}] $}\\
     \midrule
     \input{build/ctabelle.tex}
     \bottomrule
   \end{tabular}
 \end{table}
-Diese Daten werden nun zusammen mit den Theoriewerten der Phasengeschwindigkeit, welche sich nach Formel \ref{eqn:pha} berechnen, in Abbildung \ref{fig:phasengeschwindigkeiten} dargestellt.
+Diese Daten werden nun zusammen mit den Theoriewerten der Phasengeschwindigkeit, welche sich nach Formel \eqref{eqn:pha} berechnen, in Abbildung \ref{fig:phasengeschwindigkeiten} dargestellt.
 \begin{figure}[H]
   \centering
   \includegraphics{eigenfrequenzen.pdf}
@@ -137,7 +147,7 @@ In Tabelle \ref{tab:stehend1} sind die gemessenen Werte angegeben.
   \end{tabular}
 \end{table}
 
-Zudem wird die erwartete stehende Welle, welche sich nach Formel \ref{eqn:ste_1} berechnet, eingetragen.
+Zudem wird die erwartete stehende Welle, welche sich nach Formel \eqref{eqn:ste_1} berechnet, eingetragen.
 Die Daten sind in den Abbildungen \ref{fig:stehend1} sowie \ref{fig:stehend2} dargestellt.
 
 \begin{figure}[H]
@@ -154,7 +164,8 @@ Die Daten sind in den Abbildungen \ref{fig:stehend1} sowie \ref{fig:stehend2} da
   \label{fig:stehend2}
 \end{figure}
 
-Wird das Experiment, wie in der Durchführung beschrieben, mit zugeschalteten Wellenwiderstand für $\nu_1$ durchgeführt, ergeben sich erwartungsgemäß stehende Wellen der in Formel \ref{eqn:ste_2} angegebenen Form, das heißt mit Spannungsknoten am Ende und Anfang der $LC$-Kette.
+Wird das Experiment, wie in der Durchführung beschrieben, mit zugeschalteten Wellenwiderstand für $\nu_1$ durchgeführt, so wird nach dem im Kapitel \ref{sec:verhalten} beschriebenen Verhalten keine Reflexion erwartet.
+In der Theorie wäre das Ausbreiten einer stehenden Welle unterbunden und eine annähernd konstante Spannung zu erwarten.
 Die gemessenen Werte sind in Tabelle \ref{tab:stehend2} angegeben.
 \begin{table}[H]
   \centering
@@ -169,7 +180,9 @@ Die gemessenen Werte sind in Tabelle \ref{tab:stehend2} angegeben.
     \bottomrule
   \end{tabular}
 \end{table}
-Da sich ein nicht unerheblicher Offset bei der Spannung ergibt, werden in Abbildung \ref{fig:stehend3} die gemessenen Werte ohne Theoriekurve angegeben.
+Entgegen der ursprünglichen Erwartung ergibt sich das Muster einer stehenden Welle mit dem Peak beim sechsten Kondensator.
+Dieser resultiert daraus, dass der Wellenwiderstand frequenzabhängig ist und nicht mehr auf die verwendete Frequenz exakt eingestellt ist.
+Dementsprechend werden weiterhin Wellen reflektiert, die die erwartete konstante Spannung überlagern.
 
 \begin{figure}[H]
   \centering
