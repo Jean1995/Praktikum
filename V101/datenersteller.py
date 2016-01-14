@@ -30,15 +30,15 @@ np.savetxt('build/statisch.txt', np.column_stack([r, phi, f]), header="r [m], ph
 #m1 = (221.78+-0.01)g
 #m1 = (223.46+-0.01)g
 
-d = np.array[6, 7.7, 11.5, 13.5, 15.5, 17.5, 19.5, 21.5, 23.5, 25.5]
-t = np.array[13.63, 15.61, 19.64, 22.12, 24.41, 27.09, 29.58, 32.23, 34.86, 37.55]
+d = np.array([6, 7.7, 11.5, 13.5, 15.5, 17.5, 19.5, 21.5, 23.5, 25.5])
+t = np.array([13.63, 15.61, 19.64, 22.12, 24.41, 27.09, 29.58, 32.23, 34.86, 37.55])
 t = t/5
 
 write('build/dynamischtabelle.tex', make_table([d, t], [2, 2]))
 
 d = d*10**(-2)
 
-np.savetxt('build/statisch.txt', np.column_stack([d, t]), header="d [m], T [s]")
+np.savetxt('build/dynamisch.txt', np.column_stack([d, t]), header="d [m], T [s]")
 
 # c)
 # Zylinder
@@ -53,7 +53,7 @@ write('build/zylindertabelle.tex', make_table([m_1, d_1, h_1, t_1], [1, 3, 3, 2]
 
 m_1 = m_1*10**(-3)
 h_1 = h_1*10**(-2)
-d_1 = d_1*10**(-2)
+d_1 = d_1*10**(-2)/2
 
 np.savetxt('build/zylinder.txt', np.column_stack([m_1, d_1, h_1, t_1]), header="m [kg], d [m], h [m], T [s]")
 
@@ -67,7 +67,7 @@ t_2 = t_1/5
 write('build/kugeltabelle.tex', make_table([m_2, d_2, t_2], [1, 3, 2]))
 
 m_2 = m_1*10**(-3)
-d_2 = d_1*10**(-2)
+d_2 = d_1*10**(-2)/2
 
 np.savetxt('build/kugel.txt', np.column_stack([m_2, d_2, t_2]), header="m [kg], d [m], T [s]")
 
