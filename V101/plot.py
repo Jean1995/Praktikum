@@ -56,7 +56,7 @@ plt.savefig('build/plot.pdf')
 plt.clf()
 
 tr_d = b_fit*d_0/(4*np.pi**2) #HIER WIRD DAS BERECHNET
-write('build/eigenträgheit.tex', make_SI(tr_d*10**4, r'\gram\centi\metre\tothe{2}', figures=1))
+write('build/eigentraegheit.tex', make_SI(tr_d*10**4, r'\gram\centi\metre\tothe{2}', figures=1))
 z = tr_d
 # Zylinder
 
@@ -72,14 +72,14 @@ dt_z = np.std(t)
 t_z  = ufloat(rt_z ,dt_z)
 write('build/m_zylinder.tex', make_SI(rm_z*10**3, r'\gram', figures=1))
 write('build/r_zylinder.tex', make_SI(d_z*10**2, r'\centi\metre', figures=1))
-write('build/t_zylinder.tex', make_SI(t_z, r'\seconds', figures=1))
+write('build/t_zylinder.tex', make_SI(t_z, r'\second', figures=1))
 tr_z_theorie = (m_z*d_z**2)/2
-write('build/trägheit_zylinder_theorie.tex', make_SI(tr_z_theorie*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
+write('build/traegheit_zylinder_theorie.tex', make_SI(tr_z_theorie*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
 tr_z = (((t_z/(2*np.pi))**2)*d_0)
 tr_z1 = tr_z - z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT
-write('build/trägheit_zylinder.tex', make_SI(tr_z1*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
+write('build/traegheit_zylinder.tex', make_SI(tr_z1*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
 
-write('build/abweichung_zylinder.tex', str(((unp.nominal_values(abs((tr_z1-tr_z_theorie))/tr_z_theorie*100)))))
+write('build/abweichung_zylinder.tex', str((("%.1f" % unp.nominal_values(abs((tr_z1-tr_z_theorie))/tr_z_theorie*100)))))
 
 
 # Kugel
@@ -95,20 +95,20 @@ r_k  = ufloat(rr_k ,dr_k)
 rt_k = np.mean(t)
 dt_k = np.std(t)
 t_k  = ufloat(rt_k ,dt_k)
-write('build/m_kugel.tex', make_SI(m_k*10**3, r'\gram', figures=1))
+write('build/m_kugel.tex', make_SI(rm_k*10**3, r'\gram', figures=1))
 write('build/r_kugel.tex', make_SI(r_k*10**2, r'\centi\metre', figures=1))
-write('build/t_kugel.tex', make_SI(t_k, r'\seconds', figures=1))
+write('build/t_kugel.tex', make_SI(t_k, r'\second', figures=1))
 tr_k_theorie = 2*(m_k*r_k**2)/5
-write('build/trägheit_kugel_theorie.tex', make_SI(tr_k_theorie*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
+write('build/traegheit_kugel_theorie.tex', make_SI(tr_k_theorie*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
 tr_k = (((t_k/(2*np.pi))**2)*d_0)
 tr_k1 = tr_k - z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT
-write('build/trägheit_kugel.tex', make_SI(tr_k1*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
+write('build/traegheit_kugel.tex', make_SI(tr_k1*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
 
-write('build/abweichung_kugel.tex', str((unp.nominal_values(abs((tr_k1-tr_k_theorie))/tr_k_theorie*100))))
+write('build/abweichung_kugel.tex', str(("%.2f" % unp.nominal_values(abs((tr_k1-tr_k_theorie))/tr_k_theorie*100))))
 
 # Mensch
 
-m_m, h_bein_1, h_bein_2, d_beine, a_beine, h_kopf, d_kopf, h_torso, d_torso, l_arme, d_arme, a_arme, t1, t2 = np.genfromtxt('build/mensch.txt', unpack=True)
+m_m, h_bein_1, h_bein_2, d_beine, a_beine, h_kopf, d_kopf, h_torso, d_torso, l_arme, d_arme, a_arme, t2, t1 = np.genfromtxt('build/mensch.txt', unpack=True)
 
 
 rm_m      = np.mean(m_m)
@@ -156,6 +156,29 @@ a_arme   = ufloat(ra_arme, da_arme)
 t1       = ufloat(rt1, dt1)
 t2       = ufloat(rt2, dt2)
 
+write('build/laenge_b_1.tex', make_SI((h_bein_1)*10**2, r'\centi\metre', figures=1))
+write('build/radius_b.tex', make_SI((d_beine)*10**2, r'\centi\metre', figures=1))
+write('build/laenge_b_2.tex', make_SI((h_bein_2)*10**2, r'\centi\metre', figures=1))
+write('build/abstand_b.tex', make_SI((a_beine)*10**2, r'\centi\metre', figures=1))
+write('build/laenge_t.tex', make_SI((h_torso)*10**2, r'\centi\metre', figures=1))
+write('build/radius_t.tex', make_SI((d_torso)*10**2, r'\centi\metre', figures=1))
+write('build/laenge_k.tex', make_SI((h_kopf)*10**2, r'\centi\metre', figures=1))
+write('build/radius_k.tex', make_SI((d_kopf)*10**2, r'\centi\metre', figures=1))
+write('build/laenge_a.tex', make_SI((l_arme)*10**2, r'\centi\metre', figures=1))
+write('build/radius_a.tex', make_SI((d_arme)*10**2, r'\centi\metre', figures=1))
+write('build/abstand_a.tex', make_SI((a_arme)*10**2, r'\centi\metre', figures=1))
+write('build/masse.tex', make_SI((m_m)*10**3, r'\gram', figures=1))
+write('build/t1.tex', make_SI((t1), r'\second', figures=1))
+write('build/t2.tex', make_SI((t2), r'\second', figures=1))
+
+
+
+
+
+
+
+
+
 V_arm_1  = np.pi * l_arme * d_arme**2
 V_arm_2  = np.pi * l_arme * d_arme**2
 V_bein_1 = np.pi * h_bein_1 * d_beine**2
@@ -177,22 +200,22 @@ m_kopf   = V_kopf * dichte
 m_torso  = V_torso * dichte
 
 I_pose_1_theorie = (1/2 * m_bein_1 * d_beine**2 + (a_beine + d_beine)**2 * m_bein_1) + (1/2 * m_bein_2 * d_beine**2 + (a_beine + d_beine)**2 * m_bein_2) + (1/2 * m_torso * d_torso**2) + (1/2 * m_kopf * d_kopf**2) + (m_arm_1 * (1/4 * d_arme**2 + 1/12 * l_arme**2) + (a_arme + l_arme/2)**2 * m_arm_1) + (m_arm_2 * (1/4 * d_arme**2 + 1/12 * l_arme**2) + (a_arme + l_arme/2)**2 * m_arm_2)
-write('build/trägheit_mensch_pose_1_theorie.tex', make_SI(I_pose_1_theorie*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
+write('build/traegheit_mensch_pose_1_theorie.tex', make_SI(I_pose_1_theorie*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
 
 I_pose_1 = (((t1/(2*np.pi))**2)*d_0)
 I_pose_1 = I_pose_1 - z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT
-write('build/trägheit_mensch_pose_1.tex', make_SI((I_pose_1)*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
+write('build/traegheit_mensch_pose_1.tex', make_SI((I_pose_1)*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
 
-write('build/abweichung_pose_1.tex', str((unp.nominal_values(abs((I_pose_1-I_pose_1_theorie))/I_pose_1_theorie*100))))
+write('build/abweichung_pose_1.tex', str(("%.2f" % unp.nominal_values(abs((I_pose_1-I_pose_1_theorie))/I_pose_1_theorie*100))))
 
 I_pose_2_theorie = (1/2 * m_bein_1 * d_beine**2 + (a_beine + d_beine)**2 * m_bein_1) + (1/2 * m_bein_2 * d_beine**2 + (a_beine + d_beine)**2 * m_bein_2) + (1/2 * m_torso * d_torso**2) + (1/2 * m_kopf * d_kopf**2) + (1/2 * (m_arm_1 * d_arme**2) + (a_arme + d_arme/2)**2 * m_arm_1) + (1/2 * (m_arm_2 * d_arme**2) + (a_arme + d_arme/2)**2 * m_arm_2)
-write('build/trägheit_mensch_pose_2_theorie.tex', make_SI(I_pose_2_theorie*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
+write('build/traegheit_mensch_pose_2_theorie.tex', make_SI(I_pose_2_theorie*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
 
 I_pose_2 = (((t2/(2*np.pi))**2)*d_0)
 I_pose_2 = I_pose_2 - z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT
-write('build/trägheit_mensch_pose_2.tex', make_SI((I_pose_2)*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
+write('build/traegheit_mensch_pose_2.tex', make_SI((I_pose_2)*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
 
-write('build/abweichung_pose_1.tex', str((unp.nominal_values(abs((I_pose_2-I_pose_2_theorie))/I_pose_2_theorie*100))))
+write('build/abweichung_pose_2.tex', str(("%.2f" % unp.nominal_values(abs((I_pose_2-I_pose_2_theorie))/I_pose_2_theorie*100))))
 
 
 ## Beispielplot
