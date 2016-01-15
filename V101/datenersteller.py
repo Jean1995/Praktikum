@@ -62,12 +62,12 @@ np.savetxt('build/zylinder.txt', np.column_stack([m_1, d_1, h_1, t_1]), header="
 m_2 = np.array([812.5, 812.5, 812.5, 812.5, 812.5])
 d_2 = np.array([13.755, 13.76, 13.775, 13.74, 13.74])
 t_2 = np.array([8.35, 8.56, 8.49, 8.40, 8.59])
-t_2 = t_1/5
+t_2 = t_2/5
 
 write('build/kugeltabelle.tex', make_table([m_2, d_2, t_2], [1, 3, 2]))
 
-m_2 = m_1*10**(-3)
-d_2 = d_1*10**(-2)/2
+m_2 = m_2*10**(-3)
+d_2 = d_2*10**(-2)/2
 
 np.savetxt('build/kugel.txt', np.column_stack([m_2, d_2, t_2]), header="m [kg], d [m], T [s]")
 
