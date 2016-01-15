@@ -55,7 +55,7 @@ plt.savefig('build/plot.pdf')
 
 plt.clf()
 
-tr_d = b_fit*d_0/(4*np.pi) #HIER WIRD DAS BERECHNET
+tr_d = b_fit*d_0/(4*np.pi**2) #HIER WIRD DAS BERECHNET
 write('build/eigenträgheit.tex', make_SI(tr_d*10**4, r'\gram\centi\metre\tothe{2}', figures=1))
 z = tr_d
 # Zylinder
@@ -102,6 +102,89 @@ tr_k = (((t_k/(2*np.pi))**2)*d_0)
 tr_k1 = tr_k - z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT
 write('build/trägheit_kugel.tex', make_SI(tr_k1*10**7, r'\gram\centi\metre\thothe{2}', figures=1))
 
+# Mensch
+
+m_m, h_bein_1, h_bein_2, d_beine, a_beine, h_kopf, d_kopf, h_torso, d_torso, l_arme, d_arme, a_arme, t1, t2 = np.genfromtxt('build/mensch.txt', unpack=True)
+
+
+rm_m      = np.mean(m_m)
+rh_bein_1 = np.mean(h_bein_1)
+rh_bein_2 = np.mean(h_bein_2)
+rd_beine  = np.mean(d_beine)
+ra_beine  = np.mean(a_beine)
+rh_kopf   = np.mean(h_kopf)
+rd_kopf   = np.mean(d_kopf)
+rh_torso  = np.mean(h_torso)
+rd_torso  = np.mean(d_torso)
+rl_arme   = np.mean(l_arme)
+rd_arme   = np.mean(d_arme)
+ra_arme   = np.mean(a_arme)
+rt1       = np.mean(t1)
+rt2       = np.mean(t2)
+
+dm_m      = np.std(m_m)
+dh_bein_1 = np.std(h_bein_1)
+dh_bein_2 = np.std(h_bein_2)
+dd_beine  = np.std(d_beine)
+da_beine  = np.std(a_beine)
+dh_kopf   = np.std(h_kopf)
+dd_kopf   = np.std(d_kopf)
+dh_torso  = np.std(h_torso)
+dd_torso  = np.std(d_torso)
+dl_arme   = np.std(l_arme)
+dd_arme   = np.std(d_arme)
+da_arme   = np.std(a_arme)
+dt1       = np.std(t1)
+dt2       = np.std(t2)
+
+m_m      = ufloat(rm_m, dm_m)
+h_bein_1 = ufloat(rh_bein_1, dh_bein_1)
+h_bein_2 = ufloat(rh_bein_2, dh_bein_2)
+d_beine  = ufloat(rd_beine, dd_beine)
+a_beine  = ufloat(ra_beine, da_beine)
+h_kopf   = ufloat(rh_kopf, dh_kopf)
+d_kopf   = ufloat(rd_kopf, dd_kopf)
+h_torso  = ufloat(rh_torso, dh_torso)
+d_torso  = ufloat(rd_torso, dd_torso)
+l_arme   = ufloat(rl_arme, dl_arme)
+d_arme   = ufloat(rd_arme, dd_arme)
+a_arme   = ufloat(ra_arme, da_arme)
+t1       = ufloat(rt1, dt1)
+t2       = ufloat(rt2, dt2)
+
+V_arm_1  = np.pi * l_arme * d_arme**2
+V_arm_2  = np.pi * l_arme * d_arme**2
+V_bein_1 = np.pi * h_bein_1 * d_beine**2
+V_bein_2 = np.pi * h_bein_2 * d_beine**2
+V_kopf   = np.pi * h_kopf * d_kopf**2
+V_torso  = np.pi * h_torso * d_torso**2
+
+
+V = V_arm_1 + V_arm_2 + V_bein_1 + V_bein_2 + V_kopf + V_torso
+write('build/volumen_mensch.tex', make_SI(V*10**6, r'\centi\metre\tothe{3}', figures=1))
+dichte = m_m/V
+write('build/dichte_mensch.tex', make_SI(dichte, r'\kilo\gram\per\metre\tothe{3}', figures=1))
+
+m_arm_1  = V_arm_1 * dichte
+m_arm_2  = V_arm_2 * dichte
+m_bein_1 = V_bein_1 * dichte
+m_bein_2 = V_bein_2 * dichte
+m_kopf   = V_kopf * dichte
+m_torso  = V_torso * dichte
+
+I_pose_1_theorie = (1/2 * m_bein_1 * d_beine**2 + (a_beine + d_beine) * m_bein_1) + (1/2 * m_bein_2 * d_beine**2 + (a_beine + d_beine) * m_bein_2) + (1/2 * m_torso * d_torso**2) + (1/2 * m_kopf * d_kopf**2) + (m_arm_1 * (1/4 * d_arme**2 + 1/12 * l_arme**2) + (a_arme + l_arme/2) * m_arm_1) + (m_arm_2 * (1/4 * d_arme**2 + 1/12 * l_arme**2) + (a_arme + l_arme/2) * m_arm_2)
+write('build/trägheit_mensch_pose_1_theorie.tex', make_SI(I_pose_1_theorie*10**7, r'\gram\centi\metre\thothe{2}', figures=1))
+
+I_pose_1 = (((t1/(2*np.pi))**2)*d_0)
+I_pose_1 = I_pose_1 - z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT
+write('build/trägheit_mensch_pose_1.tex', make_SI((I_pose_1)*10**7, r'\gram\centi\metre\thothe{2}', figures=1))
+
+I_pose_2_theorie = (1/2 * m_bein_1 * d_beine**2 + (a_beine + d_beine) * m_bein_1) + (1/2 * m_bein_2 * d_beine**2 + (a_beine + d_beine) * m_bein_2) + (1/2 * m_torso * d_torso**2) + (1/2 * m_kopf * d_kopf**2) + (1/2 * (m_arm_1 * d_arme**2) + (a_arme + d_arme/2) * m_arm_1) + (1/2 * (m_arm_2 * d_arme**2) + (a_arme + d_arme/2) * m_arm_2)
+write('build/trägheit_mensch_pose_2_theorie.tex', make_SI(I_pose_2_theorie*10**7, r'\gram\centi\metre\thothe{2}', figures=1))
+
+I_pose_2 = (((t2/(2*np.pi))**2)*d_0)
+I_pose_2 = I_pose_2 - z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT
+write('build/trägheit_mensch_pose_2.tex', make_SI((I_pose_2)*10**7, r'\gram\centi\metre\thothe{2}', figures=1))
 
 
 ## Beispielplot

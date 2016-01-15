@@ -95,14 +95,14 @@ write('build/menschtabelle.tex', make_table([m, h_bein_1, h_bein_2, d_beine, a_b
 m        = m*10**(-3)
 h_bein_1 = h_bein_1*10**(-2)
 h_bein_2 = h_bein_2*10**(-2)
-d_beine  = d_beine*10**(-2)
-a_beine  = a_beine*10**(-2)
+d_beine  = d_beine*10**(-2)/2
+a_beine  = a_beine*10**(-2)/2
 h_kopf   = h_kopf*10**(-2)
-d_kopf   = d_kopf*10**(-2)
+d_kopf   = d_kopf*10**(-2)/2
 h_torso  = h_torso*10**(-2)
-d_torso  = d_torso*10**(-2)
+d_torso  = d_torso*10**(-2)/2
 l_arme   = l_arme*10**(-2)
-d_arme   = d_arme*10**(-2)
-a_arme   = a_arme*10**(-2)
+d_arme   = d_arme*10**(-2)/2
+a_arme   = a_arme*10**(-2)/2
 
 np.savetxt('build/mensch.txt', np.column_stack([m, h_bein_1, h_bein_2, d_beine, a_beine, h_kopf, d_kopf, h_torso, d_torso, l_arme, d_arme, a_arme, t1, t2]), header="alles in SI-Einheiten")
