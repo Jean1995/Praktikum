@@ -48,7 +48,7 @@ write('build/b.tex', make_SI(b_fit, r'\second\tothe{2}', figures=1))
 plt.xlabel(r'$a^2 \ /\ m^2$')
 plt.ylabel(r'$T^2 \ /\ s^2$')
 plt.legend(loc='best')
-plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08) # Ich werde diese Zeile nie wieder vergessen, oh Großmeister Marco, mein Führer!
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08) # Ich werde diese Zeile nie wieder vergessen, oh Großmeister Marco, mein Führer! <- So soll es sein!m
 plt.ylim(unp.nominal_values(b_fit),60)
 plt.xlim(0,0.07)
 plt.savefig('build/plot.pdf')
@@ -56,7 +56,7 @@ plt.savefig('build/plot.pdf')
 plt.clf()
 
 tr_d = b_fit*d_0/(4*np.pi**2) #HIER WIRD DAS BERECHNET
-write('build/eigentraegheit.tex', make_SI(tr_d*10**4, r'\gram\centi\metre\tothe{2}', figures=1))
+write('build/eigentraegheit.tex', make_SI(tr_d*10**3, r'\gram\metre\tothe{2}', figures=1)) # Oh je: Das hier ist jetzt in Gramm MeterQuadrat
 z = tr_d
 # Zylinder
 
@@ -74,12 +74,12 @@ write('build/m_zylinder.tex', make_SI(rm_z*10**3, r'\gram', figures=1))
 write('build/r_zylinder.tex', make_SI(d_z*10**2, r'\centi\metre', figures=1))
 write('build/t_zylinder.tex', make_SI(t_z, r'\second', figures=1))
 tr_z_theorie = (m_z*d_z**2)/2
-write('build/traegheit_zylinder_theorie.tex', make_SI(tr_z_theorie*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
+write('build/traegheit_zylinder_theorie.tex', make_SI(tr_z_theorie*10**3, r'\gram\metre\tothe{2}', figures=1)) # hier ist Einheit jut
 tr_z = (((t_z/(2*np.pi))**2)*d_0)
-tr_z1 = tr_z - z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT
-write('build/traegheit_zylinder.tex', make_SI(tr_z1*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
+tr_z1 = tr_z #- z#*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT -> lulz
+write('build/traegheit_zylinder.tex', make_SI(tr_z1*10**3, r'\gram\metre\tothe{2}', figures=1))
 
-write('build/abweichung_zylinder.tex', str((("%.1f" % unp.nominal_values(abs((tr_z1-tr_z_theorie))/tr_z_theorie*100)))))
+write('build/abweichung_zylinder.tex', str((("%.1f" % unp.nominal_values(abs((tr_z1-tr_z_theorie))/tr_z_theorie*100))))) # good job
 
 
 # Kugel

@@ -19,7 +19,11 @@ phi = np.array([90, 180, 270, 90, 180, 270, 90, 180, 270, 90, 180, 270])
 #phi = np.array([np.pi/2, np.pi, 3/2*np.pi, np.pi/2, np.pi, 3/2*np.pi, np.pi/2, np.pi, 3/2*np.pi, np.pi/2, np.pi, 3/2*np.pi])
 f   = np.array([0.74, 1.4, 2.1, 0.52, 1, 1.5, 0.42, 0.78, 1.18, 0.32, 0.64, 0.96])
 
-write('build/statischtabelle.tex', make_table([r, phi, f], [1, 1, 2]))
+phi_b = np.array([np.pi/2, np.pi, 3/2*np.pi, np.pi/2, np.pi, 3/2*np.pi, np.pi/2, np.pi, 3/2*np.pi, np.pi/2, np.pi, 3/2*np.pi])
+d = f*r/phi_b
+
+
+write('build/statischtabelle.tex', make_table([r, phi, f, d], [0, 0, 2, 2])) #Einheiten ok: Hier wird d in Ncm berechnet und angegeben
 
 r = r*10**(-2)
 
@@ -49,13 +53,13 @@ h_1 = np.array([13.995, 14.005, 14.005, 14.01, 13.99])
 t_1 = np.array([5.97, 6.01, 5.96, 5.96, 6])
 t_1 = t_1/5
 
-write('build/zylindertabelle.tex', make_table([m_1, d_1, h_1, t_1], [1, 3, 3, 2]))
+write('build/zylindertabelle.tex', make_table([m_1, d_1/2, h_1, t_1], [1, 3, 3, 2]))
 
 m_1 = m_1*10**(-3)
 h_1 = h_1*10**(-2)
-d_1 = d_1*10**(-2)/2
+d_1 = d_1*10**(-2)/2 #huh
 
-np.savetxt('build/zylinder.txt', np.column_stack([m_1, d_1, h_1, t_1]), header="m [kg], d [m], h [m], T [s]")
+np.savetxt('build/zylinder.txt', np.column_stack([m_1, d_1, h_1, t_1]), header="m [kg], r [m], h [m], T [s]")
 
 # Kugel
 

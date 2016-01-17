@@ -15,22 +15,32 @@ mit den gemittelten Werten aus Tabelle \ref{tab:1} bemüht, wobei $a$ der Abstan
   \caption{Mesdaten zur Bestimmung der Winkelrichtgröße.}
   \label{tab:1}
   \sisetup{table-format=1.2}
-  \begin{tabular}{c c c}
+  \begin{tabular}{c c c c}
     \toprule
-    {$a [\si{\centi\metre}]$} & {$\phi [\si{\degree}]$} & {$F [\si{\newton}]$}\\
+    {$a [\si{\centi\metre}]$} & {$\phi [\si{\degree}]$} & {$F [\si{\newton}]$} & {$D [\si{\newton\centi\metre}]$}\\
     \midrule
     \input{build/statischtabelle.tex}
     \bottomrule
   \end{tabular}
 \end{table}
 
-Der gemittelte Wert für die Winkelrichtgröße lautet demnach
+Aus den berechneten Werten wird der arithmetische Mittelwert hier und in allen folgenden Rechnungen nach der Formel
+\begin{equation}
+  \bar{x} = \frac{1}{n} \sum_{i=1}^n x_i
+\end{equation}
+für n Messwerte bestimmt.
+Der Fehler wird mittels der Standardabweichung
+\begin{equation}
+  S = \sqrt{ \frac{1}{n-1} \sum_{i=1}^n  \bigl(x_i - \bar{x} \bigr)^2  }
+\end{equation}
+berechnet.
+Der sich ergebende gemittelte Wert für die Winkelrichtgröße lautet demnach
 \begin{align*}
-  D   &=   \input{build/winkelrichtgroesse.tex}. \\
+  D   &=   \input{build/winkelrichtgroesse.tex}.
 \end{align*}
-
 Um das Eigenträgheitsmoment $I_{\text{D}}$ der Drillachse zu bestimmen, werden die aufgenommenen Umlaufzeiten $T$ quadratisch gegen den Abstand $a$ von Drehachse zu den jeweiligen Testmassen zum Quadrat aufgetragen.
-Mittels linearer Regression wird der Y-Achsen Abschnitt $b$ bestimmt.
+Mittels linearer Regression wird der y-Achsenabschnitt $b$ bestimmt.
+Die Ausgleichsrechnung wird dabei von SciPy in Python durchgeführt.
 
 \begin{figure}
   \centering
@@ -39,7 +49,7 @@ Mittels linearer Regression wird der Y-Achsen Abschnitt $b$ bestimmt.
   \label{fig:plot}
 \end{figure}
 
-Durch den Zusammenhang (\ref{eqn:zeiten}) und dem Satz von Steiner,
+Durch den Zusammenhang (\ref{eqn:zeiten}) und den Satz von Steiner \eqref{eqn:steiner},
 \begin{equation}
   I_{\text{ges}} = I_{\text{D}} + (m_1+m_2)a²,
 \end{equation}
@@ -49,7 +59,7 @@ folgt für die Quadrate der Umlaufzeiten
 \end{equation}
 Folglich gilt für den aus der linearen Regression bestimmten Wert $b$,
 \begin{align*}
-  b = \input{build/b.tex}, \\
+  b = \input{build/b.tex},
 \end{align*}
 die Gleichung
 \begin{equation}
@@ -61,23 +71,43 @@ und entsprechend
 \end{equation}
 Daraus lässt sich nun die Eigenträgheit zu
 \begin{align*}
-  I_{\text{D}} = \input{build/eigentraegheit.tex} \\
+  I_{\text{D}} = \input{build/eigentraegheit.tex}
 \end{align*}
 bestimmen.
-
+Für die Fehlerrechnung wird bei dieser Rechnung und bei allen folgenden Rechnungen das Gaußsche Fehlerfortpflanzungsgesetz
+\begin{equation}
+\increment{f} = \sqrt{\Bigl(\frac{\partial f}{\partial x_1}\increment{x_1}\Bigr)^2 + \Bigl(\frac{\partial f}{\partial x_2}\increment{x_2}\Bigr)^2 + \dotsc + \Bigl(\frac{\partial f}{\partial x_n}\increment{x_n}\Bigr)^2}
+\end{equation}
+für eine Funktion $f(x_1,x_2, \dotsc ,x_n)$, bei der die Größen $x_1, x_2, \dotsc , x_n$ voneinander unabhängig sind, verwendet.
 
 \subsection{Bestimmung des Trägheitsmomentes eines Zylinders}
-Das Ausmessen des Zylinders führt auf die Eckdaten
+Die Durchführung der angegebenen Messreihen für den Zylinder führt zu den in Tabelle \ref{tab:zyl} angegebenen Werten
+
+\begin{table}[H]
+  \centering
+  \caption{Mesdaten zur Bestimmung des Trägheitsmomentes des Zylinders.}
+  \label{tab:zyl}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c c c c}
+    \toprule
+    {$m_\text{zyl} [\si{\gram}]$} & {$r_\text{zyl} [\si{\centi\metre}]$} & {$h_\text{zyl} [\si{\centi\metre}]$} & {$T_\text{zyl} [\si{\second}]$}\\
+    \midrule
+    \input{build/zylindertabelle.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Aus diesen Messungen ergeben sich somit als Mittelwerte für die Eckdaten des Zylinders.
 \begin{align*}
   R_{\text{Zylinder}} &= \input{build/r_zylinder.tex}, \\
   m_{\text{Zylinder}} &= \input{build/m_zylinder.tex}.
 \end{align*}
-Seine gemessene Umlaufzeit beträgt
+Seine mittlere gemessene Umlaufzeit beträgt
 \begin{align*}
-  T_{\text{Zylinder}} = \input{build/t_zylinder.tex} \\
+  T_{\text{Zylinder}} = \input{build/t_zylinder.tex}
 \end{align*}
 
-Um sein theoretisches Trägheitsmoment zu bestimmen, wird die Formel für einen aufrechten sich drehenden Zylinder benutzt, welche
+Um sein theoretisches Trägheitsmoment zu bestimmen, wird die Formel für einen sich aufrechten drehenden Zylinder benutzt, welche
 \begin{equation}
   I_{\text{Zylinder}} = \frac{mR²}{2}
 \end{equation}
@@ -87,7 +117,7 @@ Dementsprechend errechnet sich der theoretische Wert zu
   I_{\text{Zylinder, Theorie}} = \input{build/traegheit_zylinder_theorie.tex}. \\
 \end{align*}
 
-Aus der Gleichung (\ref{eqn:zeiten}) und nach dem Abziehen der Eigenrägheit folgt der gemessene Wert des Trägheitsmomentes zu
+Aus der Gleichung (\ref{eqn:zeiten}) und nach dem Abziehen der Eigenträgheit folgt der gemessene Wert des Trägheitsmomentes zu
 \begin{align*}
   I_{\text{Zylinder, gemessen}} = \input{build/traegheit_zylinder.tex}. \\
 \end{align*}
