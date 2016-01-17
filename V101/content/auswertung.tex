@@ -12,7 +12,7 @@ mit den gemittelten Werten aus Tabelle \ref{tab:1} bemüht, wobei $a$ der Abstan
 
 \begin{table}[H]
   \centering
-  \caption{Mesdaten zur Bestimmung der Winkelrichtgröße.}
+  \caption{Messdaten zur Bestimmung der Winkelrichtgröße.}
   \label{tab:1}
   \sisetup{table-format=1.2}
   \begin{tabular}{c c c c}
@@ -85,7 +85,7 @@ Die Durchführung der angegebenen Messreihen für den Zylinder führt zu den in 
 
 \begin{table}[H]
   \centering
-  \caption{Mesdaten zur Bestimmung des Trägheitsmomentes des Zylinders.}
+  \caption{Messdaten zur Bestimmung des Trägheitsmomentes des Zylinders.}
   \label{tab:zyl}
   \sisetup{table-format=1.2}
   \begin{tabular}{c c c c}
@@ -117,7 +117,7 @@ Dementsprechend errechnet sich der theoretische Wert zu
   I_{\text{Zylinder, Theorie}} = \input{build/traegheit_zylinder_theorie.tex}. \\
 \end{align*}
 
-Aus der Gleichung (\ref{eqn:zeiten}) und nach dem Abziehen der Eigenträgheit folgt der gemessene Wert des Trägheitsmomentes zu
+Aus der Gleichung (\ref{eqn:zeiten}) folgt der gemessene Wert des Trägheitsmomentes zu
 \begin{align*}
   I_{\text{Zylinder, gemessen}} = \input{build/traegheit_zylinder.tex}. \\
 \end{align*}
@@ -133,22 +133,37 @@ zu erkennen.
 
 
 \subsection{Bestimmung des Trägheitsmomentes einer Kugel}
-Die verwendete Kugel wird auf die Größen
+Für die Kugel werden die in Tabelle \ref{tab:kug} angegebenen Werte aufgenommen.
+
+\begin{table}[H]
+  \centering
+  \caption{Messdaten zur Bestimmung des Trägheitsmomentes der Kugel.}
+  \label{tab:kug}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c c c}
+    \toprule
+    {$m_\text{kug} [\si{\gram}]$} & {$d_\text{kug} [\si{\centi\metre}]$} & {$T_\text{kug} [\si{\second}]$}\\
+    \midrule
+    \input{build/kugeltabelle.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Die verwendete Kugel wird somit auf die Größen
 \begin{align*}
   R_{\text{Kugel}} &= \input{build/r_kugel.tex}, \\
   m_{\text{Kugel}} &= \input{build/m_kugel.tex}
 \end{align*}
-vermessen.
-Wobei ihre gemessene Umlaufzeit etwa
+vermessen, wobei ihre gemessene Umlaufzeit etwa
 \begin{align*}
-  T_{\text{Kugel}} = \input{build/t_kugel.tex} \\
+  T_{\text{Kugel}} = \input{build/t_kugel.tex}
 \end{align*}
 beträgt.
-Es ergeben sich wie zuvor beim Zylinder, jedoch mit einem Theorieträgheitsmoment nach
+Es ergeben sich somit analog zur vorherigen Rechnung, jedoch mit einem Theorieträgheitsmoment für eine Kugel nach
 \begin{equation}
   I_{\text{Kugel}} = \frac{2mR²}{5},
 \end{equation}
-die gemessenen und errechneten Eigenschaften
+die gemessenen und errechneten Trägheitsmomente
 \begin{align*}
   I_{\text{Kugel, Theorie}}  &= \input{build/traegheit_kugel_theorie.tex} \\
   I_{\text{Kugel, gemessen}} &= \input{build/traegheit_kugel.tex}. \\
@@ -161,7 +176,41 @@ ab.
 
 
 \subsection{Bestimmung des Trägheitsmomentes einer Puppe abhängig von ihrer Pose}
-Die gemittelten Maße der benutzten Holzpuppe betragen
+Zunächst werden in mehreren Messungen Eckdaten der verschiedenen Körperteile der Holzpuppe aufgenommen.
+Die gemessenen Werte werden in den Tabellen \ref{tab:mensch} und \ref{tab:mensch2} angegeben.
+
+\begin{table}[H]
+  \centering
+  \caption{Messdaten zur Bestimmung des Trägheitsmomentes der Holzpuppe.}
+  \label{tab:mensch}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c c c c c c c}
+    \toprule
+    {$m_\text{pup} [\si{\gram}]$} & {$h_\text{bein,1} [\si{\centi\metre}]$} & {$h_\text{bein,2} [\si{\centi\metre}]$} & {$d_\text{bein} [\si{\centi\metre}]$} & {$a_\text{bein} [\si{\centi\metre}]$} & {$h_\text{kopf} [\si{\centi\metre}]$} & {$d_\text{kopf} [\si{\centi\metre}]$}  \\
+    \midrule
+    \input{build/menschtabelle1.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+Hierbei beschreibt $h_\text{bein,1}$ die Höhe des linken bzw. rechten Beins, $d_\text{bein}$ den Durchmesser der einzelnen Beine, $a_\text{bein}$ den Abstand der Mittelachsen der Beine voneinander, $h_\text{kopf}$ die Höhe des Kopfes sowie $d_\text{kopf}$ dessen Durchmesser.
+
+\begin{table}[H]
+  \centering
+  \caption{Messdaten zur Bestimmung des Trägheitsmomentes der Holzpuppe.}
+  \label{tab:mensch2}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c c c c c c c}
+    \toprule
+    {$h_\text{torso} [\si{\centi\metre}]$} & {$d_\text{torso} [\si{\centi\metre}]$} & {$l_\text{arme} [\si{\centi\metre}]$} & {$d_\text{arme} [\si{\centi\metre}]$} & {$a_\text{arme} [\si{\centi\metre}]$} & {$T_{\text{Pose1}} [\si{\second}]$} & {$T_{\text{Pose2}} [\si{\second}]$}  \\
+    \midrule
+    \input{build/menschtabelle2.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Hierbei beschreibt $h_\text{torso}$ die Höhe des Torsos, $d_\text{torso}$ dessen Durchmesser, $l_\text{arme}$ die Länge der Arme sowie $d_\text{arme}$ dessen Durchmesser und $a_\text{arme}$ den Abstand der Mittelachsen der Arme in anliegender Pose voneinander.
+
+Die gemittelten Maße der benutzten Holzpuppe betragen somit
 \begin{align*}
   L_{\text{Bein1}}  &= \input{build/laenge_b_1.tex}, \\
   L_{\text{Bein2}}  &= \input{build/laenge_b_2.tex}, \\
@@ -177,7 +226,7 @@ Die gemittelten Maße der benutzten Holzpuppe betragen
   m_{\text{ges}}     &= \input{build/masse.tex} \\
 \end{align*}
 wobei $L$ für Länge, $R$ für Radius, $a$ für den Abstand zur Drehachse und $m$ für die Gesamtmasse steht.
-Nach ergänzen der Formel für das Trägheitsmoment auf der Seite liegender Zylinder,
+Nach Ergänzen der Formel für das Trägheitsmoment auf der Seite liegender Zylinder,
 \begin{equation}
   I_{\text{Zylinder}} = m \left( \frac{R²}{4} + \frac{L²}{12} \right),
 \end{equation}

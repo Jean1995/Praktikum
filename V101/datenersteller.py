@@ -73,7 +73,7 @@ write('build/kugeltabelle.tex', make_table([m_2, d_2, t_2], [1, 3, 2]))
 m_2 = m_2*10**(-3)
 d_2 = d_2*10**(-2)/2
 
-np.savetxt('build/kugel.txt', np.column_stack([m_2, d_2, t_2]), header="m [kg], d [m], T [s]")
+np.savetxt('build/kugel.txt', np.column_stack([m_2, d_2, t_2]), header="m [kg], r [m], T [s]")
 
 # d) Mensch
 m        = np.array([162.05, 162.02, 162.03, 162.04, 162.05])
@@ -94,7 +94,9 @@ t2       = np.array([3.32, 3.38, 3.27, 3.32, 3.24])
 t1 = t1/5
 t2 = t2/5
 
-write('build/menschtabelle.tex', make_table([m, h_bein_1, h_bein_2, d_beine, a_beine, h_kopf, d_kopf, h_torso, d_torso, l_arme, d_arme, a_arme, t1, t2], [2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2]))
+write('build/menschtabelle1.tex', make_table([m, h_bein_1, h_bein_2, d_beine, a_beine, h_kopf, d_kopf], [2, 3, 3, 3, 3, 3, 3,]))
+
+write('build/menschtabelle2.tex', make_table([h_torso, d_torso, l_arme, d_arme, a_arme, t1, t2], [3, 3, 3, 3, 3, 2, 2]))
 
 m        = m*10**(-3)
 h_bein_1 = h_bein_1*10**(-2)

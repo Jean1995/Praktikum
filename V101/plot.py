@@ -56,7 +56,7 @@ plt.savefig('build/plot.pdf')
 plt.clf()
 
 tr_d = b_fit*d_0/(4*np.pi**2) #HIER WIRD DAS BERECHNET
-write('build/eigentraegheit.tex', make_SI(tr_d*10**3, r'\gram\metre\tothe{2}', figures=1)) # Oh je: Das hier ist jetzt in Gramm MeterQuadrat
+write('build/eigentraegheit.tex', make_SI(tr_d*10**4, r'\kilo\gram\centi\metre\tothe{2}', figures=1)) # Oh je: Das hier ist jetzt in Gramm MeterQuadrat
 z = tr_d
 # Zylinder
 
@@ -74,10 +74,10 @@ write('build/m_zylinder.tex', make_SI(rm_z*10**3, r'\gram', figures=1))
 write('build/r_zylinder.tex', make_SI(d_z*10**2, r'\centi\metre', figures=1))
 write('build/t_zylinder.tex', make_SI(t_z, r'\second', figures=1))
 tr_z_theorie = (m_z*d_z**2)/2
-write('build/traegheit_zylinder_theorie.tex', make_SI(tr_z_theorie*10**3, r'\gram\metre\tothe{2}', figures=1)) # hier ist Einheit jut
+write('build/traegheit_zylinder_theorie.tex', make_SI(tr_z_theorie*10**4, r'\kilo\gram\centi\metre\tothe{2}', figures=1)) # hier ist Einheit jut
 tr_z = (((t_z/(2*np.pi))**2)*d_0)
-tr_z1 = tr_z #- z#*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT -> lulz
-write('build/traegheit_zylinder.tex', make_SI(tr_z1*10**3, r'\gram\metre\tothe{2}', figures=1))
+tr_z1 = tr_z #- z#*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT -> lulz -> Wird nicht mehr abgezogen
+write('build/traegheit_zylinder.tex', make_SI(tr_z1*10**4, r'\kilo\gram\centi\metre\tothe{2}', figures=1))
 
 write('build/abweichung_zylinder.tex', str((("%.1f" % unp.nominal_values(abs((tr_z1-tr_z_theorie))/tr_z_theorie*100))))) # good job
 
@@ -99,10 +99,10 @@ write('build/m_kugel.tex', make_SI(rm_k*10**3, r'\gram', figures=1))
 write('build/r_kugel.tex', make_SI(r_k*10**2, r'\centi\metre', figures=1))
 write('build/t_kugel.tex', make_SI(t_k, r'\second', figures=1))
 tr_k_theorie = 2*(m_k*r_k**2)/5
-write('build/traegheit_kugel_theorie.tex', make_SI(tr_k_theorie*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
+write('build/traegheit_kugel_theorie.tex', make_SI(tr_k_theorie*10**4, r'\kilo\gram\centi\metre\tothe{2}', figures=1))
 tr_k = (((t_k/(2*np.pi))**2)*d_0)
-tr_k1 = tr_k - z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT
-write('build/traegheit_kugel.tex', make_SI(tr_k1*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
+tr_k1 = tr_k# - z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT -> wird nicht mehr abgezogen
+write('build/traegheit_kugel.tex', make_SI(tr_k1*10**4, r'\kilo\gram\centi\metre\tothe{2}', figures=1))
 
 write('build/abweichung_kugel.tex', str(("%.2f" % unp.nominal_values(abs((tr_k1-tr_k_theorie))/tr_k_theorie*100))))
 
@@ -203,7 +203,7 @@ I_pose_1_theorie = (1/2 * m_bein_1 * d_beine**2 + (a_beine + d_beine)**2 * m_bei
 write('build/traegheit_mensch_pose_1_theorie.tex', make_SI(I_pose_1_theorie*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
 
 I_pose_1 = (((t1/(2*np.pi))**2)*d_0)
-I_pose_1 = I_pose_1 - z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT
+I_pose_1 = I_pose_1 #- z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT
 write('build/traegheit_mensch_pose_1.tex', make_SI((I_pose_1)*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
 
 write('build/abweichung_pose_1.tex', str(("%.2f" % unp.nominal_values(abs((I_pose_1-I_pose_1_theorie))/I_pose_1_theorie*100))))
@@ -212,7 +212,7 @@ I_pose_2_theorie = (1/2 * m_bein_1 * d_beine**2 + (a_beine + d_beine)**2 * m_bei
 write('build/traegheit_mensch_pose_2_theorie.tex', make_SI(I_pose_2_theorie*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
 
 I_pose_2 = (((t2/(2*np.pi))**2)*d_0)
-I_pose_2 = I_pose_2 - z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT
+I_pose_2 = I_pose_2# - z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT
 write('build/traegheit_mensch_pose_2.tex', make_SI((I_pose_2)*10**7, r'\gram\centi\metre\tothe{2}', figures=1))
 
 write('build/abweichung_pose_2.tex', str(("%.2f" % unp.nominal_values(abs((I_pose_2-I_pose_2_theorie))/I_pose_2_theorie*100))))
