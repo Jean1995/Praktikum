@@ -93,11 +93,13 @@ rc = (rwl*rf_0)
 c = ufloat(rc, dc)
 
 relc = ((c-343.2)/343.2)*100
+relc = unp.nominal_values(relc)
 
 write('build/wl.tex', make_SI(wl, r'\milli\metre', figures=1))
 write('build/einsdurchwl.tex', make_SI(1/wl, r'\per\milli\metre', figures=1))
 write('build/c.tex', make_SI(c, r'\metre\per\second', figures=3))
-write('build/relc.tex', make_SI(c, r'\percent', figures=3))
+write('build/relc.tex', make_SI(np.abs(relc), r'\percent', figures=2))
+
 
 
 r6, r12, r18, r24, r30, r36, r42 = np.genfromtxt('build/r.txt', unpack=True)
@@ -136,6 +138,10 @@ m_fit = ufloat(parameter[0], fehler[0])
 b_fit = ufloat(parameter[1], fehler[1])
 
 write('build/propfak_1.tex', make_SI(m_fit, r'\centi\metre\tothe{-1}', figures=1))
+write('build/propfak_1_inc.tex', make_SI(f_0/(m_fit*100), r'\metre\per\second', figures=2))
+relc_1 = (((f_0/(m_fit*100))-343.2)/343.2)*100
+relc_1 = unp.nominal_values(relc_1)
+write('build/relc_1.tex', make_SI(np.abs(relc_1), r'\percent', figures=2))
 write('build/bwert1.tex', make_SI(b_fit, r'\per\second', figures=1))
 plt.ylabel(r'$\increment f \ /\ s^{-1}$')
 plt.xlabel(r'$v \ /\ cm/s$')
@@ -153,13 +159,14 @@ i6, i12, i18, i24, i30 = np.genfromtxt('build/i.txt', unpack=True)
 i = unp.uarray([np.mean(i30), np.mean(i24), np.mean(i18), np.mean(i12), np.mean(i6)], [np.std(i30), np.std(i24), np.std(i18), np.std(i12), np.std(i6)])
 rv = unp.uarray([rv30, rv24, rv18, rv12, rv6], [dv30, dv24, dv18, dv12, dv6])
 rv = rv* 10**(2)
-i = i*5
+i = i*10
+rv = rv*2
 
 def h(x, m, b):
     return m*x + b
 plt.errorbar(unp.nominal_values(rv), unp.nominal_values(i), xerr=unp.std_devs(rv), yerr=unp.std_devs(i), fmt='r.', label=r'$\text{Messwerte} \; \increment f$')
 parameter, covariance = curve_fit(h, unp.nominal_values(rv), unp.nominal_values(i))
-x_plot = np.linspace(3, 28, 10000)
+x_plot = np.linspace(5, 55, 10000)
 
 plt.plot(x_plot, h(x_plot, parameter[0], parameter[1]), 'b-', label=r'Ausgleichskurve', linewidth=1)
 fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
@@ -168,11 +175,15 @@ m_fit = ufloat(parameter[0], fehler[0])
 b_fit = ufloat(parameter[1], fehler[1])
 
 write('build/propfak_2.tex', make_SI(m_fit, r'\centi\metre\tothe{-1}', figures=1))
+write('build/propfak_2_inc.tex', make_SI(f_0/(m_fit*100), r'\metre\per\second', figures=2))
+relc_2 = (((f_0/(m_fit*100))-343.2)/343.2)*100
+relc_2 = unp.nominal_values(relc_2)
+write('build/relc_2.tex', make_SI(np.abs(relc_2), r'\percent', figures=2))
 #write('build/fit_1_m.tex', make_SI(m_fit*1000, r'\nothing\tothe{-3}', figures=1))
 write('build/bwert2.tex', make_SI(b_fit, r'\per\second', figures=1))
 plt.ylabel(r'$\increment f \ /\ s^{-1}$')
 plt.xlabel(r'$v \ /\ cm/s$')
-plt.xlim(3, 28)
+plt.xlim(5, 55)
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08) # Diese Zeile bitte in Zukunft nicht vergessen sonst unschön! <--- Du hast sie wieder raus genommen!!! >.<
 plt.savefig('build/2plot.pdf')
