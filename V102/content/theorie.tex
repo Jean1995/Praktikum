@@ -38,6 +38,7 @@ und
 \begin{equation}
   E = 3(1-2\mu)Q. \label{eqn:2}    % Hihi, Muh Kuh xD
 \end{equation}
+\subsection{Der Schub- und Elastizitätsmodul}
 Experimentell kann der Schubmodul $G$ beispielsweise über die durch eine Tangentialspannung $\tau$ entstehende Scherung eines Quaders über den Scherungswinkel $\alpha$, dargestellt in Abbildung \ref{fig:1}, bestimmt werden,
 \begin{figure}[H]
   \centering
@@ -77,7 +78,7 @@ Um dies zu verhindern wird eine dynamische Methode gewählt, bei der das Torsion
 Es herrscht nun zusätzlich zum in Gleichung (\ref{eqn:4}) genannten Drehmoment ein neues durch die Trägheit der angehängten Kugel hervorgerufenes Drehmoment.
 Es folgt die Differentialgleichung
 \begin{equation}
-  D \phi + \theta \frac{\symup{d}²\phi}{\symup{d}t²} = 0.
+  D \phi + \theta \frac{\symup{d}²\phi}{\symup{d}t²} = 0. \label{eqn1:1}
 \end{equation}
 Dessen Lösung
 \begin{equation}
@@ -90,11 +91,11 @@ mit
 lautet.
 Über das Trägheitsmoment $\theta$ der Kugel,
 \begin{equation}
-  \theta = \frac{2}{5}m_k R_k^2, \label{eqn:6}
+  \theta = \frac{2}{5}m_k R_k^2, \label{eqn:7}
 \end{equation}
 folgt schließlich
 \begin{equation}
-  G = \frac{16}{5}\pi\frac{m_k R_k^2 L}{T²R^4}. \label{eqn:7}
+  G = \frac{16}{5}\pi\frac{m_k R_k^2 L}{T²R^4}. \label{eqn:8}
 \end{equation}
 Der Elastizitätsmodul $E$ hingegen wird über die Schallgeschwindigkeit, die im Material herrscht bestimmt, da der Zusammenhang
 \begin{equation}
@@ -102,3 +103,35 @@ Der Elastizitätsmodul $E$ hingegen wird über die Schallgeschwindigkeit, die im
 \end{equation}
 mit der Dichte $\rho$ des Materials, besteht.
 Aus dem Schub- und Elastizitätsmodul lassen sich nun über (\ref{eqn:1}) und (\ref{eqn:2}) der Kompressionsmodul $Q$ und die Poissonsche Querkontraktionszahl $\mu$ bestimmen.
+\subsection{Messung eines magnetischen Momentes}
+Mit der für die Bestimmung des Schubmoduls beschriebenen, jedoch etwas modifizierten, Methode lässt sich das Dipolmoment $m$ eines Permanentmagneten berechnen.
+Hierzu wird in die Kugel ein Stabmagnet eingesetzt.
+Dieser beginnt nun in einem homogenen Magnetfeld $\vec{B}$ sich antiparallel entlang der Feldlinien auszurichten, wie es in Abbildung \ref{fig:4} skizziert ist.
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=6cm]{magnet.png}
+  \caption{Stabmagnet in einem homogenen Magnetfeld. \cite{sample}}
+  \label{fig:4}
+\end{figure}
+Für das Dipolmoment $m$ des Stabes gilt
+\begin{equation}
+  \vec{m} = p\vec{a}, \label{eqn:9}
+\end{equation}
+mit seiner Polstärke $p$ und dem Polabstand $\vec{a}$.
+Beginnt der Stab sich auszurichten, unterliegt er nun einem zusätzlichen Drehmoment $\vec{M_{\text{mag}}}$, welches durch
+\begin{equation}
+  \vec{M_{\text{mag}}} = \vec{m} \times \vec{B} \label{eqn:10}
+\end{equation}
+beschrieben wird.
+Wird nun der Betrag davon betrachtet und die Ruhelage des Stabes etlang $\phi = 0$ gesetzt wird, gilt resultierend aus (\ref{eqn1:1})
+\begin{equation}
+      mB\sin{\phi} D \phi + \theta \frac{\symup{d}²\phi}{\symup{d}t²} = 0.
+\end{equation}
+Nach einer Kleinwinkelnäherung für den Sinus gilt analog zu (\ref{eqn:5}) der Zusammenhang
+\begin{equation}
+  \phi (t) = \phi_0\cos\left(\frac{2\pi}{T_m}t\right), \label{eqn:11}
+\end{equation}
+mit einer neuen Periodendauer
+\begin{equation}
+  T = 2\pi\sqrt{\frac{\theta}{mB+D}}. \label{eqn:12}
+\end{equation}
