@@ -117,6 +117,14 @@
   pdfcreator={},  % ┐ PDF-Attribute säubern
   pdfproducer={}, % ┘
 ]{hyperref}
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=red,
+            pdfborder={0 0 0}
+            }
 % erweiterte Bookmarks im PDF
 \usepackage{bookmark}
 
@@ -138,6 +146,8 @@
 
 \tikzset{circuit declare symbol = voltmeter}
 \tikzset{set voltmeter graphic ={draw,generic circle IEC, minimum size=5mm,info=center:V}}
+
+\DeclareSIUnit{\nothing}{}
 
 
 \author{

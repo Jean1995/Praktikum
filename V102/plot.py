@@ -24,8 +24,11 @@ I_g = I_h + I_k
 r      = np.genfromtxt('build/radius.txt', unpack=True)
 l1, l2 = np.genfromtxt('build/laengen.txt', unpack=True)
 R = ufloat(np.mean(r),np.std(r))
+write('build/r.tex', make_SI(R*10**6, r'\micro\metre', figures=1))
 L1 = ufloat(np.mean(l1),np.std(l1))
+write('build/l1.tex', make_SI(L1*100, r'\centi\metre', figures=1))
 L2 = ufloat(np.mean(l2),np.std(l2))
+write('build/l2.tex', make_SI(L2*100, r'\centi\metre', figures=1))
 L = L1 + L2
 
 # Periodendauern
@@ -42,7 +45,7 @@ T_0_8 = ufloat(np.mean(t_0_8),np.std(t_0_8))
 T_1_0 = ufloat(np.mean(t_1_0),np.std(t_1_0))
 
 Tm = unp.uarray([np.mean(t_0_2), np.mean(t_0_4), np.mean(t_0_6), np.mean(t_0_8), np.mean(t_1_0)],[np.std(t_0_2), np.std(t_0_4), np.std(t_0_6), np.std(t_0_8), np.std(t_1_0)])
-np.savetxt('build/zeiten.txt', np.column_stack([unp.nominal_values(1/T_0_2**2), unp.nominal_values(1/T_0_4**2), unp.nominal_values(1/T_0_6**2), unp.nominal_values(1/T_0_8**2), unp.nominal_values(1/T_1_0**2)]), header="1/Tm² [s]")
+np.savetxt('build/zeiten.txt', np.column_stack([unp.nominal_values(1/T_0_2**2), unp.nominal_values(1/T_0_4**2), unp.nominal_values(1/T_0_6**2), unp.nominal_values(1/T_0_8**2), unp.nominal_values(1/T_1_0**2)]), header="1/Tm^2 [1/s^2]")
 # Magnetfeld Spulen
 
 n    = 390
@@ -70,12 +73,12 @@ write('build/elastizitaetsmodul.tex', make_SI(E*10**(-9), r'\giga\newton\per\met
 # Poissonsche Querkontraktionszahl
 
 mu = E/(2* G) - 1
-write('build/querkontraktionszahl.tex', str(mu))
+write('build/querkontraktionszahl.tex', make_SI(mu, r'\nothing', figures=1) )
 
 # der Kompressionsmodul Q
 
 Q = E/(3*(1-2*mu))
-write('build/kompressionsmodul.tex', make_SI(Q, r'\pascal', figures=1))
+write('build/kompressionsmodul.tex', make_SI(Q*10**(-9), r'\giga\pascal', figures=1))
 
 # m durch Spulenstrom
 
@@ -103,23 +106,25 @@ m_fit = ufloat(parameter[0], fehler[0])
 b_fit = ufloat(parameter[1], fehler[1])
 
 write('build/propfak_1.tex', make_SI(m_fit, r'\kilo\gram\per\ampere', figures=1))
+write('build/bfak_1.tex', make_SI(b_fit, r'\tesla', figures=1))
 
-plt.ylabel(r'$B \ /\ 10^3T$')
+
+plt.ylabel(r'$B \ /\ \si{\milli\tesla}$')
 plt.xlabel(r'$\frac{1}{T_m²} \ /\ 10^3s^{-2}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08) # Diese Zeile bitte in Zukunft nicht vergessen sonst unschön! <--- Du hast sie wieder raus genommen!!! >.<
 plt.savefig('build/1plot.pdf')
 
 
-m = 4*np.pi**2 * I_g / m_fit
+m = 4*np.pi**2 * I_g / m_fit #jo
 write('build/magnetisches_moment1.tex', make_SI(m, r'\ampere\metre\tothe{2}', figures=1))
-#m_alternativ = -D/b_fit
-#write('build/magnetisches_moment2.tex', make_SI(m_alternativ, r'\ampere\metre\tothe{2}', figures=1))
+m_alternativ = -D/b_fit #jo
+write('build/magnetisches_moment2.tex', make_SI(m_alternativ/1000, r'\ampere\metre\tothe{2}', figures=1))
 
 
 # B-Feld der Erde
 
-B_erde = (4 * np.pi**2 * I_g / T2**2 - D) / m
+B_erde = (4 * np.pi**2 * I_g / T2**2 - D) / m #jo
 write('build/magnetfeld_erde.tex', make_SI(B_erde*10**6, r'\micro\tesla', figures=1))
 
 
