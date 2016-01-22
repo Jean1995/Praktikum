@@ -25,7 +25,7 @@ l_2 = l_2*10**(-2)
 np.savetxt('build/laengen.txt', np.column_stack([l_1, l_2]), header="Länge bis untere Kante [m], Länge von unterer Kante [m]")
 
 r = np.array([0.195, 0.203, 0.199, 0.203, 0.194])
-r = r*10**(2)/2
+r = r*10**(3)/2
 write('build/radius_tabelle.tex', make_table([r], [1])) # micro meter
 
 r = r*10**(-6)

@@ -1,28 +1,75 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
-\begin{figure}
-  \centering
-  \includegraphics{plot.pdf}
-  \caption{Plot.}
-  \label{fig:plot}
-\end{figure}
+Zunächst muss die Apperatur vermessen werden.
+Die Messergebnisse werden in Tabelle \ref{tab:1} und \ref{tab:2} präsentiert.
 
-\begin{table}
+\begin{table}[H]
   \centering
-  \caption{Beispieltabelle}
-  \label{tab:tabelle_beispiel}
+  \caption{Radius des Torsionsfadens}
+  \label{tab:1}
   \sisetup{table-format=1.2}
-  \begin{tabular}{c c}
+  \begin{tabular}{c}
     \toprule
-    {$a [\si{\second}]$} & {$b [\si{\kelvin}]$}\\
+    {$r [\si{\micro\second}]$}\\
     \midrule
-    \input{build/tabelle.tex}
+    \input{build/radius_tabelle.tex}
     \bottomrule
   \end{tabular}
 \end{table}
 
-Es ergibt sich
-\begin{align}
-  a &= \input{build/wert_a.tex} \\
-\end{align}
+\begin{table}[H]
+  \centering
+  \caption{Länge des Torsionsfadens oberhalb/unterhalb des Spiegels}
+  \label{tab:2}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c c}
+    \toprule
+    {$L1 [\si{\centi\metre}]$} & {$L2 [\si{\centi\metre}]$}\\
+    \midrule
+    \input{build/laengen_tabelle.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\begin{figure}
+%  \centering
+%  \includegraphics{plot.pdf}
+%  \caption{Plot.}
+%  \label{fig:plot}
+%\end{figure}
+%
+%\begin{table}
+%  \centering
+%  \caption{Beispieltabelle}
+%  \label{tab:tabelle_beispiel}
+%  \sisetup{table-format=1.2}
+%  \begin{tabular}{c c}
+%    \toprule
+%    {$a [\si{\second}]$} & {$b [\si{\kelvin}]$}\\
+%    \midrule
+%    \input{build/tabelle.tex}
+%    \bottomrule
+%  \end{tabular}
+%\end{table}
+%
+%Es ergibt sich
+%\begin{align}
+%  a &= \input{build/wert_a.tex} \\
+%\end{align}

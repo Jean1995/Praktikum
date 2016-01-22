@@ -14,8 +14,8 @@ from uncertainties import ufloat
 
 
 # Apparaturdaten
-m_k = ufloat(512*10**(-3),512*10**(-3)*0.0004)
-R_k = ufloat(50.75*10**(-3),50.75*10**(-3)*0.00007)
+m_k = ufloat((512*10**(-3)),(512*10**(-3)*0.0004))
+R_k = ufloat((50.75*10**(-3)),(50.75*10**(-3)*0.00007))
 R_k = R_k/2
 I_h = 22.5 * 10**(-7)
 I_k = 2/5 * m_k * R_k**2
@@ -58,14 +58,14 @@ np.savetxt('build/b-felder.txt', np.column_stack([B]), header="B-Felder [T]")
 
 # der Schubmodul G
 
-G = 8 * (I_g) * np.pi * (L)/((T1**2) * (R**4))
+G = (L * np.pi * I_g * 8)/(T1**2 * R**4)
 write('build/schubmodul.tex', make_SI(G*10**(-9), r'\giga\pascal', figures=1)) #etwa um 10³ zu groß
 D = (np.pi * R**4 * G)/(2 * L)
 
 # der Elastizitätsmodul
 
-print('E muss ergaenzt werden')
-E = 1 # fehlt noch
+E = 21*10**10
+write('build/elastizitaetsmodul.tex', make_SI(E*10**(-9), r'\giga\newton\per\metre\tothe{2}', figures=1))
 
 # Poissonsche Querkontraktionszahl
 
@@ -92,9 +92,9 @@ from scipy.optimize import curve_fit
 
 def h(x, m, b):
     return m*x + b
-plt.errorbar(1/unp.nominal_values(Tm)**2, B, xerr=0, yerr=0, fmt='r.', label=r'$\text{Messwerte}') #1/unp.std_devs(Tm)**2
-parameter, covariance = curve_fit(h, 1/unp.nominal_values(Tm)**2,B)
-x_plot = np.linspace(0.003, 0.007, 10000)
+plt.errorbar(1000/unp.nominal_values(Tm)**2, B*10**3, xerr=0, yerr=0, fmt='r.', label=r'$\text{Messwerte}') #1/unp.std_devs(Tm)**2
+parameter, covariance = curve_fit(h, 1000/unp.nominal_values(Tm)**2,B*10**3)
+x_plot = np.linspace(3, 7, 10000)
 
 plt.plot(x_plot, h(x_plot, parameter[0], parameter[1]), 'b-', label=r'Ausgleichskurve', linewidth=1)
 fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
@@ -102,19 +102,25 @@ fehler = np.sqrt(np.diag(covariance)) # Diagonalelemente der Kovarianzmatrix ste
 m_fit = ufloat(parameter[0], fehler[0])
 b_fit = ufloat(parameter[1], fehler[1])
 
-write('build/propfak_1.tex', make_SI(m_fit, r'\centi\metre\tothe{-1}', figures=1))
+write('build/propfak_1.tex', make_SI(m_fit, r'\kilo\gram\per\ampere', figures=1))
 
-plt.ylabel(r'$\increment f \ /\ s^{-1}$')
-plt.xlabel(r'$v \ /\ cm/s$')
+plt.ylabel(r'$B \ /\ 10^3T$')
+plt.xlabel(r'$\frac{1}{T_m²} \ /\ 10^3s^{-2}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08) # Diese Zeile bitte in Zukunft nicht vergessen sonst unschön! <--- Du hast sie wieder raus genommen!!! >.<
 plt.savefig('build/1plot.pdf')
 
 
+m = 4*np.pi**2 * I_g / m_fit
+write('build/magnetisches_moment1.tex', make_SI(m, r'\ampere\metre\tothe{2}', figures=1))
+#m_alternativ = -D/b_fit
+#write('build/magnetisches_moment2.tex', make_SI(m_alternativ, r'\ampere\metre\tothe{2}', figures=1))
+
+
 # B-Feld der Erde
 
-#B_erde = (4 * np.pi**2 * I_g / T2**2 - D) / m
-#write('build/magnetfeld_erde.tex', make_SI(B_erde, r'\tesla', figures=1))
+B_erde = (4 * np.pi**2 * I_g / T2**2 - D) / m
+write('build/magnetfeld_erde.tex', make_SI(B_erde*10**6, r'\micro\tesla', figures=1))
 
 
 
