@@ -64,6 +64,9 @@ np.savetxt('build/b-felder.txt', np.column_stack([B]), header="B-Felder [T]")
 G = (L * np.pi * I_g * 8)/(T1**2 * R**4)
 write('build/schubmodul.tex', make_SI(G*10**(-9), r'\giga\pascal', figures=1)) #etwa um 10³ zu groß
 D = (np.pi * R**4 * G)/(2 * L)
+D_echt = (np.pi * R**4 * 8.2*10**10)/(2 * L)
+write('build/D.tex', make_SI(D, r'\micro\tesla', figures=1))
+write('build/D_echt.tex', make_SI(D_echt, r'\micro\tesla', figures=1))
 
 # der Elastizitätsmodul
 
@@ -126,8 +129,24 @@ write('build/magnetisches_moment2.tex', make_SI(m_alternativ/1000, r'\ampere\met
 
 B_erde = (4 * np.pi**2 * I_g / T2**2 - D) / m #jo
 write('build/magnetfeld_erde.tex', make_SI(B_erde*10**6, r'\micro\tesla', figures=1))
+B_erde_alternativ = (4 * np.pi**2 * I_g / T2**2 - D_echt) / m
+write('build/magnetfeld_erde_alternativ.tex', make_SI(B_erde_alternativ*10**6, r'\micro\tesla', figures=1))
+write('build/test.tex', make_SI((4 * np.pi**2 * I_g / T2**2), r'\micro\tesla', figures=1))
 
+# Diskussionskack
 
+G_echt = 8.2*10**10
+G_abweichung = abs(G-G_echt)/(G_echt)
+mu_abweichung = abs(mu - (E/(2* G_echt) - 1))/((E/(2* G_echt) - 1))
+Q_abweichung = abs(Q-E/(3*(1-2*(E/(2* G_echt) - 1))))/((3*(1-2*(E/(2* G_echt) - 1))))
+
+write('build/g_abweichung.tex', make_SI(G_abweichung*100, r'\percent', figures=1))
+write('build/mu_abweichung.tex', make_SI(mu_abweichung*100, r'\percent', figures=1))
+write('build/Q_abweichung.tex', make_SI(Q_abweichung*100, r'\percent', figures=1))
+
+write('build/schubmodul_echt.tex', make_SI(G_echt*10**(-9), r'\giga\pascal', figures=1))
+write('build/querkontraktionszahl_echt.tex', make_SI((E/(2* G_echt) - 1), r'\nothing', figures=1))
+write('build/kompressionsmodul_echt.tex', make_SI((E/(3*(1-2*(E/(2* G_echt) - 1))))*10**(-9), r'\giga\pascal', figures=1))
 
 
 
