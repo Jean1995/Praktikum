@@ -144,7 +144,7 @@ write('build/g_abweichung.tex', make_SI(G_abweichung*100, r'\percent', figures=1
 write('build/mu_abweichung.tex', make_SI(mu_abweichung*100, r'\percent', figures=1))
 write('build/Q_abweichung.tex', make_SI(Q_abweichung*100, r'\percent', figures=1))
 
-write('build/schubmodul_echt.tex', make_SI(G_echt*10**(-9), r'\giga\pascal', figures=1))
+write('build/schubmodul_echt.tex', make_SI(G_echt*10**(-9), r'\giga\pascal', figures=0))
 write('build/querkontraktionszahl_echt.tex', make_SI((E/(2* G_echt) - 1), r'\nothing', figures=1))
 write('build/kompressionsmodul_echt.tex', make_SI((E/(3*(1-2*(E/(2* G_echt) - 1))))*10**(-9), r'\giga\pascal', figures=1))
 
