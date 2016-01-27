@@ -20,12 +20,13 @@ phi = np.array([90, 180, 270, 90, 180, 270, 90, 180, 270, 90, 180, 270])
 f   = np.array([0.74, 1.4, 2.1, 0.52, 1, 1.5, 0.42, 0.78, 1.18, 0.32, 0.64, 0.96])
 
 phi_b = np.array([np.pi/2, np.pi, 3/2*np.pi, np.pi/2, np.pi, 3/2*np.pi, np.pi/2, np.pi, 3/2*np.pi, np.pi/2, np.pi, 3/2*np.pi])
-d = f*r/phi_b
-
-
-write('build/statischtabelle.tex', make_table([r, phi, f, d], [0, 0, 2, 2])) #Einheiten ok: Hier wird d in Ncm berechnet und angegeben
 
 r = r*10**(-2)
+d = f*r/phi_b
+
+write('build/statischtabelle.tex', make_table([r, phi, f, d], [2, 0, 2, 4])) #Einheiten ok: Hier wird d in Ncm berechnet und angegeben <- jetzt nimmer
+
+
 
 np.savetxt('build/statisch.txt', np.column_stack([r, phi, f]), header="r [m], phi [grad], F [N]")
 
@@ -53,12 +54,13 @@ h_1 = np.array([13.995, 14.005, 14.005, 14.01, 13.99])
 t_1 = np.array([5.97, 6.01, 5.96, 5.96, 6])
 t_1 = t_1/5
 
-write('build/zylindertabelle.tex', make_table([m_1, d_1/2, h_1, t_1], [1, 3, 3, 2]))
+
 
 m_1 = m_1*10**(-3)
 h_1 = h_1*10**(-2)
 d_1 = d_1*10**(-2)/2 #huh
 
+write('build/zylindertabelle.tex', make_table([m_1, d_1, h_1, t_1], [4, 5, 5, 3]))
 np.savetxt('build/zylinder.txt', np.column_stack([m_1, d_1, h_1, t_1]), header="m [kg], r [m], h [m], T [s]")
 
 # Kugel
@@ -73,6 +75,7 @@ write('build/kugeltabelle.tex', make_table([m_2, d_2, t_2], [1, 3, 2]))
 m_2 = m_2*10**(-3)
 d_2 = d_2*10**(-2)/2
 
+write('build/kugeltabelle.tex', make_table([m_2, d_2*2, t_2], [4, 5, 2]))
 np.savetxt('build/kugel.txt', np.column_stack([m_2, d_2, t_2]), header="m [kg], r [m], T [s]")
 
 # d) Mensch
@@ -110,5 +113,9 @@ d_torso  = d_torso*10**(-2)/2
 l_arme   = l_arme*10**(-2)
 d_arme   = d_arme*10**(-2)/2
 a_arme   = a_arme*10**(-2)/2
+
+write('build/menschtabelle1.tex', make_table([m, h_bein_1, h_bein_2, d_beine*2, a_beine*2, h_kopf, d_kopf*2], [5, 5, 5, 5, 5, 5, 5]))
+
+write('build/menschtabelle2.tex', make_table([h_torso, d_torso*2, l_arme, d_arme*2, a_arme*2, t1, t2], [5, 4, 5, 5, 5, 2, 2]))
 
 np.savetxt('build/mensch.txt', np.column_stack([m, h_bein_1, h_bein_2, d_beine, a_beine, h_kopf, d_kopf, h_torso, d_torso, l_arme, d_arme, a_arme, t1, t2]), header="alles in SI-Einheiten")

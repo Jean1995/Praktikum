@@ -3,12 +3,12 @@
 
 \subsection{Bestimmung der Apparaturwerte}
 
-Zunächst muss die Winkelrichtgröße $D$ der Spiralfeder bestimmt werden.
+Zunächst muss die Winkelrichtgröße $D_\text{stat}$ der Spiralfeder bestimmt werden.
 Hierzu wird die Formel
 \begin{equation}
-  D = \frac{F \cdot r}{\phi}
+  D_\text{stat} = \frac{F \cdot r}{\varphi}
 \end{equation}
-mit den gemittelten Werten aus Tabelle \ref{tab:1} bemüht, wobei $a$ der Abstand zwischen Drehachse und anliegender Kraft, $\phi$ der Auslenkwinkel und $F$ die anliegende Kraft ist.
+mit den gemittelten Werten aus Tabelle \ref{tab:1} bemüht, wobei $r$ der Abstand zwischen Drehachse und anliegender Kraft, $\varphi$ der Auslenkwinkel und $F$ die anliegende Kraft ist.
 
 \begin{table}[H]
   \centering
@@ -17,30 +17,26 @@ mit den gemittelten Werten aus Tabelle \ref{tab:1} bemüht, wobei $a$ der Abstan
   \sisetup{table-format=1.2}
   \begin{tabular}{c c c c}
     \toprule
-    {$a [\si{\centi\metre}]$} & {$\phi [\si{\degree}]$} & {$F [\si{\newton}]$} & {$D [\si{\newton\centi\metre}]$}\\
+    {$r \ /\ \si{\metre}$} & {$\varphi \ /\ \si{\degree}$} & {$F \ /\ \si{\newton}$} & {$D \ /\ \si{\newton\metre}$}\\
     \midrule
     \input{build/statischtabelle.tex}
     \bottomrule
   \end{tabular}
 \end{table}
 
-Aus den berechneten Werten wird der arithmetische Mittelwert hier und in allen folgenden Rechnungen nach der Formel
-\begin{equation}
-  \bar{x} = \frac{1}{n} \sum_{i=1}^n x_i
-\end{equation}
-für n Messwerte bestimmt.
-Der Fehler wird mittels der Standardabweichung
-\begin{equation}
-  S = \sqrt{ \frac{1}{n-1} \sum_{i=1}^n  \bigl(x_i - \bar{x} \bigr)^2  }
-\end{equation}
-berechnet.
 Der sich ergebende gemittelte Wert für die Winkelrichtgröße lautet demnach
 \begin{align*}
-  D   &=   \input{build/winkelrichtgroesse.tex}.
+  D_\text{stat}   &=   \input{build/winkelrichtgroesse.tex}.
 \end{align*}
-Um das Eigenträgheitsmoment $I_{\text{D}}$ der Drillachse zu bestimmen, werden die aufgenommenen Umlaufzeiten $T$ quadratisch gegen den Abstand $a$ von Drehachse zu den jeweiligen Testmassen zum Quadrat aufgetragen.
+Hierbei werden die angegebenen Auslenkwinkel mithilfe der Formel
+\begin{equation}
+  \varphi_\text{rad} = \frac{2 \pi}{360} \varphi_\text{deg}
+\end{equation}
+in Bogenmaß umgerechnet.
+Um das Eigenträgheitsmoment $I_{\text{D}}$ der Drillachse zu bestimmen, werden die aufgenommenen Umlaufzeiten $T$ quadratisch gegen den Abstand $r$ von Drehachse zu den jeweiligen Testmassen zum Quadrat aufgetragen.
 Mittels linearer Regression wird der y-Achsenabschnitt $b$ bestimmt.
 Die Ausgleichsrechnung wird dabei von SciPy in Python durchgeführt.
+Es werden die in Kapitel \ref{sec:fehler} angegebenen Fehlerformeln verwendet.
 
 \begin{figure}
   \centering
@@ -49,13 +45,13 @@ Die Ausgleichsrechnung wird dabei von SciPy in Python durchgeführt.
   \label{fig:plot}
 \end{figure}
 
-Durch den Zusammenhang (\ref{eqn:zeiten}) und den Satz von Steiner \eqref{eqn:steiner},
+Da die Zylindermassen als Punktmassen angenommen werden, ergibt sich aus dem Zusammenhang \eqref{eqn:tm1} für das Gesamtträgheitsmoment
 \begin{equation}
-  I_{\text{ges}} = I_{\text{D}} + (m_1+m_2)a²,
+  I_{\text{ges}} = I_{\text{D}} + (m_1+m_2)a².
 \end{equation}
-folgt für die Quadrate der Umlaufzeiten
+Hieraus folgt mit \eqref{eqn:zeiten} für die Quadrate der Umlaufzeiten
 \begin{equation}
-  T² = 4\pi² \frac{(m_1+m_2)}{D}a² + 4\pi² \frac{I_{\text{D}}}{D}.
+  T² = 4\pi² \frac{(m_1+m_2)}{D}r² + 4\pi² \frac{I_{\text{D}}}{D}.
 \end{equation}
 Folglich gilt für den aus der linearen Regression bestimmten Wert $b$,
 \begin{align*}
@@ -74,12 +70,25 @@ Daraus lässt sich nun die Eigenträgheit zu
   I_{\text{D}} = \input{build/eigentraegheit.tex}
 \end{align*}
 bestimmen.
-Für die Fehlerrechnung wird bei dieser Rechnung und bei allen folgenden Rechnungen das Gaußsche Fehlerfortpflanzungsgesetz
+Außerdem wird die Steigung der linearen Regression zu
+\begin{align*}
+  m_{\text{fit}} = \input{build/m.tex},
+\end{align*}
+bestimmt.
+Hieraus lässt sich mithilfe der Beziehung
 \begin{equation}
-\increment{f} = \sqrt{\Bigl(\frac{\partial f}{\partial x_1}\increment{x_1}\Bigr)^2 + \Bigl(\frac{\partial f}{\partial x_2}\increment{x_2}\Bigr)^2 + \dotsc + \Bigl(\frac{\partial f}{\partial x_n}\increment{x_n}\Bigr)^2}
+  D_\text{dyn} = \frac{4 \pi^2 (m_1 + m_2)}{m_\text{fit}}
 \end{equation}
-für eine Funktion $f(x_1,x_2, \dotsc ,x_n)$, bei der die Größen $x_1, x_2, \dotsc , x_n$ voneinander unabhängig sind, verwendet.
-
+sowie der gemessenen Zylindermassen
+\begin{align*}
+m_1 = \SI{0.22178}{\kilo\gram}
+m_2 = \SI{0.22346}{\kilo\gram}
+\end{align*}
+die dynamische Winkelrichtgröße zu
+\begin{align*}
+  D_\text{dyn}   &=   \input{build/winkelrichtgroesse_dyn.tex}.
+\end{align*}
+bestimmen.
 \subsection{Bestimmung des Trägheitsmomentes eines Zylinders}
 Die Durchführung der angegebenen Messreihen für den Zylinder führt zu den in Tabelle \ref{tab:zyl} angegebenen Werten
 
@@ -90,7 +99,7 @@ Die Durchführung der angegebenen Messreihen für den Zylinder führt zu den in 
   \sisetup{table-format=1.2}
   \begin{tabular}{c c c c}
     \toprule
-    {$m_\text{zyl} [\si{\gram}]$} & {$r_\text{zyl} [\si{\centi\metre}]$} & {$h_\text{zyl} [\si{\centi\metre}]$} & {$T_\text{zyl} [\si{\second}]$}\\
+    {$m_\text{zyl} \ /\ \si{\kilo\gram}$} & {$r_\text{zyl} \ /\ \si{\metre}$} & {$h_\text{zyl} \ /\ \si{\metre}$} & {$T_\text{zyl} \ /\ \si{\second}$}\\
     \midrule
     \input{build/zylindertabelle.tex}
     \bottomrule
@@ -119,8 +128,10 @@ Dementsprechend errechnet sich der theoretische Wert zu
 
 Aus der Gleichung (\ref{eqn:zeiten}) folgt der gemessene Wert des Trägheitsmomentes zu
 \begin{align*}
-  I_{\text{Zylinder, gemessen}} = \input{build/traegheit_zylinder.tex}. \\
+  I_{\text{Zylinder, gemessen}} = \input{build/traegheit_zylinder.tex}.
 \end{align*}
+Dabei wird die Eigenträgheit $I_\text{D}$ nicht, wie theoretisch nötig, abgezogen.
+Gründe hierfür werden in der Diskussion angegeben.
 Zum Theoriewert ist eine relative Abweichung nach
 \begin{equation}
   \increment I = \frac{I_{\text{Zylinder, gemessen}} - I_{\text{Zylinder, Theorie}}}{I_{\text{Zylinder, Theorie}}} \cdot 100
@@ -142,7 +153,7 @@ Für die Kugel werden die in Tabelle \ref{tab:kug} angegebenen Werte aufgenommen
   \sisetup{table-format=1.2}
   \begin{tabular}{c c c}
     \toprule
-    {$m_\text{kug} [\si{\gram}]$} & {$d_\text{kug} [\si{\centi\metre}]$} & {$T_\text{kug} [\si{\second}]$}\\
+    {$m_\text{kug} \ /\ \si{\kilo\gram}$} & {$d_\text{kug} \ /\ \si{\metre}$} & {$T_\text{kug} \ /\ \si{\second}$}\\
     \midrule
     \input{build/kugeltabelle.tex}
     \bottomrule
@@ -186,7 +197,7 @@ Die gemessenen Werte werden in den Tabellen \ref{tab:mensch} und \ref{tab:mensch
   \sisetup{table-format=1.2}
   \begin{tabular}{c c c c c c c}
     \toprule
-    {$m_\text{pup} [\si{\gram}]$} & {$h_\text{bein,1} [\si{\centi\metre}]$} & {$h_\text{bein,2} [\si{\centi\metre}]$} & {$d_\text{bein} [\si{\centi\metre}]$} & {$a_\text{bein} [\si{\centi\metre}]$} & {$h_\text{kopf} [\si{\centi\metre}]$} & {$d_\text{kopf} [\si{\centi\metre}]$}  \\
+    {$m_\text{pup} \ /\ \si{\kilo\gram} $} & {$h_\text{bein,1} \ /\ \si{\metre}$} & {$h_\text{bein,2} \ /\  \si{\metre}$} & {$d_\text{bein} \ /\  \si{\metre}$} & {$a_\text{bein} \ /\ \si{\metre}$} & {$h_\text{kopf} \ /\ \si{\metre}$} & {$d_\text{kopf} \ /\  \si{\metre}$}  \\
     \midrule
     \input{build/menschtabelle1.tex}
     \bottomrule
@@ -201,7 +212,7 @@ Hierbei beschreibt $h_\text{bein,1}$ die Höhe des linken bzw. rechten Beins, $d
   \sisetup{table-format=1.2}
   \begin{tabular}{c c c c c c c}
     \toprule
-    {$h_\text{torso} [\si{\centi\metre}]$} & {$d_\text{torso} [\si{\centi\metre}]$} & {$l_\text{arme} [\si{\centi\metre}]$} & {$d_\text{arme} [\si{\centi\metre}]$} & {$a_\text{arme} [\si{\centi\metre}]$} & {$T_{\text{Pose1}} [\si{\second}]$} & {$T_{\text{Pose2}} [\si{\second}]$}  \\
+    {$h_\text{torso} \ /\  \si{\metre}$} & {$d_\text{torso} \ /\  \si{\metre}$} & {$l_\text{arme} \ /\  \si{\metre}$} & {$d_\text{arme} \ /\  \si{\metre}$} & {$a_\text{arme} \ /\  \si{\metre}$} & {$T_{\text{Pose1}} \ /\  \si{\second}$} & {$T_{\text{Pose2}} \ /\  \si{\second}$}  \\
     \midrule
     \input{build/menschtabelle2.tex}
     \bottomrule
@@ -226,12 +237,47 @@ Die gemittelten Maße der benutzten Holzpuppe betragen somit
   m_{\text{ges}}     &= \input{build/masse.tex} \\
 \end{align*}
 wobei $L$ für Länge, $R$ für Radius, $a$ für den Abstand zur Drehachse und $m$ für die Gesamtmasse steht.
+Aus diesen Daten folgt für die Volumina der einzelnen approximierten Körperteile
+\begin{align*}
+  V_{\text{Arm1}}  &= \input{build/volumen_arm_1.tex}, \\
+  %V_{\text{Arm2}}  &= \input{build/volumen_arm_2.tex}, \\
+  V_{\text{Bein1}}  &= \input{build/volumen_bein_1.tex}, \\
+  V_{\text{Bein2}}  &= \input{build/volumen_bein_2.tex}, \\
+  V_{\text{Kopf}}  &= \input{build/volumen_kopf.tex}, \\
+  V_{\text{Torso}}  &= \input{build/volumen_torso.tex}, \\
+\end{align*}
+Die Dichte der Holzpuppe errechnet sich aus dem Gesamtvolumen
+\begin{align*}
+  V_\text{Ges} &= \input{build/volumen_mensch.tex},
+\end{align*}
+und der oben angegebenen Gesamtmasse zu
+\begin{align*}
+  \rho &= \input{build/dichte_mensch.tex}.
+\end{align*}
+Hieraus folgen dementsprechend die einzelnen Massen der Körperteile zu
+\begin{align*}
+  m_{\text{Arm1}}  &= \input{build/masse_arm_1.tex}, \\
+  %V_{\text{Arm2}}  &= \input{build/volumen_arm_2.tex}, \\
+  m_{\text{Bein1}}  &= \input{build/masse_bein_1.tex}, \\
+  m_{\text{Bein2}}  &= \input{build/masse_bein_2.tex}, \\
+  m_{\text{Kopf}}  &= \input{build/masse_kopf.tex}, \\
+  m_{\text{Torso}}  &= \input{build/masse_torso.tex}.
+\end{align*}
+Im Weiteren folgen für die Trägheitsmomente der einzelnen Körperteile
+\begin{align*}
+  I_{\text{Arm, Pose1}}  &= \input{build/traegheit_arm_pose1.tex}, \\
+  I_{\text{Arm, Pose2}}  &= \input{build/traegheit_arm_pose2.tex}, \\
+  I_{\text{Bein1}}  &= \input{build/traegheit_bein_1.tex}, \\
+  I_{\text{Bein2}}  &= \input{build/traegheit_bein_2.tex}, \\
+  I_{\text{Kopf}}  &= \input{build/traegheit_kopf.tex}, \\
+  I_{\text{Torso}}  &= \input{build/traegheit_torso.tex},
+\end{align*}
+wobei es sich hierbei um die Trägheitsmomente um die Symmetrieachse des jeweiligen Körpers handelt.
 Nach Ergänzen der Formel für das Trägheitsmoment auf der Seite liegender Zylinder,
 \begin{equation}
   I_{\text{Zylinder}} = m \left( \frac{R²}{4} + \frac{L²}{12} \right),
 \end{equation}
-
-folgt das theoretische Trägheitsmoment in der ersten Pose zu
+folgt, unter Anwendung des Steinerschen Satzes, das theoretische Trägheitsmoment in der ersten Pose zu
 \begin{align*}
   I_{\text{Theorie, Pose1}}  &= \input{build/traegheit_mensch_pose_1_theorie.tex}. \\
 \end{align*}

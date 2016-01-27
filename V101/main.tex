@@ -14,6 +14,45 @@
 
 \input{content/theorie.tex}
 \input{content/durchfuehrung.tex}
+
+\section{Fehlerrechnung}
+\label{sec:fehler}
+Für eine Messreihe von Werten wird der arithmetische Mittelwert in allen folgenden Rechnungen nach der Formel
+\begin{equation}
+  \bar{x} = \frac{1}{n} \sum_{\text{i}=1}^\text{n} x_\text{i}
+  \label{eqn:mittelwert}
+\end{equation}
+für n Messwerte bestimmt.
+Der Fehler wird mittels der Standardabweichung
+\begin{equation}
+  S = \sqrt{ \frac{1}{n-1} \sum_{\text{i}=1}^\text{n}  \bigl(x_\text{i} - \bar{x} \bigr)^2  }\\
+    \label{eqn:abw}
+\end{equation}
+
+
+Bei der Berechnung der linearen Regression berechnet sich die Steigung $m$ sowie der $y$-Achsenabschnitt nach den Formeln
+\begin{align}
+  m &= \frac{ n \sum_{\text{i}=1}^\text{n} x_\text{i} y_\text{i} - \sum_{\text{i}=1}^\text{n} x_\text{i} \sum_{\text{i}=1}^\text{n} y_\text{i} }{n\sum_{\text{i}=1}^\text{n} x_{\text{i}}^2 - ( \sum_{\text{i}=1}^\text{n} x_\text{i} )^2}  \label{eqn:2}\\
+  \notag\\
+  b &= \frac{ \sum_{\text{i}=1}^\text{n} x_\text{i}^2 \cdot \sum_{\text{i}=1}^\text{n} y_\text{i} - \sum_{\text{i}=1}^\text{n} x_\text{i} \cdot \sum_{\text{i}=1}^\text{n} x_\text{i} y_\text{i}}{\text{n}\sum_{\text{i}=1}^\text{n} x_\text{i}^2 - ( \sum_{\text{i}=1}^n x_\text{i} )^2},
+  \label{eqn:3}
+\end{align}
+bei $n$ gegebenen Messwerten.
+\\
+Die Standardabweichungen berechnen sich zu
+\begin{align}
+  \sigma_m &= \sqrt{ \sigma_y^2 \frac{n}{n \sum_{\text{i}=1}^\text{n} x_\text{i}^2 - (\sum_{\text{i}=1}^\text{n} x)^2} }
+  \label{eqn:4}\\
+  \notag\\
+  \sigma_b &= \sqrt{ \sigma_y^2 \frac{\sum_{\text{i}=1}^\text{n} x_\text{i}^2}{n \sum_{\text{i}=1}^\text{n} x_\text{i}^2 - (\sum_{\text{i}=1}^\text{n} x)^2} }
+  \label{eqn:5}
+\end{align}
+für die Steigung $m$ und für den y-Achsenabschnitt $b$.\cite{fehler}\\
+Für die Fehlerrechnung wird bei allen folgenden Rechnungen das Gaußsche Fehlerfortpflanzungsgesetz
+\begin{equation}
+\increment{f} = \sqrt{\Bigl(\frac{\partial f}{\partial x_1}\increment{x_1}\Bigr)^2 + \Bigl(\frac{\partial f}{\partial x_2}\increment{x_2}\Bigr)^2 + \dotsc + \Bigl(\frac{\partial f}{\partial x_\text{n}}\increment{x_\text{n}}\Bigr)^2}
+\end{equation}
+für eine Funktion $f(x_1,x_2, \dotsc ,x_\text{n})$, bei der die Größen $x_1, x_2, \dotsc , x_\text{n}$ voneinander unabhängig sind, verwendet.
 \input{content/auswertung.tex}
 \input{content/diskussion.tex}
 
