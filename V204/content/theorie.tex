@@ -1,4 +1,73 @@
+\section{Zielsetzung}
+Im Folgenden Experiment wird das Phänomen der Wärmeleitung anhand von mehreren Metallen betrachtet.
+Dabei soll der zeitliche Temperaturverlauf sowie das Verhalten unter einer periodischen Anregung betrachtet werden.
+Zudem wird die Wärmeleitfähigkeit mithilfe der Angström-Methode für Aluminium, Messing sowie Edelstahl bestimmt.
+
 \section{Theorie}
+\subsection{Herleitung der eindimensionalen Wärmeleitungsgleichung}
+Existiert an einem Material, beispielsweise einem Metall, eine Temperaturdifferenz zwischen zwei Orten, so findet erfahrungsgemäß ein Temperaturausgleich statt.
+Dieser findet in einem Metall in Form der Wärmeleitung statt, bei der vornehmlich die frei beweglichen Elektronen die Wärme transportieren.
+Dementsprechend besitzen Metalle bekanntermaßen eine bessere Wärmeleitfähigkeit $\kappa$ als Nicht-Metalle.\\
+Für einen Stab, an dem eine Temperaturdifferenz anliegt, wird die in einer Zeit $\symup{d}t$ durch einen Querschnitt $A$ fließende Wärmemenge $\symup{d}Q$ durch das Verhältnis
+\begin{equation}
+  \symup{d}Q = - \kappa A \frac{\partial T}{\partial x} \symup{d}t
+\end{equation}
+beschrieben, wobei $L$ die Länge des betrachteten Stabs beschreibt.
+Hieraus lässt sich die Wärmestromdichte $j_w$ als
+\begin{equation}
+  j_w = - \kappa \frac{\partial T}{\partial x}
+\end{equation}
+definieren.\\
+Es wird außerdem die Kontinuitätsgleichung
+\begin{equation}
+  \frac{\partial \rho_q}{\partial t} + \nabla \vec{j_w} = 0,
+\end{equation}
+betrachtet, wobei $\rho_q$ die spezifische Wärmemenge $\frac{\symup{d}Q}{\symup{d}V}$ pro Volumen bezeichnet.
+Die Definition der spezifischen Wärmekapazität
+\begin{equation}
+  c = \frac{\symup{d}Q}{m \symup{d}T}
+\end{equation}
+ergibt, zusammen mit der eindimensionalen Version der Kontinuitätsgleichung, die eindimensionale Wärmeleitungsgleichung
+\begin{equation}
+  \frac{\partial T}{\partial t} = \frac{\kappa}{\rho c} \frac{\partial^2 T}{\partial x^2}.
+  \label{eqn:dgl}
+\end{equation}
+Hier beschreibt $\rho$ nun die Dichte des verwendeten Materials, so dass der Vorfaktor als Materialkonstante
+\begin{equation}
+  \sigma_T = \frac{\kappa}{\rho c}
+\end{equation}
+zusammengefasst werden kann.
+Dieser Wert wird auch als Temperaturleitfähigkeit bezeichnet und gibt Aufschluss darüber, mit welcher Geschwindigkeit ein Temperaturausgleich stattfindet.\\
+\subsection{Anregen einer Temperaturwelle durch periodische Wärmeanregung}
+Das periodische Anregen des Körpers mit Wärme führt zu einer sich im Stab ausbreitenden Temperaturwelle
+\begin{equation}
+  T(x,t) = T_{\text{max}} \exp{\Bigl( -\sqrt{\frac{\omega \rho c}{2 \kappa} } x \Bigr)} \cos{\Bigl( \omega t - \sqrt{\frac{\omega \rho c}{2 \kappa}} x \Bigr)},
+\end{equation}
+wobei die Kreisfrequenz
+\begin{equation}
+  \omega = \frac{2 \pi}{T}
+\end{equation}
+von der gewählten Periodendauer der Anregung abhängt.
+Die entstehende Welle weist eine Phasengeschwindigkeit von
+\begin{equation}
+  v = \frac{\omega}{k} = \sqrt{\frac{2 \kappa \omega}{\rho c}}
+\end{equation}
+auf, wobei die Wellenzahl $k$ direkt der oben genannten Wellengleichung entnommen werden kann.
+Aus der Betrachtung der Dämpfung, also dem Amplitudenverhältnis $A_1$ zu $A_2$ an zwei verschiedenen Orten mit Abstand $\increment{x}$, leitet sich die Wärmeleitfähigkeit
+\begin{equation}
+  \kappa = \frac{\rho c (\increment{x})^2}{2 \increment{t} \ln{ \frac{A_1}{A_2} }}
+  \label{eqn:wlf}
+\end{equation}
+her.
+Hierbei beschreibt $\increment{t}$ die Zeit, in der die Welle den Abstand $\increment{x}$ zurücklegt.\\
+\subsection{Funktionsweise des Peltierelementes}
+Die periodische Anregung des Stabes wird mithilfe eines Peltierelementes durchgeführt.
+Dessen Funktionsweise basiert auf dem Peltier-Effekt, für den zwei Arten von Halbleitern mit unterschiedlichen Energieniveaus benötigt werden.
+Durch das alternierende Anordnen dieser Elemente und des Anlegen einer Spannung fließt ein Strom.
+Um in das jeweils nächste Leitungsband eintreten zu können, muss aufgrund der Energiedifferenzen der Leitungsbänder ebendiese Energie aufgenommen oder abgegeben werden.
+Dies führt jeweils zu Abkühlung oder Erwärmung der Umgebung und kann somit zur Wärmung oder Kühlung genutzt werden.
+Die Umkehrung der Richtung des Wärmetransportes kann einfach durch Umpolung der Spannung erreicht werden.
+
 \label{sec:Theorie}
 
-\cite{sample}
+%\cite{sample}
