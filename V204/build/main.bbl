@@ -16,5 +16,26 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \sortlist{none}{none}
+    \entry{sample}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=2821a70f99517ac7757c95300d43e95c}{Dortmund}{D\bibinitperiod}{TU}{T\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{2821a70f99517ac7757c95300d43e95c}
+      \strng{fullhash}{2821a70f99517ac7757c95300d43e95c}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Versuch zum Literaturverzeichnis}
+      \field{year}{2012}
+      \verb{url}
+      \verb http://129.217.224.2/HOMEPAGE/PHYSIKER/BACHELOR/AP/SKRIPT/V302.pdf
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
 \endinput
 

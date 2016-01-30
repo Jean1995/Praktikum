@@ -12,6 +12,39 @@ from table import (
 )
 from uncertainties import ufloat
 
+### DATEN HIER ###
+
+#Temperaturen in °C nach 700 Sekunden für T1, T4, T5, T8
+T_600  = np.array([35.70, 34.73, 37.26, 31.14])
+
+#Temperaturen in °C T1, T2 nach 10 s, 50 s, 200s, 300s, 500s
+T1  = np.array([21.09, 23.12, 29.05, 31.11, 33.81])
+T2  = np.array([21.40, 26.05, 31.24, 32.98, 35.47])
+t_T = np.array([10, 50, 200, 300, 500])
+
+#Maxima: Für T1 und T2: A1/A2 Amplitude am i-ten Maximum, t1/t2 Zeit an dem i-tes Maximum erreicht wird
+A1 = np.array([35.7, 39.8, 43.6, 46.8, 49.5, 51.6, 53.6, 55.6, 56.7, 58.3])
+A2 = np.array([31.3, 34.9,38.3, 41.3, 44.0, 46.3, 48.0, 49.9, 51.3, 52.7])
+t1 = np.array([44, 123, 205, 238, 326, 444, 523, 605, 683, 739])
+t2 = np.array([62, 146, 223, 297, 383, 460, 539, 618,  697, 778])
+
+#Maxima: Für T5 und T6: A5/A6 Amplitude am i-ten Maximum, t5/t6 Zeit an dem i-tes Maximum erreicht wird
+A5 = np.array([35.5, 40.1, 43.8, 47.1, 49.6, 51.9, 53.5, 50.4, 56.6, 58.0 ])
+A6 = np.array([33.5, 38.2, 41.9, 45.3, 47.7, 50.0 ,51.9, 53.5, 54.9, 58.0 ])
+t5 = np.array([41, 123, 202, 285, 362, 441, 518, 604, 683, 762 ])
+t6 = np.array([55,132, 212, 292, 374, 451, 530, 609, 689, 769 ])
+
+#Maxima: Für T7 und T8: A7/A8 Amplitude am i-ten Maximum, t7/t8 Zeit an dem i-tes Maximum erreicht wird
+A7 = np.array([ 42.0, 46.5, 50.8,  54.2, 56.9, 59.6, 60.6   ])
+A8 = np.array([31.7,35.3,  38.4, 41.1, 43.4 , 45.4, 46.9  ])
+t7 = np.array([112, 312, 512,  716, 916, 1120, 1320 ])
+t8 = np.array([200, 400,596, 788, 984, 1180,1380 ])
+
+### DATEN ENDE ###
+
+
+
+
 # Beispielplot
 x = np.linspace(0, 10, 1000)
 y = x ** np.sin(x)

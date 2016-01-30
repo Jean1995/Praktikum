@@ -1,9 +1,15 @@
 [0] Config.pm:324> INFO - This is Biber 2.1
 [0] Config.pm:327> INFO - Logfile is 'build/main.blg'
-[44] biber:276> INFO - === Do Jan 28, 2016, 15:19:25
-[44] Biber.pm:333> INFO - Reading 'build/main.bcf'
-[161] Biber.pm:645> INFO - Found 0 citekeys in bib section 0
-[161] Utils.pm:146> WARN - The file 'build/main.bcf' does not contain any citations!
-[183] bbl.pm:505> INFO - Writing 'build/main.bbl' with encoding 'UTF-8'
-[184] bbl.pm:596> INFO - Output to build/main.bbl
-[184] Biber.pm:106> INFO - WARNINGS: 1
+[49] biber:276> INFO - === Sa Jan 30, 2016, 01:26:39
+[49] Biber.pm:333> INFO - Reading 'build/main.bcf'
+[166] Biber.pm:645> INFO - Found 1 citekeys in bib section 0
+[191] Biber.pm:2977> INFO - Processing section 0
+[214] Biber.pm:3115> INFO - Looking for bibtex format file 'lit.bib' for section 0
+[230] bibtex.pm:1021> INFO - Decoding LaTeX character macros into UTF-8
+[230] bibtex.pm:895> INFO - Found BibTeX data source 'lit.bib'
+[270] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[270] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[270] Biber.pm:2854> INFO - Sorting list 'none' of type 'entry' with scheme 'none' and locale 'de-DE'
+[270] Biber.pm:2858> INFO - No sort tailoring available for locale 'de-DE'
+[273] bbl.pm:505> INFO - Writing 'build/main.bbl' with encoding 'UTF-8'
+[274] bbl.pm:596> INFO - Output to build/main.bbl
