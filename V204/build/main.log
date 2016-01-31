@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.80.0 (TeX Live 2015) (rev 5238)  (format=lualatex 2015.10.12)  30 JAN 2016 01:26
+This is LuaTeX, Version beta-0.80.0 (TeX Live 2015) (rev 5238)  (format=lualatex 2015.10.12)  31 JAN 2016 01:37
  restricted \write18 enabled.
 **main.tex
 (./main.tex
@@ -289,7 +289,7 @@ Lua-only attribute luaotfload@cursbase = 6
 Lua-only attribute luaotfload@curscurs = 7
 Lua-only attribute luaotfload@cursdone = 8
 Lua-only attribute luaotfload@state = 9
-luaotfload | main : fontloader loaded in 0.047 seconds
+luaotfload | main : fontloader loaded in 0.030 seconds
 Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
 Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
 Inserting `luaotfload.find_vf_file' at position 1 in `find_vf_file'.
@@ -2346,14 +2346,14 @@ luaotfload | load : Lookup/name: "XITSMath" -> "xits-math.otf"
 luaotfload | load : Lookup/name: "XITSMath" -> "xits-math.otf" [1
 
 {/home/jean/.local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./content/theorie.tex
-Underfull \hbox (badness 10000) in paragraph at lines 38--41
+Underfull \hbox (badness 10000) in paragraph at lines 39--42
 
  []
 
 [2
 
 ](load luc: /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmroman8-regular.luc)(load luc: /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmroman6-regular.luc)
-Underfull \hbox (badness 10000) in paragraph at lines 60--63
+Underfull \hbox (badness 10000) in paragraph at lines 61--64
 
  []
 
@@ -2366,12 +2366,44 @@ luaotfload | load : Lookup/name: "LatinModernMath" -> "latinmodern-math.otf"
 luaotfload | load : Lookup/name: "LatinModernMath" -> "latinmodern-math.otf"
 luaotfload | load : Lookup/name: "LatinModernMath" -> "latinmodern-math.otf"
 luaotfload | load : Lookup/name: "XITSMath" -> "xits-math.otf"
-luaotfload | load : Lookup/name: "XITSMath" -> "xits-math.otf" [4<./aufbau.png>]) (./content/auswertung.tex <plot.pdf, id=60, 417.7206pt x 258.00488pt>
-File: plot.pdf Graphic file (type pdf)
- <use plot.pdf>
-Package pdftex.def Info: plot.pdf used on input line 6.
-(pdftex.def)             Requested size: 417.71957pt x 258.00424pt.
- (./build/tabelle.tex) (./build/wert_a.tex(load luc: /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmroman5-regular.luc)) (./build/wert_a.tex) [5]) (./content/diskussion.tex)(load luc: /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmromancaps10-regular.luc)
+luaotfload | load : Lookup/name: "XITSMath" -> "xits-math.otf" [4<./aufbau.png>]) (./content/auswertung.tex(load luc: /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmroman5-regular.luc) <scan-7.jpg, id=66, 614.295pt x 844.5954pt>
+File: scan-7.jpg Graphic file (type jpg)
+ <use scan-7.jpg>
+Package pdftex.def Info: scan-7.jpg used on input line 29.
+(pdftex.def)             Requested size: 269.03459pt x 369.88582pt.
+luaotfload | load : Lookup/name: "LatinModernMath" -> "latinmodern-math.otf"
+luaotfload | load : Lookup/name: "LatinModernMath" -> "latinmodern-math.otf"
+LaTeX Font Info:    Font shape `EU2/LatinModernMath(1)/m/n' will be
+(Font)              scaled to size 7.01247pt on input line 30.
+luaotfload | load : Lookup/name: "LatinModernMath" -> "latinmodern-math.otf"
+LaTeX Font Info:    Font shape `EU2/LatinModernMath(1)/m/n' will be
+(Font)              scaled to size 4.9808pt on input line 30.
+luaotfload | load : Lookup/name: "LatinModernMath" -> "latinmodern-math.otf"
+LaTeX Font Info:    Font shape `EU2/LatinModernMath(2)/m/n' will be
+(Font)              scaled to size 7.01224pt on input line 30.
+luaotfload | load : Lookup/name: "LatinModernMath" -> "latinmodern-math.otf"
+LaTeX Font Info:    Font shape `EU2/LatinModernMath(2)/m/n' will be
+(Font)              scaled to size 4.98067pt on input line 30.
+luaotfload | load : Lookup/name: "LatinModernMath" -> "latinmodern-math.otf"
+luaotfload | load : Lookup/name: "XITSMath" -> "xits-math.otf"
+luaotfload | load : Lookup/name: "XITSMath" -> "xits-math.otf"
+luaotfload | load : Lookup/name: "XITSMath" -> "xits-math.otf"
+luaotfload | load : Lookup/name: "XITSMath" -> "xits-math.otf" <scan-6.jpg, id=67, 614.295pt x 844.5954pt>
+File: scan-6.jpg Graphic file (type jpg)
+ <use scan-6.jpg>
+Package pdftex.def Info: scan-6.jpg used on input line 36.
+(pdftex.def)             Requested size: 269.03459pt x 369.88582pt.
+ [5] [6<./scan-7.jpg><./scan-6.jpg>] (./build/x_ws.tex) (./build/a_ws.tex) (./build/k_ws.tex) (./build/x_ws.tex) (./build/a_ws.tex) (./build/k_ws.tex) (./build/wstrom.tex) <scan-4.jpg, id=90, 614.295pt x 844.5954pt>
+File: scan-4.jpg Graphic file (type jpg)
+ <use scan-4.jpg>
+Package pdftex.def Info: scan-4.jpg used on input line 86.
+(pdftex.def)             Requested size: 269.03459pt x 369.88582pt.
+ <scan-5.jpg, id=91, 614.295pt x 844.5954pt>
+File: scan-5.jpg Graphic file (type jpg)
+ <use scan-5.jpg>
+Package pdftex.def Info: scan-5.jpg used on input line 93.
+(pdftex.def)             Requested size: 269.03459pt x 369.88582pt.
+) (./content/diskussion.tex [7] [8<./scan-4.jpg>])(load luc: /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmromancaps10-regular.luc)
 LaTeX Font Info:    Try loading font information for EU2+lmtt on input line 20.
  (/home/jean/.local/texlive/2015/texmf-dist/tex/latex/euenc/eu2lmtt.fd
 File: eu2lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -2380,14 +2412,14 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `lmtt' (encoding: EU2).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [6<build/plot.pdf>]
+ [9<./scan-5.jpg>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 22.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 22.
  (./build/main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 22.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 22.
 Package rerunfilecheck Info: File `main.aux' has not changed.
-(rerunfilecheck)             Checksum: 5AB6FCD59B2C5BED53AA63B5F0022F58;8539.
+(rerunfilecheck)             Checksum: D75B6BC8A50A2DFD74BA38D32DE7C712;9878.
 Package logreq Info: Writing requests to 'main.run.xml'.
 
 \openout1 = main.run.xml
@@ -2395,19 +2427,19 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 22.
 )
 
 Here is how much of LuaTeX's memory you used:
- 55785 strings out of 494897
+ 55910 strings out of 494897
  100000,1977958 words of node,token memory allocated
- 560 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 2 glue, 12 kern, 17 attribute, 58 glue_spec, 17 attribute_list, 1 action, 1 write nodes
-   avail lists: 1:2,2:6254,3:116,4:741,5:208,6:2021,7:142,8:12,9:181,10:276,11:1
- 57652 multiletter control sequences out of 65536+600000
- 108 fonts using 31900407 bytes
- 72i,19n,104p,1248b,2074s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 572 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 2 glue, 12 kern, 18 attribute, 57 glue_spec, 18 attribute_list, 1 action, 1 write nodes
+   avail lists: 1:2,2:9318,3:139,4:1151,5:222,6:3041,7:142,8:17,9:301,10:398,11:1
+ 57716 multiletter control sequences out of 65536+600000
+ 128 fonts using 39607743 bytes
+ 72i,21n,104p,1248b,2074s stack positions out of 5000i,500n,10000p,200000b,100000s
 </home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmsans10-bold.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf>
-Output written on main.pdf (6 pages, 373465 bytes).
+Output written on main.pdf (9 pages, 829835 bytes).
 
-PDF statistics: 230 PDF objects out of 1000 (max. 8388607)
- 172 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 131072)
+PDF statistics: 235 PDF objects out of 1000 (max. 8388607)
+ 179 compressed objects within 2 object streams
+ 41 named destinations out of 1000 (max. 131072)
  120 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -17,6 +17,9 @@ from uncertainties import ufloat
 #Temperaturen in °C nach 700 Sekunden für T1, T4, T5, T8
 T_600  = np.array([35.70, 34.73, 37.26, 31.14])
 
+
+
+
 #Temperaturen in °C T1, T2 nach 10 s, 50 s, 200s, 300s, 500s
 T1  = np.array([21.09, 23.12, 29.05, 31.11, 33.81])
 T2  = np.array([21.40, 26.05, 31.24, 32.98, 35.47])
@@ -43,7 +46,18 @@ t8 = np.array([200, 400,596, 788, 984, 1180,1380 ])
 ### DATEN ENDE ###
 
 
+# Wärmestom
 
+k_messing = 120 # Quelle Wikipedia, such mal ne bessere.. ._.
+A = 0.012 * 0.004 # ist das das richtige Messing?
+
+delta_T = T2-T1
+delta_x = 0.03
+W = -k_messing * A * delta_T/delta_x # nach Gl(1) Skript
+write('build/wstrom.tex', make_table([t_T, W], [0, 2]))
+write('build/a_ws.tex', str("%.5f" % A))
+write('build/x_ws.tex', str("%.2f" % delta_x))
+write('build/k_ws.tex', str("%.0f" % k_messing))
 
 # Beispielplot
 x = np.linspace(0, 10, 1000)

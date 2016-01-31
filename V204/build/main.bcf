@@ -2215,6 +2215,8 @@
   <bcf:section number="0">
     <bcf:citekey order="1">sample</bcf:citekey>
     <bcf:citekey order="2">sample</bcf:citekey>
+    <bcf:citekey order="3">sample</bcf:citekey>
+    <bcf:citekey order="4">sample</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="none" type="entry" sortscheme="none">
   <bcf:sorting>
