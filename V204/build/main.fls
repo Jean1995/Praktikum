@@ -515,6 +515,9 @@ INPUT ./build/wstrom.tex
 INPUT ./build/wstrom.tex
 INPUT scan-4.jpg
 INPUT scan-5.jpg
+INPUT scan-3.jpg
+INPUT ./build/dyn1.tex
+INPUT ./build/dyn1.tex
 INPUT ./content/diskussion.tex
 INPUT ./content/diskussion.tex
 INPUT /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmromancaps10-regular.luc

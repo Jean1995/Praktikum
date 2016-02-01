@@ -27,9 +27,12 @@ t_T = np.array([10, 50, 200, 300, 500])
 
 #Maxima: Für T1 und T2: A1/A2 Amplitude am i-ten Maximum, t1/t2 Zeit an dem i-tes Maximum erreicht wird
 A1 = np.array([35.7, 39.8, 43.6, 46.8, 49.5, 51.6, 53.6, 55.6, 56.7, 58.3])
+A1_min = np.array([33.0 , 35.3, 38.9, 41.8, 44.5, 46.7, 48.5, 50.0, 51.3, 52.8 ])
 A2 = np.array([31.3, 34.9,38.3, 41.3, 44.0, 46.3, 48.0, 49.9, 51.3, 52.7])
+A2_min = np.array([ 31.0, 34.6, 37.8, 40.8, 43.1, 45.3, 47.1, 49.0, 50.1,  51.5 ])
 t1 = np.array([44, 123, 205, 238, 326, 444, 523, 605, 683, 739])
 t2 = np.array([62, 146, 223, 297, 383, 460, 539, 618,  697, 778])
+write('build/dyn1.tex', make_table([A1, A2, t1, t2], [1, 1, 0, 0]))   # [4,2] = Nachkommastellen
 
 #Maxima: Für T5 und T6: A5/A6 Amplitude am i-ten Maximum, t5/t6 Zeit an dem i-tes Maximum erreicht wird
 A5 = np.array([35.5, 40.1, 43.8, 47.1, 49.6, 51.9, 53.5, 50.4, 56.6, 58.0 ])
@@ -58,6 +61,20 @@ write('build/wstrom.tex', make_table([t_T, W], [0, 2]))
 write('build/a_ws.tex', str("%.5f" % A))
 write('build/x_ws.tex', str("%.2f" % delta_x))
 write('build/k_ws.tex', str("%.0f" % k_messing))
+
+# Fucking Angström
+
+deltaA_1 = (A1-A1_min)/(A2-A2_min) # um die Amplituden zu bekommen BAH
+deltaT_1 = t2-t1
+rho_1 = 8520
+c_1 = 385
+
+kappa_1_a = (rho_1 * c_1 * delta_x**2  ) / (2* deltaT_1 * np.log(deltaA_1)  )
+write('build/kappa_1_tab.tex', make_table([kappa_1_a], [2]))
+kappa_1 = ufloat(np.mean(kappa_1_a), np.std(kappa_1_a))
+write('build/kappa_1.tex', make_SI(kappa_1, r'\watt\per\metre\per\kelvin' ))
+
+
 
 # Beispielplot
 x = np.linspace(0, 10, 1000)
