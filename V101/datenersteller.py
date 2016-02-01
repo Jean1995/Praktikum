@@ -24,7 +24,7 @@ phi_b = np.array([np.pi/2, np.pi, 3/2*np.pi, np.pi/2, np.pi, 3/2*np.pi, np.pi/2,
 r = r*10**(-2)
 d = f*r/phi_b
 
-write('build/statischtabelle.tex', make_table([r*10**2, phi1/np.pi, f, d*10**2], [2, 0, 2, 2])) #Einheiten ok: Hier wird d in Ncm berechnet und angegeben <- jetzt nimmer
+write('build/statischtabelle.tex', make_table([r*10**2, phi, f, d*10**2], [2, 0, 2, 2])) #Einheiten ok: Hier wird d in Ncm berechnet und angegeben <- jetzt nimmer
 
 
 
