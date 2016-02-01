@@ -20,8 +20,7 @@ d = f*r/phi
 rd = np.mean(d)
 dd = np.std(d)
 d_0 = ufloat(rd,dd)
-write('build/winkelrichtgroesse.tex', make_SI(d_0, r'\newton\metre', figures=1))
-
+write('build/winkelrichtgroesse.tex', make_SI(d_0*10**3 , r'\newton\metre','e-3', figures=1))
 
 
 #Bestimmung Eigenträgheitsmoment
@@ -55,16 +54,18 @@ plt.savefig('build/plot.pdf')
 
 m_1 = 0.22178
 m_2 = 0.22346
+write('build/masse1.tex', make_SI(m_1*10, r'\kilo\gram','e-1', figures=4))
+write('build/masse2.tex', make_SI(m_2*10, r'\kilo\gram','e-1', figures=4))
 
 
 d_dyn = (4*np.pi**2 * (m_1+m_2) )/m_fit
-write('build/winkelrichtgroesse_dyn.tex', make_SI(d_dyn, r'\newton\metre', figures=1))
+write('build/winkelrichtgroesse_dyn.tex', make_SI(d_dyn*10**3, r'\newton\metre','e-3', figures=1))
 
 
 plt.clf()
 
 tr_d = b_fit*d_0/(4*np.pi**2) #HIER WIRD DAS BERECHNET
-write('build/eigentraegheit.tex', make_SI(tr_d, r'\kilo\gram\metre\tothe{2}', figures=1)) # Oh je: Das hier ist jetzt in Gramm MeterQuadrat
+write('build/eigentraegheit.tex', make_SI(tr_d*10**3, r'\kilo\gram\metre\tothe{2}','e-3', figures=1)) # Oh je: Das hier ist jetzt in Gramm MeterQuadrat
 z = tr_d
 # Zylinder
 
@@ -79,13 +80,13 @@ rt_z = np.mean(t)
 dt_z = np.std(t)
 t_z  = ufloat(rt_z ,dt_z)
 write('build/m_zylinder.tex', make_SI(rm_z, r'\kilo\gram', figures=4))
-write('build/r_zylinder.tex', make_SI(d_z, r'\metre', figures=1))
+write('build/r_zylinder.tex', make_SI(d_z*10**2, r'\metre','e-2', figures=1))
 write('build/t_zylinder.tex', make_SI(t_z, r'\second', figures=1))
 tr_z_theorie = (m_z*d_z**2)/2
-write('build/traegheit_zylinder_theorie.tex', make_SI(tr_z_theorie, r'\kilo\gram\metre\tothe{2}', figures=1)) # hier ist Einheit jut
+write('build/traegheit_zylinder_theorie.tex', make_SI(tr_z_theorie*10**4, r'\kilo\gram\metre\tothe{2}','e-4', figures=1)) # hier ist Einheit jut
 tr_z = (((t_z/(2*np.pi))**2)*d_0)
 tr_z1 = tr_z #- z#*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT -> lulz -> Wird nicht mehr abgezogen
-write('build/traegheit_zylinder.tex', make_SI(tr_z1, r'\kilo\gram\metre\tothe{2}', figures=1))
+write('build/traegheit_zylinder.tex', make_SI(tr_z1*10**4, r'\kilo\gram\metre\tothe{2}','e-4', figures=1))
 
 write('build/abweichung_zylinder.tex', str((("%.1f" % unp.nominal_values(abs((tr_z1-tr_z_theorie))/tr_z_theorie*100))))) # good job
 
@@ -103,14 +104,14 @@ r_k  = ufloat(rr_k ,dr_k)
 rt_k = np.mean(t)
 dt_k = np.std(t)
 t_k  = ufloat(rt_k ,dt_k)
-write('build/m_kugel.tex', make_SI(rm_k, r'\kilo\gram', figures=1))
-write('build/r_kugel.tex', make_SI(r_k, r'\metre', figures=1))
+write('build/m_kugel.tex', make_SI(rm_k*10, r'\kilo\gram','e-1', figures=1))
+write('build/r_kugel.tex', make_SI(r_k*10**2, r'\metre','e-2', figures=1))
 write('build/t_kugel.tex', make_SI(t_k, r'\second', figures=1))
 tr_k_theorie = 2*(m_k*r_k**2)/5
-write('build/traegheit_kugel_theorie.tex', make_SI(tr_k_theorie, r'\kilo\gram\metre\tothe{2}', figures=1))
+write('build/traegheit_kugel_theorie.tex', make_SI(tr_k_theorie*10**3, r'\kilo\gram\metre\tothe{2}','e-3', figures=1))
 tr_k = (((t_k/(2*np.pi))**2)*d_0)
 tr_k1 = tr_k# - z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT -> wird nicht mehr abgezogen
-write('build/traegheit_kugel.tex', make_SI(tr_k1, r'\kilo\gram\metre\tothe{2}', figures=1))
+write('build/traegheit_kugel.tex', make_SI(tr_k1*10**3, r'\kilo\gram\metre\tothe{2}','e-3', figures=1))
 
 write('build/abweichung_kugel.tex', str(("%.2f" % unp.nominal_values(abs((tr_k1-tr_k_theorie))/tr_k_theorie*100))))
 
@@ -164,20 +165,20 @@ a_arme   = ufloat(ra_arme, da_arme)
 t1       = ufloat(rt1, dt1)
 t2       = ufloat(rt2, dt2)
 
-write('build/laenge_b_1.tex', make_SI((h_bein_1), r'\metre', figures=1))
-write('build/radius_b.tex', make_SI((d_beine), r'\metre', figures=1))
-write('build/laenge_b_2.tex', make_SI((h_bein_2), r'\metre', figures=1))
-write('build/abstand_b.tex', make_SI((a_beine), r'\metre', figures=1))
-write('build/laenge_t.tex', make_SI((h_torso), r'\metre', figures=1))
-write('build/radius_t.tex', make_SI((d_torso), r'\metre', figures=1))
-write('build/laenge_k.tex', make_SI((h_kopf), r'\metre', figures=1))
-write('build/radius_k.tex', make_SI((d_kopf), r'\metre', figures=1))
-write('build/laenge_a.tex', make_SI((l_arme), r'\metre', figures=1))
-write('build/radius_a.tex', make_SI((d_arme), r'\metre', figures=1))
-write('build/abstand_a.tex', make_SI((a_arme), r'\metre', figures=1))
-write('build/masse.tex', make_SI((m_m), r'\kilo\gram', figures=1))
-write('build/t1.tex', make_SI((t1), r'\second', figures=1))
-write('build/t2.tex', make_SI((t2), r'\second', figures=1))
+write('build/laenge_b_1.tex', make_SI((h_bein_1*10), r'\metre','e-1', figures=1))
+write('build/radius_b.tex', make_SI((d_beine*10**3), r'\metre','e-3', figures=1))
+write('build/laenge_b_2.tex', make_SI((h_bein_2*10), r'\metre','e-1', figures=1))
+write('build/abstand_b.tex', make_SI((a_beine*10**2), r'\metre','e-2', figures=1))
+write('build/laenge_t.tex', make_SI((h_torso*10**2), r'\metre','e-2', figures=1))
+write('build/radius_t.tex', make_SI((d_torso*10**2), r'\metre','e-2', figures=1))
+write('build/laenge_k.tex', make_SI((h_kopf*10**2), r'\metre','e-2', figures=1))
+write('build/radius_k.tex', make_SI((d_kopf*10**2), r'\metre','e-2', figures=1))
+write('build/laenge_a.tex', make_SI((l_arme*10), r'\metre','e-1', figures=1))
+write('build/radius_a.tex', make_SI((d_arme*10**3), r'\metre','e-3', figures=1))
+write('build/abstand_a.tex', make_SI((a_arme*10**2), r'\metre','e-2', figures=1))
+write('build/masse.tex', make_SI((m_m*10), r'\kilo\gram','e-1', figures=1))
+write('build/t1.tex', make_SI((t1*10), r'\second','e-1', figures=1))
+write('build/t2.tex', make_SI((t2*10), r'\second','e-1', figures=1))
 
 
 
@@ -193,17 +194,17 @@ V_bein_1 = np.pi * h_bein_1 * d_beine**2
 V_bein_2 = np.pi * h_bein_2 * d_beine**2
 V_kopf   = np.pi * h_kopf * d_kopf**2
 V_torso  = np.pi * h_torso * d_torso**2
-write('build/volumen_arm_1.tex', make_SI(V_arm_1, r'\metre\tothe{3}', figures=1))
-write('build/volumen_arm_2.tex', make_SI(V_arm_2, r'\metre\tothe{3}', figures=1))
-write('build/volumen_bein_1.tex', make_SI(V_bein_1, r'\metre\tothe{3}', figures=1))
-write('build/volumen_bein_2.tex', make_SI(V_bein_2, r'\metre\tothe{3}', figures=1))
-write('build/volumen_kopf.tex', make_SI(V_kopf, r'\metre\tothe{3}', figures=1))
-write('build/volumen_torso.tex', make_SI(V_torso, r'\metre\tothe{3}', figures=1))
+write('build/volumen_arm_1.tex', make_SI(V_arm_1*10**5, r'\metre\tothe{3}','e-5', figures=1))
+write('build/volumen_arm_2.tex', make_SI(V_arm_2*10**5, r'\metre\tothe{3}','e-5', figures=1))
+write('build/volumen_bein_1.tex', make_SI(V_bein_1*10**5, r'\metre\tothe{3}','e-5', figures=1))
+write('build/volumen_bein_2.tex', make_SI(V_bein_2*10**5, r'\metre\tothe{3}','e-5', figures=1))
+write('build/volumen_kopf.tex', make_SI(V_kopf*10**5, r'\metre\tothe{3}','e-5', figures=1))
+write('build/volumen_torso.tex', make_SI(V_torso*10**4, r'\metre\tothe{3}','e-4', figures=1))
 
 
 
 V = V_arm_1 + V_arm_2 + V_bein_1 + V_bein_2 + V_kopf + V_torso
-write('build/volumen_mensch.tex', make_SI(V, r'\metre\tothe{3}', figures=1))
+write('build/volumen_mensch.tex', make_SI(V*10**4, r'\metre\tothe{3}','e-4', figures=1))
 dichte = m_m/V
 write('build/dichte_mensch.tex', make_SI(dichte, r'\kilo\gram\per\metre\tothe{3}', figures=1))
 
@@ -214,12 +215,12 @@ m_bein_2 = V_bein_2 * dichte
 m_kopf   = V_kopf * dichte
 m_torso  = V_torso * dichte
 
-write('build/masse_arm_1.tex', make_SI(m_arm_1, r'\kilo\gram', figures=1))
-write('build/masse_arm_2.tex', make_SI(m_arm_2, r'\kilo\gram', figures=1))
-write('build/masse_bein_1.tex', make_SI(m_bein_1, r'\kilo\gram', figures=1))
-write('build/masse_bein_2.tex', make_SI(m_bein_2, r'\kilo\gram', figures=1))
-write('build/masse_kopf.tex', make_SI(m_kopf, r'\kilo\gram', figures=1))
-write('build/masse_torso.tex', make_SI(m_torso, r'\kilo\gram', figures=1))
+write('build/masse_arm_1.tex', make_SI(m_arm_1*10**2, r'\kilo\gram','e-2', figures=1))
+write('build/masse_arm_2.tex', make_SI(m_arm_2*10**2, r'\kilo\gram','e-2', figures=1))
+write('build/masse_bein_1.tex', make_SI(m_bein_1*10**2, r'\kilo\gram','e-2', figures=1))
+write('build/masse_bein_2.tex', make_SI(m_bein_2*10**2, r'\kilo\gram','e-2', figures=1))
+write('build/masse_kopf.tex', make_SI(m_kopf*10**2, r'\kilo\gram','e-2', figures=1))
+write('build/masse_torso.tex', make_SI(m_torso*10**2, r'\kilo\gram','e-2', figures=1))
 
 I_bein_1 = 1/2 * m_bein_1 * d_beine**2
 I_bein_2 = 1/2 * m_bein_2 * d_beine**2
@@ -228,29 +229,29 @@ I_kopf = 1/2 * m_kopf * d_kopf**2
 I_arm_pose1 = m_arm_1 * (1/4 * d_arme**2 + 1/12 * l_arme**2)
 I_arm_pose2 = 1/2 * (m_arm_1 * d_arme**2)
 
-write('build/traegheit_bein_1.tex', make_SI((I_bein_1), r'\kilo\gram\metre\tothe{2}', figures=1))
-write('build/traegheit_bein_2.tex', make_SI((I_bein_2), r'\kilo\gram\metre\tothe{2}', figures=1))
-write('build/traegheit_torso.tex', make_SI((I_torso), r'\kilo\gram\metre\tothe{2}', figures=1))
-write('build/traegheit_kopf.tex', make_SI((I_kopf), r'\kilo\gram\metre\tothe{2}', figures=1))
-write('build/traegheit_arm_pose1.tex', make_SI((I_arm_pose1), r'\kilo\gram\metre\tothe{2}', figures=1))
-write('build/traegheit_arm_pose2.tex', make_SI((I_arm_pose2), r'\kilo\gram\metre\tothe{2}', figures=1))
+write('build/traegheit_bein_1.tex', make_SI((I_bein_1*10**7), r'\kilo\gram\metre\tothe{2}','e-7', figures=1))
+write('build/traegheit_bein_2.tex', make_SI((I_bein_2*10**7), r'\kilo\gram\metre\tothe{2}','e-7', figures=1))
+write('build/traegheit_torso.tex', make_SI((I_torso*10**5), r'\kilo\gram\metre\tothe{2}','e-5', figures=1))
+write('build/traegheit_kopf.tex', make_SI((I_kopf*10**6), r'\kilo\gram\metre\tothe{2}','e-6', figures=1))
+write('build/traegheit_arm_pose1.tex', make_SI((I_arm_pose1*10**5), r'\kilo\gram\metre\tothe{2}','e-5', figures=1))
+write('build/traegheit_arm_pose2.tex', make_SI((I_arm_pose2*10**7), r'\kilo\gram\metre\tothe{2}','e-7', figures=1))
 
 
 I_pose_1_theorie = (1/2 * m_bein_1 * d_beine**2 + (a_beine + d_beine)**2 * m_bein_1) + (1/2 * m_bein_2 * d_beine**2 + (a_beine + d_beine)**2 * m_bein_2) + (1/2 * m_torso * d_torso**2) + (1/2 * m_kopf * d_kopf**2) + (m_arm_1 * (1/4 * d_arme**2 + 1/12 * l_arme**2) + (a_arme + l_arme/2)**2 * m_arm_1) + (m_arm_2 * (1/4 * d_arme**2 + 1/12 * l_arme**2) + (a_arme + l_arme/2)**2 * m_arm_2)
-write('build/traegheit_mensch_pose_1_theorie.tex', make_SI(I_pose_1_theorie, r'\kilo\gram\metre\tothe{2}', figures=1))
+write('build/traegheit_mensch_pose_1_theorie.tex', make_SI(I_pose_1_theorie*10**4, r'\kilo\gram\metre\tothe{2}','e-4', figures=1))
 
 I_pose_1 = (((t1/(2*np.pi))**2)*d_0)
 I_pose_1 = I_pose_1 #- z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT
-write('build/traegheit_mensch_pose_1.tex', make_SI((I_pose_1), r'\kilo\gram\metre\tothe{2}', figures=1))
+write('build/traegheit_mensch_pose_1.tex', make_SI((I_pose_1*10**4), r'\kilo\gram\metre\tothe{2}','e-4', figures=1))
 
 write('build/abweichung_pose_1.tex', str(("%.2f" % unp.nominal_values(abs((I_pose_1-I_pose_1_theorie))/I_pose_1_theorie*100))))
 
 I_pose_2_theorie = (1/2 * m_bein_1 * d_beine**2 + (a_beine + d_beine)**2 * m_bein_1) + (1/2 * m_bein_2 * d_beine**2 + (a_beine + d_beine)**2 * m_bein_2) + (1/2 * m_torso * d_torso**2) + (1/2 * m_kopf * d_kopf**2) + (1/2 * (m_arm_1 * d_arme**2) + (a_arme + d_arme/2)**2 * m_arm_1) + (1/2 * (m_arm_2 * d_arme**2) + (a_arme + d_arme/2)**2 * m_arm_2)
-write('build/traegheit_mensch_pose_2_theorie.tex', make_SI(I_pose_2_theorie, r'\kilo\gram\metre\tothe{2}', figures=1))
+write('build/traegheit_mensch_pose_2_theorie.tex', make_SI(I_pose_2_theorie*10**5, r'\kilo\gram\metre\tothe{2}','e-5', figures=1))
 
 I_pose_2 = (((t2/(2*np.pi))**2)*d_0)
 I_pose_2 = I_pose_2# - z*10**(-3)    # WIESO ER DAS AUCH IMMER MIT 1000 MULTIPLIZIERT HAT
-write('build/traegheit_mensch_pose_2.tex', make_SI((I_pose_2), r'\kilo\gram\metre\tothe{2}', figures=1))
+write('build/traegheit_mensch_pose_2.tex', make_SI((I_pose_2*10**4), r'\kilo\gram\metre\tothe{2}','e-4', figures=1))
 
 write('build/abweichung_pose_2.tex', str(("%.2f" % unp.nominal_values(abs((I_pose_2-I_pose_2_theorie))/I_pose_2_theorie*100))))
 

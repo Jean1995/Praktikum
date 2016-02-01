@@ -17,7 +17,7 @@ mit den gemittelten Werten aus Tabelle \ref{tab:1} bemüht, wobei $r$ der Abstan
   \sisetup{table-format=1.2}
   \begin{tabular}{c c c c}
     \toprule
-    {$r \ /\ \si{\metre}$} & {$\varphi \ /\ \si{\degree}$} & {$F \ /\ \si{\newton}$} & {$D \ /\ \si{\newton\metre}$}\\
+    {$r \ /\ 10^{-2}\si{\metre}$} & {$\varphi \ /\ \pi$} & {$F \ /\ \si{\newton}$} & {$D \ /\ 10^{-2}\si{\newton\metre}$}\\
     \midrule
     \input{build/statischtabelle.tex}
     \bottomrule
@@ -81,8 +81,8 @@ Hieraus lässt sich mithilfe der Beziehung
 \end{equation}
 sowie der gemessenen Zylindermassen
 \begin{align*}
-m_1 = \SI{0.22178}{\kilo\gram}
-m_2 = \SI{0.22346}{\kilo\gram}
+m_1 &= \input{build/masse1.tex}\\
+m_2 &= \input{build/masse2.tex}
 \end{align*}
 die dynamische Winkelrichtgröße zu
 \begin{align*}
@@ -99,7 +99,7 @@ Die Durchführung der angegebenen Messreihen für den Zylinder führt zu den in 
   \sisetup{table-format=1.2}
   \begin{tabular}{c c c c}
     \toprule
-    {$m_\text{zyl} \ /\ \si{\kilo\gram}$} & {$r_\text{zyl} \ /\ \si{\metre}$} & {$h_\text{zyl} \ /\ \si{\metre}$} & {$T_\text{zyl} \ /\ \si{\second}$}\\
+    {$m_\text{zyl} \ /\ \si{\kilo\gram}$} & {$r_\text{zyl} \ /\ 10^{-2} \si{\metre}$} & {$h_\text{zyl} \ /\ 10^{-1}\si{\metre}$} & {$T_\text{zyl} \ /\ \si{\second}$}\\
     \midrule
     \input{build/zylindertabelle.tex}
     \bottomrule
@@ -153,7 +153,7 @@ Für die Kugel werden die in Tabelle \ref{tab:kug} angegebenen Werte aufgenommen
   \sisetup{table-format=1.2}
   \begin{tabular}{c c c}
     \toprule
-    {$m_\text{kug} \ /\ \si{\kilo\gram}$} & {$d_\text{kug} \ /\ \si{\metre}$} & {$T_\text{kug} \ /\ \si{\second}$}\\
+    {$m_\text{kug} \ /\ 10^{-1} \si{\kilo\gram}$} & {$d_\text{kug} \ /\ 10^{-1} \si{\metre}$} & {$T_\text{kug} \ /\ \si{\second}$}\\
     \midrule
     \input{build/kugeltabelle.tex}
     \bottomrule
@@ -188,38 +188,51 @@ ab.
 
 \subsection{Bestimmung des Trägheitsmomentes einer Puppe abhängig von ihrer Pose}
 Zunächst werden in mehreren Messungen Eckdaten der verschiedenen Körperteile der Holzpuppe aufgenommen.
-Die gemessenen Werte werden in den Tabellen \ref{tab:mensch} und \ref{tab:mensch2} angegeben.
+Die gemessenen Werte werden in den Tabellen \ref{tab:mensch}, \ref{tab:mensch2} und \ref{tab:mensch3} angegeben.
 
 \begin{table}[H]
   \centering
   \caption{Messdaten zur Bestimmung des Trägheitsmomentes der Holzpuppe.}
   \label{tab:mensch}
   \sisetup{table-format=1.2}
-  \begin{tabular}{c c c c c c c}
+  \begin{tabular}{c c c c c}
     \toprule
-    {$m_\text{pup} \ /\ \si{\kilo\gram} $} & {$h_\text{bein,1} \ /\ \si{\metre}$} & {$h_\text{bein,2} \ /\  \si{\metre}$} & {$d_\text{bein} \ /\  \si{\metre}$} & {$a_\text{bein} \ /\ \si{\metre}$} & {$h_\text{kopf} \ /\ \si{\metre}$} & {$d_\text{kopf} \ /\  \si{\metre}$}  \\
+    {$m_\text{pup} \ /\ 10^{-1} \si{\kilo\gram} $} & {$h_\text{bein,1} \ /\ 10^{-1} \si{\metre}$} & {$h_\text{bein,2} 10^{-1} \ /\  \si{\metre}$} & {$d_\text{bein} \ /\ 10^{-2} \si{\metre}$} & {$a_\text{bein} \ /\ 10^{-2} \si{\metre}$}  \\
     \midrule
     \input{build/menschtabelle1.tex}
     \bottomrule
   \end{tabular}
 \end{table}
-Hierbei beschreibt $h_\text{bein,1}$ die Höhe des linken bzw. rechten Beins, $d_\text{bein}$ den Durchmesser der einzelnen Beine, $a_\text{bein}$ den Abstand der Mittelachsen der Beine voneinander, $h_\text{kopf}$ die Höhe des Kopfes sowie $d_\text{kopf}$ dessen Durchmesser.
+Hierbei beschreibt $h_\text{bein,1}$ die Höhe des linken bzw. rechten Beins, $d_\text{bein}$ den Durchmesser der einzelnen Beine, $a_\text{bein}$ den Abstand der Mittelachsen der Beine voneinander.
 
 \begin{table}[H]
   \centering
   \caption{Messdaten zur Bestimmung des Trägheitsmomentes der Holzpuppe.}
   \label{tab:mensch2}
   \sisetup{table-format=1.2}
-  \begin{tabular}{c c c c c c c}
+  \begin{tabular}{c c c c c}
     \toprule
-    {$h_\text{torso} \ /\  \si{\metre}$} & {$d_\text{torso} \ /\  \si{\metre}$} & {$l_\text{arme} \ /\  \si{\metre}$} & {$d_\text{arme} \ /\  \si{\metre}$} & {$a_\text{arme} \ /\  \si{\metre}$} & {$T_{\text{Pose1}} \ /\  \si{\second}$} & {$T_{\text{Pose2}} \ /\  \si{\second}$}  \\
+    {$h_\text{kopf} \ /\ 10^{-2} \si{\metre}$} & {$d_\text{kopf} \ /\ 10^{-2} \si{\metre}$} & {$h_\text{torso} \ /\ 10^{-2} \si{\metre}$} & {$d_\text{torso} \ /\ 10^{-2} \si{\metre}$} & {$l_\text{arme} \ /\ 10^{-1} \si{\metre}$}  \\
     \midrule
     \input{build/menschtabelle2.tex}
     \bottomrule
   \end{tabular}
 \end{table}
+\begin{table}[H]
+  \centering
+  \caption{Messdaten zur Bestimmung des Trägheitsmomentes der Holzpuppe.}
+  \label{tab:mensch3}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c c c c}
+    \toprule
+    {$d_\text{arme} \ /\ 10^{-3} \si{\metre}$} & {$a_\text{arme} \ /\ 10^{-3} \si{\metre}$} & {$T_{\text{Pose1}} \ /\ 10^{-1} \si{\second}$} & {$T_{\text{Pose2}} \ /\ 10^{-1} \si{\second}$}  \\
+    \midrule
+    \input{build/menschtabelle3.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
 
-Hierbei beschreibt $h_\text{torso}$ die Höhe des Torsos, $d_\text{torso}$ dessen Durchmesser, $l_\text{arme}$ die Länge der Arme sowie $d_\text{arme}$ dessen Durchmesser und $a_\text{arme}$ den Abstand der Mittelachsen der Arme in anliegender Pose voneinander.
+Hierbei beschreibt $h_\text{kopf}$ die Höhe des Kopfes, $d_\text{kopf}$ dessen Durchmesser, $h_\text{torso}$ die Höhe des Torsos, $d_\text{torso}$ dessen Durchmesser, $l_\text{arme}$ die Länge der Arme sowie $d_\text{arme}$ dessen Durchmesser und $a_\text{arme}$ den Abstand der Mittelachsen der Arme in anliegender Pose voneinander.
 
 Die gemittelten Maße der benutzten Holzpuppe betragen somit
 \begin{align*}
