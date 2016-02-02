@@ -35,6 +35,22 @@
       \verb http://129.217.224.2/HOMEPAGE/PHYSIKER/BACHELOR/AP/SKRIPT/Waermeleitf.pdf
       \endverb
     \endentry
+    \entry{etb}{manual}{}
+      \name{author}{1}{}{%
+        {{hash=ccbe93733b4f11bd313dd532af52a073}{ToolBox}{T\bibinitperiod}{The\bibnamedelima Engineering}{T\bibinitperiod\bibinitdelim E\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{ccbe93733b4f11bd313dd532af52a073}
+      \strng{fullhash}{ccbe93733b4f11bd313dd532af52a073}
+      \field{sortinit}{0}
+      \field{sortinithash}{990108227b3316c02842d895999a0165}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Thermal Conductivity of Materials and Gases}
+      \field{year}{2016}
+      \verb{url}
+      \verb http://www.engineeringtoolbox.com/thermal-conductivity-d_429.html
+      \endverb
+    \endentry
   \endsortlist
 \endrefsection
 \endinput

@@ -60,7 +60,7 @@ write('build/dyn3.tex', make_table([(A7-A7_min)/2,(A8-A8_min)/2, t7, t8], [2, 2,
 
 # Wärmestom
 
-k_messing = 120 # Quelle Wikipedia, such mal ne bessere.. ._.
+k_messing = 109 # Quelle Wikipedia, such mal ne bessere.. ._.
 A = 0.012 * 0.004 # ist das das richtige Messing?
 
 delta_T = T2-T1
@@ -85,7 +85,7 @@ write('build/kappa_1_tab.tex', make_table([kappa_1_a], [2]))
 kappa_1 = ufloat(np.mean(kappa_1_a), np.std(kappa_1_a))
 write('build/kappa_1.tex', make_SI(kappa_1, r'\watt\per\metre\per\kelvin' ))
 
-fehler_1 = abs( (kappa_1.n - 120 )/120 )*100
+fehler_1 = abs( (kappa_1.n - 109 )/109 )*100
 write('build/fehler_1.tex', str("%.0f" % fehler_1))
 
 
@@ -105,7 +105,7 @@ kappa_2_a = (rho_2 * c_2 * delta_x**2  ) / (2* deltaT_2 * np.log(deltaA_2)  )
 write('build/kappa_2_tab.tex', make_table([kappa_2_a], [2]))
 kappa_2 = ufloat(np.mean(kappa_2_a), np.std(kappa_2_a))
 write('build/kappa_2.tex', make_SI(kappa_2, r'\watt\per\metre\per\kelvin' ))
-fehler_2 = abs( (kappa_2.n - 236 )/236 )*100
+fehler_2 = abs( (kappa_2.n - 205 )/205 )*100
 write('build/fehler_2.tex', str("%.0f" % fehler_2))
 
 #Edelstrahl
@@ -119,7 +119,7 @@ kappa_3_a = (rho_3 * c_3 * delta_x**2  ) / (2* deltaT_3 * np.log(deltaA_3)  )
 write('build/kappa_3_tab.tex', make_table([kappa_3_a], [2]))
 kappa_3 = ufloat(np.mean(kappa_3_a), np.std(kappa_3_a))
 write('build/kappa_3.tex', make_SI(kappa_3, r'\watt\per\metre\per\kelvin' ))
-fehler_3 = abs( (kappa_3.n - 15 )/15 )*100
+fehler_3 = abs( (kappa_3.n - 16 )/16 )*100
 write('build/fehler_3.tex', str("%.0f" % fehler_3))
 
 # Beispielplot
