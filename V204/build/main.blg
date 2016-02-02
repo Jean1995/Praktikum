@@ -1,15 +1,15 @@
-[1] Config.pm:324> INFO - This is Biber 2.1
-[2] Config.pm:327> INFO - Logfile is 'build/main.blg'
-[74] biber:276> INFO - === So Jan 31, 2016, 01:25:03
-[74] Biber.pm:333> INFO - Reading 'build/main.bcf'
-[209] Biber.pm:645> INFO - Found 1 citekeys in bib section 0
-[240] Biber.pm:2977> INFO - Processing section 0
-[266] Biber.pm:3115> INFO - Looking for bibtex format file 'lit.bib' for section 0
-[268] bibtex.pm:1021> INFO - Decoding LaTeX character macros into UTF-8
-[269] bibtex.pm:895> INFO - Found BibTeX data source 'lit.bib'
-[314] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
-[314] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[314] Biber.pm:2854> INFO - Sorting list 'none' of type 'entry' with scheme 'none' and locale 'de-DE'
-[315] Biber.pm:2858> INFO - No sort tailoring available for locale 'de-DE'
-[318] bbl.pm:505> INFO - Writing 'build/main.bbl' with encoding 'UTF-8'
-[320] bbl.pm:596> INFO - Output to build/main.bbl
+[0] Config.pm:324> INFO - This is Biber 2.1
+[0] Config.pm:327> INFO - Logfile is 'build/main.blg'
+[46] biber:276> INFO - === Di Feb  2, 2016, 07:22:25
+[47] Biber.pm:333> INFO - Reading 'build/main.bcf'
+[174] Biber.pm:645> INFO - Found 1 citekeys in bib section 0
+[197] Biber.pm:2977> INFO - Processing section 0
+[217] Biber.pm:3115> INFO - Looking for bibtex format file 'lit.bib' for section 0
+[218] bibtex.pm:1021> INFO - Decoding LaTeX character macros into UTF-8
+[219] bibtex.pm:895> INFO - Found BibTeX data source 'lit.bib'
+[246] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[246] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[246] Biber.pm:2854> INFO - Sorting list 'none' of type 'entry' with scheme 'none' and locale 'de-DE'
+[246] Biber.pm:2858> INFO - No sort tailoring available for locale 'de-DE'
+[249] bbl.pm:505> INFO - Writing 'build/main.bbl' with encoding 'UTF-8'
+[249] bbl.pm:596> INFO - Output to build/main.bbl

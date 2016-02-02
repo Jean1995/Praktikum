@@ -112,6 +112,7 @@ Im Gegensatz dazu befindet sich beim Edelstahl nach Erreichen des Peaks kein dra
 Dieses Verhalten ist ein Indiz für die bessere Wärmeleitfähigkeit von Messing, da sich hier ein besserer Temperaturausgleich bei gleicher Erwärmung einstellt.
 
 \subsection{Bestimmung der Wärmeleitfähigkeit mittels Angström-Messverfahren}
+\subsubsection{Bestimmung der Wärmeleitfähigkeit für Messing}
 Es wird eine Messung mittels dynmanischer Methode, wie in Kapitel \ref{sec:dyn} beschrieben, durchgeführt.
 Für die Messung ergibt sich der in Abbildung \ref{fig:5} dargestellte Graph.
 
@@ -123,7 +124,8 @@ Für die Messung ergibt sich der in Abbildung \ref{fig:5} dargestellte Graph.
 \end{figure}
 
 Aus diesem Graphen können die Amplituden sowie zeitlichen Lagen der Maxima bestimmt werden.
-Diese Werte sind in Tabelle \ref{tab:3} angegeben.
+Die Amplituden werden hierbei bestimmt, indem die Amplitudendifferenz von einem Maximum und seinem jeweiligen zuvorgehenden Minimum genommen und halbiert wird.
+Die Werte sind in Tabelle \ref{tab:3} angegeben.
 
 \begin{table}
   \centering
@@ -139,7 +141,120 @@ Diese Werte sind in Tabelle \ref{tab:3} angegeben.
   \end{tabular}
 \end{table}
 
+Nach Formel \eqref{eqn:wlf} wird hieraus für jede Amplitude die Wärmeleitfähigkeit bestimmt.
+Die Ergebnisse sind in Tabelle \ref{tab:4} dargestellt.
 
+\begin{table}
+  \centering
+  \caption{Einzelne Ergebnisse der Wärmeleitfähigkeit für Messing.}
+  \label{tab:4}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c}
+    \toprule
+    {$\kappa_\text{Messing} \:/\: \si{\watt\per\metre\per\kelvin}$}\\
+    \midrule
+    \input{build/kappa_1_tab.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Diese Werte werden nun gemittelt, wobei sich der Mittelwert nach
+\begin{equation}
+  \bar{x} = \frac{1}{n} \sum_{i=1}^n x_i
+\end{equation}
+und die Standardabweichung nach
+\begin{equation}
+  S = \sqrt{ \frac{1}{n-1} \sum_{i=1}^n  \bigl(x_i - \bar{x} \bigr)^2  }
+\end{equation}
+berechnet.\\
+Hieraus folgt eine mittlere Wärmeleitfähigkeit von
+\begin{align*}
+  \kappa_\text{Messing} &= \input{build/kappa_1.tex}. \\
+\end{align*}
+\subsubsection{Bestimmung der Wärmeleitfähigkeit für Aluminium}
+Ein analoges Vorgehen wird nun für Aluminium durchgeführt.
+Der bei dieser Messung entstandene Graph ist in Abbildung \ref{fig:6} dargestellt.
+\begin{figure}
+  \centering
+  \includegraphics[height=13cm, angle=270]{scan-2.jpg}
+  \caption{Zeitlicher Verlauf der Temperaturen für $T_5$ und $T_6$ bei periodischer Erwärmung nach der Angström-Methode.}
+  \label{fig:6}
+\end{figure}
+Für diesen Graphen werden die Amplituden sowie die zeitliche Lage der Amplituden zu der in Tabelle \ref{tab:5} angegebenen Werte bestimmt.
+\begin{table}
+  \centering
+  \caption{Maxima der Temperaturen $T_5$ und $T_6$.}
+  \label{tab:5}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c c c c}
+    \toprule
+    {$A_5 \:/\: \si{\kelvin}$} & {$A_6 \:/\: \si{\kelvin}$}  & {$t_5 \:/\: \si{\second}$}  & {$t_6 \:/\: \si{\second}$}\\
+    \midrule
+    \input{build/dyn2.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+Hieraus ergeben sich die in \ref{tab:6} angeführten Werte für die Wärmeleitfähigkeit von Aluminium.
+\begin{table}
+  \centering
+  \caption{Einzelne Ergebnisse der Wärmeleitfähigkeit für Aluminium.}
+  \label{tab:6}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c}
+    \toprule
+    {$\kappa_\text{Aluminium} \:/\: \si{\watt\per\metre\per\kelvin}$}\\
+    \midrule
+    \input{build/kappa_2_tab.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+Gemittelt ergibt sich eine Wärmeleitfähigkeit von
+\begin{align*}
+  \kappa_\text{Aluminium} &= \input{build/kappa_2.tex}. \\
+\end{align*}
+
+\subsubsection{Bestimmung der Wärmeleitfähigkeit für Edelstahl}
+Als letztes soll die Wärmeleitfähigkeit für Edelstahl bestimmt werden, wobei in diesem Fall eine veränderte Periodendauer der periodischen Erwärmung verwendet wird.
+Der Graphen für die Temperaturen an den Messtellen zeigt Abbildung \ref{fig:7}
+\begin{figure}
+  \centering
+  \includegraphics[height=13cm]{scan-1.jpg}
+  \caption{Zeitlicher Verlauf der Temperaturen für $T_7$ und $T_8$ bei periodischer Erwärmung nach der Angström-Methode.}
+  \label{fig:7}
+\end{figure}
+Hier werden die Amplituden zu den in Tabelle \ref{tab:7} angegebenen Messwerten abgelesen
+\begin{table}
+  \centering
+  \caption{Maxima der Temperaturen $T_7$ und $T_8$.}
+  \label{tab:7}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c c c c}
+    \toprule
+    {$A_7 \:/\: \si{\kelvin}$} & {$A_8 \:/\: \si{\kelvin}$}  & {$t_7 \:/\: \si{\second}$}  & {$t_8 \:/\: \si{\second}$}\\
+    \midrule
+    \input{build/dyn3.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+Hieraus ergeben sich die in Tabelle \ref{tab:8} angegebenen Werte für die Wärmeleitfähigkeit.
+\begin{table}
+  \centering
+  \caption{Einzelne Ergebnisse der Wärmeleitfähigkeit für Edelstahl.}
+  \label{tab:8}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c}
+    \toprule
+    {$\kappa_\text{Edelstahl} \:/\: \si{\watt\per\metre\per\kelvin}$}\\
+    \midrule
+    \input{build/kappa_3_tab.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+Somit kann auf einen gemittelten Wert von
+\begin{align*}
+  \kappa_\text{Edelstahl} &= \input{build/kappa_3.tex} \\
+\end{align*}
+geschlossen werden.
 %\begin{table}
 %  \centering
 %  \caption{Beispieltabelle}

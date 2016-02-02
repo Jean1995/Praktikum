@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.80.0 (TeX Live 2015) (rev 5238)  (format=lualatex 2015.10.12)  1 FEB 2016 23:14
+This is LuaTeX, Version beta-0.80.0 (TeX Live 2015) (rev 5238)  (format=lualatex 2015.10.12)  2 FEB 2016 08:01
  restricted \write18 enabled.
 **main.tex
 (./main.tex
@@ -289,7 +289,7 @@ Lua-only attribute luaotfload@cursbase = 6
 Lua-only attribute luaotfload@curscurs = 7
 Lua-only attribute luaotfload@cursdone = 8
 Lua-only attribute luaotfload@state = 9
-luaotfload | main : fontloader loaded in 0.047 seconds
+luaotfload | main : fontloader loaded in 0.046 seconds
 Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
 Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
 Inserting `luaotfload.find_vf_file' at position 1 in `find_vf_file'.
@@ -2411,9 +2411,24 @@ Package pdftex.def Info: scan-5.jpg used on input line 104.
  <scan-3.jpg, id=105, 614.295pt x 844.5954pt>
 File: scan-3.jpg Graphic file (type jpg)
  <use scan-3.jpg>
-Package pdftex.def Info: scan-3.jpg used on input line 120.
+Package pdftex.def Info: scan-3.jpg used on input line 121.
 (pdftex.def)             Requested size: 269.03459pt x 369.88582pt.
- (./build/dyn1.tex)) (./content/diskussion.tex [8] [9<./scan-4.jpg><./scan-5.jpg>] [10<./scan-3.jpg>])(load luc: /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmromancaps10-regular.luc)
+ (./build/dyn1.tex) [8] [9<./scan-4.jpg><./scan-5.jpg>] [10<./scan-3.jpg>] (./build/kappa_1_tab.tex) (./build/kappa_1.tex) (./build/kappa_1.tex) [11] <scan-2.jpg, id=139, 614.295pt x 844.5954pt>
+File: scan-2.jpg Graphic file (type jpg)
+ <use scan-2.jpg>
+Package pdftex.def Info: scan-2.jpg used on input line 179.
+(pdftex.def)             Requested size: 269.03459pt x 369.88582pt.
+ (./build/dyn2.tex) (./build/kappa_2_tab.tex) (./build/kappa_2.tex) (./build/kappa_2.tex) <scan-1.jpg, id=143, 844.5954pt x 614.295pt>
+File: scan-1.jpg Graphic file (type jpg)
+ <use scan-1.jpg>
+Package pdftex.def Info: scan-1.jpg used on input line 221.
+(pdftex.def)             Requested size: 508.5654pt x 369.88582pt.
+
+Overfull \hbox (90.30984pt too wide) in paragraph at lines 221--222
+ [][][] 
+ []
+
+(./build/dyn3.tex) (./build/kappa_3_tab.tex) [12<./scan-2.jpg>] [13] (./build/kappa_3.tex) (./build/kappa_3.tex)) (./content/diskussion.tex [14<./scan-1.jpg>] (./build/kappa_1.tex) (./build/kappa_2.tex) (./build/kappa_3.tex) (./build/kappa_1.tex) (./build/kappa_2.tex) (./build/kappa_3.tex) (./build/fehler_1.tex) (./build/fehler_2.tex) (./build/fehler_3.tex) (./build/fehler_1.tex) (./build/fehler_2.tex) (./build/fehler_3.tex) [15])(load luc: /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmromancaps10-regular.luc)
 LaTeX Font Info:    Try loading font information for EU2+lmtt on input line 20.
  (/home/jean/.local/texlive/2015/texmf-dist/tex/latex/euenc/eu2lmtt.fd
 File: eu2lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -2422,14 +2437,14 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `lmtt' (encoding: EU2).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [11]
+ [16]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 22.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 22.
  (./build/main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 22.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 22.
 Package rerunfilecheck Info: File `main.aux' has not changed.
-(rerunfilecheck)             Checksum: 5B989C9CB0BC794993B94732DE8D4F6C;12798.
+(rerunfilecheck)             Checksum: 148D01BC3DF8479A5A6166C40B631098;17193.
 Package logreq Info: Writing requests to 'main.run.xml'.
 
 \openout1 = main.run.xml
@@ -2437,19 +2452,19 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 22.
 )
 
 Here is how much of LuaTeX's memory you used:
- 55939 strings out of 494897
+ 56214 strings out of 494897
  100000,1977958 words of node,token memory allocated
- 581 words of node memory still in use:
-   7 hlist, 2 vlist, 2 rule, 2 glue, 12 kern, 18 attribute, 57 glue_spec, 18 attribute_list, 1 action, 1 write nodes
-   avail lists: 1:2,2:7198,3:148,4:1262,5:208,6:2256,7:142,8:15,9:310,10:279,11:1
- 57729 multiletter control sequences out of 65536+600000
- 128 fonts using 39607359 bytes
- 72i,21n,104p,1248b,2074s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 628 words of node memory still in use:
+   7 hlist, 2 vlist, 2 rule, 2 glue, 14 kern, 19 attribute, 58 glue_spec, 19 attribute_list, 1 action, 1 write nodes
+   avail lists: 1:2,2:7978,3:185,4:1565,5:206,6:2500,7:142,8:16,9:366,10:315,11:1
+ 57780 multiletter control sequences out of 65536+600000
+ 128 fonts using 39608127 bytes
+ 72i,22n,104p,1248b,2072s stack positions out of 5000i,500n,10000p,200000b,100000s
 </home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmsans10-bold.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf>
-Output written on main.pdf (11 pages, 963974 bytes).
+Output written on main.pdf (16 pages, 1317761 bytes).
 
-PDF statistics: 268 PDF objects out of 1000 (max. 8388607)
- 208 compressed objects within 3 object streams
- 48 named destinations out of 1000 (max. 131072)
- 144 words of extra memory for PDF output out of 10000 (max. 10000000)
+PDF statistics: 323 PDF objects out of 1000 (max. 8388607)
+ 256 compressed objects within 3 object streams
+ 65 named destinations out of 1000 (max. 131072)
+ 168 words of extra memory for PDF output out of 10000 (max. 10000000)
 

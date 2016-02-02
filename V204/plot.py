@@ -32,7 +32,7 @@ A2 = np.array([31.3, 34.9, 38.3, 41.3, 44.0, 46.3, 48.0, 49.9, 51.3, 52.7])
 A2_min = np.array([27.3, 31.0, 34.6, 37.8, 40.8, 43.1, 45.3, 47.1, 49.0, 50.1])
 t1 = np.array([44, 123, 205, 238, 326, 444, 523, 605, 683, 739])
 t2 = np.array([62, 146, 223, 297, 383, 460, 539, 618,  697, 778])
-write('build/dyn1.tex', make_table([A1-A1_min, A2-A2_min, t1, t2], [1, 1, 0, 0]))   # [4,2] = Nachkommastellen
+write('build/dyn1.tex', make_table([(A1-A1_min)/2, (A2-A2_min)/2, t1, t2], [2, 2, 0, 0]))   # [4,2] = Nachkommastellen
 
 
 #Maxima: Für T5 und T6: A5/A6 Amplitude am i-ten Maximum, t5/t6 Zeit an dem i-tes Maximum erreicht wird
@@ -42,17 +42,17 @@ A6 = np.array([33.5, 38.2, 41.9, 45.3, 47.7, 50.0 ,51.9, 53.5, 54.9, 58.0 ])
 A6_min = np.array([ 27.3, 33.2, 36.9, 40.4, 43.7, 45.9, 48.3, 49.7, 51.3, 52.8 ])
 t5 = np.array([41, 123, 202, 285, 362, 441, 518, 604, 683, 762 ])
 t6 = np.array([55,132, 212, 292, 374, 451, 530, 609, 689, 769 ])
-write('build/dyn2.tex', make_table([A5-A5_min, A6-A6_min, t5, t6], [1, 1, 0, 0]))   # [4,2] = Nachkommastellen
+write('build/dyn2.tex', make_table([(A5-A5_min)/2, (A6-A6_min)/2, t5, t6], [2, 2, 0, 0]))   # [4,2] = Nachkommastellen
 
 
 #Maxima: Für T7 und T8: A7/A8 Amplitude am i-ten Maximum, t7/t8 Zeit an dem i-tes Maximum erreicht wird
-A7 = np.array([ 42.0, 46.5, 50.8,  54.2, 56.9, 59.6, 60.6   ])
+A7 = np.array([42.0, 46.5, 50.8,  54.2, 56.9, 59.6, 60.6   ]) #
 A7_min = np.array( [ 30.0, 37.1, 41.1, 44.3, 45.5, 50.0, 51.4   ]  )
 A8 = np.array([31.7,35.3,  38.4, 41.1, 43.4 , 45.4, 46.9  ])
 A8_min = np.array( [ 31.4, 35.2,  38.2, 40.8, 43.2, 45.1, 46.4 ] )
 t7 = np.array([112, 312, 512,  716, 916, 1120, 1320 ])
 t8 = np.array([200, 400,596, 788, 984, 1180,1380 ])
-write('build/dyn3.tex', make_table([A7-A7_min, A8-A8_min, t7, t8], [1, 1, 0, 0]))   # [4,2] = Nachkommastellen
+write('build/dyn3.tex', make_table([(A7-A7_min)/2,(A8-A8_min)/2, t7, t8], [2, 2, 0, 0]))   # [4,2] = Nachkommastellen
 
 
 ### DATEN ENDE ###
@@ -85,6 +85,9 @@ write('build/kappa_1_tab.tex', make_table([kappa_1_a], [2]))
 kappa_1 = ufloat(np.mean(kappa_1_a), np.std(kappa_1_a))
 write('build/kappa_1.tex', make_SI(kappa_1, r'\watt\per\metre\per\kelvin' ))
 
+fehler_1 = abs( (kappa_1.n - 120 )/120 )*100
+write('build/fehler_1.tex', str("%.0f" % fehler_1))
+
 
 test_deltaA_1 = ufloat(  np.mean( (A1-A1_min)/(A2-A2_min) ) , np.std( (A1-A1_min)/(A2-A2_min) )   )
 test_deltaT_1 = ufloat( np.mean( t2-t1 ), np.std( t2-t1) )
@@ -102,6 +105,8 @@ kappa_2_a = (rho_2 * c_2 * delta_x**2  ) / (2* deltaT_2 * np.log(deltaA_2)  )
 write('build/kappa_2_tab.tex', make_table([kappa_2_a], [2]))
 kappa_2 = ufloat(np.mean(kappa_2_a), np.std(kappa_2_a))
 write('build/kappa_2.tex', make_SI(kappa_2, r'\watt\per\metre\per\kelvin' ))
+fehler_2 = abs( (kappa_2.n - 236 )/236 )*100
+write('build/fehler_2.tex', str("%.0f" % fehler_2))
 
 #Edelstrahl
 
@@ -114,7 +119,8 @@ kappa_3_a = (rho_3 * c_3 * delta_x**2  ) / (2* deltaT_3 * np.log(deltaA_3)  )
 write('build/kappa_3_tab.tex', make_table([kappa_3_a], [2]))
 kappa_3 = ufloat(np.mean(kappa_3_a), np.std(kappa_3_a))
 write('build/kappa_3.tex', make_SI(kappa_3, r'\watt\per\metre\per\kelvin' ))
-
+fehler_3 = abs( (kappa_3.n - 15 )/15 )*100
+write('build/fehler_3.tex', str("%.0f" % fehler_3))
 
 # Beispielplot
 x = np.linspace(0, 10, 1000)
