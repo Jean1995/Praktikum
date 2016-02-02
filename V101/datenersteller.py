@@ -117,11 +117,11 @@ l_arme   = l_arme*10**(-2)
 d_arme   = d_arme*10**(-2)/2
 a_arme   = a_arme*10**(-2)/2
 
-write('build/menschtabelle1.tex', make_table([m*10, h_bein_1*10, h_bein_2*10, d_beine*10**2, a_beine*10**2], [4, 4, 4, 3, 3]))
+write('build/menschtabelle1.tex', make_table([m*10, h_bein_1*10, h_bein_2*10, d_beine*2*10**2, a_beine*10**2], [4, 4, 4, 3, 3]))
 
-write('build/menschtabelle2.tex', make_table([h_kopf*10**2, d_kopf*10**2, h_torso*10**2, d_torso*10**2, l_arme*10], [3, 3, 3, 2, 4]))
+write('build/menschtabelle2.tex', make_table([h_kopf*10**2, d_kopf*2*10**2, h_torso*10**2, d_torso*10*2**2, l_arme*10], [3, 3, 3, 2, 4]))
 
-write('build/menschtabelle3.tex', make_table([d_arme*10**3, a_arme*10**2, t1*10, t2*10], [2, 3, 1, 1]))
+write('build/menschtabelle3.tex', make_table([d_arme*2*10**3, a_arme*2*10**2, t1*10, t2*10], [2, 3, 1, 1]))
 
 #write('build/menschtabelle1.tex', make_table([m, h_bein_1, h_bein_2, d_beine*2, a_beine*2, h_kopf, d_kopf*2], [5, 5, 5, 5, 5, 5, 5]))
 #
