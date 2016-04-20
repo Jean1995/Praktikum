@@ -25,9 +25,91 @@ Befindet sich nun ein Hg-Atom in einem angeregten Zustand emittiert es nach eine
 Dabei beschreibt $h$ das Plancksche-Wirkungsquantum und $\nu$ die Frequenz eben dieses Lichtquants.
 
 \subsection{Systematischer Aufbau und die Gegenfeldmethode}
+Der Versuchsaufbau besteht aus einem mit Hg-Dampf gefüllten Glaskorpus, wie der aus Abbildung \ref{fig:1}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=6cm]{ressources/aufbau.png}
+  \caption{Systematischer Aufbau einer Franck-Hertz-Röhre. \cite{sample}}
+  \label{fig:1}
+\end{figure}
+
+Ein Glühdraht, unten in der Abbildung, dient als Elektonenquelle.
+Die ausgesandten Elektronen werden durch eine gitterförmige Beschleunigungselektrode in Richtung einer Auffängerelektrode beschleunigt.
+An der Beschleunigungselektrode angekommen haben die Elektronen eine kinetische Energie von
+
+\begin{equation}
+  \frac{m \cdot v²}{2} = eU_{\text{B}}, \label{eqn:3}
+\end{equation}
+
+wenn angenommen wird, dass sie beim Austritt aus dem Glühdraht keine Geschwindigkeit haben.
+Nach dem Passieren der Beschleunigungselektrode werden die Elektronen abgebremst, da die Auffängerelektrode negativ geladen wird.
+Es sollen nur die Elektronen ankommen die eine Energie von
+
+\begin{equation}
+  \frac{m \cdot v²}{2} \ge eU_{\text{A}} \label{eqn:4}
+\end{equation}
+
+haben.
+Dieses Verfahren wird als Gegenfeldmethode bezeichnet.
+Wird nun die Beschleunigungsspannung erhöht, fangen immer mehr Elektronen an, die Auffängerelektrode zu erreichen.
+Ab einem bestimmten Energiewert, dargestellt in Gleichung \ref{eqn:1}, der der Anregungsenergie der Hg-Atome entspricht, beginnen sie an Stelle von Elastischen unelastische Stöße mit den Hg-Atomen auszuführen.
+Bis zu diesem Phänomen steigt die Stromstärke an der Auffängerelektrode an, ehe sie je absinkt, da die Elektronen nun nicht mehr die nötige Energie besitzen, um sie zu erreichen.
+Bei weiterem Erhöhen der Beschleunigungsspannung steigt die Energie der Elektronen nach dem unelastischen Stoß wieder an bis sie erneut genug Energie für eben diesen haben.
+Demnach sollte die Stromstärke der Auffängerelektrode in Abhängigkeit der Beschleunigungsspannung etwa so aussehen wie in Abbildung \ref{fig:2}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=6cm]{ressources/kurve1.png}
+  \caption{Theoretische Darstellung einer Franck-Hertz-Kurve. \cite{sample}}
+  \label{fig:2}
+\end{figure}
+
+Die Stromstärke ist demnach ein Indikator, ab welcher Beschleunigungsspannung die Atome angeregt werden.
+Zudem stellt die Differenz $U_1$, zwischen den äquidistanten Maxima,
+
+\begin{equation}
+  U_1 = \frac{1}{e}(E_1-E_0), \label{eqn:5}
+\end{equation}
+
+multipliziert mit der Elementarladung die Anregungsenergie dar.
+Tatsächlich sorgen jedoch Störungseffekte für ein Abrunden und Verbreiterung der Kurve, wobei der Abstand zwischen den Maxima konstant bleibt.
 
 \subsection{Störeffekte}
 
+Ein Störeffekt wird durch das Kontaktpotential ausgelöst.
+Das Potential zwischen Elektrode und Heizdraht unterscheidet sich von der angelegten Spannung $U_{\text{B}}$.
+Dies passiert, wenn die sich die Austrittsarbeiten der Materialien unterscheiden.
+Der Vorteil ist, dass bei hohen Temperaturen dadurch für eine hohe Emissionsrate gesorgt ist.
+Nachteilig ist jedoch, dass die angelegte Spannung
+
+\begin{equation}
+  U_{\text{B,eff}} = U_{\text{B}} - \frac{1}{e}(\Phi_{\text{B}} - \Phi{\text{G}}) = U_{\text{B}} - K \label{eqn:6}
+\end{equation}
+
+um das Kontaktpotential $K$ verschoben wird.\\
+Zudem besitzen die Elektronen bei Austreten aus dem Glühdraht nicht alle keine Energie sondern besitzen ein Energiespekrum folglich der Fermi-Dirac-Verteilung in Metallen.
+Sie besitzen beim Austreten also mehr oder weniger Energie als ihre Kollegen, was in einer Verbreiterung der Franck-Hertz-Kurve führt, wodurch sich das Maximum nicht mehr so genau lokalisieren lässt.
+Außerdem äußern sich die verschiedenen Enegrien darin, dass die Stromstärke nicht mehr auf Null sondern auf ein Stromminimum absinkt.\\
+Desweiteren sorgen die in den Richtungsänderungen resultierenden elastischen Stößen zwischen Auffänger- und Beschleunigungselektrode, dass nicht mehr soviele Elektronen ankommen können.
+Es ist ein weiteres Kriterium, welches eine Abflachung und Verbreiterung erklärt.\\
+Der letzte große Einfluss wird durch den Hg-Dampfdruck ausgelöst.
+Der Dampfdruck bestimmt letztendlich die Wahrscheinlichkeit, mit der es zu einem Stoßprozess kommt.
+Damit dies möglichst häufig passiert, muss die mittlere freie Weglänge $\overline{w}$ der Atome etwa 1000 bis 4000 mal kleiner sein als der Abstand zwischen Kathode und Beschleunigungselektode.
+Für sie gilt
+
+\begin{equation}
+  \overline{w} [\text{cm}] = \frac{0,0029}{p_{\text{sätt}}} [\text{p in mbar}] \label{eqn:7},
+\end{equation}
+
+wobei
+
+\begin{equation}
+  p_{\text{sätt}} = \exp(-6876/T) \label{eqn:8},
+\end{equation}
+
+von der Temperatur $T$ abhängt.
+Hierbei ist es wichtig ein geeignetes Mittelmaß einzustellen, da bei zu geringem Druck die Elektronen womöglich ohne Stoß die Apparatur durchlaufen und bei zu hohem Druck die Auffängerelektrode nicht erreichen können, da es zu zu starken Richtungsänderungen kommt.
 
 
 
@@ -35,18 +117,6 @@ Dabei beschreibt $h$ das Plancksche-Wirkungsquantum und $\nu$ die Frequenz eben 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-\cite{sample}
 
 % 2x2 Plot
 % \begin{figure*}
