@@ -31,8 +31,17 @@ I_a = np.array([1000-0*6.67, 1000-12*6.67, 1000-23*6.67, 1000-35*6.67, 1000-48*6
 I_a_plus_delta = np.array([4*6.67, 4*6.67, 4*6.67, 4.5*6.67, 5.5*6.67, 7*6.67, 11*6.67,  12.5*6.67, 23*6.67, 4.5*6.67, 0      ]) # Stromwert an i-ter Stelle plus ein delta_U_a
 
 # ERLÄUTERUNG: U_a ist das Array mit den Spannungen, an denen gemessen wurde
-#               I_a ist der jeweilige Stromwert dort
+#               I_a ist der jeweilige Stromwert dort (brauchte ich eigentlich garnicht)
 #               I_a_plus_delta ist der Stromwert jeweils ein Delta weiter
 #               (Die komischen Multiplikationen folgern aus der Ablesetechnik)
 
-np.savetxt('messdaten/a_1.txt', np.column_stack([U_a, I_a, I_a_plus_delta, I_a - I_a_plus_delta]), header="U_a [Volt], I_a [nA], I_a_plus_delta [nA], Differenz [nA]")
+np.savetxt('messdaten/a_1.txt', np.column_stack([U_a, I_a, I_a_plus_delta]), header="U_a [Volt], I_a [nA], I_a_plus_delta [nA]")
+
+
+# Für T=145.5 C
+
+U_a_2 = np.array([0*0.292, 2*0.292, 4*0.292, 6*0.292, 8*0.292, 9*0.292, 10*0.292, 11*0.292, 12*0.292, 13*0.292, 15*0.292, 17*0.292, 19*0.292, 21*0.292,])
+del_U_a_2 = 0.292 # Delta U_a sei 1 Kasten, was 0.292 Volt entspricht
+delta_I_a_2 = np.array([17.5*0.0503,16*0.0503, 14*0.0503, 13*0.0503, 10.5*0.0503, 9.5*0.0503, 7*0.0503, 5*0.0503, 3*0.0503, 1*0.0503, 0, 0, 0,0 ])
+
+np.savetxt('messdaten/a_2.txt', np.column_stack([U_a_2, delta_I_a_2]), header="U_a [Volt], I_a [nA]")

@@ -200,3 +200,53 @@ write('build/Tabelle_0_texformat.tex', make_full_table(
      r'$\bar{w} \:/\: 10^{-3} \si{\metre} $']))
 
 ########## Aufgabenteil a) ##########
+
+U_a, I_a, I_a_plus_delta = np.genfromtxt('messdaten/a_1.txt', unpack=True) # Ströme in Nanoampere
+
+plt.clf                   # clear actual plot before generating a new one
+t_plot = np.linspace(np.amin(U_a), np.amax(U_a), 100)
+plt.xlim(t_plot[0]-1/np.size(U_a)*(t_plot[-1]-t_plot[0]), t_plot[-1]+1/np.size(U_a)*(t_plot[-1]-t_plot[0]))
+
+plt.plot(U_a, I_a_plus_delta, 'rx', label=r'Messwerte für $T = \SI{26.1}{\celsius}$')
+plt.xlabel(r'$U_a \:/\: \si{\volt}$')
+plt.ylabel(r'$I_a(U_a) - I_a (U_a + \increment{U_a}) \:/\: \si{\nano\ampere}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+
+plt.savefig('build/aufgabenteil_a_plot.pdf')
+
+write('build/Tabelle_a1.tex', make_table([U_a, I_a_plus_delta],[2, 2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_a1_texformat.tex', make_full_table(
+     r'Messwerte für die Integrale Energieverteilung bei $T = \SI{26.1}{\celsius}$.',
+     'tab:1',
+     'build/Tabelle_a1.tex',
+     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                               # die Multicolumns sein sollen
+     ['T  /  \si{\kelvin}',
+     r'$p_{\text{sätt}} \:/\: 10^{-3} \si{\bar}$']))
+
+
+
+
+U_a_2, I_a_2 = np.genfromtxt('messdaten/a_2.txt', unpack=True) # Ströme in Nanoampere
+
+plt.clf()                   # clear actual plot before generating a new one
+t_plot = np.linspace(np.amin(U_a_2), np.amax(U_a_2), 100)
+plt.xlim(t_plot[0]-1/np.size(U_a_2)*(t_plot[-1]-t_plot[0]), t_plot[-1]+1/np.size(U_a_2)*(t_plot[-1]-t_plot[0]))
+
+plt.plot(U_a_2, I_a_2, 'rx', label=r'Messwerte für $T = \SI{145.5}{\celsius}$')
+plt.xlabel(r'$U_a \:/\: \si{\volt}$')
+plt.ylabel(r'$I_a(U_a) - I_a (U_a + \increment{U_a}) \:/\: \si{\nano\ampere}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/aufgabenteil_a_plot_2.pdf')
+
+write('build/Tabelle_a2.tex', make_table([U_a_2m, I_a_2],[2, 2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_a2_texformat.tex', make_full_table(
+     r'Messwerte für die Integrale Energieverteilung bei $T = \SI{145.5}{\celsius}$.',
+     'tab:2',
+     'build/Tabelle_a2.tex',
+     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                               # die Multicolumns sein sollen
+     ['T  /  \si{\kelvin}',
+     r'$p_{\text{sätt}} \:/\: 10^{-3} \si{\bar}$']))
