@@ -157,3 +157,46 @@ from error_calculation import(
 
 ########## DIFFERENT STUFF ##########
 # R = const.physical_constants["molar gas constant"]      # Array of value, unit, error
+
+def p_saet(Temperatur):
+    """
+        Args:
+            Temperatur: Temperatur [K]
+        Returns:
+            Sättigungsdampfdruck für Quecksilber [bar]
+    """
+    p = 5.5 * 10**(7) * np.exp(-6876/T) / 1000
+    return p
+
+def w_quer(p_saet):
+    """
+        Args:
+            P_Saet: Sättigungsdampfdruck [bar]
+        Returns:
+            Mittlere freie Weglänge [m]
+    """
+    w_quer = 0.0029/(p_saet*1000)
+    return w_quer/100
+
+########## Aufgabenteil 0) ##########
+
+T = np.genfromtxt('messdaten/0.txt', unpack=True)
+T += 273.15
+p_saet = p_saet(T)
+w_quer = w_quer(p_saet)
+
+
+
+
+write('build/Tabelle_0.tex', make_table([T,p_saet*1000,w_quer*1000],[2, 3, 3]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_0_texformat.tex', make_full_table(
+     'Bestimmung der Sättigungsdampfdrücke sowie der mittelen Weglängen.',
+     'tab:0',
+     'build/Tabelle_0.tex',
+     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                               # die Multicolumns sein sollen
+     ['T  /  \si{\kelvin}',
+     r'$p_{\text{sätt}} \:/\: 10^{-3} \si{\bar}$',
+     r'$\bar{w} \:/\: 10^{-3} \si{\metre} $']))
+
+########## Aufgabenteil a) ##########
