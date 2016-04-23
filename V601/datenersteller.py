@@ -45,3 +45,12 @@ del_U_a_2 = 0.292 # Delta U_a sei 1 Kasten, was 0.292 Volt entspricht
 delta_I_a_2 = np.array([17.5*0.0503,16*0.0503, 14*0.0503, 13*0.0503, 10.5*0.0503, 9.5*0.0503, 7*0.0503, 5*0.0503, 3*0.0503, 1*0.0503, 0, 0, 0,0 ])
 
 np.savetxt('messdaten/a_2.txt', np.column_stack([U_a_2, delta_I_a_2]), header="U_a [Volt], I_a [nA]")
+
+
+########## Aufgabenteil b ##########
+
+# Lage der Maxima
+U_max_1 = ([52*0.2313, 74.5*0.2313, 96.5*0.2313, 113.5*0.2313]) # für 161 C
+U_max_2 = ([53*0.2332, 74*0.2332, 96.5*0.2332, 119*0.2332]) # für 178 C
+
+np.savetxt('messdaten/b.txt', np.column_stack([U_max_1, U_max_2]), header="U_max_1 [Volt], U_max_2 [Volt]")

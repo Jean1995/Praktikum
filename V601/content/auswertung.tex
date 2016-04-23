@@ -97,28 +97,30 @@ Die Ergebnisse sind in Tabelle \ref{tab:0} angegeben.
 Wie in der Durchführung beschrieben wird eine feste Beschleunigungsspannung von $U_b = \SI{11}{\volt}$ gewählt, und der Auffängerstrom gemessen.
 Um nun die integrale Energieverteilung beschreiben zu können, weden mehrere Spannungswerte $U_a$ gegen den dazugehörigen Wert
 \begin{equation}
-  I_a(U_a) - I_a(U_a + \increment(U_a))
+  \increment I_a \coloneq I_a(U_a) - I_a(U_a + \increment U_a)
 \end{equation}
-abgetragen, was ein Maß für die Zahl der Elektronen darstellt. %why?
-Es werden dabei die Werte
+abgetragen.
+Dementsprechend beschreibt dieser Zusammenhang nach der Formel \eqref{eqn:3} die Energieverteilung, da eine hohe Änderung von $I_a$ einer hohen Anzahl von Elektronen entspricht, die ebendiese kinetische Energie besitzen und nun durch die Bremsspannung aufgehalten werden.
+Zur Bestimmung der Spannungsdifferenzen werden die Werte
 \begin{align*}
   \increment U_{a,1} = \SI{0,394}{\volt} \\
   \increment U_{a,2} = \SI{0.292}{\volt}
 \end{align*}
 verwendet.
 Die Ergebnisse sind in den Tabellen \ref{tab:1} und \ref{tab:2} dargestellt sowie in den Abbildungen \ref{fig:plot1} und \ref{fig:plot2} graphisch dargestellt.
+Auf eine Betrachtung der Messfehler wird hier verzichtet, da die Ablesefehler aus dem Diagramm einen größeren Faktor darstellen.
 
 \input{build/Tabelle_a1_texformat.tex}
 \input{build/Tabelle_a2_texformat.tex}
 
-\begin{figure}
+\begin{figure}[H]
   \centering
   \includegraphics{build/aufgabenteil_a_plot.pdf}
   \caption{Messdaten für die Integrale Energieverteilung.}
   \label{fig:plot1}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[H]
   \centering
   \includegraphics{build/aufgabenteil_a_plot_2.pdf}
   \caption{Messdaten für die Integrale Energieverteilung.}
@@ -127,7 +129,7 @@ Die Ergebnisse sind in den Tabellen \ref{tab:1} und \ref{tab:2} dargestellt sowi
 
 Für die erste Messung ist auffällig, dass ein Peak bei ca. $U_{\text{grenz}} = \SI{7.9}{\volt}$ existiert.
 Da die Beschleunigungsspannung größer als diese effektive Elektronenenergie nach Durchlaufen des elektrischen Feldes ist, kann man von einem sich hier auswirkenden Kontaktpotential ausgehen.
-Dieses beträgt nach dieser Messung ca. $K = \SI{2.1}{\volt}$.\\
+Dieses beträgt dementsprechend ca. $K = \SI{2.1}{\volt}$.\\
 In der zweiten Messung erweist sich eine konkrete Zuordnung eines Peaks als schwieriger.
 Dies liegt vermutlich an der Tatsache, dass deutlich mehr inelastische Stöße stattfinden, da die mittlere Weglänge im Vergleich zur Messung bei Zimmertemperatur deutlich geringer ist.
 Ein theoretisch zu erwartender bei
@@ -135,3 +137,5 @@ Ein theoretisch zu erwartender bei
   U = U_b - K - U_{\text{Hg}}
 \end{equation}
 ist leicht zu sehen. %hier dann konkret werden wenn U_hg bei Teil b berechnet wurde.
+
+\subsection{Interpretation der Franck-Hertz Kurven}
