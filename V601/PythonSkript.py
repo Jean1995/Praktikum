@@ -279,8 +279,16 @@ write('build/Tabelle_b2.tex', make_table([U_max_2_deltas],[2]))     # Jeder fehl
 #     [r'$\Delta U_max  /  \si{\volt}$']))
 
 U_max_2_delta_mean         = np.mean(U_max_2_deltas)
-U_max_2_delta_err          = MeanError(noms(U_max_2_deltas))     #Fehler des Mittelwertes
+U_max_2_delta_err          = MeanError(noms(U_max_2_deltas))     #Fehler des Mittelwertes  KOMISCHERWEISE 0?
 U_max_2_delta_delta_ablese = 0.2332                    #Ablesefehler
 
-write('build/b_U_max_2_delta_mean.tex', make_SI(U_max_2_delta_mean, r'\volt', figures=5 ))
-write('build/b_U_max_2_delta_err.tex', make_SI(U_max_2_delta_err, r'\volt', figures=5 ))
+#write('build/b_U_max_2_delta_mean.tex', make_SI(U_max_2_delta_mean, r'\volt', figures=5 ))
+#write('build/b_U_max_2_delta_err.tex', make_SI(U_max_2_delta_err, r'\volt', figures=5 ))
+U_max_delta = unp.uarray(U_max_2_delta_mean, U_max_2_delta_err)
+write('build/b_U_max_delta.tex', make_SI(U_max_delta, r'\volt', figures=5 ))
+
+h  = 6.62607004*10**(-34)
+e  = 1.6021766208*10**(-19)
+nu = e*U_max_delta/h
+
+write('build/b_U_max_delta.tex', make_SI(U_max_delta, r'\second\tothe{-1}', figures=5 ))
