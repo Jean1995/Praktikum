@@ -257,3 +257,30 @@ write('build/Tabelle_a2_texformat.tex', make_full_table(
 U_max_1, U_max_2 = np.genfromtxt('messdaten/b.txt', unpack=True) # Lage der Maxima
 T_1 = 161+273.15
 T_2 = 178+273.15
+
+write('build/Tabelle_b1.tex', make_table([U_max_2],[2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+#write('build/Tabelle_b1_texformat.tex', make_full_table(
+#     r'Maxima der Franck-Hertz-Kurve bei $T = \SI{178}{\celsius}$.',
+#     'tab:3',
+#     'build/Tabelle_b1.tex',
+#     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+#                               # die Multicolumns sein sollen
+#     [r'$U_max  /  \si{\volt}$']))
+
+U_max_2_deltas = ([U_max_2[1]-U_max_2[0], U_max_2[2]-U_max_2[1], U_max_2[3]-U_max_2[2]])
+
+write('build/Tabelle_b2.tex', make_table([U_max_2_deltas],[2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+#write('build/Tabelle_b2_texformat.tex', make_full_table(
+#     r'Abstände der Maxima der Franck-Hertz-Kurve bei $T = \SI{178}{\celsius}$.',
+#     'tab:4',
+#     'build/Tabelle_b2.tex',
+#     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+#                               # die Multicolumns sein sollen
+#     [r'$\Delta U_max  /  \si{\volt}$']))
+
+U_max_2_delta_mean         = np.mean(U_max_2_deltas)
+U_max_2_delta_err          = MeanError(noms(U_max_2_deltas))     #Fehler des Mittelwertes
+U_max_2_delta_delta_ablese = 0.2332                    #Ablesefehler
+
+write('build/b_U_max_2_delta_mean.tex', make_SI(U_max_2_delta_mean, r'\volt', figures=5 ))
+write('build/b_U_max_2_delta_err.tex', make_SI(U_max_2_delta_err, r'\volt', figures=5 ))
