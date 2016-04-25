@@ -290,28 +290,34 @@ write('build/Tabelle_b2.tex', make_table([U_max_2_deltas],[2]))     # Jeder fehl
 
 U_max_2_delta_mean         = np.mean(U_max_2_deltas)
 U_max_2_delta_err          = MeanError(noms(U_max_2_deltas))     #Fehler des Mittelwertes  KOMISCHERWEISE 0?
+U_max_2_delta_err          = np.std(U_max_2_deltas)
 U_max_2_delta_delta_ablese = 0.2332                    #Ablesefehler
 
 #write('build/b_U_max_2_delta_mean.tex', make_SI(U_max_2_delta_mean, r'\volt', figures=5 ))
 #write('build/b_U_max_2_delta_err.tex', make_SI(U_max_2_delta_err, r'\volt', figures=5 ))
 
-#U_max_delta = unp.uarray(U_max_2_delta_mean, U_max_2_delta_err)
-#write('build/b_U_max_delta.tex', make_SI(U_max_delta, r'\volt', figures=5 ))
+U_max_delta = ufloat(U_max_2_delta_mean, U_max_2_delta_err)
+write('build/b_U_max_delta.tex', make_SI(U_max_delta, r'\volt', figures=1 ))
 
 h      = 6.62607004*10**(-34)
 e      = 1.6021766208*10**(-19)
-#nu     = e*U_max_delta/h     eigentlich das hier, jedoch ist die Abweichung der Maxima 0, obwohl sich der erste Wert von den anderen beiden um etwa 0,5 Volt unterscheidet....
-nu     = e*U_max_2_delta_mean/h # hab ich nur zum Testen gemacht
+nu     = e*U_max_delta/h
+#nu     = e*U_max_2_delta_mean/h # hab ich nur zum Testen gemacht
 #nu     = e*5.25/h
 c      = 299792458
 laenge = c/nu
+laenge_lit = 435.835 * 10**(-9)
+rel_err_laenge = abs(noms(U_max_delta) - 4.9)/4.9 *100
 
-write('build/b_wellenlaenge.tex', make_SI(laenge*10**(9), r'\nano\metre', figures=5 ))  # Wert passt ungefähr (bei uns 241nm, eigentlich so 435nm), mit der Abweichung sollte das drin liegen, ohne den ersten Wert treffen wir den fast perfekt 436nm
-
+write('build/b_wellenlaenge.tex', make_SI(laenge*10**(9), r'\nano\metre', figures=1 ))  # Wert passt ungefähr (bei uns 241nm, eigentlich so 435nm), mit der Abweichung sollte das drin liegen, ohne den ersten Wert treffen wir den fast perfekt 436nm
+write('build/b_anregung_rel.tex', make_SI(rel_err_laenge, r'\percent', figures=1 ))
 
 ########## Aufgabenteil c) ##########
 
-U_peak = 41.1
+U_peak = 14.1
 K      = 4.1
 E_ion  = (U_peak - K)
-write('build/c_ion.tex', make_SI(E_ion, r'\electron\volt', figures=1 ))
+E_ion_lit = 10.438
+rel_E_ion_err = abs(E_ion - E_ion_lit)/E_ion_lit * 100
+write('build/c_ion_rel_err.tex', make_SI(rel_E_ion_err, r'\percent', figures=1 ))
+write('build/c_ion.tex', make_SI(E_ion, r'\electronvolt', figures=0 ))
