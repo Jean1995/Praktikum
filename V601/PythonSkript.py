@@ -190,7 +190,7 @@ w_quer = w_quer(p_saet)
 
 write('build/Tabelle_0.tex', make_table([T,p_saet*1000,w_quer*1000],[2, 3, 3]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
 write('build/Tabelle_0_texformat.tex', make_full_table(
-     'Bestimmung der Sättigungsdampfdrücke sowie der mittelen Weglängen.',
+     'Bestimmung der Sättigungsdampfdrücke sowie der mittleren Weglängen.',
      'tab:0',
      'build/Tabelle_0.tex',
      [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
@@ -315,7 +315,7 @@ write('build/b_anregung_rel.tex', make_SI(rel_err_laenge, r'\percent', figures=1
 ########## Aufgabenteil c) ##########
 
 U_peak = 14.1
-K      = 4.1
+K      = 3.1
 E_ion  = (U_peak - K)
 E_ion_lit = 10.438
 rel_E_ion_err = abs(E_ion - E_ion_lit)/E_ion_lit * 100

@@ -97,8 +97,9 @@ Dies bedeutet, dass die mittlere Weglänge im Mikrometerbereich liegen sollte.
 Folglich können gute Franck-Hertz-Kurven bei einer Temperatur von $\SI{400}{\kelvin}$ bis $\SI{450}{\kelvin}$ aufgenommen werden.
 
 \subsection{Integrale Energieverteilung}
+\label{sec:ie}
 Wie in der Durchführung beschrieben wird eine feste Beschleunigungsspannung von $U_b = \SI{11}{\volt}$ gewählt, und der Auffängerstrom gemessen.
-Um nun die integrale Energieverteilung beschreiben zu können, weden mehrere Spannungswerte $U_a$ gegen den dazugehörigen Wert
+Um nun die integrale Energieverteilung beschreiben zu können, werden mehrere Spannungswerte $U_a$ gegen den dazugehörigen Wert
 \begin{equation}
   \increment I_a \coloneq I_a(U_a) - I_a(U_a + \increment U_a)
 \end{equation}
@@ -110,7 +111,7 @@ Zur Bestimmung der Spannungsdifferenzen werden die Werte
   \increment U_{a,2} = \SI{0.292}{\volt}
 \end{align*}
 verwendet.
-Die Ergebnisse sind in den Tabellen \ref{tab:1} und \ref{tab:2} dargestellt sowie in den Abbildungen \ref{fig:plot1} und \ref{fig:plot2} graphisch dargestellt.
+Die Ergebnisse sind in den Tabellen \ref{tab:1} und \ref{tab:2} angegeben sowie in den Abbildungen \ref{fig:plot1} und \ref{fig:plot2} graphisch dargestellt.
 Auf eine Betrachtung der Messfehler wird hier verzichtet, da die Ablesefehler aus dem Diagramm einen größeren Faktor darstellen.
 
 \input{build/Tabelle_a1_texformat.tex}
@@ -132,14 +133,14 @@ Auf eine Betrachtung der Messfehler wird hier verzichtet, da die Ablesefehler au
 
 Für die erste Messung ist auffällig, dass ein Peak bei ca. $U_{\text{grenz}} = \SI{7.9}{\volt}$ existiert.
 Da die Beschleunigungsspannung größer als diese effektive Elektronenenergie nach Durchlaufen des elektrischen Feldes ist, kann man von einem sich hier auswirkenden Kontaktpotential ausgehen.
-Dieses beträgt dementsprechend ca. $K = \SI{2.1}{\volt}$.\\
+Dieses beträgt dementsprechend ca. $K = \SI{3.1}{\volt}$.\\
 In der zweiten Messung erweist sich eine konkrete Zuordnung eines Peaks als schwieriger.
 Dies liegt vermutlich an der Tatsache, dass deutlich mehr inelastische Stöße stattfinden, da die mittlere Weglänge im Vergleich zur Messung bei Zimmertemperatur deutlich geringer ist.
 Ein theoretisch zu erwartender bei
 \begin{equation}
-  U = U_b - K - U_{\text{Hg}}
+  U = U_b - K - U_{\text{Hg}} = \SI{2.8}{\volt}
 \end{equation}
-ist leicht zu sehen.  %hier dann konkret werden wenn U_hg bei Teil b berechnet wurde.
+ist leicht zu sehen.  %hier dann konkret werden wenn U_hg bei Teil b berechnet wurde. hab ich
 
 \subsection{Interpretation der Franck-Hertz Kurven}
 Die aufgenommene Franck-Hertz-Kurve bei $T = \SI{451.15}{\kelvin}$ ist in Abbildung \ref{fig:abb1} wiedergegeben.
@@ -182,7 +183,7 @@ Für die Position des Peaks, welcher bei $U = \SI{14.1}{\volt}$ zu sehen ist, gi
   U_{\text{peak}} = U_{\text{Ion}} + K.
 \end{equation}
 
-Daraus folgt, dass die Ionisationsenergie von Quecksilber etwa
+Mit dem in Kapitel \ref{sec:ie} bestimmten Wert für $K$ folgt somit, dass die Ionisationsenergie von Quecksilber etwa
 \begin{align*}
   E_{\text{Ion}} &= \input{build/c_ion.tex}
 \end{align*}
