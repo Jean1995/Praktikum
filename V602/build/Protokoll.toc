@@ -1,0 +1,14 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {german}
+\contentsline {section}{\numberline {1}Theorie}{3}{section.1}
+\contentsline {section}{\numberline {2}Fehlerrechnung}{4}{section.2}
+\contentsline {section}{\numberline {3}Aufbau und Durchführung}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}Aufbau}{5}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Durchführung}{6}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Überprüfung der Bragg Bedingung}{6}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Emissionsspektrum der Kupfer-Röntgen-Röhre}{6}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Absorptionsspektren}{6}{subsubsection.3.2.3}
+\contentsline {section}{\numberline {4}Auswertung}{7}{section.4}
+\contentsline {section}{\numberline {5}Diskussion}{8}{section.5}
+\contentsline {section}{\nonumberline Literatur}{9}{section*.3}

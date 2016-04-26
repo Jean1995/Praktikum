@@ -1,0 +1,20 @@
+[0] Config.pm:324> INFO - This is Biber 2.1
+[1] Config.pm:327> INFO - Logfile is 'build\Protokoll.blg'
+[135] biber-MSWIN:273> INFO - === %a %b %e, %Y, %H:%M:%S
+[136] Biber.pm:333> INFO - Reading 'build\Protokoll.bcf'
+[750] Biber.pm:645> INFO - Found 2 citekeys in bib section 0
+[808] Biber.pm:2977> INFO - Processing section 0
+[860] Biber.pm:3115> INFO - Looking for bibtex format file 'Quellen.bib' for section 0
+[886] bibtex.pm:1021> INFO - Decoding LaTeX character macros into UTF-8
+[900] bibtex.pm:895> INFO - Found BibTeX data source 'Quellen.bib'
+[910] Biber.pm:3115> INFO - Looking for bibtex format file 'programme.bib' for section 0
+[941] bibtex.pm:1021> INFO - Decoding LaTeX character macros into UTF-8
+[959] bibtex.pm:895> INFO - Found BibTeX data source 'programme.bib'
+[965] Utils.pm:146> WARN - I didn't find a database entry for 'sample' (section 0)
+[1050] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1051] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1052] Biber.pm:2854> INFO - Sorting list 'nty' of type 'entry' with scheme 'nty' and locale 'de-DE'
+[1052] Biber.pm:2858> INFO - No sort tailoring available for locale 'de-DE'
+[1058] bbl.pm:505> INFO - Writing 'build\Protokoll.bbl' with encoding 'UTF-8'
+[1069] bbl.pm:596> INFO - Output to build\Protokoll.bbl
+[1071] Biber.pm:106> INFO - WARNINGS: 1
