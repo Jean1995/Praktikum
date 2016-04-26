@@ -157,3 +157,132 @@ from error_calculation import(
 
 ########## DIFFERENT STUFF ##########
 # R = const.physical_constants["molar gas constant"]      # Array of value, unit, error
+
+#############1#####################
+
+theta = np.genfromtxt('messdaten/mess_1_winkel.txt', unpack=True)
+I     = np.genfromtxt('messdaten/mess_1_rate.txt', unpack=True)
+theta = theta/2
+
+plt.clf()                   # clear actual plot before generating a new one
+t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
+#plt.xlim(t_plot[0]-1/np.size(U_a)*(t_plot[-1]-t_plot[0]), t_plot[-1]+1/np.size(U_a)*(t_plot[-1]-t_plot[0]))
+
+plt.plot(theta, I, 'rx', label=r'Messwerte zur Prüfung der Bragg Bedingung$')
+plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
+plt.ylabel(r'$I \:/\: \text{Impulse}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+
+plt.savefig('build/plot_1.pdf')
+
+#############2##############
+
+theta = np.genfromtxt('messdaten/mess_2_winkel.txt', unpack=True)
+I     = np.genfromtxt('messdaten/mess_2_rate.txt', unpack=True)
+theta = theta/2
+
+plt.clf()                   # clear actual plot before generating a new one
+t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
+#plt.xlim(t_plot[0]-1/np.size(U_a)*(t_plot[-1]-t_plot[0]), t_plot[-1]+1/np.size(U_a)*(t_plot[-1]-t_plot[0]))
+
+plt.plot(theta, I, 'rx', label=r'Emissionsspektrum der Kupfer-Anode$')
+plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
+plt.ylabel(r'$I \:/\: \text{Impulse}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+
+plt.savefig('build/plot_2.pdf')
+
+#############3################
+
+theta = np.genfromtxt('messdaten/mess_3_winkel.txt', unpack=True)
+I     = np.genfromtxt('messdaten/mess_3_rate.txt', unpack=True)
+theta = theta/2
+
+plt.clf()                   # clear actual plot before generating a new one
+t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
+#plt.xlim(t_plot[0]-1/np.size(U_a)*(t_plot[-1]-t_plot[0]), t_plot[-1]+1/np.size(U_a)*(t_plot[-1]-t_plot[0]))
+
+plt.plot(theta, I, 'rx', label=r'Emissionsspektrum der Kupfer-Anode (max Kante)$')
+plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
+plt.ylabel(r'$I \:/\: \text{Impulse}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+
+plt.savefig('build/plot_3.pdf')
+
+
+################Germanium################
+
+theta = np.genfromtxt('messdaten/mess_ge_winkel.txt', unpack=True)
+I     = np.genfromtxt('messdaten/mess_ge_rate.txt', unpack=True)
+theta = theta/2
+
+plt.clf()                   # clear actual plot before generating a new one
+t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
+#plt.xlim(t_plot[0]-1/np.size(U_a)*(t_plot[-1]-t_plot[0]), t_plot[-1]+1/np.size(U_a)*(t_plot[-1]-t_plot[0]))
+
+plt.plot(theta, I, 'rx', label=r'Absorbtionsspektrum von Germanium (K-Kante)$')
+plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
+plt.ylabel(r'$I \:/\: \text{Impulse}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+
+plt.savefig('build/plot_ge.pdf')
+
+
+##################Zirkonium##############
+
+theta = np.genfromtxt('messdaten/mess_zr_winkel.txt', unpack=True)
+I     = np.genfromtxt('messdaten/mess_zr_rate.txt', unpack=True)
+theta = theta/2
+
+plt.clf()                   # clear actual plot before generating a new one
+t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
+#plt.xlim(t_plot[0]-1/np.size(U_a)*(t_plot[-1]-t_plot[0]), t_plot[-1]+1/np.size(U_a)*(t_plot[-1]-t_plot[0]))
+
+plt.plot(theta, I, 'rx', label=r'Absorbtionsspektrum von Zirkonium (K-Kante)$')
+plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
+plt.ylabel(r'$I \:/\: \text{Impulse}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+
+plt.savefig('build/plot_zr.pdf')
+
+################Strontium################
+
+theta = np.genfromtxt('messdaten/mess_sr_winkel.txt', unpack=True)
+I     = np.genfromtxt('messdaten/mess_sr_rate.txt', unpack=True)
+theta = theta/2
+
+plt.clf()                   # clear actual plot before generating a new one
+t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
+#plt.xlim(t_plot[0]-1/np.size(U_a)*(t_plot[-1]-t_plot[0]), t_plot[-1]+1/np.size(U_a)*(t_plot[-1]-t_plot[0]))
+
+plt.plot(theta, I, 'rx', label=r'Absorbtionsspektrum von Strontium (K-Kante)$')
+plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
+plt.ylabel(r'$I \:/\: \text{Impulse}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+
+plt.savefig('build/plot_sr.pdf')
+
+
+##############Wismut#############
+
+theta = np.genfromtxt('messdaten/mess_wi_winkel.txt', unpack=True)
+I     = np.genfromtxt('messdaten/mess_wi_rate.txt', unpack=True)
+theta = theta/2
+
+plt.clf()                   # clear actual plot before generating a new one
+t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
+#plt.xlim(t_plot[0]-1/np.size(U_a)*(t_plot[-1]-t_plot[0]), t_plot[-1]+1/np.size(U_a)*(t_plot[-1]-t_plot[0]))
+
+plt.plot(theta, I, 'rx', label=r'Absorbtionsspektrum von Wismut (L-Kanten)$')
+plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
+plt.ylabel(r'$I \:/\: \text{Impulse}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+
+plt.savefig('build/plot_wi.pdf')
