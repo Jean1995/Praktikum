@@ -166,9 +166,10 @@ theta = theta/2
 
 plt.clf()                   # clear actual plot before generating a new one
 t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
-#plt.xlim(t_plot[0]-1/np.size(U_a)*(t_plot[-1]-t_plot[0]), t_plot[-1]+1/np.size(U_a)*(t_plot[-1]-t_plot[0]))
+plt.xlim(np.amin(theta)-0.1, np.amax(theta)+0.1)
+plt.ylim(np.amin(I), 270)
 
-plt.plot(theta, I, 'rx', label=r'Messwerte zur Prüfung der Bragg Bedingung$')
+plt.plot(theta, I, 'r.', label=r'Messwerte zur Prüfung der Bragg Bedingung$')
 plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
 plt.ylabel(r'$I \:/\: \text{Impulse}$')
 plt.legend(loc='best')
@@ -184,9 +185,9 @@ theta = theta/2
 
 plt.clf()                   # clear actual plot before generating a new one
 t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
-#plt.xlim(t_plot[0]-1/np.size(U_a)*(t_plot[-1]-t_plot[0]), t_plot[-1]+1/np.size(U_a)*(t_plot[-1]-t_plot[0]))
+plt.xlim(np.amin(theta)-0.1, np.amax(theta)+0.1)
 
-plt.plot(theta, I, 'rx', label=r'Emissionsspektrum der Kupfer-Anode$')
+plt.plot(theta, I, 'r.', label=r'Emissionsspektrum der Kupfer-Anode$')
 plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
 plt.ylabel(r'$I \:/\: \text{Impulse}$')
 plt.legend(loc='best')
@@ -202,9 +203,9 @@ theta = theta/2
 
 plt.clf()                   # clear actual plot before generating a new one
 t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
-#plt.xlim(t_plot[0]-1/np.size(U_a)*(t_plot[-1]-t_plot[0]), t_plot[-1]+1/np.size(U_a)*(t_plot[-1]-t_plot[0]))
+plt.xlim(np.amin(theta)-0.1, np.amax(theta)+0.1)
 
-plt.plot(theta, I, 'rx', label=r'Emissionsspektrum der Kupfer-Anode (max Kante)$')
+plt.plot(theta, I, 'r.', label=r'Emissionsspektrum der Kupfer-Anode (max Kante)$')
 plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
 plt.ylabel(r'$I \:/\: \text{Impulse}$')
 plt.legend(loc='best')
@@ -221,9 +222,10 @@ theta = theta/2
 
 plt.clf()                   # clear actual plot before generating a new one
 t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
-#plt.xlim(t_plot[0]-1/np.size(U_a)*(t_plot[-1]-t_plot[0]), t_plot[-1]+1/np.size(U_a)*(t_plot[-1]-t_plot[0]))
+plt.xlim(np.amin(theta)-0.1, np.amax(theta)+0.1)
+plt.ylim(np.amin(I), 50)
 
-plt.plot(theta, I, 'rx', label=r'Absorbtionsspektrum von Germanium (K-Kante)$')
+plt.plot(theta, I, 'r.', label=r'Absorbtionsspektrum von Germanium (K-Kante)$')
 plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
 plt.ylabel(r'$I \:/\: \text{Impulse}$')
 plt.legend(loc='best')
@@ -240,9 +242,10 @@ theta = theta/2
 
 plt.clf()                   # clear actual plot before generating a new one
 t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
-#plt.xlim(t_plot[0]-1/np.size(U_a)*(t_plot[-1]-t_plot[0]), t_plot[-1]+1/np.size(U_a)*(t_plot[-1]-t_plot[0]))
+plt.xlim(np.amin(theta)-0.1, np.amax(theta)+0.1)
+plt.ylim(np.amin(I), 300)
 
-plt.plot(theta, I, 'rx', label=r'Absorbtionsspektrum von Zirkonium (K-Kante)$')
+plt.plot(theta, I, 'r.', label=r'Absorbtionsspektrum von Zirkonium (K-Kante)$')
 plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
 plt.ylabel(r'$I \:/\: \text{Impulse}$')
 plt.legend(loc='best')
@@ -258,9 +261,10 @@ theta = theta/2
 
 plt.clf()                   # clear actual plot before generating a new one
 t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
-#plt.xlim(t_plot[0]-1/np.size(U_a)*(t_plot[-1]-t_plot[0]), t_plot[-1]+1/np.size(U_a)*(t_plot[-1]-t_plot[0]))
+plt.xlim(np.amin(theta)-0.1, np.amax(theta)+0.1)
+plt.ylim(np.amin(I), 180)
 
-plt.plot(theta, I, 'rx', label=r'Absorbtionsspektrum von Strontium (K-Kante)$')
+plt.plot(theta, I, 'r.', label=r'Absorbtionsspektrum von Strontium (K-Kante)$')
 plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
 plt.ylabel(r'$I \:/\: \text{Impulse}$')
 plt.legend(loc='best')
@@ -277,9 +281,10 @@ theta = theta/2
 
 plt.clf()                   # clear actual plot before generating a new one
 t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
-#plt.xlim(t_plot[0]-1/np.size(U_a)*(t_plot[-1]-t_plot[0]), t_plot[-1]+1/np.size(U_a)*(t_plot[-1]-t_plot[0]))
+plt.xlim(np.amin(theta)-0.1, np.amax(theta)+0.1)
+plt.ylim(np.amin(I), 160)
 
-plt.plot(theta, I, 'rx', label=r'Absorbtionsspektrum von Wismut (L-Kanten)$')
+plt.plot(theta, I, 'r.', label=r'Absorbtionsspektrum von Wismut (L-Kanten)$')
 plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
 plt.ylabel(r'$I \:/\: \text{Impulse}$')
 plt.legend(loc='best')
