@@ -237,7 +237,28 @@ z = 29
 E_k_kante_a = Energie(k_kante_a)*e
 E_k_kante_b = Energie(k_kante_b)*e
 sigma_1 = z - np.sqrt(E_k_kante_b/R)                      #wieso auch immer diese Reihenfolge Idk
-sigma_2 = z - 2*np.sqrt(((z-sigma_1)**2-E_k_kante_a)/R)
+sigma_2 = z - 2*np.sqrt((R*(z-sigma_1)**2-E_k_kante_a)/R) #still dont know....
+write('build/E_k_kante_a_cu.tex', make_SI(E_k_kante_a*10**(-3)/e, r'\kilo\electronvolt', figures=1))
+write('build/E_k_kante_b_cu.tex', make_SI(E_k_kante_b*10**(-3)/e, r'\kilo\electronvolt', figures=1))
+write('build/sigma_1_cu.tex', make_SI(sigma_1, r' ', figures=1))
+write('build/sigma_2_cu.tex', make_SI(sigma_2, r' ', figures=1))
+E_k_kante_a_lit = 8.04699993*10**3*e
+E_k_kante_b_lit = 8.90400028*10**3*e
+sigma_1_lit     = z - np.sqrt(E_k_kante_b_lit/R)                      #wieso auch immer diese Reihenfolge Idk
+sigma_2_lit     = z - 2*np.sqrt((R*(z-sigma_1_lit)**2-E_k_kante_a_lit)/R) #still dont know....again
+write('build/E_k_kante_a_lit_cu.tex', make_SI(E_k_kante_a_lit/e*10**(-3), r'\kilo\electronvolt', figures=1))
+write('build/E_k_kante_b_lit_cu.tex', make_SI(E_k_kante_b_lit/e*10**(-3), r'\kilo\electronvolt', figures=1))
+write('build/sigma_1_lit_cu.tex', make_SI(sigma_1_lit, r' ', figures=1))
+write('build/sigma_2_lit_cu.tex', make_SI(sigma_2_lit, r' ', figures=1))
+E_k_kante_a_rel = abs(E_k_kante_a_lit - E_k_kante_a)/E_k_kante_a_lit * 100
+E_k_kante_b_rel = abs(E_k_kante_b_lit - E_k_kante_b)/E_k_kante_b_lit * 100
+sigma_1_rel = abs(sigma_1 - sigma_1_lit)/sigma_1_lit * 100
+sigma_2_rel = abs(sigma_2 - sigma_2_lit)/sigma_2_lit * 100
+write('build/E_k_kante_a_rel_cu.tex', make_SI(E_k_kante_a_rel, r'\percent', figures=1))
+write('build/E_k_kante_b_rel_cu.tex', make_SI(E_k_kante_b_rel, r'\percent', figures=1))
+write('build/sigma_1_rel_cu.tex', make_SI(sigma_1_rel, r'\percent', figures=1))
+write('build/sigma_2_rel_cu.tex', make_SI(sigma_2_rel, r'\percent', figures=1))
+
 
 #############3################
 
@@ -264,6 +285,8 @@ E_max      = Energie(theta_min)
 lambda_min = c*h/(E_max*e)
 write('build/E_max.tex', make_SI(E_max, r'\electronvolt', figures=1))
 write('build/lambda_min.tex', make_SI(lambda_min*10**12, r'\pico\metre', figures=1))
+E_max_lit  = 35*10**3
+
 
 ################Germanium################
 
