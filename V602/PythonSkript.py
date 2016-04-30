@@ -200,9 +200,10 @@ theta = theta/2
 plt.clf()                   # clear actual plot before generating a new one
 t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
 plt.xlim(np.amin(theta)-0.1, np.amax(theta)+0.1)
-plt.ylim(np.amin(I), 270)
+plt.ylim(np.amin(I)-10, 270)
+plt.axvline(14, color='g', linestyle='--')
 
-plt.plot(theta, I, 'r.', label=r'Messwerte zur Prüfung der Bragg Bedingung$')
+plt.plot(theta, I, 'r.', label=r'Anzahl gemessener Impulse$')
 plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
 plt.ylabel(r'$I \:/\: \text{Impulse}$')
 plt.legend(loc='best')
@@ -219,13 +220,13 @@ theta = theta/2
 plt.clf()                   # clear actual plot before generating a new one
 t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
 plt.xlim(np.amin(theta)-0.1, np.amax(theta)+0.1)
-k_kante_a = 19.875
-k_kante_b = 22.2
+k_kante_b = 19.875
+k_kante_a = 22.2
 plt.axvline(k_kante_a, color='b', linestyle='--')
 plt.axvline(k_kante_b, color='g', linestyle='--')
 
 
-plt.plot(theta, I, 'r.', label=r'Emissionsspektrum der Kupfer-Anode$')
+plt.plot(theta, I, 'r.', label=r'Anzahl gemessener Impulse$')
 plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
 plt.ylabel(r'$I \:/\: \text{Impulse}$')
 plt.legend(loc='best')
@@ -238,26 +239,39 @@ E_k_kante_a = Energie(k_kante_a)*e
 E_k_kante_b = Energie(k_kante_b)*e
 sigma_1 = z - np.sqrt(E_k_kante_b/R)                      #wieso auch immer diese Reihenfolge Idk
 sigma_2 = z - 2*np.sqrt((R*(z-sigma_1)**2-E_k_kante_a)/R) #still dont know....
-write('build/E_k_kante_a_cu.tex', make_SI(E_k_kante_a*10**(-3)/e, r'\kilo\electronvolt', figures=1))
-write('build/E_k_kante_b_cu.tex', make_SI(E_k_kante_b*10**(-3)/e, r'\kilo\electronvolt', figures=1))
+
+# Meine Ansätze, Sigma zu bestimmen - Ich denke, so ist es richtig (Altprotokoll macht komische Sachen)
+sigma_2_nach_jay = z-np.sqrt( E_k_kante_b / ( R*(1 - (1/9)) ) )
+write('build/sigma_2_nach_jay.tex', make_SI(sigma_2_nach_jay, r' ', figures=1))
+sigma_1_nach_jay = z-np.sqrt( E_k_kante_a / ( R*(1 - (1/4)) ) )
+write('build/sigma_1_nach_jay.tex', make_SI(sigma_1_nach_jay, r' ', figures=1))
+
+write('build/Theta_k_kante_a.tex', make_SI(k_kante_a, r'\degree', figures=1))
+write('build/Theta_k_kante_b.tex', make_SI(k_kante_b, r'\degree', figures=1))
+write('build/E_k_kante_a_cu.tex', make_SI(E_k_kante_a*10**(-3)/e, r'\kilo\electronvolt', figures=2))
+write('build/E_k_kante_b_cu.tex', make_SI(E_k_kante_b*10**(-3)/e, r'\kilo\electronvolt', figures=2))
 write('build/sigma_1_cu.tex', make_SI(sigma_1, r' ', figures=1))
 write('build/sigma_2_cu.tex', make_SI(sigma_2, r' ', figures=1))
+
 E_k_kante_a_lit = 8.04699993*10**3*e
 E_k_kante_b_lit = 8.90400028*10**3*e
-sigma_1_lit     = z - np.sqrt(E_k_kante_b_lit/R)                      #wieso auch immer diese Reihenfolge Idk
-sigma_2_lit     = z - 2*np.sqrt((R*(z-sigma_1_lit)**2-E_k_kante_a_lit)/R) #still dont know....again
+
+#sigma_1_lit     = z - np.sqrt(E_k_kante_b_lit/R)                      #wieso auch immer diese Reihenfolge Idk
+#sigma_2_lit     = z - 2*np.sqrt((R*(z-sigma_1_lit)**2-E_k_kante_a_lit)/R) #still dont know....again
+
+
 write('build/E_k_kante_a_lit_cu.tex', make_SI(E_k_kante_a_lit/e*10**(-3), r'\kilo\electronvolt', figures=1))
 write('build/E_k_kante_b_lit_cu.tex', make_SI(E_k_kante_b_lit/e*10**(-3), r'\kilo\electronvolt', figures=1))
-write('build/sigma_1_lit_cu.tex', make_SI(sigma_1_lit, r' ', figures=1))
-write('build/sigma_2_lit_cu.tex', make_SI(sigma_2_lit, r' ', figures=1))
+#write('build/sigma_1_lit_cu.tex', make_SI(sigma_1_lit, r' ', figures=1))
+#write('build/sigma_2_lit_cu.tex', make_SI(sigma_2_lit, r' ', figures=1))
 E_k_kante_a_rel = abs(E_k_kante_a_lit - E_k_kante_a)/E_k_kante_a_lit * 100
 E_k_kante_b_rel = abs(E_k_kante_b_lit - E_k_kante_b)/E_k_kante_b_lit * 100
-sigma_1_rel = abs(sigma_1 - sigma_1_lit)/sigma_1_lit * 100
-sigma_2_rel = abs(sigma_2 - sigma_2_lit)/sigma_2_lit * 100
+#sigma_1_rel = abs(sigma_1 - sigma_1_lit)/sigma_1_lit * 100
+#sigma_2_rel = abs(sigma_2 - sigma_2_lit)/sigma_2_lit * 100
 write('build/E_k_kante_a_rel_cu.tex', make_SI(E_k_kante_a_rel, r'\percent', figures=1))
 write('build/E_k_kante_b_rel_cu.tex', make_SI(E_k_kante_b_rel, r'\percent', figures=1))
-write('build/sigma_1_rel_cu.tex', make_SI(sigma_1_rel, r'\percent', figures=1))
-write('build/sigma_2_rel_cu.tex', make_SI(sigma_2_rel, r'\percent', figures=1))
+#write('build/sigma_1_rel_cu.tex', make_SI(sigma_1_rel, r'\percent', figures=1))
+#write('build/sigma_2_rel_cu.tex', make_SI(sigma_2_rel, r'\percent', figures=1))
 
 
 #############3################
@@ -273,7 +287,7 @@ theta_min = 4.7
 plt.axvline(theta_min, color='b', linestyle='--')
 
 
-plt.plot(theta, I, 'r.', label=r'Emissionsspektrum der Kupfer-Anode (max Kante)$')
+plt.plot(theta, I, 'r.', label=r'Anzahl gemessener Impulse$')
 plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
 plt.ylabel(r'$I \:/\: \text{Impulse}$')
 plt.legend(loc='best')
@@ -283,6 +297,7 @@ plt.savefig('build/plot_3.pdf')
 
 E_max      = Energie(theta_min)
 lambda_min = c*h/(E_max*e)
+write('build/Theta_min.tex', make_SI(theta_min, r'\degree', figures=1))
 write('build/E_max.tex', make_SI(E_max, r'\electronvolt', figures=1))
 write('build/lambda_min.tex', make_SI(lambda_min*10**12, r'\pico\metre', figures=1))
 E_max_lit  = 35*10**3

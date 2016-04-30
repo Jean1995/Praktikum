@@ -87,3 +87,57 @@
 %     {Ersatzschaltbilder der verschiedenen Teilaufgaben.}
 %     \label{fig:Schaltungen}
 % \end{figure*}
+
+\subsection{Überprüfung der Bragg Bedingung}
+Um die ausreichende Kalibrierung des Gerätes festzustellen, wird zunächst die in der Durchführung beschriebene Kontrolle der Bragg-Bedingung durchgeführt.
+Die Ergebnisse der Messung sind in Abbildung \ref{fig:plot1} dargestellt.
+\begin{figure}
+  \centering
+  \includegraphics{build/plot_1.pdf}
+  \caption{Messwerte zur Prüfung der Bragg Bedingung.}
+  \label{fig:plot1}
+\end{figure}
+Der Peak ist in etwa gleichmäßig um den erwarteten Winkel von $\Theta = \SI{14}{\degree}$ zentriert.
+
+\subsection{Emissionsspektrum der Kupfer-Röntgen-Röhre}
+Wie in der Durchführung beschrieben wird das Emissionsspektrum der Röntgenröhre durchlaufen.
+Das gemessene Röntgenspektrum ist in Abbildung \ref{fig:plot2} angegeben.
+\begin{figure}
+  \centering
+  \includegraphics{build/plot_2.pdf}
+  \caption{Emissionsspektrum der Kupfer-Anode.}
+  \label{fig:plot2}
+\end{figure}
+Als Peaks des Spektrums lassen sich die Winkel
+\begin{align*}
+   \Theta_{K_\alpha} &= \input{build/Theta_k_kante_a.tex} \\
+   \Theta_{K_\beta} &= \input{build/Theta_k_kante_b.tex} \\
+\end{align*}
+ablesen und als die jeweiligen Linien identifizieren.
+Nach Formel \eqref{eqn:bragg} bestimmen sich die Energien zu
+\begin{align*}
+  E_{K_\alpha} &= \input{build/E_k_kante_a_cu.tex} \\
+  E_{K_\beta} &= \input{build/E_k_kante_b_cu.tex}. \\
+\end{align*}
+Zur Untersuchung des Bremsbergs bzw. zur Bestimmung der maximalen Energie des Bremsspektrums wird das Emissionsspektrum für den Grenzbereich ein weiteres mal mit einer höheren Auflösung gemessen.
+Das Ergebnis ist in Abbildung \ref{fig:plot3} graphisch dargestellt.
+\begin{figure}
+  \centering
+  \includegraphics{build/plot_3.pdf}
+  \caption{Emissionsspektrum der Kupfer-Anode (Maximale Kante).}
+  \label{fig:plot3}
+\end{figure}
+Der auftretende Grenzwinkel beträgt
+\begin{align*}
+  \Theta_{\text{grenz}} = \input{build/Theta_min.tex} \\
+\end{align*}
+was sich mit Hilfe von Formel \eqref{eqn:bragg} zu einer minimalen Wellenlänge von
+\begin{align*}
+  \lambda_{\text{min}} = \input{build/lambda_min.tex}
+\end{align*}
+beziehungsweise einer maximalen Energie von
+\begin{align*}
+  E_{\text{max}} = \input{build/E_max.tex}
+\end{align*}
+umrechnen lässt.\\
+Aus den Energien $E_{K_\alpha}$ und $E_{K_\beta}$ lassen sich aus Formel \eqref{eqn:sigma} die Abschirmkonstanten $\sigma_K$ bestimmen.
