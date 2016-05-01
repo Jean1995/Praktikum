@@ -177,10 +177,25 @@ def Energie(Theta):
     E = const/np.sin(Theta)/e
     return E
 
+def Sigma(z, E, n, j):
+    """
+        Args:
+            z: Kernladungszahl
+            E: Kantenenergie [Joule]
+            n: Ankunfsschale
+            j: Herkunftsschale
+        Returns:
+            Sigma
+    """
+    return z-np.sqrt( E / ( R*(1/(n**2) - (1/j**2)) ) )
+
+
+
 E_max_roehre = 35
 
-write('build/E_max_roehre.tex', make_SI(E_max_roehre, r'\kilo\electronvolt', figures=1))
-
+write('build/E_max_t.tex', make_SI(E_max_roehre, r'\kilo\electronvolt', figures=1))
+lambda_min_t = c*h/(E_max_roehre*e)
+write('build/lambda_min_t.tex', make_SI(lambda_min_t*10**12, r'\pico\metre', figures=1))
 
 
 
@@ -242,9 +257,9 @@ sigma_2 = z - 2*np.sqrt((R*(z-sigma_1)**2-E_k_kante_a)/R) #still dont know....
 
 # Meine Ansätze, Sigma zu bestimmen - Ich denke, so ist es richtig (Altprotokoll macht komische Sachen)
 sigma_2_nach_jay = z-np.sqrt( E_k_kante_b / ( R*(1 - (1/9)) ) )
-write('build/sigma_2_nach_jay.tex', make_SI(sigma_2_nach_jay, r' ', figures=1))
+write('build/sigma_2_nach_jay.tex', make_SI(sigma_2_nach_jay, r' ', figures=2))
 sigma_1_nach_jay = z-np.sqrt( E_k_kante_a / ( R*(1 - (1/4)) ) )
-write('build/sigma_1_nach_jay.tex', make_SI(sigma_1_nach_jay, r' ', figures=1))
+write('build/sigma_1_nach_jay.tex', make_SI(sigma_1_nach_jay, r' ', figures=2))
 
 write('build/Theta_k_kante_a.tex', make_SI(k_kante_a, r'\degree', figures=1))
 write('build/Theta_k_kante_b.tex', make_SI(k_kante_b, r'\degree', figures=1))
@@ -273,7 +288,38 @@ write('build/E_k_kante_b_rel_cu.tex', make_SI(E_k_kante_b_rel, r'\percent', figu
 #write('build/sigma_1_rel_cu.tex', make_SI(sigma_1_rel, r'\percent', figures=1))
 #write('build/sigma_2_rel_cu.tex', make_SI(sigma_2_rel, r'\percent', figures=1))
 
+#############Auflösungsvermögen#############
+#Nehme lineare Steigung zwischen Peaks an
+theta_1_start = 19.4
+theta_1_ende = 20.4
+theta_1_peak = 19.9
+delta_theta_1_l = theta_1_peak - theta_1_start
+delta_theta_1_r = theta_1_ende - theta_1_peak
 
+theta_1_halb_l = theta_1_start + 0.5*delta_theta_1_l
+theta_1_halb_r = theta_1_peak + 0.5*delta_theta_1_r
+
+theta_halbwert = theta_1_halb_r - theta_1_halb_l
+energie_halbwert = Energie(theta_1_halb_l) - Energie(theta_1_halb_r)
+
+write('build/delta_Energie_1.tex', make_SI(energie_halbwert*10**(-3), r'\kilo\electronvolt', figures=2))
+write('build/delta_theta_1.tex', make_SI(theta_halbwert, r'\degree', figures=2))
+
+
+theta_2_start = 21.6
+theta_2_ende = 22.8
+theta_2_peak = 22.2
+delta_theta_2_l = theta_2_peak - theta_2_start
+delta_theta_2_r = theta_2_ende - theta_2_peak
+
+theta_2_halb_l = theta_2_start + 0.5*delta_theta_2_l
+theta_2_halb_r = theta_2_peak + 0.5*delta_theta_2_r
+
+theta_halbwert_2 = theta_2_halb_r - theta_2_halb_l
+energie_halbwert_2 = Energie(theta_2_halb_l) - Energie(theta_2_halb_r)
+
+write('build/delta_Energie_2.tex', make_SI(energie_halbwert_2*10**(-3), r'\kilo\electronvolt', figures=2))
+write('build/delta_theta_2.tex', make_SI(theta_halbwert_2, r'\degree', figures=2))
 #############3################
 
 theta = np.genfromtxt('messdaten/mess_3_winkel.txt', unpack=True)
@@ -298,7 +344,7 @@ plt.savefig('build/plot_3.pdf')
 E_max      = Energie(theta_min)
 lambda_min = c*h/(E_max*e)
 write('build/Theta_min.tex', make_SI(theta_min, r'\degree', figures=1))
-write('build/E_max.tex', make_SI(E_max, r'\electronvolt', figures=1))
+write('build/E_max.tex', make_SI(E_max*10**(-3), r'\kilo\electronvolt', figures=1))
 write('build/lambda_min.tex', make_SI(lambda_min*10**12, r'\pico\metre', figures=1))
 E_max_lit  = 35*10**3
 
@@ -319,13 +365,18 @@ kante = (16.1-15.4)/2 + 15.4
 plt.axvline(kante, color='b', linestyle='--')
 
 
-plt.plot(theta, I, 'r.', label=r'Absorbtionsspektrum von Germanium (K-Kante)$')
+plt.plot(theta, I, 'r.', label=r'Anzahl gemessener Impulse')
 plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
 plt.ylabel(r'$I \:/\: \text{Impulse}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 
 plt.savefig('build/plot_ge.pdf')
+
+E_ge = Energie(kante)
+sigma_ge = Sigma(32,E_ge*e,1,3 )
+write('build/E_ge.tex', make_SI(E_ge*10**(-3), r'\kilo\electronvolt', figures=2))
+write('build/sigma_ge.tex', make_SI(sigma_ge, r' ', figures=2))
 
 
 ##################Zirkonium##############
@@ -344,13 +395,18 @@ kante = (10-9.2)/2 + 9.2
 plt.axvline(kante, color='b', linestyle='--')
 
 
-plt.plot(theta, I, 'r.', label=r'Absorbtionsspektrum von Zirkonium (K-Kante)$')
+plt.plot(theta, I, 'r.', label=r'Anzahl gemessener Impulse')
 plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
 plt.ylabel(r'$I \:/\: \text{Impulse}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 
 plt.savefig('build/plot_zr.pdf')
+
+E_zr = Energie(kante)
+sigma_zr = Sigma(40,E_zr*e,1,3 )
+write('build/E_zr.tex', make_SI(E_zr*10**(-3), r'\kilo\electronvolt', figures=2))
+write('build/sigma_zr.tex', make_SI(sigma_zr, r' ', figures=2))
 
 ################Strontium################
 
@@ -368,7 +424,7 @@ kante = (11-10.3)/2 + 10.3
 plt.axvline(kante, color='b', linestyle='--')
 
 
-plt.plot(theta, I, 'r.', label=r'Absorbtionsspektrum von Strontium (K-Kante)$')
+plt.plot(theta, I, 'r.', label=r'Anzahl gemessener Impulse')
 plt.xlabel(r'$\Theta \:/\: \si{\degree}$')
 plt.ylabel(r'$I \:/\: \text{Impulse}$')
 plt.legend(loc='best')
@@ -376,6 +432,10 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 
 plt.savefig('build/plot_sr.pdf')
 
+E_sr = Energie(kante)
+sigma_sr = Sigma(38,E_sr*e,1,3 )
+write('build/E_sr.tex', make_SI(E_sr*10**(-3), r'\kilo\electronvolt', figures=2))
+write('build/sigma_sr.tex', make_SI(sigma_sr, r' ', figures=2))
 
 ##############Wismut#############
 
@@ -400,3 +460,27 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 
 plt.savefig('build/plot_wi.pdf')
+
+
+############RYDBERG#########
+
+Z_array = ([32,38,40])
+E_array = ([E_ge*e, E_sr*e, E_zr*e])
+E_array = np.sqrt(E_array)
+
+plt.clf()                   # clear actual plot before generating a new one
+
+plt.plot(Z_array, E_array, 'r.', label=r'Messwerte$')
+plt.xlabel(r'$Z$')
+plt.ylabel(r'$ \sqrt{E \:/\: \si{\joule} }  $')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+
+plt.savefig('build/plot_ryd.pdf')
+
+
+
+params = ucurve_fit(reg_linear, Z_array, E_array)             # linearer Fit
+a, b = params
+write('build/parameter_a.tex', make_SI(a, r'\kilo\volt', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b.tex', make_SI(b, r'\kilo\hertz', figures=2))      # type in Anz. signifikanter Stellen

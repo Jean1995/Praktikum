@@ -100,6 +100,7 @@ Die Ergebnisse der Messung sind in Abbildung \ref{fig:plot1} dargestellt.
 Der Peak ist in etwa gleichmäßig um den erwarteten Winkel von $\Theta = \SI{14}{\degree}$ zentriert.
 
 \subsection{Emissionsspektrum der Kupfer-Röntgen-Röhre}
+\subsubsection{Analyse der Peaks und Grenzwellenlänge}
 Wie in der Durchführung beschrieben wird das Emissionsspektrum der Röntgenröhre durchlaufen.
 Das gemessene Röntgenspektrum ist in Abbildung \ref{fig:plot2} angegeben.
 \begin{figure}
@@ -114,7 +115,7 @@ Als Peaks des Spektrums lassen sich die Winkel
    \Theta_{K_\beta} &= \input{build/Theta_k_kante_b.tex} \\
 \end{align*}
 ablesen und als die jeweiligen Linien identifizieren.
-Nach Formel \eqref{eqn:bragg} bestimmen sich die Energien zu
+Nach Formel \eqref{eqn:bragg} bestimmen sich die dazugehörigen Energien zu
 \begin{align*}
   E_{K_\alpha} &= \input{build/E_k_kante_a_cu.tex} \\
   E_{K_\beta} &= \input{build/E_k_kante_b_cu.tex}. \\
@@ -139,5 +140,110 @@ beziehungsweise einer maximalen Energie von
 \begin{align*}
   E_{\text{max}} = \input{build/E_max.tex}
 \end{align*}
-umrechnen lässt.\\
+umrechnen lässt.
+Aufgrund der genutzten Beschleunigungsspannung von $U_\text{B} = \SI{35}{\volt}$ wird nach Formel \eqref{eqn:l} eine theoretische minimale Wellenlänge von
+\begin{align*}
+  \lambda_{\text{min,t}} = \input{build/lambda_min_t.tex}
+\end{align*}
+beziehungsweise eine maximalen Energie von
+\begin{align*}
+  E_{\text{max,t}} = \input{build/E_max_t.tex}
+\end{align*}
+erwartet.
+\subsubsection{Bestimmung der Abschirmkonstanten für Kupfer}
 Aus den Energien $E_{K_\alpha}$ und $E_{K_\beta}$ lassen sich aus Formel \eqref{eqn:sigma} die Abschirmkonstanten $\sigma_K$ bestimmen.
+Es ergeben sich hier für die beiden Peaks die Abschirmkonstanten
+\begin{align*}
+  \sigma_{\text{K}_{\alpha}} &= \input{build/sigma_1_nach_jay.tex} \\
+  \sigma_{\text{K}_{\beta}} &= \input{build/sigma_2_nach_jay.tex}. \\
+\end{align*}
+\subsubsection{Bestimmung der Halbwertsbreite}
+Zur Bestimmung der Halbwertsbreite werden die Messwerte an den jeweligen Peaks genauer betrachtet.
+
+\begin{table}
+  \hspace*{\fill}
+  \begin{subfigure}{0.40\textwidth}
+  \centering
+  %\caption{Messdaten Teil 1.}
+  \label{tab:2a}
+  \sisetup{table-format=3.4}
+  \begin{tabular}{c c}
+    \toprule
+     {$\Theta \:/\: \si{\degree}$} & {$I \:/\: \text{Impulse}$}\\
+    \midrule
+    \input{messdaten/peak_1.tex}
+    \bottomrule
+  \end{tabular}
+\end{subfigure}
+\hspace*{\fill}
+\begin{subfigure}{0.40\textwidth}
+  \centering
+  %\caption{Messdaten Teil 2.}
+  \label{tab:2b}
+  \sisetup{table-format=3.4}
+  \begin{tabular}{c c}
+    \toprule
+     {$\Theta \:/\: \si{\degree}$} & {$I \:/\: \text{Impulse}$}\\
+    \midrule
+    \input{messdaten/peak_2.tex}
+    \bottomrule
+  \end{tabular}
+\end{subfigure}
+\\
+\hspace*{\fill}
+\hspace*{\fill}
+\caption{Messdaten zur Frequenzabhängigen Amplituden und Phasenverschiebungsbestimmung.}
+\label{tab:2}
+\end{table}
+Aufgrund der zu geringen Auflösung der Messung wird das Verhalten des Graphen zwischen dem Anfang und der Mitte des Peaks sowie der Mitte und dem Ende des Peaks jeweils als linear angenommen.
+Anhand dieser linearen Näherung werden die Winkel bestimmt, an denen die Hälfte des Peaks erreicht wird und die dazugehörige Energie bestimmt.
+Es ergeben sich hieraus für den ersten Peak Auflösungswerte von
+\begin{align*}
+  \increment \Theta_1 &= \input{build/delta_theta_1.tex} \\
+  \increment E_1 &= \input{build/delta_Energie_1.tex} \\
+\end{align*}
+und für den zweiten Peak Auflösungswerte von
+\begin{align*}
+  \increment \Theta_2 &= \input{build/delta_theta_2.tex} \\
+  \increment E_2 &= \input{build/delta_Energie_2.tex}. \\
+\end{align*}
+
+\subsection{Analyse der Absorbtionsspektren}
+Für die Elemente Germanium ($Z=32$), Zirkonium ($Z=40$) und Strontium ($Z=38$) werden wie in der Durchführung angegegeben die Absorbtionsspektren aufgenommen.
+In den Abbildungen \ref{fig:plot4}, \ref{fig:plot5} und \ref{fig:plot6} sind die Messungen jeweils graphisch dargestellt, wobei in blau die Linie eingezeichnet wird, an der die K-Kante abgelesen wird.
+
+\begin{figure}
+  \centering
+  \includegraphics{build/plot_ge.pdf}
+  \caption{Absorbtionsspektrum von Germanium (K-Kante).}
+  \label{fig:plot4}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics{build/plot_zr.pdf}
+  \caption{Absorbtionsspektrum von Zirkonium (K-Kante).}
+  \label{fig:plot5}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics{build/plot_sr.pdf}
+  \caption{Absorbtionsspektrum von Strontium (K-Kante).}
+  \label{fig:plot6}
+\end{figure}
+
+Anhand von Formel \eqref{eqn:l} ergeben sich für die Energieübergänge die Werte
+\begin{align*}
+  E_\text{Ge} &= \input{build/E_ge.tex}, \\
+  E_\text{Zr} &= \input{build/E_zr.tex}, \\
+  E_\text{Sr} &= \input{build/E_sr.tex}. \\
+\end{align*}
+Hieraus ergeben sich nach Formel \eqref{eqn:sigma} die Abschirmzahlen
+\begin{align*}
+  \sigma_\text{Ge} &= \input{build/sigma_ge.tex}, \\
+  \sigma_\text{Zr} &= \input{build/sigma_zr.tex}, \\
+  \sigma_\text{Sr} &= \input{build/sigma_sr.tex}. \\
+\end{align*}
+
+\subsection{Bestimmung der Rydbergkonstante aus dem Moseleyschen Gesetz}
