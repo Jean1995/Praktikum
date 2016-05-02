@@ -111,15 +111,16 @@ Das gemessene Röntgenspektrum ist in Abbildung \ref{fig:plot2} angegeben.
 \end{figure}
 Als Peaks des Spektrums lassen sich die Winkel
 \begin{align*}
-   \Theta_{K_\alpha} &= \input{build/Theta_k_kante_a.tex} \\
+   \Theta_{K_\alpha} &= \input{build/Theta_k_kante_a.tex}  \\
    \Theta_{K_\beta} &= \input{build/Theta_k_kante_b.tex} \\
 \end{align*}
 ablesen und als die jeweiligen Linien identifizieren.
 Nach Formel \eqref{eqn:bragg} bestimmen sich die dazugehörigen Energien zu
 \begin{align*}
-  E_{K_\alpha} &= \input{build/E_k_kante_a_cu.tex} \\
-  E_{K_\beta} &= \input{build/E_k_kante_b_cu.tex}. \\
+  E_{K_\alpha} &= \input{build/E_k_kante_a_cu.tex} & E_{K_\alpha, \text{lit}} &= \input{build/E_k_kante_a_lit_cu.tex} \\
+  E_{K_\beta} &= \input{build/E_k_kante_b_cu.tex} & E_{K_\beta, \text{lit}} &= \input{build/E_k_kante_b_lit_cu.tex} .
 \end{align*}
+Zudem sind jeweils die dazugehörigen Literaturwerte \cite{energie} angegeben.\\
 Zur Untersuchung des Bremsbergs bzw. zur Bestimmung der maximalen Energie des Bremsspektrums wird das Emissionsspektrum für den Grenzbereich ein weiteres mal mit einer höheren Auflösung gemessen.
 Das Ergebnis ist in Abbildung \ref{fig:plot3} graphisch dargestellt.
 \begin{figure}
@@ -151,12 +152,14 @@ beziehungsweise eine maximalen Energie von
 \end{align*}
 erwartet.
 \subsubsection{Bestimmung der Abschirmkonstanten für Kupfer}
-Aus den Energien $E_{K_\alpha}$ und $E_{K_\beta}$ lassen sich aus Formel \eqref{eqn:sigma} die Abschirmkonstanten $\sigma_K$ bestimmen.
+Aus den Energien $E_{K_\alpha}$ und $E_{K_\beta}$ lassen sich aus Formel \eqref{eqn:std} die Abschirmkonstanten $\sigma_K$ bestimmen.
 Es ergeben sich hier für die beiden Peaks die Abschirmkonstanten
 \begin{align*}
-  \sigma_{\text{K}_{\alpha}} &= \input{build/sigma_1_nach_jay.tex} \\
-  \sigma_{\text{K}_{\beta}} &= \input{build/sigma_2_nach_jay.tex}. \\
+  \sigma_{\text{K}_{\alpha}} &= \input{build/sigma_1_cu.tex} & \sigma_{\text{K}_{\alpha}, \text{lit}} &= \input{build/sigma_1_lit_cu.tex} \\
+  \sigma_{\text{K}_{\beta}} &= \input{build/sigma_2_cu.tex} & \sigma_{\text{K}_{\beta}, \text{lit}} &= \input{build/sigma_2_lit_cu.tex}
 \end{align*}
+sowie im Vergleich dazu die dazugehörigen Literaturwerte, welche mithilfe der Literaturwerte \cite{energie} für die Energien errechnet werden.
+
 \subsubsection{Bestimmung der Halbwertsbreite}
 Zur Bestimmung der Halbwertsbreite werden die Messwerte an den jeweligen Peaks genauer betrachtet.
 
@@ -239,7 +242,7 @@ Anhand von Formel \eqref{eqn:l} ergeben sich für die Energieübergänge die Wer
   E_\text{Zr} &= \input{build/E_zr.tex}, \\
   E_\text{Sr} &= \input{build/E_sr.tex}. \\
 \end{align*}
-Hieraus ergeben sich nach Formel \eqref{eqn:sigma} die Abschirmzahlen
+Hieraus ergeben sich nach Formel \eqref{eqn:std} die Abschirmzahlen
 \begin{align*}
   \sigma_\text{Ge} &= \input{build/sigma_ge.tex}, \\
   \sigma_\text{Zr} &= \input{build/sigma_zr.tex}, \\
@@ -247,3 +250,45 @@ Hieraus ergeben sich nach Formel \eqref{eqn:sigma} die Abschirmzahlen
 \end{align*}
 
 \subsection{Bestimmung der Rydbergkonstante aus dem Moseleyschen Gesetz}
+Die Rydbergkonstante kann mithilfe des Moseleyschen Gesetzes \eqref{eqn:std} bestimmt werden.
+Hierzu wird der Wert von $Z_\text{eff}$ gegen die Wurzel der dazugehören Energie des $K_\alpha$ Übergangs abgetragen.
+Diese Werte werden mithilfe von Numpy in Python linear gefittet, das Ergebnis ist in Abbildung \ref{fig:plot7} angegeben.
+\begin{figure}
+  \centering
+  \includegraphics{build/plot_ryd.pdf}
+  \caption{Bestimmung der Rydbergkonstante.}
+  \label{fig:plot7}
+\end{figure}
+Hieraus kann zunächst auf die Rydbergenergie von
+\begin{align*}
+  R_y &= \input{build/ebberg_konstante.tex}, \\
+\end{align*}
+und darauf unverzüglich auf die Rydbergkonstante von
+\begin{align*}
+  R_{\infty} &= \input{build/ebberg_konstante_ry.tex}, \\
+\end{align*}
+geschlossen werden.
+
+\subsection{Bestimmung der Abschirmkonstante von Wismut}
+Für das Element Wismut lässt sich die Abschirmkonstante aufgrund der höheren Kernladungszahl nach Formel \eqref{eqn:crap} bestimmt werden.
+Hierzu wird das Absorbtionsspektrum im Bereich der L-Kanten betrachtet, das Ergebnis ist in Abbildung \ref{fig:plot8} angegeben.
+\begin{figure}
+  \centering
+  \includegraphics{build/plot_wi.pdf}
+  \caption{Absorbtionsspektrum von Wismut.}
+  \label{fig:plot8}
+\end{figure}
+Aus dem Spektrum kann man die Kanten für die Winkel
+\begin{align*}
+  \Theta_{\text{Wi},1} &= \input{build/theta_wi_1.tex}, \\
+  \Theta_{\text{Wi},2} &= \input{build/theta_wi_2.tex} \\
+\end{align*}
+entnehmen.
+Hieraus folgt eine Energiedifferenz von
+\begin{align*}
+  \increment E_\text{L} &= \input{build/wi_delta_E.tex}. \\
+\end{align*}
+Aus der angegebenen Formel folgt hiermit für die Abschirmkonstante von Wismut
+\begin{align*}
+  \sigma_{\text{Wi}} &= \input{build/sigma_wi.tex}. \\
+\end{align*}

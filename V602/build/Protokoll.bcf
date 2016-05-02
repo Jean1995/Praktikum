@@ -2240,6 +2240,9 @@
     <bcf:citekey order="2">skript</bcf:citekey>
     <bcf:citekey order="3">skript</bcf:citekey>
     <bcf:citekey order="4">skript</bcf:citekey>
+    <bcf:citekey order="5">energie</bcf:citekey>
+    <bcf:citekey order="6">energie</bcf:citekey>
+    <bcf:citekey order="7">Konstanten</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="nty" type="entry" sortscheme="nty">
   <bcf:sorting>

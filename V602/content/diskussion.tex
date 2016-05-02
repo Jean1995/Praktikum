@@ -1,17 +1,26 @@
 \section{Diskussion}
 \label{sec:Diskussion}
-Bei Mehrelektronenatomen wird die Kernladung durch die Elektronen
-abgeschirmt, sodass die Elektronen in den äußeren Schalen eine geringere
-Bindungsenergie besitzen als in den inneren Schalen und somit leichter
-herausgeschlagen werden können. Durch Bestimmung der K-Kanten kann
-mithilfe von Formel \eqref{eq:sigma_k} die Abschirmzahl
-$\sigma_\mathrm{K}$ bestimmt werden. Dabei bezeichnet $\alpha$ die
-Feinstrukturkonstante, $Z$ die Kernladungszahl $E_\text{K}$ die Energie
-der K-Kante und $R_\infty$ die Rydberg-Konstante.
-%
-\begin{equation}
-  \sigma_\text{K} = Z - \sqrt{\frac{E_\text{K}}{h c R_\infty}
-    - \frac{\alpha^2 Z^4}{4}}
-\label{eq:sigma_k}
-\end{equation}
-% 
+Bei der Analyse des Emissionsspektrums der Röntgenröhre fällt auf, dass sich Abweichungen von jeweils
+\begin{align*}
+  \increment E_{K_\alpha} &= \input{build/E_k_kante_a_rel_cu.tex} \\
+  \increment E_{K_\beta} &= \input{build/E_k_kante_b_rel_cu.tex}
+\end{align*}
+ergeben haben, wobei es sich jeweils um Abweichungen der Messenergien nach oben handelt.
+Außerdem weicht der Wert der maximalen Energie, bei einer angenommenen Beschleunigungsspannung von $\SI{35}{\kilo\volt}$ um
+\begin{align*}
+  \increment E_{\text{max}} &= \input{build/E_max_rel.tex}
+\end{align*}
+ab.
+Diese konstanten Messfehler in eine Richtung, welche sich auch bei der Analyse der Absorptionsspektren ergeben, lassen einen systematischen Messfehler wahrscheinlich erscheinen.\\
+Bei der Bestimmung der Abschirmkonstanten von Kupfer ergab sich eine relative Abweichung von
+\begin{align*}
+  \increment \sigma_{\text{K}_{\alpha}} &= \input{build/sigma_1_rel_cu.tex}, \\
+  \increment \sigma_{\text{K}_{\beta}} &= \input{build/sigma_2_rel_cu.tex}.
+\end{align*}
+Hier liegen die bestimmten Werte für $\sigma$ unterhalb der Literaturwerte, was wiederum auf einen systematischen Fehler hinweist.\\
+Ebenso fehlerbehaftet ist die bestimmte Rydbergkonstante, welche vom Literaturwert \cite{Konstanten} mit
+\begin{align*}
+  \increment R_\infty &= \input{build/ebbergs_rel.tex}, 
+\end{align*}
+abweicht.
+Zu den bereits genannten Einflüssen durch systematische Messfehler trägt hier auch die geringe Anzahl an Messwerten für die lineare Ausgleichsrechnung zum Fehler bei.

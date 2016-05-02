@@ -166,6 +166,8 @@ d = 201.4*10**(-12)
 const = (h*c)/(2*d)
 e = 1.6021766208*10**(-19)
 R = 13.6*e
+Rd = 10973731
+alpha = 7.2973525664*10**(-3)
 def Energie(Theta):
     """
         Args:
@@ -189,7 +191,14 @@ def Sigma(z, E, n, j):
     """
     return z-np.sqrt( E / ( R*(1/(n**2) - (1/j**2)) ) )
 
-
+def Sigma_L(Z, E):
+    """
+        Args:
+            Bullcrap
+        Returns:
+            Bullshit
+    """
+    return Z - np.sqrt( 4/alpha * np.sqrt(E/R)- 5*E/R ) * np.sqrt( 1 + 19/32*alpha**2 * E/R )
 
 E_max_roehre = 35
 
@@ -265,28 +274,28 @@ write('build/Theta_k_kante_a.tex', make_SI(k_kante_a, r'\degree', figures=1))
 write('build/Theta_k_kante_b.tex', make_SI(k_kante_b, r'\degree', figures=1))
 write('build/E_k_kante_a_cu.tex', make_SI(E_k_kante_a*10**(-3)/e, r'\kilo\electronvolt', figures=2))
 write('build/E_k_kante_b_cu.tex', make_SI(E_k_kante_b*10**(-3)/e, r'\kilo\electronvolt', figures=2))
-write('build/sigma_1_cu.tex', make_SI(sigma_1, r' ', figures=1))
-write('build/sigma_2_cu.tex', make_SI(sigma_2, r' ', figures=1))
+write('build/sigma_1_cu.tex', make_SI(sigma_1, r' ', figures=2))
+write('build/sigma_2_cu.tex', make_SI(sigma_2, r' ', figures=2))
 
 E_k_kante_a_lit = 8.04699993*10**3*e
 E_k_kante_b_lit = 8.90400028*10**3*e
 
-#sigma_1_lit     = z - np.sqrt(E_k_kante_b_lit/R)                      #wieso auch immer diese Reihenfolge Idk
-#sigma_2_lit     = z - 2*np.sqrt((R*(z-sigma_1_lit)**2-E_k_kante_a_lit)/R) #still dont know....again
+sigma_1_lit     = z - np.sqrt(E_k_kante_b_lit/R)                      #wieso auch immer diese Reihenfolge Idk
+sigma_2_lit     = z - 2*np.sqrt((R*(z-sigma_1_lit)**2-E_k_kante_a_lit)/R) #still dont know....again
 
 
-write('build/E_k_kante_a_lit_cu.tex', make_SI(E_k_kante_a_lit/e*10**(-3), r'\kilo\electronvolt', figures=1))
-write('build/E_k_kante_b_lit_cu.tex', make_SI(E_k_kante_b_lit/e*10**(-3), r'\kilo\electronvolt', figures=1))
-#write('build/sigma_1_lit_cu.tex', make_SI(sigma_1_lit, r' ', figures=1))
-#write('build/sigma_2_lit_cu.tex', make_SI(sigma_2_lit, r' ', figures=1))
+write('build/E_k_kante_a_lit_cu.tex', make_SI(E_k_kante_a_lit/e*10**(-3), r'\kilo\electronvolt', figures=2))
+write('build/E_k_kante_b_lit_cu.tex', make_SI(E_k_kante_b_lit/e*10**(-3), r'\kilo\electronvolt', figures=2))
+write('build/sigma_1_lit_cu.tex', make_SI(sigma_1_lit, r' ', figures=2))
+write('build/sigma_2_lit_cu.tex', make_SI(sigma_2_lit, r' ', figures=2))
 E_k_kante_a_rel = abs(E_k_kante_a_lit - E_k_kante_a)/E_k_kante_a_lit * 100
 E_k_kante_b_rel = abs(E_k_kante_b_lit - E_k_kante_b)/E_k_kante_b_lit * 100
-#sigma_1_rel = abs(sigma_1 - sigma_1_lit)/sigma_1_lit * 100
-#sigma_2_rel = abs(sigma_2 - sigma_2_lit)/sigma_2_lit * 100
+sigma_1_rel = abs(sigma_1 - sigma_1_lit)/sigma_1_lit * 100
+sigma_2_rel = abs(sigma_2 - sigma_2_lit)/sigma_2_lit * 100
 write('build/E_k_kante_a_rel_cu.tex', make_SI(E_k_kante_a_rel, r'\percent', figures=1))
 write('build/E_k_kante_b_rel_cu.tex', make_SI(E_k_kante_b_rel, r'\percent', figures=1))
-#write('build/sigma_1_rel_cu.tex', make_SI(sigma_1_rel, r'\percent', figures=1))
-#write('build/sigma_2_rel_cu.tex', make_SI(sigma_2_rel, r'\percent', figures=1))
+write('build/sigma_1_rel_cu.tex', make_SI(sigma_1_rel, r'\percent', figures=1))
+write('build/sigma_2_rel_cu.tex', make_SI(sigma_2_rel, r'\percent', figures=1))
 
 #############Auflösungsvermögen#############
 #Nehme lineare Steigung zwischen Peaks an
@@ -347,6 +356,9 @@ write('build/Theta_min.tex', make_SI(theta_min, r'\degree', figures=1))
 write('build/E_max.tex', make_SI(E_max*10**(-3), r'\kilo\electronvolt', figures=1))
 write('build/lambda_min.tex', make_SI(lambda_min*10**12, r'\pico\metre', figures=1))
 E_max_lit  = 35*10**3
+
+E_max_rel = abs(E_max - E_max_lit)/E_max_lit * 100
+write('build/E_max_rel.tex', make_SI(E_max_rel, r'\percent', figures=1))
 
 
 ################Germanium################
@@ -461,11 +473,22 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 
 plt.savefig('build/plot_wi.pdf')
 
+write('build/theta_wi_1.tex', make_SI(11.2, r'\degree', figures=1))
+write('build/theta_wi_2.tex', make_SI(13.2, r'\degree', figures=1))
+
+
+delta_E_wi = Energie(11.2) - Energie(13.2)
+write('build/wi_delta_E.tex', make_SI(delta_E_wi, r'\electronvolt', figures=1))
+delta_E_wi = delta_E_wi * e
+
+sigma_wi = Sigma_L(83, delta_E_wi)
+write('build/sigma_wi.tex', make_SI(sigma_wi, r' ', figures=2))
+
 
 ############RYDBERG#########
-
-Z_array = ([32,38,40])
-E_array = ([E_ge*e, E_sr*e, E_zr*e])
+#Z_array = ([32-1,38-1,40-1])
+Z_array = ([32-sigma_ge,38-sigma_sr,40-sigma_zr])
+E_array = ([E_ge, E_sr, E_zr])
 E_array = np.sqrt(E_array)
 
 plt.clf()                   # clear actual plot before generating a new one
@@ -473,14 +496,23 @@ plt.clf()                   # clear actual plot before generating a new one
 plt.plot(Z_array, E_array, 'r.', label=r'Messwerte$')
 plt.xlabel(r'$Z$')
 plt.ylabel(r'$ \sqrt{E \:/\: \si{\joule} }  $')
-plt.legend(loc='best')
-plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-
-plt.savefig('build/plot_ryd.pdf')
-
-
 
 params = ucurve_fit(reg_linear, Z_array, E_array)             # linearer Fit
 a, b = params
+
+t_plot = np.linspace(30, 42, 1000)
+plt.plot(t_plot, a.n*t_plot+b.n, 'b-', label=r'Linearer Fit$')
+
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot_ryd.pdf')
 write('build/parameter_a.tex', make_SI(a, r'\kilo\volt', figures=1))       # type in Anz. signifikanter Stellen
 write('build/parameter_b.tex', make_SI(b, r'\kilo\hertz', figures=2))      # type in Anz. signifikanter Stellen
+ebberg = 4/3 *e* a**2/(h*c)
+write('build/ebberg_konstante.tex', make_SI(4/3 * a**2, r'\electronvolt', figures=1))       # type in Anz. signifikanter Stellen
+write('build/ebberg_konstante_ry.tex', make_SI(4/3 *e* a**2/(h*c), r'\per\metre', figures=1))
+
+write('build/ebberg_konstante_lit.tex', make_SI(Rd, r'\per\metre', figures=1))
+
+ebberg_rel = abs(ebberg - Rd)/Rd * 100
+write('build/ebbergs_rel.tex', make_SI(ebberg_rel.n, r'\percent', figures=1))
