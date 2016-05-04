@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.80.0 (TeX Live 2015) (rev 5238)  (format=lualatex 2015.10.12)  2 MAY 2016 22:55
+This is LuaTeX, Version beta-0.80.0 (TeX Live 2015) (rev 5238)  (format=lualatex 2015.10.12)  3 MAY 2016 12:13
  restricted \write18 enabled.
 **Protokoll.tex
 (./Protokoll.tex
@@ -297,7 +297,7 @@ Lua-only attribute luaotfload@cursbase = 6
 Lua-only attribute luaotfload@curscurs = 7
 Lua-only attribute luaotfload@cursdone = 8
 Lua-only attribute luaotfload@state = 9
-luaotfload | main : fontloader loaded in 0.029 seconds
+luaotfload | main : fontloader loaded in 0.031 seconds
 Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
 Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
 Inserting `luaotfload.find_vf_file' at position 1 in `find_vf_file'.
@@ -2596,10 +2596,10 @@ Here is how much of LuaTeX's memory you used:
    7 hlist, 2 vlist, 2 rule, 2 glue, 13 kern, 19 attribute, 68 glue_spec, 19 attribute_list, 1 action, 2 write nodes
    avail lists: 1:3,2:9832,3:329,4:871,5:264,6:3206,7:83,8:25,9:335,10:463,11:1
  59350 multiletter control sequences out of 65536+600000
- 119 fonts using 35878803 bytes
+ 119 fonts using 35879147 bytes
  72i,19n,104p,1253b,2075s stack positions out of 5000i,500n,10000p,200000b,100000s
 </home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmsans10-bold.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf>
-Output written on Protokoll.pdf (16 pages, 793708 bytes).
+Output written on Protokoll.pdf (16 pages, 794335 bytes).
 
 PDF statistics: 586 PDF objects out of 1000 (max. 8388607)
  436 compressed objects within 5 object streams
