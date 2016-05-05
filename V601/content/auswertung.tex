@@ -134,13 +134,15 @@ Auf eine Betrachtung der Messfehler wird hier verzichtet, da die Ablesefehler au
 Für die erste Messung ist auffällig, dass ein Peak bei ca. $U_{\text{grenz}} = \SI{7.9}{\volt}$ existiert.
 Da die Beschleunigungsspannung größer als diese effektive Elektronenenergie nach Durchlaufen des elektrischen Feldes ist, kann man von einem sich hier auswirkenden Kontaktpotential ausgehen.
 Dieses beträgt dementsprechend ca. $K = \SI{3.1}{\volt}$.\\
-In der zweiten Messung erweist sich eine konkrete Zuordnung eines Peaks als schwieriger.
-Dies liegt vermutlich an der Tatsache, dass deutlich mehr inelastische Stöße stattfinden, da die mittlere Weglänge im Vergleich zur Messung bei Zimmertemperatur deutlich geringer ist.
-Ein theoretisch zu erwartender bei
-\begin{equation}
-  U = U_b - K - U_{\text{Hg}} = \SI{2.8}{\volt}
-\end{equation}
-ist leicht zu sehen.  %hier dann konkret werden wenn U_hg bei Teil b berechnet wurde. hab ich
+%In der zweiten Messung erweist sich eine konkrete Zuordnung eines Peaks als schwieriger.
+%Dies liegt vermutlich an der Tatsache, dass deutlich mehr inelastische Stöße stattfinden, da die mittlere Weglänge im Vergleich zur Messung bei Zimmertemperatur deutlich geringer ist.
+%Ein theoretisch zu erwartender bei
+%\begin{equation}
+%  U = U_b - K - U_{\text{Hg}} = \SI{2.8}{\volt}
+%\end{equation}
+%ist leicht zu sehen.  %hier dann konkret werden wenn U_hg bei Teil b berechnet wurde. hab ich
+In der zweiten Messung ist kein Peak mehr zusehen, da dort inelastische Stöße auftreten, wodurch die Elektronen nicht mehr genug Energie haben um die Auffängerelektrode zu erreichen.
+
 
 \subsection{Interpretation der Franck-Hertz Kurven}
 Die aufgenommene Franck-Hertz-Kurve bei $T = \SI{451.15}{\kelvin}$ ist in Abbildung \ref{fig:abb1} wiedergegeben.
@@ -159,11 +161,11 @@ Die ablesbaren Maxima befinden sich bei
   U_3 &= \input{build/b_max3.tex} \\
   U_4 &= \input{build/b_max4.tex}.
 \end{align*}
-Der gemittelte Abstand der Maxima beträgt entsprechend der Mittelwertsrechnung
+Der gemittelte Abstand der Maxima beträgt entsprechend der Mittelwertsrechnung (Fehler des Mittelwertes)
 \begin{align*}
   \Delta U &= \input{build/b_U_max_delta.tex}.
 \end{align*}
-Nach der Formel (\ref{eqn:2}) beträgt die Wellenlänge $\lambda$ der emittierten Strahlung
+Nach der Formel (\ref{eqn:2}) beträgt die Wellenlänge $\lambda$ der emittierten Strahlung (Gaußsche Fehlerfortpflanzung)
 \begin{align*}
   \lambda &= \input{build/b_wellenlaenge.tex}.
 \end{align*}
