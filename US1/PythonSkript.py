@@ -157,3 +157,44 @@ from error_calculation import(
 
 ########## DIFFERENT STUFF ##########
 # R = const.physical_constants["molar gas constant"]      # Array of value, unit, error
+
+### VORARBEITEN ####
+
+h_zylinder, t_zylinder = np.genfromtxt('messdaten/a.txt', unpack=True)
+
+h_zylinder = h_zylinder*10**(-3)
+t_zylinder = t_zylinder*10**(-6)
+
+
+##### a #####
+
+v_zylinder = 2*h_zylinder/t_zylinder
+
+write('build/Tabelle_0.tex', make_table([h_zylinder*10**3, t_zylinder*10**6, v_zylinder],[2, 1, 2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_0_texformat.tex', make_full_table(
+     'Bestimmung der Schallgeschwindigkeit mittels Impuls-Echo-Verfahren.',
+     'tab:0',
+     'build/Tabelle_0.tex',
+     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                               # die Multicolumns sein sollen
+     [r'$h_{\text{zylinder}} \:/\: 10^{-3} \si{\metre}$',
+     r'$\increment t \:/\: 10^{-6} \si{\second} $',
+     r'$c_\text{Acryl} \:/\: \si{\metre\per\second} $']))
+
+c_arcyl_1 = ufloat(np.mean(v_zylinder), np.std(v_zylinder))
+write('build/c_acryl_1.tex', make_SI(c_arcyl_1, r'\metre\per\second', figures=2))      # type in Anz. signifikanter Stellen
+
+params = ucurve_fit(reg_linear, 0.5*t_zylinder, h_zylinder)             # linearer Fit
+a, b = params
+write('build/parameter_a.tex', make_SI(a, r'\metre\per\second', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b.tex', make_SI(b, r'\metre', figures=2))      # type in Anz. signifikanter Stellen
+
+t_plot = np.linspace(0.9*np.amin(0.5*t_zylinder), np.amax(0.5*t_zylinder)*1.1, 100)
+plt.plot(t_plot, t_plot*a.n+b.n, 'b-', label='Linearer Fit')
+plt.plot(0.5*t_zylinder, h_zylinder, 'rx', label='Messdaten')
+plt.xlim(t_plot[0], t_plot[-1])
+plt.xlabel(r'$\frac{1}{2} t \:/\: \si{\second}$')
+plt.ylabel(r'$h \:/\: \si{\metre}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/ausgleich.pdf')

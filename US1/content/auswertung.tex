@@ -87,3 +87,59 @@
 %     {Ersatzschaltbilder der verschiedenen Teilaufgaben.}
 %     \label{fig:Schaltungen}
 % \end{figure*}
+\subsection{Bestimmung der Schallgeschwindigkeit in Acryl mittels Impuls-Echo-Verfahren}
+Die Messung der einzelnen Zylinder mittels Schiebelehre ergibt die Zylinderhöhen
+\begin{align*}
+  h_1 &= \SI{61.5}{\milli\metre}, \\
+  h_2 &= \SI{80.55}{\milli\metre}, \\
+  h_3 &= \SI{102.1}{\milli\metre}, \\
+  h_4 &= \SI{120.5}{\milli\metre}, \\
+  h_5 &= \SI{31.3}{\milli\metre}.
+\end{align*}
+Die Durchführung eines Impuls-Echo-Verfahren ergibt die in Tabelle \ref{tab:0} dargestellten Laufzeiten $\increment t$ zu den jeweiligen Zylinderhöhen $h$.
+Hierbei werden zunächst alle Zylinder einzeln und zum Schluss zwei Kombinationen aus $h_5$ und $h_1$ bzw. $h_2$ betrachtet.
+Aus dem Weg-Zeit-Gesetz wird somit die jeweilige Geschwindigkeit des Impulses berechnet, wobei aufgrund der Reflektion die doppelte Weglänge berücksichtigt werden muss.
+  \input{build/Tabelle_0_texformat.tex}
+Die Bestimmung der Mittelwertes nach Formel \eqref{eq:std_mean} sowie die Bestimmung des Fehler nach Formel \eqref{eq:std} ergibt somit eine gemittelte Schallgeschwindigkeit in Acryl von
+\begin{align*}
+  \input{build/c_acryl_1.tex}.\\
+\end{align*}
+
+Die genauere Betrachtung der ersten Messung ergibt eine Amplitude des ersten Peaks von
+\begin{align*}
+  U_1 = \input{messdaten/U_1.tex}
+\end{align*}
+sowie eine Amplitude des zweiten Peaks von
+\begin{align*}
+  U_2 = \input{messdaten/U_2.tex}.
+\end{align*}
+Die Peaks werden zu den Laufzeiten
+\begin{align*}
+  t_1 = \input{messdaten/t_1.tex}
+\end{align*}
+beziehungsweise
+\begin{align*}
+  t_2 = \input{messdaten/t_2.tex}
+\end{align*}
+gemessen.
+Hieraus ergibt sich die zuvor in Tabelle \ref{tab:0} angegebene Laufzeitdifferenz.
+Bei Eingabe der berechneten Schallgeschwindigkeit in das Auswertungsprogramm ergibt sich für die Tiefenmessung exakt die mit der Schiebelehre gemessene Länge des Zylinders, was die Funktion des Programmes bestätigt. %duh
+
+\subsubsection{Ausgleichsrechnung zur Bestimmung des systematischen Fehlers}
+Aufgrund der endlichen Dicke der Anpassungsschicht der Sonde tritt ein systematischer Fehler auf.
+Um diesen zu ermitteln, werden die gemessenen Weglängen gegen die halbierten Laufzeiten aufgetragen und ein linerer Fit durchgeführt.
+Der Grund der halbierten Laufzeiten ist wiederum die effektive doppelte Weglänge, die zurückgelegt werden muss.
+Diese wird in Python mit Numpy mittels der Methode der kleinsten Quadrate durchgeführt.
+Es ergibt sich der in Abbildung \ref{fig:plot1} dargstellte Graph.
+\begin{figure}
+  \centering
+  \includegraphics{build/ausgleich.pdf}
+  \caption{Ausgleichsrechnung zur Bestimmung der Dicke der Anpassungsschicht.}
+  \label{fig:plot1}
+\end{figure}
+Die ermittelten Fitparameter sind dabei
+\begin{align*}
+  m &= \input{build/parameter_a.tex} \\
+  b &= \input{build/parameter_b.tex}.
+\end{align*}
+Die Steigung lässt sich hierbei identifizieren als Wert für die Schallgeschwindigkeit in Acryl, der Achsenabschnitt beschreibt den systematischen Fehler, bzw. die Dicke der Anpassungsschicht.
