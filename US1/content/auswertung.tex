@@ -102,7 +102,7 @@ Aus dem Weg-Zeit-Gesetz wird somit die jeweilige Geschwindigkeit des Impulses be
   \input{build/Tabelle_0_texformat.tex}
 Die Bestimmung der Mittelwertes nach Formel \eqref{eq:std_mean} sowie die Bestimmung des Fehler nach Formel \eqref{eq:std} ergibt somit eine gemittelte Schallgeschwindigkeit in Acryl von
 \begin{align*}
-  \input{build/c_acryl_1.tex}.\\
+  c_{\text{acryl,e}} &= \input{build/c_acryl_1.tex}.\\
 \end{align*}
 
 Die genauere Betrachtung der ersten Messung ergibt eine Amplitude des ersten Peaks von
@@ -143,3 +143,23 @@ Die ermittelten Fitparameter sind dabei
   b &= \input{build/parameter_b.tex}.
 \end{align*}
 Die Steigung lässt sich hierbei identifizieren als Wert für die Schallgeschwindigkeit in Acryl, der Achsenabschnitt beschreibt den systematischen Fehler, bzw. die Dicke der Anpassungsschicht.
+
+\subsection{Bestimmung der Schallgeschwindigkeit in Acryl mittels Durchschallungs-Methode}
+Für die Messungen mit der Durchschallungs-Methode ergeben sich die Werte aus Tabelle \ref{tab:1}, wobei die Computer-Software die Messung für größere Zylinder nicht möglich gemacht hat.
+  \input{build/Tabelle_1_texformat.tex}
+Mit Hilfe dieser wird die gemittelte Schallgeschwindigkeit in Acryl auf
+\begin{align*}
+  c_{\text{acryl,d}} &= \input{build/c_acryl_2.tex}\\
+\end{align*}
+bestimmt.
+
+\subsection{Bestimmung des Abschwächungskoeffizienten von Acryl}
+Aus den Werten der Intensitätspeaks und Laufzeiten der Echo-Impuls Messung kann der Schwächungskoeffizient $\alpha$ nach Gleichung \ref{gl:1} auf die Weise
+\begin{equation}
+  \alpha = \frac{\ln{\frac{U_1}{U_2}}}{t_1-t_2}
+\end{equation}
+berechnet werden.
+Somit ergibt sich
+\begin{align*}
+  \alpha &= \input{build/alpha.tex}.\\
+\end{align*}

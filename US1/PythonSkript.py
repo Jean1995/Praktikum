@@ -198,3 +198,46 @@ plt.ylabel(r'$h \:/\: \si{\metre}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/ausgleich.pdf')
+
+
+v_lit   = 2730
+v_rel_1 = abs(np.mean(v_zylinder)-v_lit)/v_lit *100
+write('build/v_rel_1.tex', make_SI(v_rel_1, r'\percent', figures=2))
+write('build/v_lit.tex', make_SI(v_lit, r'\metre\per\second', figures=2))
+
+##############Durchschallungs-Methode####################
+
+h_zylinder, t_zylinder = np.genfromtxt('messdaten/b.txt', unpack=True)
+
+h_zylinder = h_zylinder*10**(-3)
+t_zylinder = t_zylinder*10**(-6)/2
+
+v_zylinder = h_zylinder/t_zylinder
+
+
+write('build/Tabelle_1.tex', make_table([h_zylinder*10**3, t_zylinder*10**6, v_zylinder],[2, 1, 2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_1_texformat.tex', make_full_table(
+     'Bestimmung der Schallgeschwindigkeit mittels Durchschallungs-Methode.',
+     'tab:1',
+     'build/Tabelle_1.tex',
+     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                               # die Multicolumns sein sollen
+     [r'$h_{\text{zylinder}} \:/\: 10^{-3} \si{\metre}$',
+     r'$\increment t \:/\: 10^{-6} \si{\second} $',
+     r'$c_\text{Acryl} \:/\: \si{\metre\per\second} $']))
+
+c_arcyl_2 = ufloat(np.mean(v_zylinder), np.std(v_zylinder))
+write('build/c_acryl_2.tex', make_SI(c_arcyl_2, r'\metre\per\second', figures=2))      # type in Anz. signifikanter Stellen
+
+v_rel_2 = abs(np.mean(v_zylinder)-v_lit)/v_lit *100
+write('build/v_rel_2.tex', make_SI(v_rel_2, r'\percent', figures=2))
+
+
+################Abschwächungskoeffizient################
+U_1 = 1.214
+U_2 = 1.105
+t_1 = 1.3 * 10**(-6)
+t_2 = 46.2 * 10**(-6)
+
+alpha = np.log(U_1/U_2)/(t_1-t_2)
+write('build/alpha.tex', make_SI(alpha, r'\second\tothe{-1}', figures=1))

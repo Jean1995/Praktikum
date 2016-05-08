@@ -23,6 +23,8 @@ from table import (
 )
 from uncertainties import ufloat
 
+############Echo-Methode#########
+
 h_zylinder_messung = np.array([61.5, 80.55, 102.1, 120.5, 31.1+61.5, 31.3+80.55])
 t_zylinder_messung = np.array([44.9, 58.3, 75.0, 87.4, 67.8, 81.1])
 np.savetxt('messdaten/a.txt', np.column_stack([h_zylinder_messung, t_zylinder_messung]), header="h [mm], t[µs]")
@@ -35,3 +37,10 @@ write('messdaten/U_1.tex', make_SI(U_1, r'\volt', figures=3))
 write('messdaten/U_2.tex', make_SI(U_2, r'\volt', figures=3))
 write('messdaten/t_1.tex', make_SI(t_1, r'\micro\second', figures=1))
 write('messdaten/t_2.tex', make_SI(t_2, r'\micro\second', figures=1))
+
+
+###########Durchschallungs-Methode###############
+
+h_zylinder_messung = np.array([31.3,61.5, 80.55,])
+t_zylinder_messung = np.array([23.1, 45.6, 60.9])
+np.savetxt('messdaten/b.txt', np.column_stack([h_zylinder_messung, t_zylinder_messung]), header="h [mm], t[µs]")
