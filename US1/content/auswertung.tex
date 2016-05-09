@@ -88,7 +88,7 @@
 %     \label{fig:Schaltungen}
 % \end{figure*}
 \subsection{Bestimmung der Schallgeschwindigkeit in Acryl mittels Impuls-Echo-Verfahren}
-Die Messung der einzelnen Zylinder mittels Schiebelehre ergibt die Zylinderhöhen
+Die Messung der einzelnen Zylinder mittels Schieblehre ergibt die Zylinderhöhen
 \begin{align*}
   h_1 &= \SI{61.5}{\milli\metre}, \\
   h_2 &= \SI{80.55}{\milli\metre}, \\
@@ -98,9 +98,9 @@ Die Messung der einzelnen Zylinder mittels Schiebelehre ergibt die Zylinderhöhe
 \end{align*}
 Die Durchführung eines Impuls-Echo-Verfahren ergibt die in Tabelle \ref{tab:0} dargestellten Laufzeiten $\increment t$ zu den jeweiligen Zylinderhöhen $h$.
 Hierbei werden zunächst alle Zylinder einzeln und zum Schluss zwei Kombinationen aus $h_5$ und $h_1$ bzw. $h_2$ betrachtet.
-Aus dem Weg-Zeit-Gesetz wird somit die jeweilige Geschwindigkeit des Impulses berechnet, wobei aufgrund der Reflektion die doppelte Weglänge berücksichtigt werden muss.
+Aus dem Weg-Zeit-Gesetz wird somit die jeweilige Geschwindigkeit des Impulses berechnet, wobei aufgrund der Reflextion die doppelte Weglänge berücksichtigt werden muss.
   \input{build/Tabelle_0_texformat.tex}
-Die Bestimmung der Mittelwertes nach Formel \eqref{eq:std_mean} sowie die Bestimmung des Fehler nach Formel \eqref{eq:std} ergibt somit eine gemittelte Schallgeschwindigkeit in Acryl von
+Die Bestimmung der Mittelwertes nach Formel \eqref{eq:std_mean} sowie die Bestimmung des Fehlers nach Formel \eqref{eq:std} ergibt somit eine gemittelte Schallgeschwindigkeit in Acryl von
 \begin{align*}
   c_{\text{acryl,e}} &= \input{build/c_acryl_1.tex}.\\
 \end{align*}
@@ -123,14 +123,14 @@ beziehungsweise
 \end{align*}
 gemessen.
 Hieraus ergibt sich die zuvor in Tabelle \ref{tab:0} angegebene Laufzeitdifferenz.
-Bei Eingabe der berechneten Schallgeschwindigkeit in das Auswertungsprogramm ergibt sich für die Tiefenmessung exakt die mit der Schiebelehre gemessene Länge des Zylinders, was die Funktion des Programmes bestätigt. %duh
+Bei Eingabe der berechneten Schallgeschwindigkeit in das Auswertungsprogramm ergibt sich für die Tiefenmessung exakt die mit der Schieblehre gemessene Länge des Zylinders, was die Funktion des Programmes bestätigt. %duh
 
 \subsubsection{Ausgleichsrechnung zur Bestimmung des systematischen Fehlers}
 Aufgrund der endlichen Dicke der Anpassungsschicht der Sonde tritt ein systematischer Fehler auf.
-Um diesen zu ermitteln, werden die gemessenen Weglängen gegen die halbierten Laufzeiten aufgetragen und ein linerer Fit durchgeführt.
+Um diesen zu ermitteln, werden die gemessenen Weglängen gegen die halbierten Laufzeiten aufgetragen und ein linearer Fit durchgeführt.
 Der Grund der halbierten Laufzeiten ist wiederum die effektive doppelte Weglänge, die zurückgelegt werden muss.
 Diese wird in Python mit Numpy mittels der Methode der kleinsten Quadrate durchgeführt.
-Es ergibt sich der in Abbildung \ref{fig:plot1} dargstellte Graph.
+Es ergibt sich der in Abbildung \ref{fig:plot1} dargestellte Graph.
 \begin{figure}
   \centering
   \includegraphics{build/ausgleich.pdf}
@@ -163,3 +163,68 @@ Somit ergibt sich
 \begin{align*}
   \alpha &= \input{build/alpha.tex}.\\
 \end{align*}
+
+\subsection{Bestimmung der Maße der Platten mittels FFT und Cepstrum}
+Das gemessene Fourierspektrum ist in Abbildung \ref{fig:fft} dargestellt, das Cepstrum in Abbildung \ref{fig:cep}.
+\begin{figure}
+  \centering
+  \includegraphics[height=10cm]{messdaten/fourier.png}
+  \caption{Fouriertrasformation der Messung.}
+  \label{fig:fft}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[height=10cm]{messdaten/cepstrum.png}
+  \caption{Cepstrum der Messung.}
+  \label{fig:cep}
+\end{figure}
+
+Es fällt auf, dass die Abstände zwischen den Peaks im Fourierspektrum äquidistant sind.
+Dementsprechend werden dem Spektrum die Frequenzen für sechs repräsentative Probepeaks entnommen, welche
+\begin{align*}
+  f_{1} &= \input{build/fft_1.tex}, \\
+  f_{2} &= \input{build/fft_2.tex}, \\
+  f_{3} &= \input{build/fft_3.tex}, \\
+  f_{4} &= \input{build/fft_4.tex}, \\
+  f_{5} &= \input{build/fft_5.tex}, \\
+  f_{6} &= \input{build/fft_6.tex},
+\end{align*}
+sind.
+Die Abstände der Frequenzen werden nach Formel \eqref{eq:std_mean} gemittelt.
+Aus der entstandenen Frequenz sowie dem Literaturwert für die Schallgeschwindigkeit in Acryl erhält man eine Dicke von
+\begin{align*}
+  s_\text{Platten} = \input{build/s_probe.tex}.
+\end{align*}
+Zudem kann dem Cepstrum ein Peak entnommen werden, aus diesem erhält man analog eine Dicke von
+\begin{align*}
+  s_\text{Platten,cep} = \input{build/s_cep.tex}.
+\end{align*}
+
+\subsection{Biometrische Untersuchung eines Augenmodells}
+Bei der Untersuchung des Augenmodells (\ref{abb:3}) mithilfe eines A-Scans ergibt sich das in Abbildung \ref{fig:messung_auge} dargestellte Ergebnis.
+\begin{figure}
+  \centering
+  \includegraphics[height=5cm]{messdaten/auge_messung.png}
+  \caption{Messung zur Untersuchung des Augenmodelles.}
+  \label{fig:messung_auge}
+\end{figure}
+Die Intensitätsmaxima sind jeweils numeriert.
+Das nullte Maximum wird als Eintritt in den ersten Glaskörper identifiziert, das erste und zweite Maximum als Reflexion an der linken bzw. an der rechten Seite der Linse.
+Das dritte und vierte Maximum resultieren aus Mehrfachreflexionen an der Linse.
+Zuletzt entspricht das fünfte Maximum der Reflexion an der Retina.
+Bei der Berechnung der Weglängen sind die unterschiedlichen Schallgeschwindigkeiten im Glaskörper von
+\begin{align*}
+  c_\text{gk} &= \input{build/c_gk.tex}
+\end{align*}
+sowie in der Linse von
+\begin{align*}
+  c_\text{linse} &= \input{build/c_linse.tex}.
+\end{align*}
+Es ergeben sich hieraus die Abstände
+\begin{align*}
+  s_{0,1} &= \input{build/s_12.tex}, \\
+  s_{1,2} &= \input{build/s_23.tex}, \\
+  s_{2,5} &= \input{build/s_36.tex}. \\
+\end{align*}
+Hierbei entspricht $s_{0,1}$ dem Durchmesser des vorderen Glaskörpers, $s_{1,2}$ der Linsendicke sowie $s_{2,5}$ dem Durchmesser des hinteren Glaskörpers.

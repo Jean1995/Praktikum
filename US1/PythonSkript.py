@@ -179,7 +179,7 @@ write('build/Tabelle_0_texformat.tex', make_full_table(
                                # die Multicolumns sein sollen
      [r'$h_{\text{zylinder}} \:/\: 10^{-3} \si{\metre}$',
      r'$\increment t \:/\: 10^{-6} \si{\second} $',
-     r'$c_\text{Acryl} \:/\: \si{\metre\per\second} $']))
+     r'$c_\text{Acryl} \:/\:\si{\metre\per\second} $']))
 
 c_arcyl_1 = ufloat(np.mean(v_zylinder), np.std(v_zylinder))
 write('build/c_acryl_1.tex', make_SI(c_arcyl_1, r'\metre\per\second', figures=2))      # type in Anz. signifikanter Stellen
@@ -189,9 +189,22 @@ a, b = params
 write('build/parameter_a.tex', make_SI(a, r'\metre\per\second', figures=1))       # type in Anz. signifikanter Stellen
 write('build/parameter_b.tex', make_SI(b, r'\metre', figures=2))      # type in Anz. signifikanter Stellen
 
+v_lit   = 2730
+v_rel_3 = abs(np.mean(a)-v_lit)/v_lit *100
+write('build/v_rel_3.tex', make_SI(v_rel_3, r'\percent', figures=2))
+
 t_plot = np.linspace(0.9*np.amin(0.5*t_zylinder), np.amax(0.5*t_zylinder)*1.1, 100)
 plt.plot(t_plot, t_plot*a.n+b.n, 'b-', label='Linearer Fit')
 plt.plot(0.5*t_zylinder, h_zylinder, 'rx', label='Messdaten')
+# t_plot = np.linspace(-0.5, 2 * np.pi + 0.5, 1000) * 1e-3
+#
+## standard plotting
+# plt.plot(t_plot * 1e3, f(t_plot, *noms(params)) * 1e-3, 'b-', label='Fit')
+# plt.plot(t * 1e3, U * 1e3, 'rx', label='Messdaten')
+## plt.errorbar(B * 1e3, noms(y) * 1e5, fmt='rx', yerr=stds(y) * 1e5, label='Messdaten')        # mit Fehlerbalken
+## plt.xscale('log')                                                                            # logarithmische x-Achse
+# plt.xlim(t_plot[0] * 1e3, t_plot[-1] * 1e3)
+# plt.xlabel(r'$t \:/\: \si{\milli\selinder, 'rx', label='Messdaten')
 plt.xlim(t_plot[0], t_plot[-1])
 plt.xlabel(r'$\frac{1}{2} t \:/\: \si{\second}$')
 plt.ylabel(r'$h \:/\: \si{\metre}$')
@@ -200,10 +213,10 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/ausgleich.pdf')
 
 
-v_lit   = 2730
+
 v_rel_1 = abs(np.mean(v_zylinder)-v_lit)/v_lit *100
 write('build/v_rel_1.tex', make_SI(v_rel_1, r'\percent', figures=2))
-write('build/v_lit.tex', make_SI(v_lit, r'\metre\per\second', figures=2))
+write('build/v_lit.tex', make_SI(v_lit, r'\metre\per\second', figures=0))
 
 ##############Durchschallungs-Methode####################
 
@@ -241,3 +254,50 @@ t_2 = 46.2 * 10**(-6)
 
 alpha = np.log(U_1/U_2)/(t_1-t_2)
 write('build/alpha.tex', make_SI(alpha, r'\second\tothe{-1}', figures=1))
+
+################Auge##################
+t_auge = np.genfromtxt('messdaten/auge.txt', unpack=True)
+t_auge = t_auge*10**(-6)
+c_linse = 2500
+c_gk = 1410
+
+s_12 = (t_auge[1]-t_auge[0])*c_gk
+s_23 = (t_auge[2]-t_auge[1])*c_linse
+s_34 = (t_auge[3]-t_auge[2])*c_linse
+s_45 = (t_auge[4]-t_auge[3])*c_linse
+s_36 = (t_auge[5]-t_auge[2])*c_gk
+
+write('build/c_linse.tex', make_SI(c_linse, r'\metre\per\second', figures=0))
+write('build/c_gk.tex', make_SI(c_gk, r'\metre\per\second', figures=0))
+
+write('build/s_12.tex', make_SI(s_12, r'\metre', figures=3))
+write('build/s_23.tex', make_SI(s_23, r'\metre', figures=3))
+write('build/s_34.tex', make_SI(s_34, r'\metre', figures=3))
+write('build/s_45.tex', make_SI(s_45, r'\metre', figures=3))
+write('build/s_36.tex', make_SI(s_36, r'\metre', figures=3))
+
+### FFT - For Fucks... Time?####
+fft = np.genfromtxt('messdaten/fft.txt', unpack=True)
+
+write('build/fft_1.tex', make_SI(fft[0], r'\mega\hertz', figures=2))
+write('build/fft_2.tex', make_SI(fft[1], r'\mega\hertz', figures=2))
+write('build/fft_3.tex', make_SI(fft[2], r'\mega\hertz', figures=2))
+write('build/fft_4.tex', make_SI(fft[3], r'\mega\hertz', figures=2))
+write('build/fft_5.tex', make_SI(fft[4], r'\mega\hertz', figures=2))
+write('build/fft_6.tex', make_SI(fft[5], r'\mega\hertz', figures=2))
+
+
+fft = fft * 10**6
+delta_f = np.array([ fft[1]-fft[0], fft[2]-fft[1], fft[3]-fft[2], fft[4]-fft[3], fft[5]-fft[4] ])
+mean_delta_f = np.mean(delta_f)
+std_delta_f = np.std(delta_f)
+delta_f = ufloat(mean_delta_f, std_delta_f)
+s_probe = 2730/delta_f
+write('build/s_probe.tex', make_SI(s_probe, r'\metre', figures=2))
+
+
+
+### Cepstrum ###
+f_cep = 10/4.9 * 0.8 + 10 #Peak in µs
+s_cep = f_cep * 2730 * 10**(-6)
+write('build/s_cep.tex', make_SI(s_cep, r'\metre', figures=3))
