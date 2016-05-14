@@ -157,3 +157,100 @@ from error_calculation import(
 
 ########## DIFFERENT STUFF ##########
 # R = const.physical_constants["molar gas constant"]      # Array of value, unit, error
+
+
+###########Daten des Blocks################
+
+tiefe  = 4.03*10**(-2)
+breite = 15.02*10**(-2)
+hoehe  = 8.035*10**(-2)
+
+##########A-Scan##################
+
+c = 2730
+t_start = 1.6*10**(-6)
+t_end = 59.4*10**(-6)
+
+hoehe_mess = c*(t_end-t_start)/2
+
+D_o , t_o, t_u = np.genfromtxt('messdaten/a.txt', unpack=True)
+D_o = D_o*10**(-2)
+t_o = t_o*10**(-6)
+t_u = t_u*10**(-6)
+
+D_mess_o = D_o
+D_mess_u = D_o
+
+
+D_mess_o = c*t_o/2
+D_mess_u = c*t_u/2
+D_loch = hoehe_mess - (D_mess_o + D_mess_u)
+
+
+D_mess_o = D_mess_o*10**(2)
+D_mess_u = D_mess_u*10**(2)
+D_o = D_o*10**2
+D_loch = D_loch*10**3
+List = [1,2,3,4,5,6,7,8,9,10,11]
+write('build/Tabelle_a.tex', make_table([List, D_o, D_mess_o, D_mess_u, D_loch],[0,2,2,2,2])) #cm, cm ,cm, mm
+write('build/Tabelle_a_texformat.tex', make_full_table(
+    'Messdaten Tiefenmessungen.',
+    'table:1',
+    'build/Tabelle_a.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                              # die Multicolumns sein sollen
+    [
+    r'$\text{Stelle}$',
+    r'$D_{\text{oben}} \:/\: \si{\centi\metre}$',
+    r'$D_{\text{oben,gem}} \:/\: \si{\centi\metre}$',
+    r'$D_{\text{unten,gem}} \:/\: \si{\centi\metre}$',
+    r'$D_{\text{loch,gem}} \:/\: \si{\milli\metre}$']))
+
+D_o_rel_a = abs(D_mess_o-D_o)/D_o * 100
+D_o_rel_a = np.mean(D_o_rel_a)
+write('build/D_o_rel_a.tex', make_SI(D_o_rel_a, r'\percent', figures=2)) #um herauszufinden, welche Methode besser ist (Spoiler: Durchschnittlich 4% Abweichung)
+
+#####################B-Scan##################
+
+t_start = 5.5*0.5*10**(-6)
+t_end = (55+0.5*7)*10**(-6)
+
+hoehe_mess = c*(t_end-t_start)/2
+
+t_o, t_u = np.genfromtxt('messdaten/b.txt', unpack=True)
+
+D_o = D_o*10**(-2)
+t_o = t_o*10**(-6)
+t_u = t_u*10**(-6)
+
+D_mess_o = D_o
+D_mess_u = D_o
+
+
+D_mess_o = c*t_o/2
+D_mess_u = c*t_u/2
+D_loch = hoehe_mess - (D_mess_o + D_mess_u)
+
+
+D_mess_o = D_mess_o*10**(2)
+D_mess_u = D_mess_u*10**(2)
+D_o = D_o*10**2
+D_loch = D_loch*10**3
+List = [1,2,3,4,5,6,7,8,9,10,11]
+write('build/Tabelle_b.tex', make_table([List, D_o, D_mess_o, D_mess_u, D_loch],[0,2,2,2,2])) #cm, cm ,cm, mm
+write('build/Tabelle_b_texformat.tex', make_full_table(
+    'Messdaten Tiefenmessungen.',
+    'table:2',
+    'build/Tabelle_b.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                              # die Multicolumns sein sollen
+    [
+    r'$\text{Stelle}$',
+    r'$D_{\text{oben}} \:/\: \si{\centi\metre}$',
+    r'$D_{\text{oben,gem}} \:/\: \si{\centi\metre}$',
+    r'$D_{\text{unten,gem}} \:/\: \si{\centi\metre}$',
+    r'$D_{\text{loch,gem}} \:/\: \si{\milli\metre}$']))
+
+D_o_rel_b = abs(D_mess_o-D_o)/D_o * 100
+D_o_rel_b = np.mean(D_o_rel_b)
+write('build/D_o_rel_b.tex', make_SI(D_o_rel_b, r'\percent', figures=2))  #um herauszufinden, welche Methode besser ist (Spoiler: Durchschnittlich 15% Abweichung)
