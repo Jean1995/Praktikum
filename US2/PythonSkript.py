@@ -171,7 +171,15 @@ c = 2730
 t_start = 1.6*10**(-6)
 t_end = 59.4*10**(-6)
 
+write('build/t_start.tex', make_SI(t_start*10**6, r'\micro\second', figures=2))
+write('build/t_end.tex', make_SI(t_end*10**6, r'\micro\second', figures=2))
+
 hoehe_mess = c*(t_end-t_start)/2
+
+write('build/hoehe_mess.tex', make_SI(hoehe_mess*10**2, r'\centi\metre', figures=2))
+
+hoehe_mess_rel = abs(hoehe_mess-hoehe)/hoehe * 100
+write('build/hoehe_mess_rel.tex', make_SI(hoehe_mess_rel, r'\percent', figures=1))
 
 D_o , t_o, t_u = np.genfromtxt('messdaten/a.txt', unpack=True)
 D_o = D_o*10**(-2)
@@ -212,10 +220,17 @@ write('build/D_o_rel_a.tex', make_SI(D_o_rel_a, r'\percent', figures=2)) #um her
 
 #####################B-Scan##################
 
-t_start = 5.5*0.5*10**(-6)
-t_end = (55+0.5*7)*10**(-6)
+t_start2 = 5.5*0.5*10**(-6)
+t_end2 = (55+0.5*7)*10**(-6)
+write('build/t_start2.tex', make_SI(t_start2*10**6, r'\micro\second', figures=2))
+write('build/t_end2.tex', make_SI(t_end2*10**6, r'\micro\second', figures=2))
 
-hoehe_mess = c*(t_end-t_start)/2
+hoehe_mess2 = c*(t_end2-t_start2)/2
+
+write('build/hoehe_mess2.tex', make_SI(hoehe_mess2*10**2, r'\centi\metre', figures=2))
+
+hoehe_mess_rel2 = abs(hoehe_mess2-hoehe)/hoehe * 100
+write('build/hoehe_mess_rel2.tex', make_SI(hoehe_mess_rel2, r'\percent', figures=1))
 
 t_o, t_u = np.genfromtxt('messdaten/b.txt', unpack=True)
 
@@ -229,7 +244,8 @@ D_mess_u = D_o
 
 D_mess_o = c*t_o/2
 D_mess_u = c*t_u/2
-D_loch = hoehe_mess - (D_mess_o + D_mess_u)
+D_loch = hoehe_mess2 - (D_mess_o + D_mess_u)
+
 
 
 D_mess_o = D_mess_o*10**(2)
@@ -291,7 +307,7 @@ hf  = 1/th
 hf  = ufloat(np.mean(hf), np.std(hf))
 
 write('build/ESD.tex', make_SI(ESD*10**2, r'\centi\metre', figures=1))
-write('build/hf.tex', make_SI(hf*100, r'\second\tothe{-2}', figures=2))
+write('build/hf.tex', make_SI(hf*100, r'\second\tothe{-1}', figures=2))
 
 #durchmesser = 4.94*10**(-2)
 #write('build/h_durchmesser.tex', make_SI(durchmesser*100, r'\centi\metre', figures=2))
@@ -301,3 +317,11 @@ write('build/ESV.tex', make_SI(ESV*10**6, r'\milli\litre', figures=2))
 
 HZV = ESV*hf
 write('build/HZV.tex', make_SI(HZV*10**6, r'\milli\litre\per\second', figures=2))
+
+###############HerzAnHerz A Scan ####
+s_1 = 1.6*10**(-6)
+s_2 = 34.8*10**(-6)
+h_bla = (s_2-s_1)*c_wasser*0.5
+write('build/h_bla.tex', make_SI(h_bla*10**2, r'\centi\metre', figures=2))
+write('build/s_1.tex', make_SI(s_1*10**6, r'\micro\second', figures=2))
+write('build/s_2.tex', make_SI(s_2*10**6, r'\micro\second', figures=2))
