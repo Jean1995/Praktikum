@@ -254,3 +254,50 @@ write('build/Tabelle_b_texformat.tex', make_full_table(
 D_o_rel_b = abs(D_mess_o-D_o)/D_o * 100
 D_o_rel_b = np.mean(D_o_rel_b)
 write('build/D_o_rel_b.tex', make_SI(D_o_rel_b, r'\percent', figures=2))  #um herauszufinden, welche Methode besser ist (Spoiler: Durchschnittlich 15% Abweichung)
+
+
+###########Kack-Herz###############
+
+ESD = np.genfromtxt('messdaten/ESD.txt', unpack=True)
+th  = np.genfromtxt('messdaten/th.txt', unpack=True)
+
+write('build/Tabelle_th.tex', make_table([th],[0]))
+#write('build/Tabelle_th_texformat.tex', make_full_table(
+#    'Zeitliche Abstände der Schläge.',
+#    'table:4',
+#    'build/Tabelle_th.tex',
+#    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+#                              # die Multicolumns sein sollen
+#    [
+#    r'$t_{\text{Herz}} \:/\: \si{\second}$']))
+#
+write('build/Tabelle_ESD.tex', make_table([ESD],[0]))
+#write('build/Tabelle_ESD_texformat.tex', make_full_table(
+#    'Größe der Amplituden.',
+#    'table:3',
+#    'build/Tabelle_ESD.tex',
+#    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+#                              # die Multicolumns sein sollen
+#    [
+#    r'$\text{Amplituden} \:/\: \si{\micro\second}$']))
+
+c_wasser = 1484
+write('build/c_wasser.tex', make_SI(c_wasser, r'\metre\per\second', figures=0))
+
+ESD = ESD*10**(-6)
+ESD = ESD*c_wasser/2
+ESD = ufloat(np.mean(ESD), np.std(ESD))
+hf  = 1/th
+hf  = ufloat(np.mean(hf), np.std(hf))
+
+write('build/ESD.tex', make_SI(ESD*10**2, r'\centi\metre', figures=1))
+write('build/hf.tex', make_SI(hf*100, r'\second\tothe{-2}', figures=2))
+
+#durchmesser = 4.94*10**(-2)
+#write('build/h_durchmesser.tex', make_SI(durchmesser*100, r'\centi\metre', figures=2))
+
+ESV = 4/3*np.pi*(ESD/2)**3
+write('build/ESV.tex', make_SI(ESV*10**6, r'\milli\litre', figures=2))
+
+HZV = ESV*hf
+write('build/HZV.tex', make_SI(HZV*10**6, r'\milli\litre\second', figures=2))

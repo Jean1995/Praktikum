@@ -49,3 +49,10 @@ t_o = t_o-t_start
 t_u = t_u-t_start
 
 np.savetxt('messdaten/b.txt', np.column_stack([t_o, t_u]), header="t_oben[µs], t_unten[µs]")
+
+#############Kack-Herz################
+
+ESD = np.array([75, 77, 77 ,77 ,77]) # µs
+th  = np.array([10.5/5, 10.2/5, 10.2/5, 10.3/5]) #s
+np.savetxt('messdaten/ESD.txt', np.column_stack([ESD]), header="ESD[µs]")
+np.savetxt('messdaten/th.txt', np.column_stack([th]), header="Herzzeit[s]")
