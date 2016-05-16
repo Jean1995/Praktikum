@@ -300,4 +300,4 @@ ESV = 4/3*np.pi*(ESD/2)**3
 write('build/ESV.tex', make_SI(ESV*10**6, r'\milli\litre', figures=2))
 
 HZV = ESV*hf
-write('build/HZV.tex', make_SI(HZV*10**6, r'\milli\litre\second', figures=2))
+write('build/HZV.tex', make_SI(HZV*10**6, r'\milli\litre\per\second', figures=2))
