@@ -7,10 +7,12 @@ import numpy as np
 import scipy.constants as const
 import uncertainties.unumpy as unp
 from uncertainties import ufloat
+import matplotlib.mlab as mlab
 from uncertainties.unumpy import (
     nominal_values as noms,
     std_devs as stds,
 )
+from scipy.misc import factorial
 ################################################ Finish importing system libraries #################################################
 
 ################################################ Adding subfolder to system's path #################################################
@@ -43,6 +45,8 @@ from regression import (
 from error_calculation import(
     MeanError
 )
+
+from scipy.optimize import curve_fit
 ################################################ Finish importing custom libraries #################################################
 
 
@@ -71,7 +75,7 @@ from error_calculation import(
 # write('build/RelFehler_B.tex', make_SI(RelFehler_B*100, r'\percent', figures=1))
 
 
-########## CURVE FIT ##########
+########## CURVE FIT ##########from scipy.optimize import curve_fit
 # def f(t, a, b, c, d):
 #     return a * np.sin(b * t + c) + d
 #
@@ -157,3 +161,135 @@ from error_calculation import(
 
 ########## DIFFERENT STUFF ##########
 # R = const.physical_constants["molar gas constant"]      # Array of value, unit, error
+
+
+### Aufgabe a ###
+
+def x_eff(x_0,p):
+    """Rueckgabe der effektiven Länge
+    Args:
+        x_0: Abstand Detektor Quelle (m)
+        p: Druck in Glaszylinder (bar)
+    Returns:
+        Effektive Länge in meter
+    """
+    return x_0 * p/(1013*10**(-3))
+
+p_1, pulse_1, channel_1 = np.genfromtxt('messdaten/messung_1.txt', unpack=True)
+p_1 = p_1/1000 # in bar
+x_1 =  0.025 # Abstand Detektor Quelle für 1. Messung
+
+p_mittel = 0.8 # druck wo halbiert wird
+
+plt.plot(x_eff(x_1, p_1), pulse_1, 'rx', label='Messdaten')
+#plt.xlim(-0.01, 0.025)
+#plt.ylim(-1000, 50000)
+plt.axvline(x=x_eff(x_1,p_mittel), color='g', linestyle='--')
+plt.axhline(y=46500, color='b', linestyle='--')
+plt.axhline(y=23000, color='b', linestyle='--')
+plt.xlabel(r'$x_\text{eff} \:/\: \si{\metre}$')
+plt.ylabel(r'$\text{Impulse} $')
+plt.legend(loc='best')
+plt.grid()
+
+#plt.axhline(0.019, color='g', linestyle='--')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot_a_1.pdf')
+
+E_mit_1 = 406/1023 * 4 # Lineare Skala: Bei Channel 1023 ist das Maximum von 4 MeV, bei Channel 406 ist der mittlere Wert
+
+plt.clf()
+
+plt.plot(x_eff(x_1, p_1), (channel_1/1023)*4, 'rx', label='Messdaten')
+#plt.xlim(-0.01, 0.025)
+#plt.ylim(-1000, 50000)
+plt.xlabel(r'$x_\text{eff} \:/\: \si{\metre}$')
+plt.ylabel(r'$E \:/\: \si{\mega\electronvolt} $')
+plt.legend(loc='best')
+plt.grid()
+
+#plt.axhline(0.019, color='g', linestyle='--')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot_a_1_1.pdf')
+
+#### Aufgabe a_2 ###
+
+plt.clf()
+
+p_2, pulse_2, channel_2 = np.genfromtxt('messdaten/messung_2.txt', unpack=True)
+p_2 = p_2/1000 # in bar
+x_2 =  0.015 # Abstand Detektor Quelle für 1. Messung
+
+p_mittel = 0.8 # druck wo halbiert wird
+
+plt.plot(x_eff(x_2, p_2), pulse_2, 'rx', label='Messdaten')
+#plt.xlim(-0.01, 0.025)
+#plt.ylim(-1000, 50000)
+#plt.axvline(x=x_eff(x_2,p_mittel), color='g', linestyle='--')
+#plt.axhline(y=46500, color='b', linestyle='--')
+#plt.axhline(y=23000, color='b', linestyle='--')
+plt.xlabel(r'$x_\text{eff} \:/\: \si{\metre}$')
+plt.ylabel(r'$\text{Impulse} $')
+plt.legend(loc='best')
+plt.grid()
+
+#plt.axhline(0.019, color='g', linestyle='--')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot_a_2.pdf')
+
+plt.clf()
+
+plt.plot(x_eff(x_2, p_2), (channel_2/1023)*4, 'rx', label='Messdaten')
+#plt.xlim(-0.01, 0.025)
+#plt.ylim(-1000, 50000)
+plt.xlabel(r'$x_\text{eff} \:/\: \si{\metre}$')
+plt.ylabel(r'$E \:/\: \si{\mega\electronvolt} $')
+plt.legend(loc='best')
+plt.grid()
+
+#plt.axhline(0.019, color='g', linestyle='--')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot_a_2_2.pdf')
+
+
+
+#### Aufgabe 2 ( Statistik) ###
+
+plt.clf()
+
+nr, zaehlrate = np.genfromtxt('messdaten/messung_stat.txt', unpack=True)
+#
+#mu, sigma = np.mean(zaehlrate), np.std(zaehlrate)
+#
+#n, bins, patches = plt.hist(zaehlrate, 12, normed=1, facecolor='blue', alpha=0.75)
+#
+#y = mlab.normpdf( bins, mu, sigma)
+#l = plt.plot(bins, y, 'r--', linewidth=1)
+#
+#plt.xlabel('Smarts')
+#plt.ylabel('Probability')
+#plt.title(r'$\mathrm{Histogram\ of\ IQ:}\ \mu=100,\ \sigma=15$')
+#plt.axis([40, 160, 0, 0.03])
+#plt.grid(True)
+
+mu = np.mean(zaehlrate)
+sigma = np.std(zaehlrate)
+
+#mu, sigma = 100, 15
+#x = mu + sigma*np.random.randn(10000)
+
+# the histogram of the data
+n, bins, patches = plt.hist(zaehlrate, 15, normed=1, facecolor='green', alpha=0.75)
+
+# add a 'best fit' line
+y = mlab.normpdf( bins, mu, sigma)
+l = plt.plot(bins, y, 'r--', linewidth=1)
+
+plt.xlabel(r'$\text{Zählrate}$')
+plt.ylabel(r'$p$')
+plt.title(r'$\text{Histogramm der Zählraten}$')
+#plt.axis([40, 160, 0, 0.03])
+plt.grid(True)
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+
+plt.savefig('build/plot_stat.pdf')
