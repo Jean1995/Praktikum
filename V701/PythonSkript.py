@@ -47,6 +47,8 @@ from error_calculation import(
 )
 
 from scipy.optimize import curve_fit
+from scipy import stats
+from  matplotlib import pyplot as plt
 ################################################ Finish importing custom libraries #################################################
 
 
@@ -185,7 +187,7 @@ plt.plot(x_eff(x_1, p_1), pulse_1, 'rx', label='Messdaten')
 #plt.xlim(-0.01, 0.025)
 #plt.ylim(-1000, 50000)
 plt.axvline(x=x_eff(x_1,p_mittel), color='g', linestyle='--')
-plt.axhline(y=46500, color='b', linestyle='--')
+plt.axhline(y=46000, color='b', linestyle='--')
 plt.axhline(y=23000, color='b', linestyle='--')
 plt.xlabel(r'$x_\text{eff} \:/\: \si{\metre}$')
 plt.ylabel(r'$\text{Impulse} $')
@@ -198,9 +200,25 @@ plt.savefig('build/plot_a_1.pdf')
 
 E_mit_1 = 406/1023 * 4 # Lineare Skala: Bei Channel 1023 ist das Maximum von 4 MeV, bei Channel 406 ist der mittlere Wert
 
-plt.clf()
+write('build/x_mittel_1.tex', make_SI(x_eff(x_1, p_mittel), r'\metre', figures=4))
+write('build/E_mittel_1.tex', make_SI(E_mit_1, r'\mega\electronvolt', figures=3))
 
-plt.plot(x_eff(x_1, p_1), (channel_1/1023)*4, 'rx', label='Messdaten')
+
+plt.clf()
+plt.xlim(0, 0.025)
+plt.plot(x_eff(x_1, p_1[0:29]), (channel_1[0:29]/1023)*4, 'rx', label='Messdaten')
+#plt.plot(x_eff(x_1, p_1[0:1]), (channel_1[0:1]/1023)*4, 'rx', label='Messdaten')
+plt.plot(x_eff(x_1, p_1[2:16]), (channel_1[2:16]/1023)*4, 'bx', label='Messdaten für linearen Fit')
+#plt.plot(x_eff(x_1, p_1[19:29]), (channel_1[19:29]/1023)*4, 'rx', label='Messdaten')
+
+params_1_fit = ucurve_fit(reg_linear, x_eff(x_1, p_1[2:16]), (channel_1[2:16]/1023)*4)             # linearer Fit
+a1, b1 = params_1_fit
+write('build/parameter_a_1.tex', make_SI(a1, r'\mega\electronvolt\per\metre', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b_1.tex', make_SI(b1, r'\mega\electronvolt', figures=2))      # type in Anz. signifikanter Stellen
+
+t_plot = np.linspace(0, 0.025)
+plt.plot(t_plot, b1.n + t_plot*a1.n, 'b-', label='Linearer Fit')
+
 #plt.xlim(-0.01, 0.025)
 #plt.ylim(-1000, 50000)
 plt.xlabel(r'$x_\text{eff} \:/\: \si{\metre}$')
@@ -240,13 +258,23 @@ plt.savefig('build/plot_a_2.pdf')
 plt.clf()
 
 plt.plot(x_eff(x_2, p_2), (channel_2/1023)*4, 'rx', label='Messdaten')
-#plt.xlim(-0.01, 0.025)
+plt.plot(x_eff(x_2, p_2[2:19]), (channel_2[2:19]/1023)*4, 'bx', label='Messdaten für linearen Fit')
+plt.xlim(0, 0.016)
 #plt.ylim(-1000, 50000)
 plt.xlabel(r'$x_\text{eff} \:/\: \si{\metre}$')
 plt.ylabel(r'$E \:/\: \si{\mega\electronvolt} $')
+
+
+params_2_fit = ucurve_fit(reg_linear, x_eff(x_2, p_2[2:19]), (channel_2[2:19]/1023)*4)             # linearer Fit
+a2, b2 = params_2_fit
+write('build/parameter_a_2.tex', make_SI(a2, r'\mega\electronvolt\per\metre', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b_2.tex', make_SI(b2, r'\mega\electronvolt', figures=2))      # type in Anz. signifikanter Stellen
+
+t_plot = np.linspace(0, 0.016)
+plt.plot(t_plot, b2.n + t_plot*a2.n, 'b-', label='Linearer Fit')
+
 plt.legend(loc='best')
 plt.grid()
-
 #plt.axhline(0.019, color='g', linestyle='--')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/plot_a_2_2.pdf')
@@ -274,22 +302,53 @@ nr, zaehlrate = np.genfromtxt('messdaten/messung_stat.txt', unpack=True)
 
 mu = np.mean(zaehlrate)
 sigma = np.std(zaehlrate)
+write('build/mu_stat.tex', make_SI(mu, r'', figures=2))
+write('build/sigma_stat.tex', make_SI(sigma, r'', figures=2))
 
-#mu, sigma = 100, 15
-#x = mu + sigma*np.random.randn(10000)
 
 # the histogram of the data
-n, bins, patches = plt.hist(zaehlrate, 15, normed=1, facecolor='green', alpha=0.75)
+n, bins, patches = plt.hist(zaehlrate, 10, normed=1, facecolor='blue', alpha=0.75, label="Messwerte")
 
-# add a 'best fit' line
-y = mlab.normpdf( bins, mu, sigma)
-l = plt.plot(bins, y, 'r--', linewidth=1)
+
+def Gauss(x, mu, sigma):
+    return 1/(sigma*np.sqrt(2*np.pi) ) * np.exp(-0.5*  ((x-mu)/sigma)**2 )
+
+t_plot = np.linspace(9500, 12000, 1000)
+plt.plot(t_plot, Gauss(t_plot, mu, sigma), 'r-', label='Gaußverteilung')
+
 
 plt.xlabel(r'$\text{Zählrate}$')
 plt.ylabel(r'$p$')
-plt.title(r'$\text{Histogramm der Zählraten}$')
 #plt.axis([40, 160, 0, 0.03])
 plt.grid(True)
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 
 plt.savefig('build/plot_stat.pdf')
+
+
+### Le Verteilung du Poisson (geliehen von einem Altprotokoll aus Ap_MaMa)
+
+plt.clf()
+nr, N = np.genfromtxt('messdaten/messung_stat.txt', unpack=True)
+mu = np.mean(N)
+sigma = np.std(N)
+
+binnum = 10
+n, low_range, binsize, extra = stats.histogram(N, binnum)
+ind = np.arange(binnum)
+width = 0.50
+x = np.linspace(0, 10)
+
+poisson = stats.poisson(5).pmf(ind)
+
+plt.bar(ind+0.25, n/100., width, color="blue", label="Messwerte")
+
+plt.plot(ind+0.5, poisson,  'rx', label="Poissonverteilung")
+
+plt.ylabel(r'$p$')
+
+plt.xticks(ind+width, ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10'))
+plt.grid()
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.legend(loc='best')
+plt.savefig("build/statistik.pdf")
