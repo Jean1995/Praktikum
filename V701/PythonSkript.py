@@ -333,11 +333,11 @@ nr, N = np.genfromtxt('messdaten/messung_stat.txt', unpack=True)
 mu = np.mean(N)
 sigma = np.std(N)
 
-binnum = 10
+binnum = 10    #
 n, low_range, binsize, extra = stats.histogram(N, binnum)
 ind = np.arange(binnum)
 width = 0.50
-x = np.linspace(0, 10)
+x = np.linspace(0, 10)   #
 
 poisson = stats.poisson(5).pmf(ind)
 
