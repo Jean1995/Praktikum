@@ -157,3 +157,129 @@ from error_calculation import(
 
 ########## DIFFERENT STUFF ##########
 # R = const.physical_constants["molar gas constant"]      # Array of value, unit, error
+import math
+
+Nullprosec = 210/900
+
+Indium  = np.genfromtxt('messdaten/Indium.txt', unpack=True)
+Indium  = np.log(Indium - Nullprosec*220)
+
+Zeit = np.arange(1,18)
+Zeit = Zeit*220
+np.savetxt('messdaten/test.txt', np.column_stack([Zeit]), header="Impulse /220s")
+
+params = ucurve_fit(reg_linear, Zeit, Indium)             # linearer Fit
+a, b = params
+write('build/parameter_a_indium.tex', make_SI(a, r'per\second', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b_indium.tex', make_SI(b, r'\nothing', figures=2))      # type in Anz. signifikanter Stellen
+write('build/lambda_indium.tex', make_SI(-a, r'\per\second', figures=2))
+write('build/halbzeit_indium.tex', make_SI(np.log(2)/(-a)/60, r'\minute', figures=2))
+write('build/halbzeit_indium_lit.tex', make_SI(54.29, r'\minute', figures=2)) #http://www.periodensystem-online.de/index.php?id=isotope&el=49&mz=116&nrg=0.1273&show=nuklid
+write('build/halbzeit_indium_rel.tex', make_SI(abs(54.29-np.log(2)/(-a)/60)/54.29*100, r'\percent', figures=2))
+
+
+
+
+t_plot = np.linspace(np.amin(Zeit), np.amax(Zeit), 100)
+plt.plot(t_plot, t_plot*a.n+b.n, 'b-', label='Linearer Fit')
+plt.plot(Zeit, Indium, 'rx', label='logarithmierte Messdaten')
+# t_plot = np.linspace(-0.5, 2 * np.pi + 0.5, 1000) * 1e-3
+#
+## standard plotting
+# plt.plot(t_plot * 1e3, f(t_plot, *noms(params)) * 1e-3, 'b-', label='Fit')
+# plt.plot(t * 1e3, U * 1e3, 'rx', label='Messdaten')
+## plt.errorbar(B * 1e3, noms(y) * 1e5, fmt='rx', yerr=stds(y) * 1e5, label='Messdaten')        # mit Fehlerbalken
+## plt.xscale('log')                                                                            # logarithmische x-Achse
+# plt.xlim(t_plot[0] * 1e3, t_plot[-1] * 1e3)
+# plt.xlabel(r'$t \:/\: \si{\milli\selinder, 'rx', label='Messdaten')
+plt.xlim(t_plot[0], t_plot[-1])
+plt.xlabel(r'$t \:/\: \si{\second}$')
+plt.ylabel(r'$\log(\text{Impulse})$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/ausgleich.pdf')
+
+plt.clf()
+
+
+Rhodium = np.genfromtxt('messdaten/Rhodium.txt', unpack=True)
+Rhodium = np.log(Rhodium - Nullprosec*17)
+
+Zeit = np.arange(1,44)
+Zeit = Zeit*17
+
+Rhodium1 = np.genfromtxt('messdaten/Rhodium1.txt', unpack=True)
+Rhodium1 = np.log(Rhodium1 - Nullprosec*17)
+
+Zeit1 = np.arange(18,44)
+Zeit1 = Zeit1*17
+
+
+
+params = ucurve_fit(reg_linear, Zeit1, Rhodium1)             # linearer Fit
+a, b = params
+write('build/parameter_a_rhodium.tex', make_SI(a, r'per\second', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b_rhodium.tex', make_SI(b, r'\nothing', figures=2))      # type in Anz. signifikanter Stellen
+write('build/lambda_rhodium.tex', make_SI(-a, r'\per\second', figures=2))
+write('build/halbzeit_rhodium.tex', make_SI(np.log(2)/(-a)/60, r'\minute', figures=2))
+write('build/halbzeit_rhodium_lit.tex', make_SI(13/3, r'\minute', figures=2)) #http://www.periodensystem-online.de/index.php?id=isotope&el=45&mz=104&nrg=0.129&show=nuklid
+write('build/halbzeit_rhodium_rel.tex', make_SI(abs(13/3-np.log(2)/(-a)/60)/(13/3)*100, r'\percent', figures=2))
+
+Rhodium2 = np.genfromtxt('messdaten/Rhodium2.txt', unpack=True)
+Zeit2 = np.arange(1,18)
+Zeit2 = Zeit2*17
+
+np.savetxt('messdaten/test.txt', np.column_stack([np.log(Rhodium2 - Nullprosec*17)]), header="Impulse /17s")
+
+Rhodium3 = np.arange(1,18)
+
+
+Rhodium2[0] = np.log(Rhodium2[0] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[0]))
+Rhodium2[1] = np.log(Rhodium2[1] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[1]))
+Rhodium2[2] = np.log(Rhodium2[2] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[2]))
+Rhodium2[3] = np.log(Rhodium2[3] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[3]))
+Rhodium2[4] = np.log(Rhodium2[4] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[4]))
+Rhodium2[5] = np.log(Rhodium2[5] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[5]))
+Rhodium2[6] = np.log(Rhodium2[6] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[6]))
+Rhodium2[7] = np.log(Rhodium2[7] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[7]))
+Rhodium2[8] = np.log(Rhodium2[8] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[8]))
+Rhodium2[9] = np.log(Rhodium2[9] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[9]))
+Rhodium2[10] = np.log(Rhodium2[10] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[10]))
+Rhodium2[11] = np.log(Rhodium2[11] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[11]))
+Rhodium2[12] = np.log(Rhodium2[12] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[12]))
+Rhodium2[13] = np.log(Rhodium2[13] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[13]))
+Rhodium2[14] = np.log(Rhodium2[14] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[14]))
+Rhodium2[15] = np.log(Rhodium2[15] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[15]))
+Rhodium2[16] = np.log(Rhodium2[16] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[16]))
+
+np.savetxt('messdaten/test2.txt', np.column_stack([Rhodium3]), header="Impulse /17s")
+
+
+
+
+params = ucurve_fit(reg_linear, Zeit2, Rhodium2)             # linearer Fit
+c, d = params
+
+
+t_plot = np.linspace(np.amin(Zeit1), np.amax(Zeit1), 100)
+plt.plot(t_plot, t_plot*a.n+b.n, 'b-', label='Linearer Fit')
+t_plot2 = np.linspace(np.amin(Zeit2), np.amax(Zeit2), 100)
+plt.plot(t_plot2, t_plot2*c.n+d.n, 'g-', label='Linearer Fit')
+plt.plot(Zeit2, Rhodium2, 'gx', label='logarithmierte Messdaten')
+plt.plot(Zeit, Rhodium, 'rx', label='logarithmierte Messdaten')
+# t_plot = np.linspace(-0.5, 2 * np.pi + 0.5, 1000) * 1e-3
+#
+## standard plotting
+# plt.plot(t_plot * 1e3, f(t_plot, *noms(params)) * 1e-3, 'b-', label='Fit')
+# plt.plot(t * 1e3, U * 1e3, 'rx', label='Messdaten')
+## plt.errorbar(B * 1e3, noms(y) * 1e5, fmt='rx', yerr=stds(y) * 1e5, label='Messdaten')        # mit Fehlerbalken
+## plt.xscale('log')                                                                            # logarithmische x-Achse
+# plt.xlim(t_plot[0] * 1e3, t_plot[-1] * 1e3)
+# plt.xlabel(r'$t \:/\: \si{\milli\selinder, 'rx', label='Messdaten')
+
+#plt.xlim(t_plot[0], t_plot[-1])
+plt.xlabel(r'$t \:/\: \si{\second}$')
+plt.ylabel(r'$\log(\text{Impulse})$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/ausgleich2.pdf')
