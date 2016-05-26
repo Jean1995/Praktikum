@@ -37,8 +37,8 @@ np.savetxt('messdaten/Indium.txt', np.column_stack([Indium]), header="Impulse /2
 Rhodium = np.array([642, 510, 431, 353, 255, 217, 191, 113, 104, 93, 95, 63, 72, 39, 32, 31, 34, 40, 28, 36, 33, 33, 22, 22, 21, 25, 17, 22, 24, 14, 22, 20, 8, 18, 18, 17, 19, 12, 15, 15, 10, 13, 15])
 np.savetxt('messdaten/Rhodium.txt', np.column_stack([Rhodium]), header="Impulse /17s")
 
-Rhodium2 = np.array([642, 510, 431, 353, 255, 217, 191, 113, 104, 93, 95, 63, 72, 39, 32, 31, 34])
+Rhodium2 = np.array([642, 510, 431, 353, 255, 217, 191, 113, 104, 93, 95, 63, 72, 39])
 np.savetxt('messdaten/Rhodium2.txt', np.column_stack([Rhodium2]), header="Impulse /17s")
 
-Rhodium1 = np.array([40, 28, 36, 33, 33, 22, 22, 21, 25, 17, 22, 24, 14, 22, 20, 8, 18, 18, 17, 19, 12, 15, 15, 10, 13, 15])
+Rhodium1 = np.array([39,32,31,34,40, 28, 36, 33, 33, 22, 22, 21, 25, 17, 22, 24, 14, 22, 20, 8, 18, 18, 17, 19, 12, 15, 15, 10, 13, 15])
 np.savetxt('messdaten/Rhodium1.txt', np.column_stack([Rhodium1]), header="Impulse /17s")

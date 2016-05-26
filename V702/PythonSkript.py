@@ -211,7 +211,7 @@ Zeit = Zeit*17
 Rhodium1 = np.genfromtxt('messdaten/Rhodium1.txt', unpack=True)
 Rhodium1 = np.log(Rhodium1 - Nullprosec*17)
 
-Zeit1 = np.arange(18,44)
+Zeit1 = np.arange(14,44)
 Zeit1 = Zeit1*17
 
 
@@ -226,33 +226,32 @@ write('build/halbzeit_rhodium_lit.tex', make_SI(13/3, r'\minute', figures=2)) #h
 write('build/halbzeit_rhodium_rel.tex', make_SI(abs(13/3-np.log(2)/(-a)/60)/(13/3)*100, r'\percent', figures=2))
 
 Rhodium2 = np.genfromtxt('messdaten/Rhodium2.txt', unpack=True)
-Zeit2 = np.arange(1,18)
+Zeit2 = np.arange(1,15)
 Zeit2 = Zeit2*17
 
-np.savetxt('messdaten/test.txt', np.column_stack([np.log(Rhodium2 - Nullprosec*17)]), header="Impulse /17s")
+np.savetxt('messdaten/test.txt', np.column_stack([Rhodium2 - Nullprosec*17]), header="Impulse /17s")
 
-Rhodium3 = np.arange(1,18)
+#### irgendwas stimmt hier noch nicht, oder so, wahrscheinlich, äh, keine Ahnung >.<
 
+Rhodium2[0]  = np.log(Rhodium2[0]  - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[0] ))
+Rhodium2[1]  = np.log(Rhodium2[1]  - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[1] ))
+Rhodium2[2]  = np.log(Rhodium2[2]  - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[2] ))
+Rhodium2[3]  = np.log(Rhodium2[3]  - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[3] ))
+Rhodium2[4]  = np.log(Rhodium2[4]  - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[4] ))
+Rhodium2[5]  = np.log(Rhodium2[5]  - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[5] ))
+Rhodium2[6]  = np.log(Rhodium2[6]  - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[6] ))
+Rhodium2[7]  = np.log(Rhodium2[7]  - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[7] ))
+Rhodium2[8]  = np.log(Rhodium2[8]  - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[8] ))
+Rhodium2[9]  = np.log(Rhodium2[9]  - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[9] ))
+Rhodium2[10] = np.log(Rhodium2[10] - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[10]))
+Rhodium2[11] = np.log(Rhodium2[11] - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[11]))
+Rhodium2[12] = np.log(Rhodium2[12] - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[12]))
+Rhodium2[13] = np.log(Rhodium2[13] - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[13]))
+#Rhodium2[14] = np.log(Rhodium2[14] - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[14]))
+#Rhodium2[15] = np.log(Rhodium2[15] - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[15]))
+#Rhodium2[16] = np.log(Rhodium2[16] - Nullprosec*17 - np.e**(4.27)*np.e**(-0.00302*Zeit2[16]))
 
-Rhodium2[0] = np.log(Rhodium2[0] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[0]))
-Rhodium2[1] = np.log(Rhodium2[1] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[1]))
-Rhodium2[2] = np.log(Rhodium2[2] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[2]))
-Rhodium2[3] = np.log(Rhodium2[3] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[3]))
-Rhodium2[4] = np.log(Rhodium2[4] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[4]))
-Rhodium2[5] = np.log(Rhodium2[5] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[5]))
-Rhodium2[6] = np.log(Rhodium2[6] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[6]))
-Rhodium2[7] = np.log(Rhodium2[7] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[7]))
-Rhodium2[8] = np.log(Rhodium2[8] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[8]))
-Rhodium2[9] = np.log(Rhodium2[9] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[9]))
-Rhodium2[10] = np.log(Rhodium2[10] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[10]))
-Rhodium2[11] = np.log(Rhodium2[11] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[11]))
-Rhodium2[12] = np.log(Rhodium2[12] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[12]))
-Rhodium2[13] = np.log(Rhodium2[13] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[13]))
-Rhodium2[14] = np.log(Rhodium2[14] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[14]))
-Rhodium2[15] = np.log(Rhodium2[15] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[15]))
-Rhodium2[16] = np.log(Rhodium2[16] - Nullprosec*17 - (1 - math.exp(-0.00302*17))*math.exp(-0.00302*Zeit2[16]))
-
-np.savetxt('messdaten/test2.txt', np.column_stack([Rhodium3]), header="Impulse /17s")
+np.savetxt('messdaten/test2.txt', np.column_stack([np.e**(4.27)*(1 - np.e**(-0.00302*17))*np.e**(-0.00302*Zeit2[0] )]), header="Impulse /17s")
 
 
 
@@ -262,11 +261,11 @@ c, d = params
 
 
 t_plot = np.linspace(np.amin(Zeit1), np.amax(Zeit1), 100)
-plt.plot(t_plot, t_plot*a.n+b.n, 'b-', label='Linearer Fit')
+plt.plot(t_plot, t_plot*a.n+b.n, 'b-', label='Linearer Fit langlebig')
 t_plot2 = np.linspace(np.amin(Zeit2), np.amax(Zeit2), 100)
-plt.plot(t_plot2, t_plot2*c.n+d.n, 'g-', label='Linearer Fit')
-plt.plot(Zeit2, Rhodium2, 'gx', label='logarithmierte Messdaten')
-plt.plot(Zeit, Rhodium, 'rx', label='logarithmierte Messdaten')
+plt.plot(t_plot2, t_plot2*c.n+d.n, 'g-', label='Linearer Fit kurzlebig ')
+plt.plot(Zeit2, Rhodium2, 'gx', label='logarithmierte Messdaten kurzlebig')
+plt.plot(Zeit, Rhodium, 'rx', label='logarithmierte Messdaten insgesamt')
 # t_plot = np.linspace(-0.5, 2 * np.pi + 0.5, 1000) * 1e-3
 #
 ## standard plotting
@@ -283,3 +282,10 @@ plt.ylabel(r'$\log(\text{Impulse})$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/ausgleich2.pdf')
+
+write('build/parameter_c_rhodium.tex', make_SI(c, r'per\second', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_d_rhodium.tex', make_SI(d, r'\nothing', figures=2))      # type in Anz. signifikanter Stellen
+write('build/lambda_rhodium2.tex', make_SI(-c, r'\per\second', figures=2))
+write('build/halbzeit_rhodium2.tex', make_SI(np.log(2)/(-c), r'\second', figures=2))
+write('build/halbzeit_rhodium2_lit.tex', make_SI(42.3, r'\second', figures=2)) #http://www.internetchemie.info/chemiewiki/index.php?title=Rhodium-Isotope
+write('build/halbzeit_rhodium2_rel.tex', make_SI(abs(42.3-np.log(2)/(-c))/(42.3)*100, r'\percent', figures=2))
