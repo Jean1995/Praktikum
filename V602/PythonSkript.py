@@ -200,9 +200,9 @@ def Sigma_L(Z, E):
     """
     return Z - np.sqrt( 4/alpha * np.sqrt(E/R)- 5*E/R ) * np.sqrt( 1 + 19/32*alpha**2 * E/R )
 
-E_max_roehre = 35
+E_max_roehre = 35000 # kilo
 
-write('build/E_max_t.tex', make_SI(E_max_roehre, r'\kilo\electronvolt', figures=1))
+write('build/E_max_t.tex', make_SI(E_max_roehre*10**(-3), r'\kilo\electronvolt', figures=1))
 lambda_min_t = c*h/(E_max_roehre*e)
 write('build/lambda_min_t.tex', make_SI(lambda_min_t*10**12, r'\pico\metre', figures=1))
 
