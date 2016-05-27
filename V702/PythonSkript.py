@@ -226,8 +226,8 @@ Zeit1 = Zeit1*17
 
 params = ucurve_fit(reg_linear, Zeit1, Rhodium1)             # linearer Fit
 a, b = params
-write('build/parameter_a_rhodium.tex', make_SI(a, r'per\second', figures=1))       # type in Anz. signifikanter Stellen
-write('build/parameter_b_rhodium.tex', make_SI(b, r'\nothing', figures=2))      # type in Anz. signifikanter Stellen
+write('build/parameter_a_rhodium.tex', make_SI(a, r'\per\second', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b_rhodium.tex', make_SI(b, r'', figures=2))      # type in Anz. signifikanter Stellen
 write('build/lambda_rhodium.tex', make_SI(-a, r'\per\second', figures=2))
 write('build/halbzeit_rhodium.tex', make_SI(np.log(2)/(-a)/60, r'\minute', figures=2))
 write('build/halbzeit_rhodium_lit.tex', make_SI(13/3, r'\minute', figures=2)) #http://www.periodensystem-online.de/index.php?id=isotope&el=45&mz=104&nrg=0.129&show=nuklid
@@ -303,8 +303,8 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/ausgleich2.pdf')
 
-write('build/parameter_c_rhodium.tex', make_SI(c, r'per\second', figures=1))       # type in Anz. signifikanter Stellen
-write('build/parameter_d_rhodium.tex', make_SI(d, r'\nothing', figures=2))      # type in Anz. signifikanter Stellen
+write('build/parameter_c_rhodium.tex', make_SI(c, r'\per\second', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_d_rhodium.tex', make_SI(d, r'', figures=2))      # type in Anz. signifikanter Stellen
 write('build/lambda_rhodium2.tex', make_SI(-c, r'\per\second', figures=2))
 write('build/halbzeit_rhodium2.tex', make_SI(np.log(2)/(-c), r'\second', figures=2))
 write('build/halbzeit_rhodium2_lit.tex', make_SI(42.3, r'\second', figures=2)) #http://www.internetchemie.info/chemiewiki/index.php?title=Rhodium-Isotope

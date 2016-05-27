@@ -136,3 +136,36 @@ Die Ergebnisse der Messwerte und des Fits sind in Abbildung \ref{fig:plot1} darg
 \end{figure}
 
 \subsection{Bestimmung der Halbwertszeit von Rhodium}
+
+Zur Bestimmung der Halbwertszeiten von Rhodium wird ein Messintervall von $\increment t = \SI{17}{\second}$ gewählt.
+Für die Messwerte wird zunächst der Nulleffekt \eqref{eqn:nulleffekt} abgezogen.
+Die korrigierten Messwerte werden nun im Diagramm \ref{fig:plot2} halblogarithmisch in rot zusammen mit dem jeweiligen Fehler gegen die Zeit $t$ aufgetragen.
+\begin{figure}
+  \centering
+  \includegraphics{build/ausgleich2.pdf}
+  \caption{Messdaten und lineare Fits zur Bestimmung der Halbwertszeiten von Rhodium.}
+  \label{fig:plot2}
+\end{figure}
+Aufgrund der unterschiedlichen Halbwertszeiten werden zunächst die letzten 30 Messwerte betrachtet, bei denen davon ausgegangen wird, dass die Zerfälle des kurzlebigeren Nuklids hier vernachlässigbar klein sind.
+Der lineare Fit der logarithmierten Werte nach Formel \eqref{eqn:totalwichtigeformel} ergibt somit die Parameter
+\begin{align*}
+  m &= \input{build/parameter_a_rhodium.tex}, \\
+  b &= \input{build/parameter_b_rhodium.tex}.
+\end{align*}
+Aus dem Parameter $m$, welcher der Zerfallskonstante $\lambda$ entspricht, kann nach Formel \eqref{eqn:halbwertszeit} die Halbwertszeit von $\ce{^{104i}_45Rh }$ zu
+\begin{align*}
+  T_\text{Rh,1} &= \input{build/halbzeit_rhodium.tex}
+\end{align*}
+bestimmt werden.\\
+Aus dieser ermittelten Halbwertszeit kann nun mithilfe des linearen Fits die Auswirkung auf den Zerfall des kurzlebigen Nuklids berechnet werden.
+Diese korrigierten Messwerte sind in grün in Diagramm \ref{fig:plot2} mit dem jeweiligen Fehler dargestellt.
+Für diese Werte wird eine weitere lineare Regression durchgeführt, welche auf die Parameter
+\begin{align*}
+  m &= \input{build/parameter_c_rhodium.tex}, \\
+  b &= \input{build/parameter_d_rhodium.tex}
+\end{align*}
+führt.
+Analog ergibt sich hieraus eine Halbwertszeit von $\ce{^{104}_45Rh }$ zu
+\begin{align*}
+  T_\text{Rh,2} &= \input{build/halbzeit_rhodium2.tex}.
+\end{align*}
