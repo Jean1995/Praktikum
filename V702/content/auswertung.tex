@@ -87,3 +87,52 @@
 %     {Ersatzschaltbilder der verschiedenen Teilaufgaben.}
 %     \label{fig:Schaltungen}
 % \end{figure*}
+
+\subsection{Bestimmung des Nulleffektes}
+Zur Bestimmung des Nulleffektes werden zwei Messungen über einen Messbereich von $t = \SI{900}{\second}$ durchgeführt.
+Es ergeben sich für zwei Messungen die Werte
+\begin{align*}
+  N_1 &= \num{210} \\
+  N_2 &= \num{191}
+\end{align*}
+so dass sich ein gemittelter Nulleffekt von
+\begin{align}
+  \bar{N_0}&= \input{build/nulleffekt.tex}
+  \label{eqn:nulleffekt}
+\end{align}
+ergibt.
+
+\subsection{Bestimmung der Halbwertszeit von Indium}
+
+Zur Bestimmung der Halbwertszeit von Indium wird ein Messintervall von $\increment t = \SI{220}{\second}$ gewählt.
+Zunächst wird der Nulleffekt \eqref{eqn:nulleffekt} von den Messdaten abgezogen.
+Daraufhin werden die gemessenen Impulse in einem halblogarithmischen Diagramm gegen die Messzeit $t$ abgetragen.
+Da der radioaktive Zerfall einer statistischen Poissonverteilung unterliegt, bestimmt sich der Fehler der Messwerte zu
+\begin{align*}
+  \sigma &= \sqrt{x}
+\end{align*}
+wobei $x$ die Anzahl der gemessenen Impulse beschreibt.
+Dieser Fehler wird in den Fehlerbalken angegeben.\\
+Nach Gleichung \eqref{eqn:totalwichtigeformel} kann aus einer linearen Ausgleichsrechnung der logarithmierten Impulse die Zerfallskonstante $\lambda$ gewonnen werden.
+Der lineare Fit wird hierbei in Python mit SciPy erstellt.
+Es ergeben sich die Parameter
+\begin{align*}
+  m &= \input{build/parameter_a_indium.tex}, \\
+  b &= \input{build/parameter_b_indium.tex}.
+\end{align*}
+Aus dem Parameter $m$ ergibt sich nach Formel \eqref{eqn:halbwertszeit} eine Halbwertszeit
+\begin{align*}
+  T_\text{In} &= \input{build/halbzeit_indium.tex}
+\end{align*}
+von Indium.
+Die Ergebnisse der Messwerte und des Fits sind in Abbildung \ref{fig:plot1} dargestellt.
+
+% Standard Plot
+\begin{figure}
+  \centering
+  \includegraphics{build/ausgleich.pdf}
+  \caption{Messdaten und linearer Fit zur Bestimmung der Halbwertszeit von Indium.}
+  \label{fig:plot1}
+\end{figure}
+
+\subsection{Bestimmung der Halbwertszeit von Rhodium}
