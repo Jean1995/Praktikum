@@ -165,7 +165,7 @@ c = 299792458
 d = 201.4*10**(-12)
 const = (h*c)/(2*d)
 e = 1.6021766208*10**(-19)
-R = 13.6*e
+R = 13.60569*e
 Rd = 10973731
 alpha = 7.2973525664*10**(-3)
 def Energie(Theta):
@@ -262,7 +262,14 @@ z = 29
 E_k_kante_a = Energie(k_kante_a)*e
 E_k_kante_b = Energie(k_kante_b)*e
 sigma_1 = z - np.sqrt(E_k_kante_b/R)                      #wieso auch immer diese Reihenfolge Idk
-sigma_2 = z - 2*np.sqrt((R*(z-sigma_1)**2-E_k_kante_a)/R) #still dont know....
+#sigma_2 = z - 2*np.sqrt((R*(z-sigma_1)**2-E_k_kante_a)/R) #still dont know....
+
+sigma_2 = z - np.sqrt( 4*(z-sigma_1)**2 - 4* E_k_kante_a/R  )
+
+sigma_3 = z - np.sqrt( 9*(z-sigma_1)**2 - 9* E_k_kante_b/R  )
+
+
+
 
 # Meine Ansätze, Sigma zu bestimmen - Ich denke, so ist es richtig (Altprotokoll macht komische Sachen)
 sigma_2_nach_jay = z-np.sqrt( E_k_kante_b / ( R*(1 - (1/9)) ) )
@@ -276,18 +283,23 @@ write('build/E_k_kante_a_cu.tex', make_SI(E_k_kante_a*10**(-3)/e, r'\kilo\electr
 write('build/E_k_kante_b_cu.tex', make_SI(E_k_kante_b*10**(-3)/e, r'\kilo\electronvolt', figures=2))
 write('build/sigma_1_cu.tex', make_SI(sigma_1, r' ', figures=2))
 write('build/sigma_2_cu.tex', make_SI(sigma_2, r' ', figures=2))
+write('build/sigma_3_cu.tex', make_SI(sigma_3, r' ', figures=2))
 
 E_k_kante_a_lit = 8.04699993*10**3*e
 E_k_kante_b_lit = 8.90400028*10**3*e
+E_k_lit =  8.97900009*10**3*e #der richtige Wert K
 
-sigma_1_lit     = z - np.sqrt(E_k_kante_b_lit/R)                      #wieso auch immer diese Reihenfolge Idk
-sigma_2_lit     = z - 2*np.sqrt((R*(z-sigma_1_lit)**2-E_k_kante_a_lit)/R) #still dont know....again
+sigma_1_lit     = z - np.sqrt(E_k_lit/R)                      #wieso auch immer diese Reihenfolge Idk
+sigma_2_lit     = z - np.sqrt( 4*(z-sigma_1_lit)**2 - 4* E_k_kante_a_lit/R  )
+sigma_3_lit     = z - np.sqrt( 9*(z-sigma_1_lit)**2 - 9* E_k_kante_b_lit/R  )
+
 
 
 write('build/E_k_kante_a_lit_cu.tex', make_SI(E_k_kante_a_lit/e*10**(-3), r'\kilo\electronvolt', figures=2))
 write('build/E_k_kante_b_lit_cu.tex', make_SI(E_k_kante_b_lit/e*10**(-3), r'\kilo\electronvolt', figures=2))
 write('build/sigma_1_lit_cu.tex', make_SI(sigma_1_lit, r' ', figures=2))
 write('build/sigma_2_lit_cu.tex', make_SI(sigma_2_lit, r' ', figures=2))
+write('build/sigma_3_lit_cu.tex', make_SI(sigma_3_lit, r' ', figures=2))
 E_k_kante_a_rel = abs(E_k_kante_a_lit - E_k_kante_a)/E_k_kante_a_lit * 100
 E_k_kante_b_rel = abs(E_k_kante_b_lit - E_k_kante_b)/E_k_kante_b_lit * 100
 sigma_1_rel = abs(sigma_1 - sigma_1_lit)/sigma_1_lit * 100
