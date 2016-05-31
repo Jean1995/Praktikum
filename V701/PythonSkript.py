@@ -180,13 +180,37 @@ def x_eff(x_0,p):
 p_1, pulse_1, channel_1 = np.genfromtxt('messdaten/messung_1.txt', unpack=True)
 p_1 = p_1/1000 # in bar
 x_1 =  0.025 # Abstand Detektor Quelle für 1. Messung
+ikse_eff = x_eff(x_1, p_1)
+#write('build/tabulatore.tex', make_table([p_1*1000, ikse_eff*100, pulse_1, channel_1],[0, 2, 0, 0]))
+write('build/tabulatore_texformat.tex', make_full_table(
+    'Messdaten.',
+    'tabulatore',
+    'build/tabulatore.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                              # die Multicolumns sein sollen
+    [
+    r'$p \:/\: \si{\milli\bar}$',
+    r'$x_{\text{eff}} \:/\: \si{\centi\metre}$',
+    r'$\text{Impulse}$',
+    r'$\text{Channel}$']))
 
 p_mittel = 0.8 # druck wo halbiert wird
+
+k = np.array([725, 750, 775, 800, 825, 850, 875])
+k = k/1000
+l = np.array([35579, 33246, 29562, 22986, 17301, 11904, 5620])
+params = ucurve_fit(reg_linear, x_eff(x_1, k), l)
+t_plot = np.linspace(np.amin(x_eff(x_1, k)), np.amax(x_eff(x_1, k)), 100)
+o,i = params
+plt.plot(t_plot, t_plot*o.n+i.n, 'y-', label='Linearer Fit')
+
+h = noms((23000-i)/o)
+
 
 plt.plot(x_eff(x_1, p_1), pulse_1, 'rx', label='Messdaten')
 #plt.xlim(-0.01, 0.025)
 #plt.ylim(-1000, 50000)
-plt.axvline(x=x_eff(x_1,p_mittel), color='g', linestyle='--')
+plt.axvline(x=h, color='g', linestyle='--')
 plt.axhline(y=46000, color='b', linestyle='--')
 plt.axhline(y=23000, color='b', linestyle='--')
 plt.xlabel(r'$x_\text{eff} \:/\: \si{\metre}$')
@@ -200,7 +224,7 @@ plt.savefig('build/plot_a_1.pdf')
 
 E_mit_1 = 406/1023 * 4 # Lineare Skala: Bei Channel 1023 ist das Maximum von 4 MeV, bei Channel 406 ist der mittlere Wert
 
-write('build/x_mittel_1.tex', make_SI(x_eff(x_1, p_mittel), r'\metre', figures=4))
+write('build/x_mittel_1.tex', make_SI(h*100, r'\centi\metre', figures=2))
 write('build/E_mittel_1.tex', make_SI(E_mit_1, r'\mega\electronvolt', figures=3))
 
 
