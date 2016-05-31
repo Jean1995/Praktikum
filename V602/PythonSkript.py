@@ -267,6 +267,10 @@ sigma_1 = z - np.sqrt(E_k_kante_b/R)                      #wieso auch immer dies
 sigma_2 = z - np.sqrt( 4*(z-sigma_1)**2 - 4* E_k_kante_a/R  )
 
 sigma_3 = z - np.sqrt( 9*(z-sigma_1)**2 - 9* E_k_kante_b/R  )
+#sigma_3 = z - np.sqrt( 9*(z-sigma_1)**2 - 9* Energie(k_kante_b)/13.60569  )
+write('build/test1.tex', make_SI(E_k_kante_b, r' ', figures=2))
+write('build/test2.tex', make_SI(sigma_1, r' ', figures=2))
+write('build/test3.tex', make_SI(R, r' ', figures=2))
 
 
 
