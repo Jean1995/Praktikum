@@ -184,7 +184,7 @@ ikse_eff = x_eff(x_1, p_1)
 print(type(p_1))
 write('build/tabulatore.tex', make_table([p_1*1000, ikse_eff*100, pulse_1, channel_1],[0, 2, 0, 0]))
 write('build/tabulatore_texformat.tex', make_full_table(
-    'Messdaten.',
+    'Messdaten, erster Teil.',
     'tabulatore',
     'build/tabulatore.tex',
     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
@@ -262,6 +262,21 @@ plt.clf()
 p_2, pulse_2, channel_2 = np.genfromtxt('messdaten/messung_2.txt', unpack=True)
 p_2 = p_2/1000 # in bar
 x_2 =  0.015 # Abstand Detektor Quelle für 1. Messung
+
+ikse_eff2 = x_eff(x_2, p_2)
+write('build/tabulatore2.tex', make_table([p_2*1000, ikse_eff2*100, pulse_2, channel_2],[0, 2, 0, 0]))
+write('build/tabulatore2_texformat.tex', make_full_table(
+    'Messdaten, zweiter Teil.',
+    'tabulatore2',
+    'build/tabulatore2.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                            # die Multicolumns sein sollen
+    [
+    r'$p \:/\: \si{\milli\bar}$',
+    r'$x_{\text{eff}} \:/\: \si{\centi\metre}$',
+    r'$\text{Impulse}$',
+    r'$\text{Channel}$']))
+
 
 p_mittel = 0.8 # druck wo halbiert wird
 

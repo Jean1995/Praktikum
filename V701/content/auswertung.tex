@@ -140,6 +140,8 @@ Hieraus lässt sich $m_1$ als Energieverlust indentifizieren.
 
 \subsubsection{\texorpdfstring{Auswertung für $s=\SI{1.5}{\centi\metre}$}{Auswertung für s = 1.5 cm}.}
 Die zuvor beschriebene Messreihe wird analog für den Abstand $s = \SI{1.5}{\centi\metre}$ durchgeführt.
+Die Messdaten sind in Tabelle \ref{tabulatore2} einzusehen.
+\input{build/tabulatore2_texformat.tex}
 Es ergeben sich für die Zählrate in Abhängigkeit der effektiven Länge die in Abbildung \ref{abb:4} dargestellten Messwerte, für die mittlere Energie in Abhängigkeit der effektiven Länge die in Abbildung \ref{abb:5} dargestellten Messwerte.
 
 \begin{figure}
@@ -198,6 +200,10 @@ Das Ergebnis ist in Abbildung \ref{abb:6} dargestellt.
 \subsubsection{Vergleich mit Poissonverteilung}
 Für die Poissonverteilung wird ebenfalls ein Histogramm mit $\num{10}$ Bereichen erstellt.
 Die Poissonverteilung wird mithilfe von SciPy in Python erstellt.
+Sie lautet
+\begin{equation}
+  p(x) = \exp{(-\lambda)}\sum_{k=0}^x \frac{\lambda^k}{k!}.
+\end{equation}
 Es ergibt sich die in Abbildung \ref{abb:7} dargestellte Darstellung.
 
 \begin{figure}
