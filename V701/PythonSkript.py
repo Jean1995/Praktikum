@@ -181,13 +181,14 @@ p_1, pulse_1, channel_1 = np.genfromtxt('messdaten/messung_1.txt', unpack=True)
 p_1 = p_1/1000 # in bar
 x_1 =  0.025 # Abstand Detektor Quelle für 1. Messung
 ikse_eff = x_eff(x_1, p_1)
-#write('build/tabulatore.tex', make_table([p_1*1000, ikse_eff*100, pulse_1, channel_1],[0, 2, 0, 0]))
+print(type(p_1))
+write('build/tabulatore.tex', make_table([p_1*1000, ikse_eff*100, pulse_1, channel_1],[0, 2, 0, 0]))
 write('build/tabulatore_texformat.tex', make_full_table(
     'Messdaten.',
     'tabulatore',
     'build/tabulatore.tex',
     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
-                              # die Multicolumns sein sollen
+                            # die Multicolumns sein sollen
     [
     r'$p \:/\: \si{\milli\bar}$',
     r'$x_{\text{eff}} \:/\: \si{\centi\metre}$',
@@ -335,7 +336,7 @@ n, bins, patches = plt.hist(zaehlrate, 10, normed=1, facecolor='blue', alpha=0.7
 
 
 def Gauss(x, mu, sigma):
-    return 1/(sigma*np.sqrt(2*np.pi) ) * np.exp(-0.5*  ((x-mu)/sigma)**2 )
+     return 1/(sigma*np.sqrt(2*np.pi) ) * np.exp(-0.5*  ((x-mu)/sigma)**2 )
 
 t_plot = np.linspace(9500, 12000, 1000)
 plt.plot(t_plot, Gauss(t_plot, mu, sigma), 'r-', label='Gaußverteilung')

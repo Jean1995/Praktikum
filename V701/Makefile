@@ -41,6 +41,8 @@ messdaten: datenersteller.py
 build:
 	mkdir -p build
 
+cleanbiber:
+	rm -rf build/Protokoll.bcf
 clean:
 	rm -rf build
 	rm -f data.txt
