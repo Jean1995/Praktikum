@@ -157,3 +157,86 @@ from error_calculation import(
 
 ########## DIFFERENT STUFF ##########
 # R = const.physical_constants["molar gas constant"]      # Array of value, unit, error
+
+
+
+z_1, s_1 = np.genfromtxt('messdaten/1.txt', unpack=True)
+s_1 = s_1/5.046*10**(-3)
+lambda_laser = 2*s_1/z_1
+
+#oder ohne die beiden Kackwerte
+
+z_x, s_x = np.genfromtxt('messdaten/1_1.txt', unpack=True)
+s_x = s_x/5.046*10**(-3)
+lambda_laser_x = 2*s_x/z_x
+lambda_laser_x = ufloat(np.mean(lambda_laser_x) ,MeanError(noms(lambda_laser_x)))
+write('build/lambda_laser_x.tex', make_SI(lambda_laser_x * 1e9, r'\nano\metre', figures=3))
+
+
+write('build/Tabelle_a.tex', make_table([s_1*10**3, z_1, lambda_laser*10**9],[3, 0, 2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_a_texformat.tex', make_full_table(
+    'Messdaten bezüglich der Wellenlänge.',
+    'tab:1',
+    'build/Tabelle_a.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                           # die Multicolumns sein sollen
+    [
+    r'$\Delta l \:/\: \si{\milli\metre}$',
+    r'$\text{Maxima}$',
+    r'$\lambda \:/\: \si{\nano\metre}$']))
+
+lambda_laser = ufloat(np.mean(lambda_laser) ,MeanError(noms(lambda_laser)))
+write('build/lambda_laser.tex', make_SI(lambda_laser * 1e9, r'\nano\metre', figures=3))
+
+z_2, p_2 = np.genfromtxt('messdaten/2.txt', unpack=True)
+n_luft = 1 + (z_2*lambda_laser)/(2*0.05)*296.15/273.15*1.0132/p_2  # 1+(z*lambda)/(2*b)*(T)/(T_0)*(p_0)/(Delta_p)
+
+write('build/Tabelle_b.tex', make_table([z_2, p_2, unp.nominal_values(n_luft)],[0, 1, 5]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_b_texformat.tex', make_full_table(
+    'Messdaten bezüglich des Brechungsindex von Luft.',
+    'tab:2',
+    'build/Tabelle_b.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                           # die Multicolumns sein sollen
+    [
+    r'$\text{Maxima}$',
+    r'$\Delta p \:/\: \si{\bar}$',
+    r'$n$']))
+
+#n_luft = ufloat(np.mean(n_luft) ,MeanError(noms(n_luft)))
+n_luft = np.mean(n_luft)
+write('build/n_luft.tex', make_SI(n_luft, r'', figures=2))
+write('build/n_luft_lit.tex', make_SI(1.000292, r'', figures=6))   #http://www.chemie.de/lexikon/Brechzahl.html
+n_luft_rel = abs(unp.nominal_values(n_luft)-1.000292)/1.000292 *100
+write('build/n_luft_rel.tex', make_SI(n_luft_rel, r'\percent', figures=3))
+
+n_luft_neu = 1 + (z_2*lambda_laser_x)/(2*0.05)*296.15/273.15*1.0132/p_2
+
+n_luft_neu = np.mean(n_luft_neu)
+write('build/n_luft_neu.tex', make_SI(n_luft_neu, r'', figures=1))
+n_luft_rel_neu = abs(unp.nominal_values(n_luft_neu)-1.000292)/1.000292 *100
+write('build/n_luft_rel_neu.tex', make_SI(n_luft_rel_neu, r'\percent', figures=3))
+
+
+
+z_3, p_3 = np.genfromtxt('messdaten/3.txt', unpack=True)
+n_gas = 1 + (z_3*lambda_laser)/(2*0.05)*296.15/273.15*1.0132/p_3  # 1+(z*lambda)/(2*b)*(T)/(T_0)*(p_0)/(Delta_p)
+
+write('build/Tabelle_c.tex', make_table([z_3, p_3, unp.nominal_values(n_gas)],[0, 1, 5]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_c_texformat.tex', make_full_table(
+    'Messdaten bezüglich des Brechungsindex von $\ce{C4H8}$.',
+    'tab:3',
+    'build/Tabelle_c.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                           # die Multicolumns sein sollen
+    [
+    r'$\text{Maxima}$',
+    r'$\Delta p \:/\: \si{\bar}$',
+    r'$n$']))
+
+#n_luft = ufloat(np.mean(n_luft) ,MeanError(noms(n_luft)))
+n_gas = np.mean(n_gas)
+write('build/n_gas.tex', make_SI(n_gas, r'', figures=1))
+write('build/n_gas_lit.tex', make_SI(1.3811, r'', figures=4))   #http://www.chemicalbook.com/ChemicalProductProperty_DE_CB4763080.htm
+n_gas_rel = abs(unp.nominal_values(n_gas)-1.3811)/1.3811 *100
+write('build/n_gas_rel.tex', make_SI(n_gas_rel, r'\percent', figures=3))

@@ -21,6 +21,24 @@ s_1 = np.abs(s_1) # in mm
 
 np.savetxt('messdaten/1.txt', np.column_stack([z_1, s_1]), header="Delta_z [Impulse], Delta_s [mm]")
 
+
+# ohne kaka-Werte
+
+z_1_anfang   = np.array([18, 0, 0, 0, 22, 0, 11, 14]) #zählrate beginn
+z_1_ende = np.array([3204, 3183, 3045, 3006, 3359, 3315, 4091, 3761])
+z_1 = z_1_ende - z_1_anfang # in Impulsen
+
+s_1_anfang = np.array([0, 0, 0.5, 5.59, 0.5, 5.18, 0.5, 7.31  ])
+s_1_ende = np.array([5.33, 5.33, 5.59, 0.56, 5.18, 0.5, 7.31, 1.05 ])
+s_1 = s_1_ende - s_1_anfang
+s_1 = np.abs(s_1) # in mm
+
+np.savetxt('messdaten/1_1.txt', np.column_stack([z_1, s_1]), header="Delta_z [Impulse], Delta_s [mm]")
+
+
+
+
+
 # Für Luft
 
 z_2_anfang = np.array([ 3, 5, 4, 44, 79 ])
