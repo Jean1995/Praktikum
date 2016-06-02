@@ -1,0 +1,56 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.5 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist{nty}{nty}
+    \entry{Konstanten}{online}{}
+      \field{sortinit}{C}
+      \field{sortinithash}{59f25d509f3381b07695554a9f35ecb2}
+      \field{labeltitlesource}{title}
+      \field{month}{11}
+      \field{title}{CODATA Recommended Values of the Fundamental Physical Constants}
+      \field{year}{2015}
+      \verb{url}
+      \verb http://physics.nist.gov/cuu/Constants/index.html
+      \endverb
+    \endentry
+    \entry{energie}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{25e99d37ba90f7c4fb20baf4e310faf3}
+      \field{labeltitlesource}{title}
+      \field{month}{Mai}
+      \field{title}{Illinois Institute of Technology - Periodic Table}
+      \field{year}{2016}
+      \verb{url}
+      \verb http://www.csrri.iit.edu/periodic-table.html
+      \endverb
+    \endentry
+    \entry{skript}{misc}{}
+      \field{sortinit}{T}
+      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{http://129.217.224.2/HOMEPAGE/PHYSIKER/BACHELOR/AP/SKRIPT/RoentgenAbs.pdf}
+      \field{month}{04}
+      \field{title}{TU Dortmund - Fachbereich Physik : Anfängerpraktikum Anleitung zu Versuch Nr. 602}
+      \field{year}{2016}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+

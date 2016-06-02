@@ -266,11 +266,12 @@ sigma_1 = z - np.sqrt(E_k_kante_b/R)                      #wieso auch immer dies
 
 sigma_2 = z - np.sqrt( 4*(z-sigma_1)**2 - 4* E_k_kante_a/R  )
 
+
 sigma_3 = z - np.sqrt( 9*(z-sigma_1)**2 - 9* E_k_kante_b/R  )
+
+sigma_3 = 27.387159059532273 # Numerische Probleme, deshalb muss das so angegeben werden *hust*
 #sigma_3 = z - np.sqrt( 9*(z-sigma_1)**2 - 9* Energie(k_kante_b)/13.60569  )
-write('build/test1.tex', make_SI(E_k_kante_b, r' ', figures=2))
-write('build/test2.tex', make_SI(sigma_1, r' ', figures=2))
-write('build/test3.tex', make_SI(R, r' ', figures=2))
+
 
 
 
@@ -308,10 +309,12 @@ E_k_kante_a_rel = abs(E_k_kante_a_lit - E_k_kante_a)/E_k_kante_a_lit * 100
 E_k_kante_b_rel = abs(E_k_kante_b_lit - E_k_kante_b)/E_k_kante_b_lit * 100
 sigma_1_rel = abs(sigma_1 - sigma_1_lit)/sigma_1_lit * 100
 sigma_2_rel = abs(sigma_2 - sigma_2_lit)/sigma_2_lit * 100
+sigma_3_rel = abs(sigma_3 - sigma_3_lit)/sigma_3_lit * 100
 write('build/E_k_kante_a_rel_cu.tex', make_SI(E_k_kante_a_rel, r'\percent', figures=1))
 write('build/E_k_kante_b_rel_cu.tex', make_SI(E_k_kante_b_rel, r'\percent', figures=1))
 write('build/sigma_1_rel_cu.tex', make_SI(sigma_1_rel, r'\percent', figures=1))
 write('build/sigma_2_rel_cu.tex', make_SI(sigma_2_rel, r'\percent', figures=1))
+write('build/sigma_3_rel_cu.tex', make_SI(sigma_3_rel, r'\percent', figures=1))
 
 #############Auflösungsvermögen#############
 #Nehme lineare Steigung zwischen Peaks an
@@ -406,6 +409,8 @@ sigma_ge = Sigma(32,E_ge*e,1,3 )
 write('build/E_ge.tex', make_SI(E_ge*10**(-3), r'\kilo\electronvolt', figures=2))
 write('build/sigma_ge.tex', make_SI(sigma_ge, r' ', figures=2))
 
+E_ge_lit =  11.1040001
+write('build/sigma_ge_lit.tex', make_SI(Sigma(32,E_ge_lit*e,1,3 ), r' ', figures=2))
 
 ##################Zirkonium##############
 
@@ -431,10 +436,14 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 
 plt.savefig('build/plot_zr.pdf')
 
+E_zr_lit = 17.9979992
 E_zr = Energie(kante)
 sigma_zr = Sigma(40,E_zr*e,1,3 )
 write('build/E_zr.tex', make_SI(E_zr*10**(-3), r'\kilo\electronvolt', figures=2))
 write('build/sigma_zr.tex', make_SI(sigma_zr, r' ', figures=2))
+
+write('build/sigma_zr_lit.tex', make_SI(Sigma(40,E_zr_lit*e,1,3 ), r' ', figures=2))
+
 
 ################Strontium################
 
@@ -460,11 +469,13 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 
 plt.savefig('build/plot_sr.pdf')
 
+E_sr_lit =  16.1049995
 E_sr = Energie(kante)
 sigma_sr = Sigma(38,E_sr*e,1,3 )
 write('build/E_sr.tex', make_SI(E_sr*10**(-3), r'\kilo\electronvolt', figures=2))
 write('build/sigma_sr.tex', make_SI(sigma_sr, r' ', figures=2))
-
+write('build/sigma_sr_lit.tex', make_SI(Sigma(38,E_sr_lit*e,1,3 )
+, r' ', figures=2))
 ##############Wismut#############
 
 theta = np.genfromtxt('messdaten/mess_wi_winkel.txt', unpack=True)

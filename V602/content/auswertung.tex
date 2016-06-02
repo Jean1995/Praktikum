@@ -153,10 +153,14 @@ beziehungsweise eine maximalen Energie von
 erwartet.
 \subsubsection{Bestimmung der Abschirmkonstanten für Kupfer}
 Aus den Energien $E_{K_\alpha}$ und $E_{K_\beta}$ lassen sich aus Formel \eqref{eqn:std} die Abschirmkonstanten $\sigma_K$ bestimmen.
-Es ergeben sich hier für die beiden Peaks die Abschirmkonstanten
+Für $sigma_1$ wird verwendet, dass die Absorptionskanten hier in etwa mit der Bindungsenergie des Elektrons übereinstimmt.
+Die Abschirmkonstante wird somit nach Formel \eqref{eqn:std} ermittelt.
+Für $sigma_2$ wird die Abschirmkonstante aus der Beziehung $E_{k_\alpha} = E_2 - E_1$, für $sigma_3$ aus der Beziehung  $E_{k_\beta} = E_3 - E_1$ gewonnen.
+Es ergeben sich somit die Abschirmkonstanten
 \begin{align*}
-  \sigma_{\text{K}_{\alpha}} &= \input{build/sigma_1_cu.tex} & \sigma_{\text{K}_{\alpha}, \text{lit}} &= \input{build/sigma_1_lit_cu.tex} \\
-  \sigma_{\text{K}_{\beta}} &= \input{build/sigma_2_cu.tex} & \sigma_{\text{K}_{\beta}, \text{lit}} &= \input{build/sigma_2_lit_cu.tex}
+  \sigma_{1} &= \input{build/sigma_1_cu.tex} & \sigma_{1, \text{lit}} &= \input{build/sigma_1_lit_cu.tex} \\
+  \sigma_{2} &= \input{build/sigma_2_cu.tex} & \sigma_{2, \text{lit}} &= \input{build/sigma_2_lit_cu.tex} \\
+  \sigma_{3} &= \input{build/sigma_3_cu.tex} & \sigma_{3, \text{lit}} &= \input{build/sigma_3_lit_cu.tex}
 \end{align*}
 sowie im Vergleich dazu die dazugehörigen Literaturwerte, welche mithilfe der Literaturwerte \cite{energie} für die Energien errechnet werden.
 
@@ -212,7 +216,7 @@ und für den zweiten Peak Auflösungswerte von
 \end{align*}
 
 \subsection{Analyse der Absorbtionsspektren}
-Für die Elemente Germanium ($Z=32$), Zirkonium ($Z=40$) und Strontium ($Z=38$) werden wie in der Durchführung angegegeben die Absorbtionsspektren aufgenommen.
+Für die Elemente Germanium ($Z=32$), Zirkonium ($Z=40$) und Strontium ($Z=38$) werden wie in der Durchführung angegeben die Absorbtionsspektren aufgenommen.
 In den Abbildungen \ref{fig:plot4}, \ref{fig:plot5} und \ref{fig:plot6} sind die Messungen jeweils graphisch dargestellt, wobei in blau die Linie eingezeichnet wird, an der die K-Kante abgelesen wird.
 
 \begin{figure}
@@ -247,6 +251,12 @@ Hieraus ergeben sich nach Formel \eqref{eqn:std} die Abschirmzahlen
   \sigma_\text{Ge} &= \input{build/sigma_ge.tex}, \\
   \sigma_\text{Zr} &= \input{build/sigma_zr.tex}, \\
   \sigma_\text{Sr} &= \input{build/sigma_sr.tex}. \\
+\end{align*}
+Die Literaturwerte, welche anhand der Energien der K-Kante aus der Literatur \cite{energie} berechnet werden, sind
+\begin{align*}
+  \sigma_\text{Ge, lit} &= \input{build/sigma_ge_lit.tex}, \\
+  \sigma_\text{Zr, lit} &= \input{build/sigma_zr_lit.tex}, \\
+  \sigma_\text{Sr, lit} &= \input{build/sigma_sr_lit.tex}. \\
 \end{align*}
 
 \subsection{Bestimmung der Rydbergkonstante aus dem Moseleyschen Gesetz}
