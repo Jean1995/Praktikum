@@ -405,12 +405,17 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/plot_ge.pdf')
 
 E_ge = Energie(kante)
-sigma_ge = Sigma(32,E_ge*e,1,3 )
+#sigma_ge = Sigma(32,E_ge*e,1,3 )
+sigma_ge = 32 - np.sqrt(E_ge*e/R)
 write('build/E_ge.tex', make_SI(E_ge*10**(-3), r'\kilo\electronvolt', figures=2))
 write('build/sigma_ge.tex', make_SI(sigma_ge, r' ', figures=2))
 
 E_ge_lit =  11.1040001
-write('build/sigma_ge_lit.tex', make_SI(Sigma(32,E_ge_lit*e,1,3 ), r' ', figures=2))
+#write('build/sigma_ge_lit.tex', make_SI(Sigma(32,E_ge_lit*e,1,3 ), r' ', figures=2))
+sigma_ge_lit = 32 - np.sqrt(E_ge_lit*e/R)
+
+write('build/sigma_ge_lit.tex', make_SI(sigma_ge_lit, r' ', figures=2))
+
 
 ##################Zirkonium##############
 
@@ -438,11 +443,15 @@ plt.savefig('build/plot_zr.pdf')
 
 E_zr_lit = 17.9979992
 E_zr = Energie(kante)
-sigma_zr = Sigma(40,E_zr*e,1,3 )
+#sigma_zr = Sigma(40,E_zr*e,1,3 )
+sigma_zr = 40 - np.sqrt(E_zr*e/R)
 write('build/E_zr.tex', make_SI(E_zr*10**(-3), r'\kilo\electronvolt', figures=2))
 write('build/sigma_zr.tex', make_SI(sigma_zr, r' ', figures=2))
 
-write('build/sigma_zr_lit.tex', make_SI(Sigma(40,E_zr_lit*e,1,3 ), r' ', figures=2))
+sigma_zr_lit = 40 - np.sqrt(E_zr_lit*e/R)
+
+#write('build/sigma_zr_lit.tex', make_SI(Sigma(40,E_zr_lit*e,1,3 ), r' ', figures=2))
+write('build/sigma_zr_lit.tex', make_SI(sigma_zr_lit, r' ', figures=2))
 
 
 ################Strontium################
@@ -471,11 +480,16 @@ plt.savefig('build/plot_sr.pdf')
 
 E_sr_lit =  16.1049995
 E_sr = Energie(kante)
-sigma_sr = Sigma(38,E_sr*e,1,3 )
+#sigma_sr = Sigma(38,E_sr*e,1,3 )
+sigma_sr = 38 - np.sqrt(E_sr*e/R)
 write('build/E_sr.tex', make_SI(E_sr*10**(-3), r'\kilo\electronvolt', figures=2))
 write('build/sigma_sr.tex', make_SI(sigma_sr, r' ', figures=2))
-write('build/sigma_sr_lit.tex', make_SI(Sigma(38,E_sr_lit*e,1,3 )
+#write('build/sigma_sr_lit.tex', make_SI(Sigma(38,E_sr_lit*e,1,3 ), r' ', figures=2))
+
+sigma_sr_lit = 38 - np.sqrt(E_sr_lit*e/R)
+write('build/sigma_sr_lit.tex', make_SI(sigma_sr_lit
 , r' ', figures=2))
+
 ##############Wismut#############
 
 theta = np.genfromtxt('messdaten/mess_wi_winkel.txt', unpack=True)
