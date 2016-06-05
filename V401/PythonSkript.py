@@ -160,6 +160,19 @@ from error_calculation import(
 
 
 
+def a(z,p):
+    """
+        Args:
+            Winkel: Theta [degree]
+        Returns:
+            Energie: E [eV]
+    """
+    a = (z)/(2*0.05)*296.15/273.15*1.0132/p
+    return a
+
+
+
+
 z_1, s_1 = np.genfromtxt('messdaten/1.txt', unpack=True)
 s_1 = s_1/5.046*10**(-3)
 lambda_laser = 2*s_1/z_1
@@ -191,6 +204,13 @@ write('build/lambda_laser.tex', make_SI(lambda_laser * 1e9, r'\nano\metre', figu
 z_2, p_2 = np.genfromtxt('messdaten/2.txt', unpack=True)
 n_luft = 1 + (z_2*lambda_laser)/(2*0.05)*296.15/273.15*1.0132/p_2  # 1+(z*lambda)/(2*b)*(T)/(T_0)*(p_0)/(Delta_p)
 
+this_a  = a(z_2,p_2)
+mean_a  = np.mean(this_a)
+delta_a = MeanError(noms(this_a))
+mean_lambda_laser = unp.nominal_values(lambda_laser)
+delta_lambda_laser = unp.std_devs(lambda_laser)
+gauss = np.sqrt((mean_lambda_laser*delta_a)**2+(mean_a*delta_lambda_laser)**2)
+
 write('build/Tabelle_b.tex', make_table([z_2, p_2, unp.nominal_values(n_luft)],[0, 1, 5]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
 write('build/Tabelle_b_texformat.tex', make_full_table(
     'Messdaten bezüglich des Brechungsindex von Luft.',
@@ -203,8 +223,7 @@ write('build/Tabelle_b_texformat.tex', make_full_table(
     r'$\Delta p \:/\: \si{\bar}$',
     r'$n$']))
 
-#n_luft = ufloat(np.mean(n_luft) ,MeanError(noms(n_luft)))
-n_luft = np.mean(n_luft)
+n_luft = ufloat(unp.nominal_values(np.mean(n_luft)) ,gauss)
 write('build/n_luft.tex', make_SI(n_luft, r'', figures=2))
 write('build/n_luft_lit.tex', make_SI(1.000292, r'', figures=6))   #http://www.chemie.de/lexikon/Brechzahl.html
 n_luft_rel = abs(unp.nominal_values(n_luft)-1.000292)/1.000292 *100
@@ -212,7 +231,15 @@ write('build/n_luft_rel.tex', make_SI(n_luft_rel, r'\percent', figures=3))
 
 n_luft_neu = 1 + (z_2*lambda_laser_x)/(2*0.05)*296.15/273.15*1.0132/p_2
 
-n_luft_neu = np.mean(n_luft_neu)
+
+this_a  = a(z_2,p_2)
+mean_a  = np.mean(this_a)
+delta_a = MeanError(noms(this_a))
+mean_lambda_laser_x = unp.nominal_values(lambda_laser_x)
+delta_lambda_laser_x = unp.std_devs(lambda_laser_x)
+gauss = np.sqrt((mean_lambda_laser_x*delta_a)**2+(mean_a*delta_lambda_laser_x)**2)
+
+n_luft_neu = ufloat(unp.nominal_values(np.mean(n_luft_neu)) ,gauss)
 write('build/n_luft_neu.tex', make_SI(n_luft_neu, r'', figures=1))
 n_luft_rel_neu = abs(unp.nominal_values(n_luft_neu)-1.000292)/1.000292 *100
 write('build/n_luft_rel_neu.tex', make_SI(n_luft_rel_neu, r'\percent', figures=3))
@@ -221,6 +248,13 @@ write('build/n_luft_rel_neu.tex', make_SI(n_luft_rel_neu, r'\percent', figures=3
 
 z_3, p_3 = np.genfromtxt('messdaten/3.txt', unpack=True)
 n_gas = 1 + (z_3*lambda_laser)/(2*0.05)*296.15/273.15*1.0132/p_3  # 1+(z*lambda)/(2*b)*(T)/(T_0)*(p_0)/(Delta_p)
+
+
+this_a  = a(z_3,p_3)
+mean_a  = np.mean(this_a)
+delta_a = MeanError(noms(this_a))
+gauss = np.sqrt((mean_lambda_laser*delta_a)**2+(mean_a*delta_lambda_laser)**2)
+
 
 write('build/Tabelle_c.tex', make_table([z_3, p_3, unp.nominal_values(n_gas)],[0, 1, 5]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
 write('build/Tabelle_c_texformat.tex', make_full_table(
@@ -234,8 +268,7 @@ write('build/Tabelle_c_texformat.tex', make_full_table(
     r'$\Delta p \:/\: \si{\bar}$',
     r'$n$']))
 
-#n_luft = ufloat(np.mean(n_luft) ,MeanError(noms(n_luft)))
-n_gas = np.mean(n_gas)
+n_gas = ufloat(unp.nominal_values(np.mean(n_gas)) ,gauss)
 write('build/n_gas.tex', make_SI(n_gas, r'', figures=1))
 write('build/n_gas_lit.tex', make_SI(1.3811, r'', figures=4))   #http://www.chemicalbook.com/ChemicalProductProperty_DE_CB4763080.htm
 n_gas_rel = abs(unp.nominal_values(n_gas)-1.3811)/1.3811 *100
