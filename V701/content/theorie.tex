@@ -15,18 +15,18 @@ Dabei hängt auch hier der Energieverlust pro Wegstück von der Dichte des Mater
 Bei einer hohen Geschwindigkeit, und somit großer Energie der Strahlung, ist es jedoch wahrscheinlicher, dass es zu keiner Wechselwirkung kommt, da die Zeit, in der sich der Heliumkern in Wechselwirkungsnähe befindet, geringer ist.\\
 Bei hinreichend großen Energien kann der Energieverlust pro Wegstück über die Bethe-Bloch-Gleichung,
 \begin{equation}
-  -\frac{dE_{\alpha}}{dx} = \frac{z²e^4}{4 \pi \epsilon_0 m_e} \frac{nZ}{v²} \ln{\frac{2m_e v²}{I}},
+  -\frac{\symup{d}E_{\alpha}}{\symup{d}x} = \frac{z²e^4}{4 \pi \epsilon_0 m_e} \frac{nZ}{v²} \ln{\left(\frac{2m_e v²}{I}\right)},
 \end{equation}
 bestimmt werden, wobei $z$ die Ladung, $v$ die Geschwindigkeit, $Z$ die Ordnungszahl, $n$ die Teilchendichte und $I$ die Ionisationsenergie des Targetgases ist.
 Sie ignoriert jedoch quantenmechanische Effekte wie zum Beispiel den Kernspin.\\
 Die Reichweite ergibt sich dann über das Integral
 \begin{equation}
-  R = \int_0^{E_{\alpha}} -\frac{dE_{\alpha}}{dx} dE_{\alpha}.
+  R = \int_0^{E_{\alpha}} -\frac{\symup{d}E_{\alpha}}{\symup{d}x} \symup{d}E_{\alpha}.
 \end{equation}
 Da bei geringen Energien vermehrt Ladungsaustauschprozesse stattfinden, verliert die Bethe-Bloch-Gleichung ihre Gültigkeit und somit wird die mittlere Reichweite über empirisch gewonnene Kurven bestimmt.
 Für sie gilt für $\alpha$-Strahlung in Luft die Gleichung
 \begin{equation}
-  R_m = \num{3.1} \cdot E_{\alpha}^{3/2},
+  R_m = \num{3.1} \cdot E_{\alpha}^{3/2}, \label{emp}
 \end{equation}
 wobei die Energie in Megaelektronenvolt angegeben in einem Bereich unter $\SI{2,5}{\mega\electronvolt}$ liegen sollte und $R_m$ in Millimeter angegeben wird.
 Unter konstanter Temperatur und konstantem Volumen ist die Reichweite proportional zum umgebenden Druck $p$.
