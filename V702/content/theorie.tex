@@ -1,6 +1,6 @@
 \section{Zielsetzung}
 
-Das Ziel des vorliegenden Experimentes ist es, die Halbwertszeiten von Nukliden zu bestimmen, die ein $T$ im Bereich von Minuten bis Stunden besitzen.
+Das Ziel des vorliegenden Experimentes ist es, die Halbwertszeiten $T$ von Nukliden zu bestimmen, die ein $T$ im Bereich von Minuten bis Stunden besitzen.
 Um diese auch im Versuch messen zu können, müssen die Isotope zeitnah erzeugt werden.
 Das geschieht hier durch den Beschuss mit Neutronen.
 
@@ -12,7 +12,8 @@ Um freie Neutronen, welche natürlich nicht vorkommen, zu erzeugen, werden Radiu
 \begin{align*}
 \ce{ ^{226}_88Ra -> ^{222}_86Rn + ^{4}_2\symup{\alpha}  }
 \end{align*}
-Dieser Zerfall entsteht, da das Radium seine energetisch günstigste Form annehmen möchte, welches durch den $\alpha$-Zerfall begünstigt wird.
+Dieser Zerfall entsteht, da ein energetisch günstigerer Zustand für das Atom existiert.
+Hierdurch wird der $\alpha$-Zerfall begünstigt.
 Mit diesen $\alpha$-Teichen wird Beryllium beschossen, welches somit unter der Reaktion
 \begin{align*}
 \ce{ ^{9}_4Be + ^{4}_2\symup{\alpha} -> ^{12}_6C + ^{1}_0n }
@@ -20,7 +21,7 @@ Mit diesen $\alpha$-Teichen wird Beryllium beschossen, welches somit unter der R
 ein Neutron emittiert.
 Die Neutronen, welche eine Energie von bis zu $\SI{13.7}{\mega\electronvolt}$ besitzen können, werden durch Abschirmung abgebremst.
 Der Vorteil dieser Abbremsung wird im späteren Verlauf des Kapitels erläutert werden.
-Nach den Gesetzten der Impulserhaltung empfiehlt sich für einen idealen Bremseffekt Wasserstoff bzw. Paraffin als Bremsmittel, was beim Versuchsaufbau berückschtigt wird.
+Nach den Gesetzen der Impulserhaltung empfiehlt sich für einen idealen Bremseffekt Wasserstoff bzw. Paraffin als Bremsmittel, was beim Versuchsaufbau berückschtigt wird.
 Die entstehenden Neutronen mit einer mittleren Geschwindigkeit von ca. $\SI{2200}{\metre\per\second}$ heißen thermische Neutronen.
 
 
@@ -34,8 +35,8 @@ Er zerfällt nach kurzer Zeit im Bereich von ca. $\SI{e-16}{\second}$ unter Abga
 \begin{align*}
 \ce{ ^{m+1}_zA^{*} -> ^{m+1}_zA + \gamma }.
 \end{align*}
-Ein stabiles Nuklid besitzt in der Regel $\SI{20}{\percent}$ bis $\SI{50}{\percent}$ höher als die Protonenzahl, durch das nun vorhandene zusätzliche Neutron ist der Kern nun instabil.
-Er zerfällt nun unter Berücksichtigung der zu messenden Halbwertszeit $T$ in einem $\beta$-Zerfall:
+Ein stabiles Nuklid besitzt in der Regel $\SI{20}{\percent}$ bis $\SI{50}{\percent}$ höher als die Protonenzahl, durch das vorhandene zusätzliche Neutron ist der Kern instabil.
+Er zerfällt unter Berücksichtigung der zu messenden Halbwertszeit $T$ in einem $\beta$-Zerfall:
 \begin{align*}
   \ce{ ^{m+1}_zA -> ^{m+1}_{z+1}C + e- + \bar{\symup{\nu}}_e }.
 \end{align*}
@@ -46,28 +47,29 @@ Da die Masse des Reaktanten größer ist als die Masse der Produkte entsteht nac
 zusätzliche kinetische Energie.
 
 \subsection{Wirkungsquerschnitt}
-Um zu Beschreiben, wie groß die Wahrscheinlichkeit eines Neutroneneinfanges ist, existiert der Wirkungsquerschnitt $\sigma$.
+Die Beschreibung, wie groß die Wahrscheinlichkeit eines Neutroneneinfanges ist, ist durch den Wirkungsquerschnitt $\sigma$ gegeben.
 Er ist definiert als Kernfläche, die benötigt wäre, damit jedes eintreffende Elektron eingefangen wird.
-Die Größe ist vornehmlich abhängig von der kinetischen Energie der Neutronen und somit von deren Geschwindigkeit, wobei dieser Zusammenhang durch die Formel
-\begin{equation}
-  \sigma(E) = \sigma_0 \sqrt{\frac{E_\text{r,i}}{E}} \frac{\tilde{c}}{ (E - E_\text{r,i})^2 + \tilde{c} }
-\end{equation}
-beschrieben wird.
-Hierbei sind $\tilde{c}$ und $\sigma_0$ Konstanten für die jeweilige Reaktion, $E$ die Neutronen Energie sowie $E_\text{r,i}$ das $i$-te Energieniveau des Zwischenkerns.
-Für eine kleine Neutronenenergie, wie beispielsweise im vorliegenden Versuch, kann man das Verhalten des Wirkungsquerschnitts zu
+Diese Größe ist vornehmlich von der kinetischen Energie der Neutronen und somit von deren Geschwindigkeit abhängig.
+%Die Größe ist vornehmlich abhängig von der kinetischen Energie der Neutronen und somit von deren Geschwindigkeit, wobei dieser %Zusammenhang durch die Formel
+%\begin{equation}
+%  \sigma(E) = \sigma_0 \sqrt{\frac{E_\text{r,i}}{E}} \frac{\tilde{c}}{ (E - E_\text{r,i})^2 + \tilde{c} }
+%\end{equation}
+%beschrieben wird.
+%Hierbei sind $\tilde{c}$ und $\sigma_0$ Konstanten für die jeweilige Reaktion, $E$ die Neutronen Energie sowie $E_\text{r,i}$ das $i$-te Energieniveau des Zwischenkerns.
+Für eine kleine Neutronenenergie, wie beispielsweise im vorliegenden Versuch, kann das Verhalten des Wirkungsquerschnitts zu
 \begin{equation}
   \sigma \sim \frac{1}{\sqrt{E}} \sim \frac{1}{v}
 \end{equation}
-nähern.
+genähert werden.
 
 \subsection{Bestimmung der Halbwertszeit}
 Das Zerfallsverhalten eines instabilen Isotops wird durch den exponentiellen Zusammenhang
 \begin{equation}
-  N(t) = N_0 \exp{-\lambda t}
+  N(t) = N_0 \exp{(-\lambda t)}
   \label{eqn:zerfallsverhalten}
 \end{equation}
 beschrieben, wobei $N_0$ die Anzahl der zu Beginn vorhandenen instabilen Kerne und $\lambda$ die Zerfallskonstante beschreibt.
-Die Halbwertszeit ist nun die Zeit, nach der nur noch die Hälfte der ursprünglich vorhandenen instabilen Kerne vorhanden sind.
+Die Halbwertszeit ist die Zeit, nach der nur noch die Hälfte der ursprünglich vorhandenen instabilen Kerne vorhanden sind.
 Hieraus folgt direkt der Zusammenhang der Halbwertszeit mit der Zerfallskonstante zu
 \begin{equation}
   T = \ln{\frac{2}{\lambda}}.
@@ -84,7 +86,7 @@ Zusammen mit dem in Formel \eqref{eqn:zerfallsverhalten} beschriebenen Zerfallsv
   \label{eqn:totalwichtigeformel}
 \end{equation}
 aus welcher $\lambda$ und somit auch $T$ bestimmt werden kann.
-Zu Beachten bei dieser Methode ist die richtige Messzeit $\increment t$, da bei zu geringer Messzeit statistische Fehler durch eine zu geringe Anzahl von Zerfällen auftreten können, bei einer zu großen Messzahl kann der Zusammenhang nicht mehr genau bestimmt werden und $T$ erhält einen statistischen Fehler.\\
+Bei dieser Methode muss eine angemessene Messzeit $\increment t$ beachtet werden, da bei zu geringer Messzeit statistische Fehler durch eine zu geringe Anzahl von Zerfällen auftreten können, bei einer zu großen Messzeit kann der Zusammenhang nicht mehr genau bestimmt werden und $T$ erhält einen statistischen Fehler.\\
 Eine weitere Besonderheit tritt bei Isotopgemischen mit verschiedenen Halbwertszeiten sowie bei Isotopen mit energetisch verschieden ablaufenden Zerfällen mit ebenfalls unterschiedlicher Halbwertszeit auf.
 Hier ist zu beachten, dass zunächst die Zerfälle beider Isotope überlagert werden.
 Durch das Bestimmen der Halbwertszeit des längerlebigen Isotops im späteren zeitlichen Bereich und das Berücksichtigen dieser Halbwertszeit bei der Auswertung des anderen Isotops kann diese Erscheinung jedoch ebenfalls behandelt werden.

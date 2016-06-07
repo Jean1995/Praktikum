@@ -106,6 +106,10 @@ ergibt.
 
 Zur Bestimmung der Halbwertszeit von Indium wird ein Messintervall von $\increment t = \SI{220}{\second}$ gewählt.
 Zunächst wird der Nulleffekt \eqref{eqn:nulleffekt} von den Messdaten abgezogen.
+Die daraus resultierenden Messdaten sind in Tabelle \ref{tabulatore} angegeben.
+
+\input{build/tabulatore_texformat.tex}
+
 Daraufhin werden die gemessenen Impulse in einem halblogarithmischen Diagramm gegen die Messzeit $t$ abgetragen.
 Da der radioaktive Zerfall einer statistischen Poissonverteilung unterliegt, bestimmt sich der Fehler der Messwerte zu
 \begin{align*}
@@ -117,7 +121,7 @@ Nach Gleichung \eqref{eqn:totalwichtigeformel} kann aus einer linearen Ausgleich
 Der lineare Fit wird hierbei in Python mit SciPy erstellt.
 Es ergeben sich die Parameter
 \begin{align*}
-  m &= \input{build/parameter_a_indium.tex}, \\
+  -\lambda = m &= \input{build/parameter_a_indium.tex}, \\
   b &= \input{build/parameter_b_indium.tex}.
 \end{align*}
 Aus dem Parameter $m$ ergibt sich nach Formel \eqref{eqn:halbwertszeit} eine Halbwertszeit
@@ -139,17 +143,62 @@ Die Ergebnisse der Messwerte und des Fits sind in Abbildung \ref{fig:plot1} darg
 
 Zur Bestimmung der Halbwertszeiten von Rhodium wird ein Messintervall von $\increment t = \SI{17}{\second}$ gewählt.
 Für die Messwerte wird zunächst der Nulleffekt \eqref{eqn:nulleffekt} abgezogen.
-Die korrigierten Messwerte werden nun im Diagramm \ref{fig:plot2} halblogarithmisch in rot zusammen mit dem jeweiligen Fehler gegen die Zeit $t$ aufgetragen.
+Die resultierenden Messwerte sind in Tabelle \ref{tab:2} angegeben.
+
+%\input{build/tabulatore_texformat2.tex}
+
+%\input{build/tabulatore_texformat3.tex}
+
+
+\begin{table}
+  \hspace*{\fill}
+  \begin{subfigure}{0.40\textwidth}
+  \centering
+  %\caption{Messdaten Teil 1.}
+  \label{tab:2a}
+  \sisetup{table-format=3.4}
+  \begin{tabular}{c c c}
+    \toprule
+    {$t \:/\: \si{\second}$} & {$N$} & {$N-N_0$}\\
+    \midrule
+    \input{build/tabulatore2.tex}
+    \bottomrule
+  \end{tabular}
+\end{subfigure}
+\hspace*{\fill}
+\begin{subfigure}{0.40\textwidth}
+  \centering
+  %\caption{Messdaten Teil 2.}
+  \label{tab:2b}
+  \sisetup{table-format=3.4}
+  \begin{tabular}{c c c}
+    \toprule
+    {$t \:/\: \si{\second}$}		& {$N$}		&
+  	{$N-N_0$}		\\
+    \midrule
+    \input{build/tabulatore3.tex}
+    \bottomrule
+  \end{tabular}
+\end{subfigure}
+\\
+\hspace*{\fill}
+\hspace*{\fill}
+\caption{Messdaten zur Bestimmung der Halbwertszeit von Rhodium.}
+\label{tab:2}
+\end{table}
+
+
+Die korrigierten Messwerte werden im Diagramm \ref{fig:plot2} halblogarithmisch in rot zusammen mit dem jeweiligen Fehler gegen die Zeit $t$ aufgetragen.
 \begin{figure}
   \centering
   \includegraphics{build/ausgleich2.pdf}
   \caption{Messdaten und lineare Fits zur Bestimmung der Halbwertszeiten von Rhodium.}
   \label{fig:plot2}
 \end{figure}
-Aufgrund der unterschiedlichen Halbwertszeiten werden zunächst die letzten 30 Messwerte betrachtet, bei denen davon ausgegangen wird, dass die Zerfälle des kurzlebigeren Nuklids hier vernachlässigbar klein sind.
+Aufgrund der unterschiedlichen Halbwertszeiten werden zunächst die letzten 30 Messwerte betrachtet, bei denen davon ausgegangen wird, dass die Anzahl der Zerfälle des kurzlebigeren Nuklids hier vernachlässigbar klein sind.
 Der lineare Fit der logarithmierten Werte nach Formel \eqref{eqn:totalwichtigeformel} ergibt somit die Parameter
 \begin{align*}
-  m &= \input{build/parameter_a_rhodium.tex}, \\
+  -\lambda = m &= \input{build/parameter_a_rhodium.tex}, \\
   b &= \input{build/parameter_b_rhodium.tex}.
 \end{align*}
 Aus dem Parameter $m$, welcher der Zerfallskonstante $\lambda$ entspricht, kann nach Formel \eqref{eqn:halbwertszeit} die Halbwertszeit von $\ce{^{104i}_45Rh }$ zu
@@ -161,7 +210,7 @@ Aus dieser ermittelten Halbwertszeit kann nun mithilfe des linearen Fits die Aus
 Diese korrigierten Messwerte sind in grün in Diagramm \ref{fig:plot2} mit dem jeweiligen Fehler dargestellt.
 Für diese Werte wird eine weitere lineare Regression durchgeführt, welche auf die Parameter
 \begin{align*}
-  m &= \input{build/parameter_c_rhodium.tex}, \\
+  -\lambda = m &= \input{build/parameter_c_rhodium.tex}, \\
   b &= \input{build/parameter_d_rhodium.tex}
 \end{align*}
 führt.
@@ -169,3 +218,12 @@ Analog ergibt sich hieraus eine Halbwertszeit von $\ce{^{104}_45Rh }$ zu
 \begin{align*}
   T_\text{Rh,2} &= \input{build/halbzeit_rhodium2.tex}.
 \end{align*}
+Aus beiden Zerfallskonstanten $\lambda_1$ und $\lambda_2$ kann somit eine Summenkurve berechnet werden, welche den Gesamtzerfall beschreibt.
+Diese Kurve ist in Abbildung \ref{fig:plot3} angegeben.
+
+\begin{figure}
+  \centering
+  \includegraphics{build/ausgleich3.pdf}
+  \caption{Summenkurve aus den ermittelten Zerfallskonstanten.}
+  \label{fig:plot3}
+\end{figure}

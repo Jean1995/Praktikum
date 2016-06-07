@@ -160,23 +160,39 @@ from matplotlib.ticker import FormatStrFormatter
 import math
 
 Nullprosec = ((210+191)/2)/900
-write('build/nulleffekt.tex', make_SI(Nullprosec, r'\per\second', figures=1))
+write('build/nulleffekt.tex', make_SI(Nullprosec, r'\per\second', figures=3))
+
+
+
+
 
 Indium  = np.genfromtxt('messdaten/Indium.txt', unpack=True)
-Indium  = np.log(Indium - Nullprosec*220)
 
+
+write('build/tabulatore.tex', make_table([Indium, Indium - Nullprosec*220],[0, 0]))
+write('build/tabulatore_texformat.tex', make_full_table(
+    'Messdaten zur Bestimmung der Halbwertszeit von Indium.',
+    'tabulatore',
+    'build/tabulatore.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                            # die Multicolumns sein sollen
+    [
+    r'$\text{Impulse}$',
+    r'$\text{Impulse abzüglich Nulleffekt}$']))
+
+Indium  = np.log(Indium - Nullprosec*220)
 Zeit = np.arange(1,18)
 Zeit = Zeit*220
 np.savetxt('messdaten/test.txt', np.column_stack([Zeit]), header="Impulse /220s")
 
 params = ucurve_fit(reg_linear, Zeit, Indium)             # linearer Fit
 a, b = params
-write('build/parameter_a_indium.tex', make_SI(a, r'\per\second', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_a_indium.tex', make_SI(a*10**4, r'\per\second','e-4', figures=1))       # type in Anz. signifikanter Stellen
 write('build/parameter_b_indium.tex', make_SI(b, r'', figures=2))      # type in Anz. signifikanter Stellen
 write('build/lambda_indium.tex', make_SI(-a, r'\per\second', figures=2))
 write('build/halbzeit_indium.tex', make_SI(np.log(2)/(-a)/60, r'\minute', figures=2))
 write('build/halbzeit_indium_lit.tex', make_SI(54.29, r'\minute', figures=2)) #http://www.periodensystem-online.de/index.php?id=isotope&el=49&mz=116&nrg=0.1273&show=nuklid
-write('build/halbzeit_indium_rel.tex', make_SI(abs(54.29-np.log(2)/(-a)/60)/54.29*100, r'\percent', figures=2))
+write('build/halbzeit_indium_rel.tex', make_SI(abs(54.29-np.log(2)/(-a.n)/60)/54.29*100, r'\percent', figures=2))
 
 
 
@@ -211,6 +227,37 @@ plt.clf()
 
 
 Rhodium = np.genfromtxt('messdaten/Rhodium.txt', unpack=True) # <- Alle Messwerte
+
+r_t_1, r_t_2 = np.array_split(Rhodium, 2)
+r_t_11, r_t_21 = np.array_split(Rhodium - Nullprosec*17, 2)
+
+t_1, t_2 = np.array_split(17*np.arange(1,44), 2)
+
+
+write('build/tabulatore2.tex', make_table([t_1, r_t_1, r_t_11],[0, 0, 0]))
+write('build/tabulatore_texformat2.tex', make_full_table(
+    'Messdaten zur Bestimmung der Halbwertszeit von Rhodium Teil 1.',
+    'tabulatore2',
+    'build/tabulatore2.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                            # die Multicolumns sein sollen
+    [
+    r'$t \:/\: \si{\second}$',
+    r'$N$',
+    r'$N-N_0$']))
+
+write('build/tabulatore3.tex', make_table([t_2, r_t_2, r_t_21],[0, 0, 0]))
+write('build/tabulatore_texformat3.tex', make_full_table(
+    'Messdaten zur Bestimmung der Halbwertszeit von Rhodium Teil 2.',
+    'tabulatore3',
+    'build/tabulatore3.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                            # die Multicolumns sein sollen
+    [
+    r'$t \:/\: \si{\second}$',
+    r'$N$',
+    r'$N-N_0$']))
+
 Rhodium = np.log(Rhodium - Nullprosec*17)
 
 Zeit = np.arange(1,44)
@@ -231,7 +278,7 @@ write('build/parameter_b_rhodium.tex', make_SI(b, r'', figures=2))      # type i
 write('build/lambda_rhodium.tex', make_SI(-a, r'\per\second', figures=2))
 write('build/halbzeit_rhodium.tex', make_SI(np.log(2)/(-a)/60, r'\minute', figures=2))
 write('build/halbzeit_rhodium_lit.tex', make_SI(13/3, r'\minute', figures=2)) #http://www.periodensystem-online.de/index.php?id=isotope&el=45&mz=104&nrg=0.129&show=nuklid
-write('build/halbzeit_rhodium_rel.tex', make_SI(abs(13/3-np.log(2)/(-a)/60)/(13/3)*100, r'\percent', figures=2))
+write('build/halbzeit_rhodium_rel.tex', make_SI(abs(13/3-np.log(2)/(-a.n)/60)/(13/3)*100, r'\percent', figures=2))
 
 Rhodium2 = np.genfromtxt('messdaten/Rhodium2.txt', unpack=True) # <- die ersten 14 Messwerte
 Zeit2 = np.arange(1,15)
@@ -303,9 +350,37 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/ausgleich2.pdf')
 
+#Gesamtplot
+
+plt.clf()
+plt.errorbar(Zeit2, np.exp(Rhodium2), fmt='gx', yerr=np.sqrt(np.exp(Rhodium2)), label='Korrigierte Messdaten für kurzlebiges Isotop')        # mit Fehlerbalken
+
+#plt.plot(Zeit, Rhodium, 'rx', label='logarithmierte Messdaten insgesamt')
+plt.errorbar(Zeit, np.exp(Rhodium), fmt='rx', yerr=np.sqrt(np.exp(Rhodium)), label='Gesamte Messdaten')        # mit Fehlerbalken
+
+t_plot = np.linspace(np.amin(Zeit2), np.amax(Zeit1), 1000)
+
+plt.plot(t_plot, np.exp(t_plot*a.n+b.n)+np.exp(t_plot*c.n+d.n), 'b-', label='Summenkurve')
+
+
+plt.yscale('log')
+#plt.xlim(t_plot[0], t_plot[-1])
+#ax = plt.gca()
+#ax.set_yscale('log')
+#plt.tick_params(axis='y', which='minor')
+#ax.yaxis.set_minor_formatter(FormatStrFormatter("%.0f"))
+
+plt.xlabel(r'$t \:/\: \si{\second}$')
+plt.ylabel(r'$\text{Impulse}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/ausgleich3.pdf')
+
+###
+
 write('build/parameter_c_rhodium.tex', make_SI(c, r'\per\second', figures=1))       # type in Anz. signifikanter Stellen
 write('build/parameter_d_rhodium.tex', make_SI(d, r'', figures=2))      # type in Anz. signifikanter Stellen
 write('build/lambda_rhodium2.tex', make_SI(-c, r'\per\second', figures=2))
 write('build/halbzeit_rhodium2.tex', make_SI(np.log(2)/(-c), r'\second', figures=2))
 write('build/halbzeit_rhodium2_lit.tex', make_SI(42.3, r'\second', figures=2)) #http://www.internetchemie.info/chemiewiki/index.php?title=Rhodium-Isotope
-write('build/halbzeit_rhodium2_rel.tex', make_SI(abs(42.3-np.log(2)/(-c))/(42.3)*100, r'\percent', figures=2))
+write('build/halbzeit_rhodium2_rel.tex', make_SI(abs(42.3-np.log(2)/(-c.n))/(42.3)*100, r'\percent', figures=2))
