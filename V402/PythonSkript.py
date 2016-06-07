@@ -114,8 +114,7 @@ from error_calculation import(
 ## c=np.array([Rx_mean_err])
 ## d=np.array([Lx_mean*1e3])
 ## e=np.array([Lx_mean_err*1e3])
-#
-# write('build/Tabelle_b.tex', make_table([a,b,c,d,e],[0, 1, 0, 1, 1]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+#e],[0, 1, 0, 1, 1]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
 # write('build/Tabelle_b_texformat.tex', make_full_table(
 #     'Messdaten Kapazitätsmessbrücke.',
 #     'table:A2',
@@ -157,3 +156,34 @@ from error_calculation import(
 
 ########## DIFFERENT STUFF ##########
 # R = const.physical_constants["molar gas constant"]      # Array of value, unit, error
+
+omega_l, omega_r, l = np.genfromtxt('messdaten/messung.txt', unpack=True)
+omega_l_deg= omega_l
+omega_r_deg = omega_r
+omega_l = omega_l/180 * np.pi # deg -> rad
+omega_r = omega_r/180 * np.pi # deg -> rad
+
+###### a #####
+
+phi_l = 345.9
+phi_r = 237.5
+phi_gemessen = 0.5 * (phi_r - phi_l)
+write('build/phi.tex', make_SI(phi_gemessen, r'\degree', figures=1)) # Rechne aber nicht mit dem Phi sondern mit 60
+phi = 60/180 * np.pi # 60 grad
+
+eta = np.pi - (omega_r - omega_l)
+n = ( np.sin( 0.5* (abs(eta)+phi) ) ) / ( np.sin(phi/2) )
+
+write('build/tab1.tex', make_table([l, omega_l_deg, omega_r_deg, eta, n],[1, 0, 0, 3, 3]))
+write('build/tab1_tex.tex', make_full_table(
+    'Messdaten zur Bestimmung der Brechungsindices.',
+    'tab1',
+    'build/tab1.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                            # die Multicolumns sein sollen
+    [
+    r'$\lambda \:/\: \si{\nano\metre}$',
+    r'$\Omega_l \:/\: \si{\degree}$',
+    r'$\Omega_r \:/\: \si{\second}$',
+    r'$\eta \:/\: \si{\radian}$',
+    r'$n \:/\: \si{\radian}$']))

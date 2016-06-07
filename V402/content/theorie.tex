@@ -41,3 +41,55 @@
 %     {Ersatzschaltbilder der verschiedenen Teilaufgaben.}
 %     \label{fig:Schaltungen}
 % \end{figure*}
+
+Als Dispersion wird in der Optik die Abhängigkeit des Brechungsindex $n$ von der Wellenlänge des Lichts bezeichnet.
+Dabei ist der Brechungsindex definiert als
+\begin{equation}
+  n = \frac{v_1}{v_2},
+\end{equation}
+also als Quotient der Ausbreitungsgeschwindigkeiten in zwei angrenzenden Medien.
+Das Verhalten eines Lichtsstrahles an einer solchen Grenzfläche kann unter Verwendung des Huygenschen Prinzps beschrieben werden.
+Dieses besagt, dass von jeden Punkt einer Wellenfront eine neue, kugelförmige Welle ausgeht.
+Aus elementargeometrischen Überlegungen folgt hieraus, dass das Snelliussche Brechungsgesetz
+\begin{equation}
+  \frac{\sin{\alpha}}{\sin{\beta}} = \frac{v_1}{v_2} = n
+\end{equation}
+gilt.
+Hierbei beschreibt $\alpha$ den Winkel zwischen dem Lot der Grenzfläche und dem einfallenden Strahl sowie $\beta$ den Winkel zwischen dem Lot der Grenzfläche und dem transmittierten Strahl.
+Zudem beschreiben $v_1$ und $v_2$ die dort vorhandenen Ausbreitungsgeschwindigkeiten.\\
+Im Allgemeinen ist der Brechungsindex $n(\lambda)$ jedoch, wie oben bereits erwähnt, eine komplexe, von der Wellenlänge abhängige Größe.
+Um diesen Zusammenhang herzuleiten, wird die Wechselwirkung zwischen dem elektrischen Feldes des Lichts und den Ladungen in der Materie betrachtet.
+Sie wird durch eine lineare, nicht homogene Differentialgleichung zweiter Ordnung beschrieben, bei der die Kraft des E-Feldes auf die Ladungen, eine lineare rücktreibende Kraft $( \propto a_h )$ durch die Auslenkung aus der Ruhelage sowie ein geschwindigkeitsabhängige Reibungsterm $(\propto f_h)$ berücksichtigt werden.
+Die Lösung dieser Differentialgleichung ergibt für die Polarisation $\vec{P_h}$ den Ausdruck
+\begin{equation}
+  \vec{P_h} = \frac{1}{\omega_h^2 - \omega^2 + i \frac{f_h}{m_h}\omega} \frac{N_q q_h^2}{m_h} \vec{E_0} \exp{( i \omega t )}
+\end{equation}
+beschrieben.
+Dabei steht $m_h$ für die Teilchenmasse, $q_h$ für die Teilchenladung, $N_h$ für die Teilchenanzahl pro Volumeneinheit und $\omega_h^2 = \frac{a_h}{m_h}$ für die Resonanzfrequenz des Systems.
+Unter Verwendung des Zusammenhangs
+\begin{equation}
+  \vec{P} = (\epsilon - 1) \epsilon_0 \vec{E}
+\end{equation}
+mit der Dielektrizitätszahl $\epsilon$ sowie der Maxwellschen Relation
+\begin{equation}
+  n^2 = \epsilon
+\end{equation}
+kann der im Allgemeinen komplexe Ausdruck $\tilde{n}$ erhalten werden.
+Dessen Imaginärteil beschreibt die Dämpfung der Lichts, welche jedoch für den hier betrachteten Bereich außerhalb der Resonanzfrequenz vernachlässigt werden kann.
+In diesem Fall vereinfacht sich der Realteil von $\tilde{n}$, welcher den oben beschriebenen geometrischen Zusammenhang beschreibt, zu
+\begin{equation}
+  n^2(\lambda) = 1 + \sum \frac{N_h q_h^2}{4 \pi^2 c^2 \epsilon_0 m_h} \frac{\lambda^2 \lambda_h^2}{\lambda^2 - \lambda_h^2}.
+\end{equation}
+Unter der Annahme, dass nur eine Absorptionsstelle $\lambda_1$ existiert, kann nun zwischen zwei Fällen unterschieden werden:
+Bei der Betrachtung von Wellenlängen $\lambda \gg \lambda_1$ kann die Dispersionsrelation als Darstellung
+\begin{equation}
+  n^2(\lambda) = A_0 + \frac{A_2}{\lambda^2} + \frac{A_4}{\lambda^4} + \dotsb
+\end{equation}
+entwickelt werden.
+Diese Entwicklung entspricht einer positiven Krümmung der Dispersionskurve, das heißt einer Linkskrümmung.
+Im anderen Fall, also $\lambda \ll \lambda_1$, kann die Entwicklung der Dispersionsrelation als
+\begin{equation}
+  1 - A_2 \lambda^2 - A_4 \lambda^4 - \dotsb
+\end{equation}
+geschrieben werden.
+Hier wird also von einer negativen Krümmung, also einer nach rechts gekrümmten Dispersionskurve ausgegangen.
