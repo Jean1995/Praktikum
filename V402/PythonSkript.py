@@ -167,14 +167,17 @@ omega_r = omega_r/180 * np.pi # deg -> rad
 
 phi_l = 345.9
 phi_r = 237.5
+write('build/phi_l.tex', make_SI(phi_l, r'\degree', figures=1))
+write('build/phi_r.tex', make_SI(phi_r, r'\degree', figures=1))
+
 phi_gemessen = 0.5 * (phi_r - phi_l)
-write('build/phi.tex', make_SI(phi_gemessen, r'\degree', figures=1)) # Rechne aber nicht mit dem Phi sondern mit 60
+write('build/phi.tex', make_SI(-phi_gemessen, r'\degree', figures=1)) # Rechne aber nicht mit dem Phi sondern mit 60
 phi = 60/180 * np.pi # 60 grad
 
 eta = np.pi - (omega_r - omega_l)
 n = ( np.sin( 0.5* (abs(eta)+phi) ) ) / ( np.sin(phi/2) )
 
-write('build/tab1.tex', make_table([l, omega_l_deg, omega_r_deg, eta, n],[1, 0, 0, 3, 3]))
+write('build/tab1.tex', make_table([l, omega_l_deg, omega_r_deg, eta, n],[1, 1, 1, 3, 3]))
 write('build/tab1_tex.tex', make_full_table(
     'Messdaten zur Bestimmung der Brechungsindices.',
     'tab1',
@@ -184,7 +187,7 @@ write('build/tab1_tex.tex', make_full_table(
     [
     r'$\lambda \:/\: \si{\nano\metre}$',
     r'$\Omega_l \:/\: \si{\degree}$',
-    r'$\Omega_r \:/\: \si{\second}$',
+    r'$\Omega_r \:/\: \si{\degree}$',
     r'$\eta \:/\: \si{\radian}$',
     r'$n \:/\: \si{\radian}$']))
 
@@ -193,45 +196,55 @@ write('build/tab1_tex.tex', make_full_table(
 
 from scipy.optimize import curve_fit
 
+
+
 def f(x, a, b, c):
     return a + b/x**2 + c/x**4
 
-parameter1, covariance1 = curve_fit(f, l, n**2)
-t_plot = np.linspace(np.amin(l), np.amax(l), 1000000)
 
-plt.plot(t_plot, np.sqrt(f(t_plot, parameter1[0], parameter1[1], parameter1[2])), 'b-', label=r'konkaver Fit', linewidth=1)
+
+
+
+parameter1, covariance1 = curve_fit(f, l*10**-9, n**2, p0=[2.69432 , 3932 , -12.59])
+t_plot = np.linspace(np.amin(l*10**-9), np.amax(l*10**-9), 1000000)
+
+plt.plot(t_plot*10**9, np.sqrt(f(t_plot, parameter1[0], parameter1[1], parameter1[2])), 'b-', label=r'konkaver Fit', linewidth=1)
 fehler1 = np.sqrt(np.diag(covariance1)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
 
-a = parameter1[0]  #Hier fehlen die Fehler der Parameter, kA wieso covariance da 'inf' ausgibt...
-b = parameter1[1]  #Hier fehlen die Fehler der Parameter, kA wieso covariance da 'inf' ausgibt...
-c = parameter1[2]  #Hier fehlen die Fehler der Parameter, kA wieso covariance da 'inf' ausgibt...
+a = ufloat(parameter1[0], fehler1[0])  #Hier fehlen die Fehler der Parameter, kA wieso covariance da 'inf' ausgibt...
+b = ufloat(parameter1[1], fehler1[1])  #Hier fehlen die Fehler der Parameter, kA wieso covariance da 'inf' ausgibt...
+c = ufloat(parameter1[2], fehler1[2])  #Hier fehlen die Fehler der Parameter, kA wieso covariance da 'inf' ausgibt...
+
+#a = parameter1[0]
+#b = parameter1[1]
+#c = parameter1[2]
 
 write('build/A_0.tex', make_SI(a, r' ', figures=1))
-write('build/A_2.tex', make_SI(b, r'\nano\metre\tothe{2}', figures=1))
-write('build/A_4.tex', make_SI(c, r'\nano\metre\tothe{4}', figures=1))
+write('build/A_2.tex', make_SI(b*10**14, r'\metre\tothe{2}','e-14', figures=2))
+write('build/A_4.tex', make_SI(c*10**24, r'\metre\tothe{4}','e-27', figures=2))
 
 
-s = (n**2 - a -b/l**2)**2
+s = (n**2 - a -b/((l*10**-9)**2))**2
 s_qua = 1/(np.size(n)-2)*np.sum(s)
-write('build/Varianz_Methode_1.tex', make_SI(s_qua, r' ', figures=7))
+write('build/Varianz_Methode_1.tex', make_SI(s_qua*10**3, r' ', 'e-3', figures=2))
 np.savetxt('build/ausgleichswerte.txt', np.column_stack([parameter1, fehler1]), header=" ")
 
 def f2(x, a, b, c):
     return a - b*x**2 - c*x**4
 
-parameter2, covariance2 = curve_fit(f2, l, n**2)
+parameter2, covariance2 = curve_fit(f2, l*10**(-9), n**2)
 
 #plt.plot(t_plot, f2(t_plot, parameter2[0], parameter2[1], parameter2[2]), 'g-', label=r'Ausgleich_2', linewidth=1) Erste Methode ist besser => nicht plotten
 fehler2 = np.sqrt(np.diag(covariance2)) # Diagonalelemente der Kovarianzmatrix stellen Varianzen dar
 
-s = (n**2 - a +b*l**2)**2
+s = (n**2 - a +b*(l*10**-9)**2)**2
 s_qua = 1/(np.size(n)-2)*np.sum(s)
-write('build/Varianz_Methode_2.tex', make_SI(s_qua, r' ', figures=7))
+write('build/Varianz_Methode_2.tex', make_SI(s_qua, r' ', figures=2))
 np.savetxt('build/ausgleichswerte2.txt', np.column_stack([parameter2, fehler2]), header=" ")
 
 
 
-t_plot = np.linspace(np.amin(l), np.amax(l), 1000000)
+t_plot = np.linspace(np.amin(l*10**-9), np.amax(l*10**-9), 1000000)
 #plt.plot(t_plot, t_plot*o.n+i.n, 'y-', label='Linearer Fit')
 
 
@@ -250,7 +263,7 @@ plt.savefig('build/plot_a_1.pdf')
 #################### d ##################
 
 
-v = (f(589,a,b,c) - 1)/(f(486,a,b,c) - f(656,a,b,c))
+v = (f(589*10**-9,a,b,c) - 1)/(f(486*10**-9,a,b,c) - f(656*10**-9,a,b,c))
 write('build/abbesche_zahl.tex', make_SI(v, r' ', figures=1))
 
 
@@ -258,13 +271,19 @@ write('build/abbesche_zahl.tex', make_SI(v, r' ', figures=1))
 ################ e ###################
 lambda_c = 656*10**(-9)
 lambda_f = 486*10**(-9)
-A_lambda_c = -0.05*(2*b*10**(-18)/(lambda_c**3) + 4*c*10**(-32)/(lambda_c**5))
-A_lambda_f = -0.05*(2*b*10**(-18)/(lambda_f**3) + 4*c*10**(-32)/(lambda_f**5))
-write('build/A_lambda_c.tex', make_SI(A_lambda_c, r' ', figures=1))
-write('build/A_lambda_f.tex', make_SI(A_lambda_f, r' ', figures=1))
+
+
+
+A_lambda_c = 0.03 * ( - 2*b/lambda_c**3 - 4*c/lambda_c**5  )/ ( 2*unp.sqrt( a + b/lambda_c**2 + c/lambda_c**4 ) )
+A_lambda_f = 0.03 * ( - 2*b/lambda_f**3 - 4*c/lambda_f**5  )/ ( 2*unp.sqrt( a + b/lambda_f**2 + c/lambda_f**4 ) )
+
+#A_lambda_c = -0.05*(2*b*10**(-18)/(lambda_c**3) + 4*c*10**(-32)/(lambda_c**5))
+#A_lambda_f = -0.05*(2*b*10**(-18)/(lambda_f**3) + 4*c*10**(-32)/(lambda_f**5))
+write('build/A_lambda_c.tex', make_SI(-A_lambda_c, r' ', figures=1))
+write('build/A_lambda_f.tex', make_SI(-A_lambda_f, r' ', figures=1))
 
 
 ################# f ##################
 
-lambda_i = np.sqrt(b*10**(-18)/(a-1))
+lambda_i = unp.sqrt(b/(a-1))
 write('build/lambda_i.tex', make_SI(lambda_i*10**9, r'\nano\metre', figures=1)) # Gültigkeit nicht zu hoch einschätzen, da 1. getaylort und 2. gefittet und 3. Messwerte entsprechen nur einem kleinen Bereich
