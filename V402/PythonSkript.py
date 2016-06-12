@@ -189,7 +189,7 @@ write('build/tab1_tex.tex', make_full_table(
     r'$\Omega_l \:/\: \si{\degree}$',
     r'$\Omega_r \:/\: \si{\degree}$',
     r'$\eta \:/\: \si{\radian}$',
-    r'$n \:/\: \si{\radian}$']))
+    r'$n$']))
 
 
 ############ b und c ###################

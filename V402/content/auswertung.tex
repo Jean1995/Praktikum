@@ -105,7 +105,7 @@ gemessen, woraus sich ein Winkel von
   \varphi &= \input{build/phi.tex}
 \end{align*}
 ergibt.
-Aufgrund der Kenntnis des realen Winkels wird im folgenden nicht mit dem gemessenen Wert, sondern mit einem Wert von $\phi = \SI{60}{\degree}$ weitergerechnet.
+Aufgrund der Kenntnis des realen Winkels wird im folgenden nicht mit dem gemessenen Wert, sondern mit einem Wert von $\varphi = \SI{60}{\degree}$ weitergerechnet.
 
 \subsection{Bestimmung der Brechungsindices}
 Die Brechungsindices werden, wie in der Durchführung beschrieben, bestimmt.
@@ -131,14 +131,14 @@ Für beide Varianten wird die Summe der Abweichungsquadrate in 2. Ordnung zu
 \end{align*}
 für die erste Variante bzw. zu
 \begin{align*}
-  s_n'^2 = \frac{1}{z-2} \sum ( n^2 - A_0' + A_2' \lambda_i^2 )^2
+  s_{n'}^2 = \frac{1}{z-2} \sum ( n^2 - A_0' + A_2' \lambda_i^2 )^2
 \end{align*}
 für die zweite Variante berechnet, wobei über die $z$ Messwertpaare summiert wird.
 Diese Werte geben einen Anhaltspunkt für die Übereinstimmung der Messwerte mit dem Fit.
 Es ergeben sich Abweichungsquadrate von
 \begin{align*}
-  s_1^2 &= \input{build/Varianz_Methode_1.tex},\\
-  s_2^2 &= \input{build/Varianz_Methode_2.tex}.
+  s_n^2 &= \input{build/Varianz_Methode_1.tex},\\
+  s_{n'}^2 &= \input{build/Varianz_Methode_2.tex}.
 \end{align*}
 Dementsprechend eignet sich die Dispersionsrelation mit einer positiven Krümmung besser für die vorliegenen Messdaten.\\
 In 4. Ordnung werden mithilfe von SciPy in Python die Fitparameter für die Funktion \eqref{eqn:d1} bestimmt.
@@ -162,7 +162,7 @@ Die abbesche Zahl ist definiert als
 \begin{equation}
   \nu = \frac{n_D -1}{n_F - n_C},
 \end{equation}
-wobei $n_i$ den Brechungsindex für die Wellenlänge der jeweligen Frauenhofscher Linie bezeichnet.
+wobei $n_i$ den Brechungsindex für die Wellenlänge der jeweligen Frauenhofscher Linie \cite{skript} bezeichnet.
 Diese sind gegeben als
 \begin{align*}
   \lambda_C &= \SI{656}{\nano\metre}, \\
@@ -198,8 +198,12 @@ A_F &= \input{build/A_lambda_f.tex}.
 \end{align*}
 
 \subsection{Bestimmung einer Absorptionsstelle}
-Die Absorptionsstelle ist definiert als Wellenlänge, bei der $n=0$ wird.
-Unter Betrachtung von \eqref{eqn:d1} ergibt sich aus der Nullstellenbestimmung eine Absorptionsstelle bei
+Die Absorptionsstelle wird mit Hilfe von Gleichung (\ref{kakapipi_ja_das_habe_ich_wirklich_geschrieben}) und den Parametern des Fits nach der Formel
+\begin{equation}
+  \lambda_i = \sqrt{\frac{A_2}{A_0-1}}
+\end{equation}
+auf einen Wert von
 \begin{align*}
-  \lambda_i &= \input{build/lambda_i.tex}.\\
+  \lambda_i &= \input{build/lambda_i.tex},\\
 \end{align*}
+bestimmt.
