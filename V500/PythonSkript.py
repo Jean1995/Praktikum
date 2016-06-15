@@ -157,3 +157,169 @@ from error_calculation import(
 
 ########## DIFFERENT STUFF ##########
 # R = const.physical_constants["molar gas constant"]      # Array of value, unit, error
+
+#### Grenzspannungen
+
+## Messung 1 (grün)
+
+I_1, U_1 = np.genfromtxt('messdaten/messung_1.txt', unpack=True) # I[nA] !
+params_1 = ucurve_fit(reg_linear, U_1, np.sqrt(I_1))
+a_1, b_1 = params_1
+write('build/a_1.tex', make_SI(a_1, r'\ampere\tothe{0.5}\per\volt', figures=1))
+write('build/b_1.tex', make_SI(b_1, r'\ampere\tothe{0.5}', figures=1))
+
+t_plot_1 = np.linspace(np.amin(U_1), np.amax(U_1)+0.03, 99)
+plt.plot(t_plot_1, a_1.n*t_plot_1+b_1.n, 'b-', label='Linearer Fit')
+plt.plot(U_1, np.sqrt(I_1), 'rx', label='Messdaten')
+plt.xlabel(r'$U \:/\: \si{\volt}$')
+plt.ylabel(r'$\sqrt{I} \:/\: \sqrt{\si{\nano\ampere}}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/messung_1.pdf')
+
+U_g_1 = -b_1/a_1
+write('build/U_g_1.tex', make_SI(U_g_1, r'\volt', figures=1))
+
+## Messung 2 (indigo)
+
+plt.clf()
+I_2, U_2 = np.genfromtxt('messdaten/messung_2.txt', unpack=True) # I[nA] !
+params_2 = ucurve_fit(reg_linear, U_2, np.sqrt(I_2))
+a_2, b_2 = params_2
+write('build/a_2.tex', make_SI(a_2, r'\ampere\tothe{0.5}\per\volt', figures=1))
+write('build/b_2.tex', make_SI(b_2, r'\ampere\tothe{0.5}', figures=1))
+
+t_plot_2 = np.linspace(np.amin(U_2), np.amax(U_2)+0.03, 99)
+plt.plot(t_plot_2, a_2.n*t_plot_2+b_2.n, 'b-', label='Linearer Fit')
+plt.plot(U_2, np.sqrt(I_2), 'rx', label='Messdaten')
+plt.xlabel(r'$U \:/\: \si{\volt}$')
+plt.ylabel(r'$\sqrt{I} \:/\: \sqrt{\si{\nano\ampere}}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/messung_2.pdf')
+
+U_g_2 = -b_2/a_2
+write('build/U_g_2.tex', make_SI(U_g_2, r'\volt', figures=1))
+
+## Messung 3 (violett)
+
+plt.clf()
+I_3, U_3 = np.genfromtxt('messdaten/messung_3.txt', unpack=True) # I[nA] !
+params_3 = ucurve_fit(reg_linear, U_3, np.sqrt(I_3))
+a_3, b_3 = params_3
+write('build/a_3.tex', make_SI(a_3, r'\ampere\tothe{0.5}\per\volt', figures=1))
+write('build/b_3.tex', make_SI(b_3, r'\ampere\tothe{0.5}', figures=1))
+
+t_plot_3 = np.linspace(np.amin(U_3), np.amax(U_3)+0.03, 99)
+plt.plot(t_plot_3, a_3.n*t_plot_3+b_3.n, 'b-', label='Linearer Fit')
+plt.plot(U_3, np.sqrt(I_3), 'rx', label='Messdaten')
+plt.xlabel(r'$U \:/\: \si{\volt}$')
+plt.ylabel(r'$\sqrt{I} \:/\: \sqrt{\si{\nano\ampere}}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/messung_3.pdf')
+
+U_g_3 = -b_3/a_3
+write('build/U_g_3.tex', make_SI(U_g_3, r'\volt', figures=1))
+
+## Messung 4 (UV)
+
+plt.clf()
+I_4, U_4 = np.genfromtxt('messdaten/messung_4.txt', unpack=True) # I[nA] !
+params_4 = ucurve_fit(reg_linear, U_4, np.sqrt(I_4))
+a_4, b_4 = params_4
+write('build/a_4.tex', make_SI(a_4, r'\ampere\tothe{0.5}\per\volt', figures=1))
+write('build/b_4.tex', make_SI(b_4, r'\ampere\tothe{0.5}', figures=1))
+
+t_plot_4 = np.linspace(np.amin(U_4), np.amax(U_4)+0.03, 99)
+plt.plot(t_plot_4, a_4.n*t_plot_4+b_4.n, 'b-', label='Linearer Fit')
+plt.plot(U_4, np.sqrt(I_4), 'rx', label='Messdaten')
+plt.xlabel(r'$U \:/\: \si{\volt}$')
+plt.ylabel(r'$\sqrt{I} \:/\: \sqrt{\si{\nano\ampere}}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/messung_4.pdf')
+
+U_g_4 = -b_4/a_4
+write('build/U_g_4.tex', make_SI(U_g_4, r'\volt', figures=1))
+
+# Messung 5 (orange)
+
+plt.clf()
+I_5, U_5 = np.genfromtxt('messdaten/messung_5.txt', unpack=True) # I[nA] !
+params_5 = ucurve_fit(reg_linear, U_5, np.sqrt(I_5))
+a_5, b_5 = params_5
+write('build/a_5.tex', make_SI(a_5, r'\ampere\tothe{0.5}\per\volt', figures=1))
+write('build/b_5.tex', make_SI(b_5, r'\ampere\tothe{0.5}', figures=1))
+
+t_plot_5 = np.linspace(np.amin(U_5), np.amax(U_5)+0.03, 99)
+plt.plot(t_plot_5, a_5.n*t_plot_5+b_5.n, 'b-', label='Linearer Fit')
+plt.plot(U_5, np.sqrt(I_5), 'rx', label='Messdaten')
+plt.xlabel(r'$U \:/\: \si{\volt}$')
+plt.ylabel(r'$\sqrt{I} \:/\: \sqrt{\si{\nano\ampere}}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/messung_5.pdf')
+
+U_g_5 = -b_5/a_5
+write('build/U_g_5.tex', make_SI(U_g_5, r'\volt', figures=1))
+
+### Und jetzt die Bestimmung
+
+#Quelle Wellenlängen: https://de.wikipedia.org/wiki/Quecksilberdampflampe
+l = np.array([546.07, 491.6, 435.83, 404.66, 576.96])
+U_g = np.array([U_g_1.n, U_g_2.n, U_g_3.n, U_g_4.n, U_g_5.n])
+U_g_err = np.array([U_g_1.s, U_g_2.s, U_g_3.s, U_g_4.s, U_g_5.s])
+c=299792458
+f = c/l
+
+plt.clf()
+params_6 = ucurve_fit(reg_linear, f, U_g)
+a_6, b_6 = params_6
+write('build/a_6.tex', make_SI(a_6*10**(-9)*10**(15),'e-15', r'\volt\second', figures=3))
+write('build/b_6.tex', make_SI(b_6, r'\volt', figures=1))
+t_plot_6 = np.linspace(np.amin(f), np.amax(f), 99)
+plt.plot(t_plot_6*10**-3, a_6.n*t_plot_6+b_6.n, 'b-', label='Linearer Fit')
+plt.errorbar(f*10**-3, U_g, fmt='rx', yerr=U_g_err, label='Messdaten')
+plt.xlabel(r'$f \:/\: \si{\tera\hertz}$')
+plt.ylabel(r'$U_g \:/\: \si{volt}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/messung_6.pdf')
+
+
+
+#### Teil 2 ####
+
+plt.clf()
+I, U = np.genfromtxt('messdaten/messung_lang.txt', unpack=True) # I[nA] !
+plt.plot(U, I, 'rx', label='Messdaten für das orangene Licht')
+plt.xlabel(r'$U \:/\: \si{\volt}$')
+plt.ylabel(r'$I \:/\: \si{\nano\ampere}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/messung_lang.pdf')
+
+
+
+#### BACKUP
+
+#l = np.array([546.07, 491.6, 435.83, 404.66, 576.96])
+#U_g = np.array([U_g_1.n, U_g_2.n, U_g_3.n, U_g_4.n, U_g_5.n])
+#U_g_err = np.array([U_g_1.s, U_g_2.s, U_g_3.s, U_g_4.s, U_g_5.s])
+#c=299792458
+#f = l*10**(-9)/c
+#
+#plt.clf()
+#params_6 = ucurve_fit(reg_linear, f, U_g)
+#a_6, b_6 = params_6
+#write('build/a_6.tex', make_SI(a_6, r'\volt\metre', figures=1))
+#write('build/b_6.tex', make_SI(a_6, r'\volt', figures=1))
+#t_plot_6 = np.linspace(np.amin(f), np.amax(f), 99)
+#plt.plot(t_plot_6, a_6.n*t_plot_6+b_6.n, 'b-', label='Linearer Fit')
+#plt.errorbar(f, U_g, fmt='rx', yerr=U_g_err, label='Messdaten')
+#plt.xlabel(r'$f \:/\: \si{\hertz}$')
+#plt.ylabel(r'$U_g \:/\: \si{volt}$')
+#plt.legend(loc='best')
+#plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+#plt.savefig('build/messung_6.pdf')
