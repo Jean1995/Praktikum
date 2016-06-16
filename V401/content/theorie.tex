@@ -1,3 +1,7 @@
+\section{Versuchsziel}
+\label{sec:Versuchsziel}
+Das Ziel des Experiments ist es, die Wellenlänge eines Lasers und die Brechungsindizes zweier Gase mit Hilfe eines Michelson-Interferometers zu bestimmen.
+
 \section{Theorie}
 \label{sec:Theorie}
 
@@ -5,6 +9,7 @@ In letzter Zeit ist es Wissenschaftlern gelungen, Gravitationswellen nachzuweise
 Hierzu wurde ein Michelson-Interferometer benutzt, da es dazu geeignet ist, Wellenlängen, sowie deren absolute Änderung zu messen.
 Zusätzlich können auch Brechungsindizes gemessen werden.
 Das Michelson-Interferometer selbst stützt sich auf das Interferenzprinzip, auf welches im Folgenden weiter eingegangen wird.\\
+\subsection{Interferenz des Lichtes}
 Im Allgemeinen kann Licht als elektromagnetische Welle der Form
 \begin{equation}
   \vec{E}(x,t) = \vec{E_0}\exp{(i(\vec{k}\vec{x}-\omega t -\delta))}, \label{eqn:1}
@@ -20,15 +25,21 @@ Aus Gründen der Messbarkeit muss hier jedoch auf ein zeitliches Mittel zurückg
   I_{\text{ges}} = \frac{const}{t_2-t_1} \int_{t_1}^{t_2} (|\vec{E_1}+\vec{E_2}|)²(x,t) dt
 \end{equation}
 ergibt. Dabei muss darauf geachtet werden, dass die Periodendauer $T = 2\pi/\omega$ groß gegenüber der Länge des Messintervalls ist.
-Somit ergibt sich für zwei Lichtwellen der Form \ref{eqn:1}, welche sich nur in ihrer Phase unterscheiden,
+Somit ergibt sich für zwei Lichtwellen der Form \eqref{eqn:1}, welche sich nur in ihrer Phase unterscheiden,
 \begin{equation}
   I_{\text{ges}} = const \cdot 2\vec{E_0}(1+\cos{\delta_2-\delta_1}).
 \end{equation}
-Hierbei spiegelt der Cosinus den Interferenzterm wider.
+Hierbei spiegelt der Cosinus den Interferenzterm wieder.
 Erkennbar ist, dass, wenn der Phasenunterschied $(\delta_2-\delta_1)$ ungerade Vielfache von $\pi$ beträgt, es zur Auslöschung der beobachtbaren Intensität führt.
 Dies wird als destruktive Interferenz bezeichnet.
 Ein Kernkriterium, unter dem Interferenzerscheinungen beobachtbar werden, ist die Kohärenz der beiden Lichtbündel.\\
-Hierbei ist zu erwähnen, dass die Phasenkonstanten im Allgemeinen statistische Funktionen $\delta(t)$ der Zeit sind.
+
+\subsection{Kohärenz und Kohärenzlänge}
+Zwei Wellen sind zueinander zeitlich kohärent, wenn sie, abgesehen von ihrer Phase, zeitlich das selbe Schwingungsmuster in ihrem Zug aufweisen.
+Dabei ist auf die Entstehung des Lichtes zu achten:
+Licht wird in einem gewissen Zeitfenster von angeregten Atomen emittiert.
+Bei mehreren Atomen (im Prinzip Lichtquellen) überlagern sich ihre Wellengruppen.
+Hierbei ist zu erwähnen, dass ihre Phasenkonstanten im Allgemeinen statistische Funktionen $\delta(t)$ der Zeit sind.
 Demnach können verschieden große bzw. kleine Werte angenommen werden.
 Daraus folgt, dass der gemittelte Cosinus der Phasendifferenz,
 \begin{equation}
@@ -36,8 +47,8 @@ Daraus folgt, dass der gemittelte Cosinus der Phasendifferenz,
 \end{equation}
 nicht mehr beobachtbar ist.
 Deswegen ist das Licht zweier unterschiedlicher Lichtquellen allgemein nicht interferenzfähig; es ist inkohärent.\\
-Laser schaffen es jedoch, Licht zu emittieren, welches eine konstante Phase aufweist.
-Prinzipiell kann auch das Licht einer einzigen Lichtquelle aufgespalten und wieder zusammengeführt werden, um Interferenzeffekte zu beobachten.
+Prinzipiell kann das Licht einer einzigen Lichtquelle aufgespalten und wieder zusammengeführt werden, um Interferenzeffekte zu beobachten.
+Dabei wird bevorzugt das Licht von Lasern verwendet, da es mit ihnen möglich ist kohärentes Licht zu erzeugen.
 Dies ist schematisch in Abbildung \ref{abb:1} dargestellt.
 \begin{figure}[H]
   \centering
@@ -58,17 +69,26 @@ Demnach wird die Kohärenzlänge festgelegt als das Produkt der bei P maximal be
   l = N\lambda.\\
 \end{equation}
 Zusätzlich kann die Breite der Lichtquelle zur Verhinderung der Interferenzerscheinungen führen, da das emittierte Licht an verschiedenen Stellen möglicherweise Phasenverschiebungen aufweist, die insgesamt in einer Inkohärenz enden.\\
+
+\subsection{Wellenlängenmessung mittels Interferenz}
+
 Die Quintessenz dieses Abschnittes lautet, dass sich die Wellenlänge einer Lichtquelle über eine Aufspaltung des Lichtes auf verschieden lange Wege, wobei einer um eine Strecke $\Delta l$ variiert wird, und anschließender Zusammenführung der Strahlen durch eine Zählung der entstehenden Interferenzmaxima bestimmen lässt.
 Dies genügt der Gleichung
 \begin{equation}
   \Delta l = N\frac{\lambda}{2}, \label{eqn:2}
 \end{equation}
 bei der $N$ die gezählten Interferenzmaxima beschreibt.\\
-Dadurch lässt sich auch bei bekannter Wellenlänge die Änderung eines Brechungsindex $\Delta n$,
+
+\subsection{Bestimmung eines Brechungsindex über Interferenz}
+
+Befindet sich die Messapparatur in einem Medium, herrscht auf jeder Wegstrecke der Brechungsindex $n$.
+Wird ein anderes Medium der Dicke $b$ einem Strahlengang in den Weg gesetzt, durchläuft das Licht auf diesem Ast eine zusätzliche effektive Weglänge von $b\Delta n$
+Dadurch lässt sich bei bekannter Wellenlänge die Änderung eines Brechungsindex $\Delta n$,
 \begin{equation}
   b\Delta n = N\frac{\lambda}{2}, \label{eqn:3}
 \end{equation}
-beschreiben, wobei $b$ die Dicke des Probemediums ist.
+beschreiben.
+Der Brechungsindex lässt sich dann über die Kenntis seiner Änderung ermitteln.
 
 
 

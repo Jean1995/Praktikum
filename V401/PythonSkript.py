@@ -186,7 +186,7 @@ lambda_laser_x = ufloat(np.mean(lambda_laser_x) ,MeanError(noms(lambda_laser_x))
 write('build/lambda_laser_x.tex', make_SI(lambda_laser_x * 1e9, r'\nano\metre', figures=3))
 
 
-write('build/Tabelle_a.tex', make_table([s_1*10**3, z_1, lambda_laser*10**9],[3, 0, 2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_a.tex', make_table([s_1*5.046*10**3,s_1*10**3, z_1, lambda_laser*10**9],[3, 3, 0, 2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
 write('build/Tabelle_a_texformat.tex', make_full_table(
     'Messdaten bezüglich der Wellenlänge.',
     'tab:1',
@@ -194,6 +194,7 @@ write('build/Tabelle_a_texformat.tex', make_full_table(
     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
                            # die Multicolumns sein sollen
     [
+    r'$\Delta x \:/\: \si{\milli\metre}$',
     r'$\Delta l \:/\: \si{\milli\metre}$',
     r'$\text{Maxima}$',
     r'$\lambda \:/\: \si{\nano\metre}$']))
@@ -269,7 +270,26 @@ write('build/Tabelle_c_texformat.tex', make_full_table(
     r'$n$']))
 
 n_gas = ufloat(unp.nominal_values(np.mean(n_gas)) ,gauss)
-write('build/n_gas.tex', make_SI(n_gas, r'', figures=1))
+write('build/n_gas.tex', make_SI(n_gas, r'', figures=2))
 write('build/n_gas_lit.tex', make_SI(1.3811, r'', figures=4))   #http://www.chemicalbook.com/ChemicalProductProperty_DE_CB4763080.htm
 n_gas_rel = abs(unp.nominal_values(n_gas)-1.3811)/1.3811 *100
 write('build/n_gas_rel.tex', make_SI(n_gas_rel, r'\percent', figures=3))
+
+nse = np.array([unp.nominal_values(n_luft), unp.nominal_values(n_gas)])
+nse_fehler = np.array([unp.std_devs(n_luft), unp.std_devs(n_gas)])
+nse_lit = np.array([1.000292, 1.3811])
+nse_rel = np.array([n_luft_rel, n_gas_rel])
+
+
+write('Tabelle_ikse.tex', make_table([nse, nse_fehler, nse_lit, nse_rel],[6, 6, 6, 3]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('Tabelle_ikse_texformat.tex', make_full_table(
+    'Messergebnisse.',
+    'tab:4',
+    'Tabelle_ikse.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                           # die Multicolumns sein sollen
+    [
+    r'$n$',
+    r'$\Delta n$',
+    r'$n_{\text{lit}}$',
+    r'$\delta n \:/\: \si{\percent}$']))
