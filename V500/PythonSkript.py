@@ -276,7 +276,7 @@ f = c/l
 plt.clf()
 params_6 = ucurve_fit(reg_linear, f, U_g)
 a_6, b_6 = params_6
-write('build/a_6.tex', make_SI(a_6*10**(-9)*10**(15),'e-15', r'\volt\second', figures=3))
+write('build/a_6.tex', make_SI(a_6*10**(-9)*10**(15), r'\volt\second','e-15', figures=3))
 write('build/b_6.tex', make_SI(b_6, r'\volt', figures=1))
 t_plot_6 = np.linspace(np.amin(f), np.amax(f), 99)
 plt.plot(t_plot_6*10**-3, a_6.n*t_plot_6+b_6.n, 'b-', label='Linearer Fit')
@@ -287,6 +287,18 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/messung_6.pdf')
 
+
+write('build/Tabelle_1.tex', make_table([l,U_g,U_g_err],[2, 3, 3]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_1_texformat.tex', make_full_table(
+    'Schnittpunkte mit der Spannungsachse.',
+    'tab:1',
+    'build/Tabelle_1.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                           # die Multicolumns sein sollen
+    [
+    r'$\lambda \:/\: \si{\nano\metre}$',
+    r'$U \:/\: \si{\volt}$',
+    r'$\increment{U} \:/\: \si{\volt}$']))
 
 
 #### Teil 2 ####

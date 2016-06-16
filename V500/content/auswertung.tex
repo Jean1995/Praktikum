@@ -88,6 +88,61 @@
 %     \label{fig:Schaltungen}
 % \end{figure*}
 
+Um die Grenzspannungen zu bestimmen, wird für fünf Spektrallinien jeweils die Stromstärke in Abhängigkeit von der Gegenspannung gemessen.
+Diese Werte werden gewurzelt gegen die Gegenspannung aufgetragen und zugleich wird ein linearer Fit angelegt.
+Die Ergebnisse sind in den Abbildungen \ref{plot:1}, \ref{plot:2}, \ref{plot:3}, \ref{plot:4} und \ref{plot:5} zu sehen.
+Die Schnittpunkte mit der Spannungsachse nach Ausgleichsrechnungen sind in Tabelle \ref{tab:1} eingetragen.
+
+\begin{figure}
+  \centering
+  \includegraphics[height=8cm]{build/messung_1.pdf}
+  \caption{Messdaten für grünes Licht, $\lambda = \SI{546,07}{\nano\metre}$.}
+  \label{plot:1}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[height=8cm]{build/messung_2.pdf}
+  \caption{Messdaten für blaugrünes Licht, $\lambda = \SI{491,6}{\nano\metre}$.}
+  \label{plot:2}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[height=8cm]{build/messung_3.pdf}
+  \caption{Messdaten für violettes Licht, $\lambda = \SI{435,83}{\nano\metre}$.}
+  \label{plot:3}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[height=8cm]{build/messung_4.pdf}
+  \caption{Messdaten für ultraviolettes Licht, $\lambda = \SI{404,66}{\nano\metre}$.}
+  \label{plot:4}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[height=8cm]{build/messung_5.pdf}
+  \caption{Messdaten für orangenes Licht, $\lambda = \SI{576,96}{\nano\metre}$.}
+  \label{plot:5}
+\end{figure}
+
+\input{build/Tabelle_1_texformat.tex}
+
+Die Spannungswerte werden nun gegen die jeweilige Frequenz aufgetragen, wobei eine Ausgleichsgerade durch alle Werte gelegt wird.
+Das Ergebnis hierzu ist in Abbildung \ref{plot:6} zu begutachten.
+
+\begin{figure}
+  \centering
+  \includegraphics[height=8cm]{build/messung_6.pdf}
+  \caption{Die zuvor berechneten Spannungswerte gegen die jeweilige Frequenz.}
+  \label{plot:6}
+\end{figure}
+
+Dabei beträgt die Steigung
 \begin{align*}
-a &= \input{build/a_1.tex}
+  a = \input{build/a_6.tex},
 \end{align*}
+
+welche $\frac{h}{e_0}$ entsprechen sollte, wobei $h$ das Plancksche Wirkungsquantum und $e_0$ die Elementarladung ist.
