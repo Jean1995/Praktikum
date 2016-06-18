@@ -264,12 +264,17 @@ plt.savefig('build/messung_5.pdf')
 U_g_5 = -b_5/a_5
 write('build/U_g_5.tex', make_SI(U_g_5, r'\volt', figures=1))
 
+
+
+
+
 ### Und jetzt die Bestimmung
 
 #Quelle Wellenlängen: https://de.wikipedia.org/wiki/Quecksilberdampflampe
 l = np.array([546.07, 491.6, 435.83, 404.66, 576.96])
 U_g = np.array([U_g_1.n, U_g_2.n, U_g_3.n, U_g_4.n, U_g_5.n])
 U_g_err = np.array([U_g_1.s, U_g_2.s, U_g_3.s, U_g_4.s, U_g_5.s])
+U_g_ges = np.array([U_g_1, U_g_2, U_g_3, U_g_4, U_g_5])
 c=299792458
 f = c/l
 
@@ -287,18 +292,39 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/messung_6.pdf')
 
+h = 6.626070040*10**(-34)
+e = 1.6021766208*10**(-19)
 
-write('build/Tabelle_1.tex', make_table([l,U_g,U_g_err],[2, 3, 3]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+m_abw = (a_6*10**(-9) - (h/e)) / (h/e)
+write('build/abw_he.tex', make_SI(m_abw.n*100, r'\percent', figures=1))
+write('build/ak.tex', make_SI(b_6, r'\electronvolt', figures=1))
+
+
+tab_a = np.array([a_1, a_2, a_3, a_4, a_5])
+tab_b = np.array([b_1, b_2, b_3, b_4, b_5])
+
+write('build/Tabelle_0.tex', make_table([l, tab_a, tab_b],[2, 2, 2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_0_texformat.tex', make_full_table(
+    'Paramter der linearen Fits.',
+    'tab:0',
+    'build/Tabelle_0.tex',
+    [1, 2],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                           # die Multicolumns sein sollen
+    [
+    r'$\lambda \:/\: \si{\nano\metre}$',
+    r'$m \:/\: \si{\volt\second}$',
+    r'$b \:/\: \si{\volt}$']))
+
+write('build/Tabelle_1.tex', make_table([l,U_g_ges],[2, 1]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
 write('build/Tabelle_1_texformat.tex', make_full_table(
     'Schnittpunkte mit der Spannungsachse.',
     'tab:1',
     'build/Tabelle_1.tex',
-    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+    [1],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
                            # die Multicolumns sein sollen
     [
     r'$\lambda \:/\: \si{\nano\metre}$',
-    r'$U \:/\: \si{\volt}$',
-    r'$\increment{U} \:/\: \si{\volt}$']))
+    r'$U_g \:/\: \si{\volt}$',]))
 
 
 #### Teil 2 ####
@@ -306,12 +332,32 @@ write('build/Tabelle_1_texformat.tex', make_full_table(
 plt.clf()
 I, U = np.genfromtxt('messdaten/messung_lang.txt', unpack=True) # I[nA] !
 plt.plot(U, I, 'rx', label='Messdaten für das orangene Licht')
+
+
+
+plt.xlabel(r'$U \:/\: \si{\volt}$')
+plt.ylabel(r'$I \:/\: \si{\nano\ampere}$')
+plt.legend(loc='lower left')
+plt.grid()
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+
+plt.axes([0.57, 0.57, 0.35, 0.35])
+plt.grid()
+plt.plot(U[19:37], I[19:37], 'rx', label=r'Messdaten für das orangene Licht im Bereich um $\SI{0}{\volt}$')
+
+plt.savefig('build/messung_lang.pdf')
+
+
+plt.clf()
+plt.plot(U[19:37], I[19:37], 'rx', label=r'Messdaten für das orangene Licht im Bereich um $\SI{0}{\volt}$')
 plt.xlabel(r'$U \:/\: \si{\volt}$')
 plt.ylabel(r'$I \:/\: \si{\nano\ampere}$')
 plt.legend(loc='best')
+plt.grid()
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
-plt.savefig('build/messung_lang.pdf')
 
+
+plt.savefig('build/messung_lang_2.pdf')
 
 
 #### BACKUP

@@ -88,10 +88,19 @@
 %     \label{fig:Schaltungen}
 % \end{figure*}
 
-Um die Grenzspannungen zu bestimmen, wird für fünf Spektrallinien jeweils die Stromstärke in Abhängigkeit von der Gegenspannung gemessen.
-Diese Werte werden gewurzelt gegen die Gegenspannung aufgetragen und zugleich wird ein linearer Fit angelegt.
+\subsection{\texorpdfstring{Bestimmung von $\frac{h}{e_0}$ und der Austrittsarbeit}{Bestimmung von h/e und der Austrittsarbeit}.}
+
+Um die Grenzspannungen zu bestimmen, wird für fünf Spektrallinien die Stromstärke in Abhängigkeit von der Gegenspannung gemessen.
+Da das Verhältnis im Bereich der Grenzspannung als quadratisch angenommen werden kann, wird die Wurzel der Stromstärke jeweils gegen die Gegenspannung aufgetragen.
+Mit diesen Werten wird jeweils ein linearer Fit mit SciPy in Python erstellt.
+Die sich ergebenden Fitparameter für die zugehörigen Wellenlängen $\lambda$ sind in Tabelle \ref{tab:0} angegeben.
+
+\input{build/Tabelle_0_texformat.tex},
+
 Die Ergebnisse sind in den Abbildungen \ref{plot:1}, \ref{plot:2}, \ref{plot:3}, \ref{plot:4} und \ref{plot:5} zu sehen.
-Die Schnittpunkte mit der Spannungsachse nach Ausgleichsrechnungen sind in Tabelle \ref{tab:1} eingetragen.
+Aus den Schnittpunkte mit der Spannungsachse ergeben sich somit die Grenzspannungen, diese sind in Tabelle \ref{tab:1} eingetragen.
+
+\input{build/Tabelle_1_texformat.tex},
 
 \begin{figure}
   \centering
@@ -128,9 +137,7 @@ Die Schnittpunkte mit der Spannungsachse nach Ausgleichsrechnungen sind in Tabel
   \label{plot:5}
 \end{figure}
 
-\input{build/Tabelle_1_texformat.tex}
-
-Die Spannungswerte werden nun gegen die jeweilige Frequenz aufgetragen, wobei eine Ausgleichsgerade durch alle Werte gelegt wird.
+Die Werte der Grenzspannungen werden nun gegen die jeweilige Frequenz aufgetragen, wobei eine Ausgleichsgerade durch alle Werte gelegt wird.
 Das Ergebnis hierzu ist in Abbildung \ref{plot:6} zu begutachten.
 
 \begin{figure}
@@ -140,9 +147,42 @@ Das Ergebnis hierzu ist in Abbildung \ref{plot:6} zu begutachten.
   \label{plot:6}
 \end{figure}
 
-Dabei beträgt die Steigung
+Es ergeben sich die Fitparameter
 \begin{align*}
-  a = \input{build/a_6.tex},
+  m &= \input{build/a_6.tex},\\
+  b &= \input{build/b_6.tex}.
+\end{align*}
+Da nach Formel \eqref{eqn:bla} der Zusammenhang zwischen $U_g$ und $f$
+\begin{equation}
+  h f = e_0 U_g + A_k
+\end{equation}
+beträgt, entspricht die Steigung der Konstante $\frac{h}{e_0}$, wobei $h$ das Plancksche Wirkungsquantum und $e_0$ die Elementarladung ist.
+Zudem folgt die Austrittsarbeit des Materials der Photokathode aus dem Achsenabschnitt zu
+\begin{align*}
+  A_k &= \input{build/ak.tex}.
 \end{align*}
 
-welche $\frac{h}{e_0}$ entsprechen sollte, wobei $h$ das Plancksche Wirkungsquantum und $e_0$ die Elementarladung ist.
+\subsection{Betrachtung des Photostroms in Abhängigkeit der Spannung}
+Im zweiten Versuchtsteil wird der Photostrom $I$ in Abhängigkeit der angelegten Spannung $U$ betrachtet, wobei die Spannung im Bereich von $\SI{-20}{\volt}$ bis $\SI{20}{\volt}$ variiert wird.
+Dementsprechend wird sowohl das Verhalten unter einer Beschleunigungspannung, hier mit einem negativen Vorzeichen versehen, als auch das Verhalten unter einer Bremsspannungs betrachtet.
+Das Ergebnis ist in Abbildung \ref{plot:7} dargestellt.
+\begin{figure}
+  \centering
+  \includegraphics[height=9cm]{build/messung_lang.pdf}
+  \caption{Verhalten des Photostoms in Abhängigkeit von der angelegten Spannung.}
+  \label{plot:7}
+\end{figure}
+Es können mehrere Phänomene qualitativ beobachtet werden.
+Zunächst fällt auf, dass sich der Photostrom für höhere Beschleunigungsspannungen einem Sättigungswert asymptotisch nähert.
+Dies hängt damit zusammen, dass durch die Beschränkte Lichtintensität nur eine begrenzte Anzahl von Elektronen aus dem Material herausgelöst wird.
+Für eine hinreichend hohe Beschleunigungsspannung können somit keine weiteren Elektronen mehr beschleunigt werden, so dass eine Sättigung auftritt. %wieso asymptotisch? guess
+Da die Photokathode nicht perfekt evakuiert ist, wird der Wert nur asyptotisch erreicht.\\
+Des Weiteren ist auffällig, dass der Photostrom bei der zuvor ermittelten Gegenspannung von
+\begin{align*}
+  U_{g, \text{orange}} = \input{build/U_g_5.tex}
+\end{align*}
+keinen diskreten Abfall erleidet.
+Dies liegt an der durch die Fermi-Dirac-Statistik bedingte Energieverteilung der Elektronen, weswegen die Elektronen bereits vorher Energie besitzen können.
+Ein weiterer Punkt ist der negative Photostrom, der sich für ausreichend große Bremsspannungen beobachten lässt und sich nicht durch den Photoeffekt an der Photokathode erklären lässt.
+Trotzdem tritt dieser Strom auf, da das verwendete Material bereits bei Raumtemperatur verdampft.
+Hierdurch herausgelöste Elektronen können von der Anode zur Kathode beschleunigt werden und somit einen negativen Strom verursachen.
