@@ -292,6 +292,8 @@ plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/messung_6.pdf')
 
+#http://physics.nist.gov/cuu/Constants/index.html
+
 h = 6.626070040*10**(-34)
 e = 1.6021766208*10**(-19)
 
@@ -305,7 +307,7 @@ tab_b = np.array([b_1, b_2, b_3, b_4, b_5])
 
 write('build/Tabelle_0.tex', make_table([l, tab_a, tab_b],[2, 2, 2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
 write('build/Tabelle_0_texformat.tex', make_full_table(
-    'Paramter der linearen Fits.',
+    'Parameter der linearen Fits.',
     'tab:0',
     'build/Tabelle_0.tex',
     [1, 2],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
