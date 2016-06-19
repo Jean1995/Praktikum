@@ -300,6 +300,7 @@ e = 1.6021766208*10**(-19)
 m_abw = (a_6*10**(-9) - (h/e)) / (h/e)
 write('build/abw_he.tex', make_SI(m_abw.n*100, r'\percent', figures=1))
 write('build/ak.tex', make_SI(b_6, r'\electronvolt', figures=1))
+write('build/a_lit.tex', make_SI(h/e*10**15, r'\volt\second','e-15', figures=3))
 
 
 tab_a = np.array([a_1, a_2, a_3, a_4, a_5])
