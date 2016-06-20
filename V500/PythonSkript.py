@@ -346,7 +346,7 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 
 plt.axes([0.57, 0.57, 0.35, 0.35])
 plt.grid()
-plt.plot(U[19:37], I[19:37], 'rx', label=r'Messdaten für das orangene Licht im Bereich um $\SI{0}{\volt}$')
+plt.plot(U[18:30], I[18:30], 'rx', label=r'Messdaten für das orangene Licht im Bereich um $\SI{0}{\volt}$') #plotception
 
 plt.savefig('build/messung_lang.pdf')
 

@@ -93,12 +93,12 @@
 Um die Grenzspannungen zu bestimmen, wird für fünf Spektrallinien die Stromstärke in Abhängigkeit von der Gegenspannung gemessen.
 Da das Verhältnis im Bereich der Grenzspannung als quadratisch angenommen werden kann, wird die Wurzel der Stromstärke jeweils gegen die Gegenspannung aufgetragen.
 Mit diesen Werten wird jeweils ein linearer Fit mit SciPy in Python erstellt.
-Die sich ergebenden Fitparameter für die zugehörigen Wellenlängen $\lambda$ sind in Tabelle \ref{tab:0} angegeben.
+Die sich ergebenden Fitparameter für die zugehörigen Wellenlängen $\lambda$ \cite{skript} sind in Tabelle \ref{tab:0} angegeben.
 
 \input{build/Tabelle_0_texformat.tex},
 
 Die Ergebnisse sind in den Abbildungen \ref{plot:1}, \ref{plot:2}, \ref{plot:3}, \ref{plot:4} und \ref{plot:5} zu sehen.
-Aus den Schnittpunkte mit der Spannungsachse ergeben sich somit die Grenzspannungen, diese sind in Tabelle \ref{tab:1} eingetragen.
+Aus den Schnittpunkten mit der Spannungsachse ergeben sich somit die Grenzspannungen, diese sind in Tabelle \ref{tab:1} eingetragen.
 
 \input{build/Tabelle_1_texformat.tex},
 
@@ -163,20 +163,20 @@ Zudem folgt die Austrittsarbeit des Materials der Photokathode aus dem Achsenabs
 \end{align*}
 
 \subsection{Betrachtung des Photostroms in Abhängigkeit der Spannung}
-Im zweiten Versuchtsteil wird der Photostrom $I$ in Abhängigkeit der angelegten Spannung $U$ betrachtet, wobei die Spannung im Bereich von $\SI{-20}{\volt}$ bis $\SI{20}{\volt}$ variiert wird.
-Dementsprechend wird sowohl das Verhalten unter einer Beschleunigungspannung, hier mit einem negativen Vorzeichen versehen, als auch das Verhalten unter einer Bremsspannungs betrachtet.
+Im zweiten Versuchsteil wird der Photostrom $I$ in Abhängigkeit der angelegten Spannung $U$ betrachtet, wobei die Spannung im Bereich von $\SI{-20}{\volt}$ bis $\SI{20}{\volt}$ variiert wird.
+Dementsprechend wird sowohl das Verhalten unter einer Beschleunigungsspannung, hier mit einem negativen Vorzeichen versehen, als auch das Verhalten unter einer Bremsspannung betrachtet.
 Das Ergebnis ist in Abbildung \ref{plot:7} dargestellt.
 \begin{figure}
   \centering
   \includegraphics[height=9cm]{build/messung_lang.pdf}
-  \caption{Verhalten des Photostoms in Abhängigkeit von der angelegten Spannung.}
+  \caption{Verhalten des Photostroms in Abhängigkeit von der angelegten Spannung.}
   \label{plot:7}
 \end{figure}
 Es können mehrere Phänomene qualitativ beobachtet werden.
 Zunächst fällt auf, dass sich der Photostrom für höhere Beschleunigungsspannungen einem Sättigungswert asymptotisch nähert.
-Dies hängt damit zusammen, dass durch die Beschränkte Lichtintensität nur eine begrenzte Anzahl von Elektronen aus dem Material herausgelöst wird.
+Dies hängt damit zusammen, dass durch die beschränkte Lichtintensität nur eine begrenzte Anzahl von Elektronen aus dem Material herausgelöst wird.
 Für eine hinreichend hohe Beschleunigungsspannung können somit keine weiteren Elektronen mehr beschleunigt werden, so dass eine Sättigung auftritt. %wieso asymptotisch? guess
-Da die Photokathode nicht perfekt evakuiert ist, wird der Wert nur asyptotisch erreicht.\\
+Da die Photokathode nicht perfekt evakuiert ist, wird der Wert nur asymptotisch erreicht.\\
 Des Weiteren ist auffällig, dass der Photostrom bei der zuvor ermittelten Gegenspannung von
 \begin{align*}
   U_{g, \text{orange}} = \input{build/U_g_5.tex}
