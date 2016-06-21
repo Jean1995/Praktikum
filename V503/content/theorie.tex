@@ -1,7 +1,52 @@
+\section{Zielsetzung}
+Im Jahre 1910 ist es Robert Millikan gelungen, mithilfe des berühmten Millikan-Versuchs die Elementarladung $e_0$ möglichst genau zu bestimmen.
+Dieses Experiment wird im folgenden durchgeführt.
+
 \section{Theorie}
 \label{sec:Theorie}
-
-\cite{sample}
+Zur Bestimmung der Elementarladung $e_0$, welche nur als diskrete Vielfache auftreten kann, werden geladene Öltröpfchen verwendet. Diese befinden sich zwischen den Platten eines Plattenkondensators.
+\subsection{Kräftegleichgewicht im ausgeschalteten Zustand}
+Im ausgeschalteten Zustand des Kondensators befindet sich das Öltröpfchen, sobald es sich mit einer konstanten Geschwindigkeit $v_0$ nach unten bewegt, im Kräftegleichgewicht
+\begin{equation}
+  \vec{F_\text{g}} + \vec{F_\text{R}} = 0.
+\end{equation}
+Hierbei wird die Gravitationskraft durch
+\begin{equation}
+  \vec{F_\text{g}} = \frac{4 \pi}{3} r^3 \rho_\text{L} g
+\end{equation}
+mit dem Tröpfchenradius $r$, der Erdbeschleunigung $g$ und der Dichte von Luft $\rho_\text{L}$ beschrieben.
+Als Reibung wird eine Stokes-Reibung angenommen, welche durch
+\begin{equation}
+  \vec{F_\text{R}} = - 6 \pi r \eta_\text{L} v_0
+\end{equation}
+mit der Viskosität von Luft $\eta_\text{L}$ beschrieben wird.
+Zu beachten ist, dass die Stokes-Reibung in dieser Form nur für den Fall gültig ist, dass das Tröpfchen einen größeren Durchmesser als die mittlere freie Weglänge $\lambda$ von Luft besitzt.
+Ansonsten muss die Cunnigham-Korrektur verwendet werden, so dass für die korrigierte Viskosität
+\begin{equation}
+  \tilde{\eta_\text{L}} = \eta_\text{L} \Bigl( \frac{1}{1 + B \frac{1}{pr}}  \Bigr)
+\end{equation}
+mit dem Luftdruck $p$ sowie dem Korrekturterm $B$ gilt.
+\subsection{Kräftegleichgewicht bei eingeschaltetem Kondensator}
+Sobald der Kondensator eingeschaltet wird, existiert ein elektrisches Feld, welches je nach Polung eine Kraft
+\begin{align*}
+  \vec{F_\text{e}} = \pm qE
+\end{align*}
+auf das Öltröpfchen ausübt.
+Falls beispielsweise die obere Platte positiv geladen ist, wirkt die Kraft des elektrischen Feldes nach oben, während die Reibungskraft nach unten wirkt.
+Aus den sich ergebenden Kräftegleichgewichten kann die Ladung zu
+\begin{equation}
+  q = 3 \pi \eta_\text{L} \sqrt{ \frac{9}{4} \frac{\eta_\text{L}}{g} \frac{ (v_\text{ab} - v_\text{auf}  )  }{\rho_\text{oel}} \frac{v_\text{ab} + v_\text{auf}}{E} }
+\end{equation}
+bestimmt werden, wobei $E$ die Stärke des elektrischen Feldes, $\rho_\text{oel}$ die Dichte der verwendeten Öltröpfchen, $v_\text{ab}$ die gleichmäßige Geschwindigkeit im Kräftegleichgewicht nach unten  sowie $v_\text{auf}$ im Kräftegleichgewicht nach oben ist.
+Das Radius berechnet sich zu
+\begin{equation}
+  \sqrt{ \frac{4}{9} \frac{ \eta_\text{L} ( v_\text{ab} - v_\text{auf} ) }{g \rho_\text{oel} }   }.
+\end{equation}
+Mit der Korrektur beträgt die Ladung somit
+\begin{equation}
+  q = q_0 \bigl( 1 + \frac{B}{p r}  \bigr)^{\frac{2}{3}}.
+\end{equation}
+%\cite{sample}
 
 % 2x2 Plot
 % \begin{figure*}
