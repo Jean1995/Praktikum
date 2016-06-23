@@ -157,3 +157,113 @@ from error_calculation import(
 
 ########## DIFFERENT STUFF ##########
 # R = const.physical_constants["molar gas constant"]      # Array of value, unit, error
+
+import math
+
+d = ufloat(7.6250*10**(-3),0.0051*10**(-3))
+rho_luft = 1.1644 #wikipedia :P Luft 30 Grad
+def f(U, n, t_auf, t_ab, d):
+    f = 3*np.pi*n*10**(-5)*math.sqrt(9/4*n*10**(-5)/9.81*(0.001/t_ab-0.001/t_auf)/(886-1.1644))*(0.001/t_ab+0.001/t_auf)/(U/unp.nominal_values(d))
+    return f
+
+def r(n, t_auf, t_ab):
+    r = math.sqrt(9/4*n*10**(-5)/9.81*(0.001/t_ab-0.001/t_auf)/(886-1.1644))
+    return r
+
+B = 6.17*10**(-5)
+p = 1013.25*10**2
+########## V = 190 R = 1.71 => T = 32 => n = 1.88
+    #v_0 = 16.38
+t_1_auf = np.array([5.81, 6.26])
+t_1_ab  = np.array([4.13, 3.89])
+t_1_auf_mitt = ufloat(np.mean(t_1_auf), MeanError(noms(t_1_auf)))
+t_1_ab_mitt =  ufloat(np.mean(t_1_ab),  MeanError(noms(t_1_ab)))
+q_1 = f(190, 1.88, unp.nominal_values(t_1_auf_mitt), unp.nominal_values(t_1_ab_mitt), d)
+print(q_1)
+r_1 = r(1.88, unp.nominal_values(t_1_auf_mitt), unp.nominal_values(t_1_ab_mitt))
+print(r_1)
+q_1_neu = q_1*(1+B/(p*r_1))**(-3/2)
+print(q_1_neu)
+#write('build/q_1.tex', make_SI(unp.nominal_values(q_1) * 10**19, r'\coulomb', figures=5))
+    #v_0 = 17.3
+t_2_auf = np.array([15.81, 16.1])
+t_2_ab  = np.array([7.64, 8.18])
+t_2_auf_mitt = ufloat(np.mean(t_2_auf), MeanError(noms(t_2_auf)))
+t_2_ab_mitt =  ufloat(np.mean(t_2_ab),  MeanError(noms(t_2_ab)))
+q_2 = f(190, 1.88, unp.nominal_values(t_2_auf_mitt), unp.nominal_values(t_2_ab_mitt), d)
+print(q_2)
+r_2 = r(1.88, unp.nominal_values(t_2_auf_mitt), unp.nominal_values(t_2_ab_mitt))
+q_2_neu = q_2*(1+B/(p*r_2))**(-3/2)
+    #v_0 = 11.93
+t_3_auf = np.array([6.84, 6.64])
+t_3_ab  = np.array([4.3, 4.89])
+t_3_auf_mitt = ufloat(np.mean(t_3_auf), MeanError(noms(t_3_auf)))
+t_3_ab_mitt =  ufloat(np.mean(t_3_ab),  MeanError(noms(t_3_ab)))
+q_3 = f(190, 1.88, unp.nominal_values(t_3_auf_mitt), unp.nominal_values(t_3_ab_mitt), d)
+print(q_3)
+r_3 = r(1.88, unp.nominal_values(t_3_auf_mitt), unp.nominal_values(t_3_ab_mitt))
+q_3_neu = q_3*(1+B/(p*r_3))**(-3/2)
+########## V = 302 R = 1.71 => T = 32 => n = 1.88
+    #v_0 = 15.56
+t_4_auf = np.array([6.15, 6.24, 5.41])
+t_4_ab  = np.array([4.35, 4.07, 4.64])
+t_4_auf_mitt = ufloat(np.mean(t_4_auf), MeanError(noms(t_4_auf)))
+t_4_ab_mitt =  ufloat(np.mean(t_4_ab),  MeanError(noms(t_4_ab)))
+q_4 = f(302, 1.88, unp.nominal_values(t_4_auf_mitt), unp.nominal_values(t_4_ab_mitt), d)
+print(q_4)
+r_4 = r(1.88, unp.nominal_values(t_4_auf_mitt), unp.nominal_values(t_4_ab_mitt))
+q_4_neu = q_4*(1+B/(p*r_4))**(-3/2)
+    #v_0 = 14.83
+t_5_auf = np.array([9.12, 9.12])
+t_5_ab  = np.array([5.46, 6.83])
+t_5_auf_mitt = ufloat(np.mean(t_5_auf), MeanError(noms(t_5_auf)))
+t_5_ab_mitt =  ufloat(np.mean(t_5_ab),  MeanError(noms(t_5_ab)))
+q_5 = f(302, 1.88, unp.nominal_values(t_5_auf_mitt), unp.nominal_values(t_5_ab_mitt), d)
+print(q_5)
+r_5 = r(1.885, unp.nominal_values(t_5_auf_mitt), unp.nominal_values(t_5_ab_mitt))
+q_5_neu = q_5*(1+B/(p*r_5))**(-3/2)
+########## V = 250 R = 1.67 => T = 33 => n = 1.885
+    #v_0 = 14.47
+t_6_auf = np.array([3.83, 3.29, 3.44, 3.46])
+t_6_ab  = np.array([2.58, 2.87, 2.95, 2.87])
+t_6_auf_mitt = ufloat(np.mean(t_6_auf), MeanError(noms(t_6_auf)))
+t_6_ab_mitt =  ufloat(np.mean(t_6_ab),  MeanError(noms(t_6_ab)))
+q_6 = f(250, 1.885, unp.nominal_values(t_6_auf_mitt), unp.nominal_values(t_6_ab_mitt), d)
+print(q_6)
+r_6 = r(1.885, unp.nominal_values(t_6_auf_mitt), unp.nominal_values(t_6_ab_mitt))
+q_6_neu = q_6*(1+B/(p*r_6))**(-3/2)
+
+n = np.array([1,2,3,4,5,6])
+q = np.array([q_1,q_2,q_3,q_4,q_5,q_6])
+#q = q/1.6021766 # ist gecheatet, but who cares anyway
+plt.plot(n, q*10**(19), 'bx', label='Messdaten')
+plt.xlabel(r'$\text{Messreihe}$')
+plt.ylabel(r'$q \:/\: \si{\coulomb}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/ladungen.pdf')
+
+
+q_neu = np.array([q_1_neu,q_2_neu,q_3_neu,q_4_neu,q_5_neu,q_6_neu])
+
+#### All hail AP_MaMa:
+def GCD(q,maxi):
+    gcd=q[0]
+    for i in range(1,len(q)):
+        n=0
+        while abs(gcd-q[i])>1e-19 and n <= maxi:
+            if gcd > q[i]:
+                gcd = gcd - q[i]
+            else:
+                q[i] = q[i] - gcd
+            n = n+1
+    return gcd
+
+e_0 = GCD(q,30)
+print(e_0)
+e_rel = abs(e_0-1.6021766208*10**(-19))/(1.6021766208*10**(-19))*100
+print(e_rel)
+e_0_neu = GCD(q_neu,30)
+print(e_0_neu)
+e_neu_rel = abs(e_0_neu-1.6021766208*10**(-19))/(1.6021766208*10**(-19))*100
+print(e_neu_rel)
