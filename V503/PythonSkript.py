@@ -158,17 +158,39 @@ from error_calculation import(
 ########## DIFFERENT STUFF ##########
 # R = const.physical_constants["molar gas constant"]      # Array of value, unit, error
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import math
 
 d = ufloat(7.6250*10**(-3),0.0051*10**(-3))
 rho_luft = 1.1644 #wikipedia :P Luft 30 Grad
 def f(U, n, t_auf, t_ab, d):
-    f = 3*np.pi*n*10**(-5)*math.sqrt(9/4*n*10**(-5)/9.81*(0.001/t_ab-0.001/t_auf)/(886-1.1644))*(0.001/t_ab+0.001/t_auf)/(U/unp.nominal_values(d))
+    f = 3*np.pi*n*10**(-5)*(9/4*n*10**(-5)/9.81*(0.001/t_ab-0.001/t_auf)/(886-1.1644))**(1/2)*(0.001/t_ab+0.001/t_auf)/(U/d)
     return f
 
 def r(n, t_auf, t_ab):
-    r = math.sqrt(9/4*n*10**(-5)/9.81*(0.001/t_ab-0.001/t_auf)/(886-1.1644))
+    r = (9/4*n*10**(-5)/9.81*(0.001/t_ab-0.001/t_auf)/(886-1.1644))**(1/2)
     return r
+
+#def err(n, t_auf, t_ab, del_t_auf, del_t_ab, d, d_err):
+#    err = math.sqrt((3*math.pi*n*d*math.sqrt(9/4*n/g*(0.001)))**2+()**2+()**2)
+#    return err
 
 B = 6.17*10**(-5)
 p = 1013.25*10**2
@@ -176,11 +198,26 @@ p = 1013.25*10**2
     #v_0 = 16.38
 t_1_auf = np.array([5.81, 6.26])
 t_1_ab  = np.array([4.13, 3.89])
+
+write('build/Tabelle_1.tex', make_table([t_1_auf,t_1_ab],[2,2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_1_texformat.tex', make_full_table(
+    'Messung 1.',
+    'table:1',
+    'build/Tabelle_1.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                              # die Multicolumns sein sollen
+    [
+    r'$t_{\text{auf}} \:/\: \si{\second}$',
+    r'$t_{\text{ab}} \:/\: \si{\second}$']))
+
+
 t_1_auf_mitt = ufloat(np.mean(t_1_auf), MeanError(noms(t_1_auf)))
+print(t_1_auf_mitt)
 t_1_ab_mitt =  ufloat(np.mean(t_1_ab),  MeanError(noms(t_1_ab)))
-q_1 = f(190, 1.88, unp.nominal_values(t_1_auf_mitt), unp.nominal_values(t_1_ab_mitt), d)
+print(t_1_ab_mitt)
+q_1 = f(190, 1.88, t_1_auf_mitt, t_1_ab_mitt, d)
 print(q_1)
-r_1 = r(1.88, unp.nominal_values(t_1_auf_mitt), unp.nominal_values(t_1_ab_mitt))
+r_1 = r(1.88, t_1_auf_mitt, t_1_ab_mitt)
 print(r_1)
 q_1_neu = q_1*(1+B/(p*r_1))**(-3/2)
 print(q_1_neu)
@@ -188,56 +225,130 @@ print(q_1_neu)
     #v_0 = 17.3
 t_2_auf = np.array([15.81, 16.1])
 t_2_ab  = np.array([7.64, 8.18])
+
+write('build/Tabelle_2.tex', make_table([t_2_auf,t_2_ab],[2,2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_2_texformat.tex', make_full_table(
+    'Messung 2.',
+    'table:2',
+    'build/Tabelle_2.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                              # die Multicolumns sein sollen
+    [
+    r'$t_{\text{auf}} \:/\: \si{\second}$',
+    r'$t_{\text{ab}} \:/\: \si{\second}$']))
+
 t_2_auf_mitt = ufloat(np.mean(t_2_auf), MeanError(noms(t_2_auf)))
 t_2_ab_mitt =  ufloat(np.mean(t_2_ab),  MeanError(noms(t_2_ab)))
-q_2 = f(190, 1.88, unp.nominal_values(t_2_auf_mitt), unp.nominal_values(t_2_ab_mitt), d)
+q_2 = f(190, 1.88, t_2_auf_mitt, t_2_ab_mitt, d)
 print(q_2)
-r_2 = r(1.88, unp.nominal_values(t_2_auf_mitt), unp.nominal_values(t_2_ab_mitt))
+r_2 = r(1.88, t_2_auf_mitt, t_2_ab_mitt)
 q_2_neu = q_2*(1+B/(p*r_2))**(-3/2)
     #v_0 = 11.93
 t_3_auf = np.array([6.84, 6.64])
 t_3_ab  = np.array([4.3, 4.89])
+
+write('build/Tabelle_3.tex', make_table([t_3_auf,t_3_ab],[2,2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_3_texformat.tex', make_full_table(
+    'Messung 3.',
+    'table:3',
+    'build/Tabelle_3.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                              # die Multicolumns sein sollen
+    [
+    r'$t_{\text{auf}} \:/\: \si{\second}$',
+    r'$t_{\text{ab}} \:/\: \si{\second}$']))
+
 t_3_auf_mitt = ufloat(np.mean(t_3_auf), MeanError(noms(t_3_auf)))
 t_3_ab_mitt =  ufloat(np.mean(t_3_ab),  MeanError(noms(t_3_ab)))
-q_3 = f(190, 1.88, unp.nominal_values(t_3_auf_mitt), unp.nominal_values(t_3_ab_mitt), d)
+q_3 = f(190, 1.88, t_3_auf_mitt, t_3_ab_mitt, d)
 print(q_3)
-r_3 = r(1.88, unp.nominal_values(t_3_auf_mitt), unp.nominal_values(t_3_ab_mitt))
+r_3 = r(1.88, t_3_auf_mitt, t_3_ab_mitt)
 q_3_neu = q_3*(1+B/(p*r_3))**(-3/2)
 ########## V = 302 R = 1.71 => T = 32 => n = 1.88
     #v_0 = 15.56
 t_4_auf = np.array([6.15, 6.24, 5.41])
 t_4_ab  = np.array([4.35, 4.07, 4.64])
+
+write('build/Tabelle_4.tex', make_table([t_4_auf,t_4_ab],[2,2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_4_texformat.tex', make_full_table(
+    'Messung 4.',
+    'table:4',
+    'build/Tabelle_4.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                              # die Multicolumns sein sollen
+    [
+    r'$t_{\text{auf}} \:/\: \si{\second}$',
+    r'$t_{\text{ab}} \:/\: \si{\second}$']))
+
 t_4_auf_mitt = ufloat(np.mean(t_4_auf), MeanError(noms(t_4_auf)))
 t_4_ab_mitt =  ufloat(np.mean(t_4_ab),  MeanError(noms(t_4_ab)))
-q_4 = f(302, 1.88, unp.nominal_values(t_4_auf_mitt), unp.nominal_values(t_4_ab_mitt), d)
+q_4 = f(302, 1.88, t_4_auf_mitt, t_4_ab_mitt, d)
 print(q_4)
-r_4 = r(1.88, unp.nominal_values(t_4_auf_mitt), unp.nominal_values(t_4_ab_mitt))
+r_4 = r(1.88, t_4_auf_mitt, t_4_ab_mitt)
 q_4_neu = q_4*(1+B/(p*r_4))**(-3/2)
     #v_0 = 14.83
 t_5_auf = np.array([9.12, 9.12])
 t_5_ab  = np.array([5.46, 6.83])
+
+write('build/Tabelle_5.tex', make_table([t_5_auf,t_5_ab],[2,2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_5_texformat.tex', make_full_table(
+    'Messung 5.',
+    'table:5',
+    'build/Tabelle_5.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                              # die Multicolumns sein sollen
+    [
+    r'$t_{\text{auf}} \:/\: \si{\second}$',
+    r'$t_{\text{ab}} \:/\: \si{\second}$']))
+
 t_5_auf_mitt = ufloat(np.mean(t_5_auf), MeanError(noms(t_5_auf)))
 t_5_ab_mitt =  ufloat(np.mean(t_5_ab),  MeanError(noms(t_5_ab)))
-q_5 = f(302, 1.88, unp.nominal_values(t_5_auf_mitt), unp.nominal_values(t_5_ab_mitt), d)
+q_5 = f(302, 1.88, t_5_auf_mitt, t_5_ab_mitt, d)
 print(q_5)
-r_5 = r(1.885, unp.nominal_values(t_5_auf_mitt), unp.nominal_values(t_5_ab_mitt))
+r_5 = r(1.885, t_5_auf_mitt, t_5_ab_mitt)
 q_5_neu = q_5*(1+B/(p*r_5))**(-3/2)
 ########## V = 250 R = 1.67 => T = 33 => n = 1.885
     #v_0 = 14.47
 t_6_auf = np.array([3.83, 3.29, 3.44, 3.46])
 t_6_ab  = np.array([2.58, 2.87, 2.95, 2.87])
+
+write('build/Tabelle_6.tex', make_table([t_6_auf,t_6_ab],[2,2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_6_texformat.tex', make_full_table(
+    'Messung 6.',
+    'table:6',
+    'build/Tabelle_6.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                              # die Multicolumns sein sollen
+    [
+    r'$t_{\text{auf}} \:/\: \si{\second}$',
+    r'$t_{\text{ab}} \:/\: \si{\second}$']))
+
 t_6_auf_mitt = ufloat(np.mean(t_6_auf), MeanError(noms(t_6_auf)))
 t_6_ab_mitt =  ufloat(np.mean(t_6_ab),  MeanError(noms(t_6_ab)))
-q_6 = f(250, 1.885, unp.nominal_values(t_6_auf_mitt), unp.nominal_values(t_6_ab_mitt), d)
+q_6 = f(250, 1.885, t_6_auf_mitt, t_6_ab_mitt, d)
 print(q_6)
-r_6 = r(1.885, unp.nominal_values(t_6_auf_mitt), unp.nominal_values(t_6_ab_mitt))
+r_6 = r(1.885, t_6_auf_mitt, t_6_ab_mitt)
 q_6_neu = q_6*(1+B/(p*r_6))**(-3/2)
 
 n = np.array([1,2,3,4,5,6])
 q = np.array([q_1,q_2,q_3,q_4,q_5,q_6])
-#q = q/1.6021766 # ist gecheatet, but who cares anyway
-plt.plot(n, q*10**(19), 'bx', label='Messdaten')
-plt.xlabel(r'$\text{Messreihe}$')
+
+write('build/Tabelle_q.tex', make_table([n,unp.nominal_values(q)*10**19, unp.std_devs(q)*10**19],[0,3,3]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_q_texformat.tex', make_full_table(
+    'Ladungen.',
+    'table:q',
+    'build/Tabelle_q.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                              # die Multicolumns sein sollen
+    [
+    r'$\text{Messung}$',
+    r'$q \:/\: 10^{-19}\si{\coulomb}$',
+    r'$\increment{q} \:/\: 10^{-19}\si{\coulomb}$']))
+
+plt.xlim(0.5, 6.5)
+#plt.plot(n, unp.nominal_values(q)*10**(19), 'rx', label='Messdaten')
+plt.errorbar(n, unp.nominal_values(q), fmt='rx', yerr=unp.std_devs(q), label='Messdaten')
+plt.xlabel(r'$\text{Messung}$')
 plt.ylabel(r'$q \:/\: \si{\coulomb}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
@@ -245,6 +356,27 @@ plt.savefig('build/ladungen.pdf')
 
 
 q_neu = np.array([q_1_neu,q_2_neu,q_3_neu,q_4_neu,q_5_neu,q_6_neu])
+
+write('build/Tabelle_q_neu.tex', make_table([n,unp.nominal_values(q_neu)*10**19, unp.std_devs(q_neu)*10**19],[0,3,3]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_q_neu_texformat.tex', make_full_table(
+    'korrigierte Ladungen.',
+    'table:q_neu',
+    'build/Tabelle_q_neu.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                              # die Multicolumns sein sollen
+    [
+    r'$\text{Messung}$',
+    r'$q \:/\: 10^{-19}\si{\coulomb}$',
+    r'$\increment{q} \:/\: 10^{-19}\si{\coulomb}$']))
+
+plt.clf()
+plt.xlim(0.5, 6.5)
+plt.errorbar(n, unp.nominal_values(q_neu), fmt='rx', yerr=unp.std_devs(q_neu), label='korrigierte Messdaten')
+plt.xlabel(r'$\text{Messung}$')
+plt.ylabel(r'$q \:/\: \si{\coulomb}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/ladungen_neu.pdf')
 
 #### All hail AP_MaMa:
 def GCD(q,maxi):
@@ -260,10 +392,27 @@ def GCD(q,maxi):
     return gcd
 
 e_0 = GCD(q,30)
+e_0 = unp.nominal_values(e_0)
+write('build/e_0.tex', make_SI(e_0 * 10**(19), r'\coulomb','e-19', figures=3))
 print(e_0)
 e_rel = abs(e_0-1.6021766208*10**(-19))/(1.6021766208*10**(-19))*100
+write('build/e_rel.tex', make_SI(e_rel, r'\percent', figures=2))
 print(e_rel)
 e_0_neu = GCD(q_neu,30)
+e_0_neu = unp.nominal_values(e_0_neu)
+write('build/e_0_neu.tex', make_SI(e_0_neu * 10**(19), r'\coulomb','e-19', figures=3))
 print(e_0_neu)
 e_neu_rel = abs(e_0_neu-1.6021766208*10**(-19))/(1.6021766208*10**(-19))*100
+write('build/e_neu_rel.tex', make_SI(e_neu_rel, r'\percent', figures=2))
 print(e_neu_rel)
+
+Faraday = 96485.3365 #https://de.wikipedia.org/wiki/Faraday-Konstante
+N_a_lit = 6.022140857*10**23 #https://de.wikipedia.org/wiki/Avogadro-Konstante
+N_a = Faraday/e_0
+write('build/N_a.tex', make_SI(N_a * 10**(-23), r'\per\mol','e23', figures=3))
+N_a_rel = abs(N_a-N_a_lit)/N_a_lit *100
+write('build/N_a_rel.tex', make_SI(N_a_rel, r'\percent', figures=2))
+N_a_neu = Faraday/e_0_neu
+write('build/N_a_neu.tex', make_SI(N_a_neu * 10**(-23), r'\per\mol','e23', figures=3))
+N_a_neu_rel = abs(N_a_neu-N_a_lit)/N_a_lit *100
+write('build/N_a_neu_rel.tex', make_SI(N_a_neu_rel, r'\percent', figures=2))
