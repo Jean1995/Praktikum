@@ -1,6 +1,29 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
+Zur Bestimmung der Ladung der Öltröpfchen werden Messungen für die Kondensatorspannungen
+\begin{align*}
+U_1 &= \SI{190}{\volt},\\
+U_2 &= \SI{302}{\volt},\\
+U_3 &= \SI{250}{\volt}
+\end{align*}
+durchgeführt.
+Die Temperaturen der Messapperatur bestimmen sich aus den gemessenen Werten des Thermowiderstandes unter Verwendung der Tabelle \ref{tab:thermo} zu
+\begin{align*}
+R_1 &= \SI{1.71}{\mega\ohm},\\
+T_1 &= \SI{32}{\degree\celsius},\\
+R_1 &= \SI{1.67}{\mega\ohm},\\
+T_1 &= \SI{33}{\degree\celsius}.\\
+\end{align*}
+Die
+Bei der Betrachtung der Werte fällt auf, dass vereinzelt eine starke Abweichung der Messzeiten während einer einzigen Messreihe aufgetreten ist.
+Diese Messwerte können dementsprechend nicht verwendet werden.
+Zudem werden die Messwerte verworfen, wenn die Bedingung
+\begin{align*}
+  v_{\text{ab}} - v_{\text{auf}} = 2 v_0
+\end{align*}
+nicht erfüllt wird.
+Somit werden die in den Tabellen \ref{table:1} bis \ref{table:6} angegebenen Messwerte verwendet.
 \input{build/Tabelle_1_texformat.tex}
 
 \input{build/Tabelle_2_texformat.tex}
@@ -12,6 +35,10 @@
 \input{build/Tabelle_5_texformat.tex}
 
 \input{build/Tabelle_6_texformat.tex}
+Von diesen Zeiten wird für jede Messreihe, also für jedes betrachtete Teilchen, der Mittelwert gebildet,
+Der betrachtete Strecke beträgt jeweils $s = \SI{1}{\milli\metre}$, woraus sich mit den gemittelten Zeiten die Geschwindigkeiten $v_{\text{ab}}$ und $v_{\text{auf}}$ ergeben.
+
+
 
 \input{build/Tabelle_q_texformat.tex}
 

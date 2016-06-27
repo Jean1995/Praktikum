@@ -201,7 +201,7 @@ t_1_ab  = np.array([4.13, 3.89])
 
 write('build/Tabelle_1.tex', make_table([t_1_auf,t_1_ab],[2,2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
 write('build/Tabelle_1_texformat.tex', make_full_table(
-    'Messung 1.',
+    r'Messung 1 bei $U_1$, $T_1$.',
     'table:1',
     'build/Tabelle_1.tex',
     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
@@ -228,7 +228,7 @@ t_2_ab  = np.array([7.64, 8.18])
 
 write('build/Tabelle_2.tex', make_table([t_2_auf,t_2_ab],[2,2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
 write('build/Tabelle_2_texformat.tex', make_full_table(
-    'Messung 2.',
+    r'Messung 2 bei $U_1$, $T_1$.',
     'table:2',
     'build/Tabelle_2.tex',
     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
@@ -249,7 +249,7 @@ t_3_ab  = np.array([4.3, 4.89])
 
 write('build/Tabelle_3.tex', make_table([t_3_auf,t_3_ab],[2,2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
 write('build/Tabelle_3_texformat.tex', make_full_table(
-    'Messung 3.',
+    r'Messung 3 bei $T_1$, $U_1$.',
     'table:3',
     'build/Tabelle_3.tex',
     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
@@ -271,7 +271,7 @@ t_4_ab  = np.array([4.35, 4.07, 4.64])
 
 write('build/Tabelle_4.tex', make_table([t_4_auf,t_4_ab],[2,2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
 write('build/Tabelle_4_texformat.tex', make_full_table(
-    'Messung 4.',
+    r'Messung 4 bei $U_2$, $T_1$.',
     'table:4',
     'build/Tabelle_4.tex',
     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
@@ -292,7 +292,7 @@ t_5_ab  = np.array([5.46, 6.83])
 
 write('build/Tabelle_5.tex', make_table([t_5_auf,t_5_ab],[2,2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
 write('build/Tabelle_5_texformat.tex', make_full_table(
-    'Messung 5.',
+    r'Messung 5 bei $U_2$, $T_1$.',
     'table:5',
     'build/Tabelle_5.tex',
     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
@@ -314,7 +314,7 @@ t_6_ab  = np.array([2.58, 2.87, 2.95, 2.87])
 
 write('build/Tabelle_6.tex', make_table([t_6_auf,t_6_ab],[2,2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
 write('build/Tabelle_6_texformat.tex', make_full_table(
-    'Messung 6.',
+    r'Messung 6 bei $U_3$, $T_2$.',
     'table:6',
     'build/Tabelle_6.tex',
     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
