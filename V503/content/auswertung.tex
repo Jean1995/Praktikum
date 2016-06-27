@@ -8,7 +8,7 @@ U_2 &= \SI{302}{\volt},\\
 U_3 &= \SI{250}{\volt}
 \end{align*}
 durchgeführt.
-Die Temperaturen der Messapparatur bestimmen sich aus den gemessenen Werten des Thermowiderstandes unter Verwendung der Tabelle \ref{tab:thermo} zu
+Die Temperaturen der Messapparatur bestimmen sich aus den gemessenen Werten des Thermowiderstandes unter Verwendung der in Abbildung \ref{tab:thermo} angegebenen Tabelle zu
 \begin{align*}
 R_1 &= \SI{1.71}{\mega\ohm},\\
 T_1 &= \SI{32}{\celsius},\\
@@ -23,8 +23,8 @@ Zudem werden die Messwerte verworfen, wenn die Bedingung
 \end{align*}
 nicht erfüllt wird.
 Somit werden die in den Tabellen \ref{table:1} bis \ref{table:6} angegebenen Messwerte verwendet.
-Von diesen Zeiten wird für jede Messreihe, also für jedes betrachtete Teilchen, der Mittelwert gebildet,
-Der betrachtete Strecke beträgt jeweils $s = \SI{1}{\milli\metre}$, woraus sich mit den gemittelten Zeiten die Geschwindigkeiten $v_{\text{ab}}$ und $v_{\text{auf}}$ ergeben.
+Von diesen Zeiten wird für jede Messreihe, also für jedes betrachtete Teilchen, der Mittelwert gebildet.
+Die betrachtete Strecke beträgt jeweils $s = \SI{1}{\milli\metre}$, woraus sich mit den gemittelten Zeiten die Geschwindigkeiten $v_{\text{ab}}$ und $v_{\text{auf}}$ ergeben.
 
 \input{build/Tabelle_1_texformat.tex}
 
@@ -59,7 +59,7 @@ Die verwendeten Konstanten sind \cite{skript} \cite{chemie}
 wobei die Viskosität $n$ von Luft je nach Temperatur aus dem Diagramm \ref{luft_n_shit} entnommen wird.
 \input{build/Tabelle_q_texformat.tex}
 
-Zusätzlich sind diese in Diagramm \ref{plot:1} dargestellt.
+Zusätzlich sind die Ergebnisse der Ladungen in Abbildung \ref{plot:1} graphisch dargestellt.
 \begin{figure}
   \centering
   \includegraphics[height=8cm]{build/ladungen.pdf}
@@ -71,6 +71,7 @@ Wird nun der größte gemeinsame Teiler dieser Werte bestimmt, so ergibt sich ei
 \begin{align*}
   e_0 = \input{build/e_0.tex}.
 \end{align*}
+Die Berechnung erfolgt mithilfe eines im Python implementierten, dem Problem angepassten euklidischen Algorithmus.
 
 Die Avogadro-Konstante wird durch die Formel
 \begin{equation}
@@ -97,7 +98,7 @@ Mit den Parametern \cite{skript} \cite{normaldruck}
   B &= 6,17\cdot 10^{-3}\text{Torr},\\
   p &= 1013,25\cdot10^2\si{\pascal}
 \end{align*}
-ergeben sich die somit neu bestimmten Ladungen aus Tabelle \ref{table:q_neu}, welche auch in Diagramm \ref{plot:2} dargestellt sind.
+ergeben sich die somit neu bestimmten Ladungen in Tabelle \ref{table:q_neu}, welche auch in Abbildung \ref{plot:2} graphisch dargestellt sind.
 
 \input{build/Tabelle_q_neu_texformat.tex}
 
