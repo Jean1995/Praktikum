@@ -283,8 +283,8 @@ write('build/Tabelle_4_texformat.tex', make_full_table(
 t_4_auf_mitt = ufloat(np.mean(t_4_auf), MeanError(noms(t_4_auf)))
 t_4_ab_mitt =  ufloat(np.mean(t_4_ab),  MeanError(noms(t_4_ab)))
 q_4 = f(302, 1.88, t_4_auf_mitt, t_4_ab_mitt, d)
-print(q_4)
 r_4 = r(1.88, t_4_auf_mitt, t_4_ab_mitt)
+print(r_4)
 q_4_neu = q_4*(1+B/(p*r_4))**(-3/2)
     #v_0 = 14.83
 t_5_auf = np.array([9.12, 9.12])
@@ -304,8 +304,8 @@ write('build/Tabelle_5_texformat.tex', make_full_table(
 t_5_auf_mitt = ufloat(np.mean(t_5_auf), MeanError(noms(t_5_auf)))
 t_5_ab_mitt =  ufloat(np.mean(t_5_ab),  MeanError(noms(t_5_ab)))
 q_5 = f(302, 1.88, t_5_auf_mitt, t_5_ab_mitt, d)
-print(q_5)
-r_5 = r(1.885, t_5_auf_mitt, t_5_ab_mitt)
+r_5 = r(1.88, t_5_auf_mitt, t_5_ab_mitt)
+print(r_5)
 q_5_neu = q_5*(1+B/(p*r_5))**(-3/2)
 ########## V = 250 R = 1.67 => T = 33 => n = 1.885
     #v_0 = 14.47
@@ -326,8 +326,8 @@ write('build/Tabelle_6_texformat.tex', make_full_table(
 t_6_auf_mitt = ufloat(np.mean(t_6_auf), MeanError(noms(t_6_auf)))
 t_6_ab_mitt =  ufloat(np.mean(t_6_ab),  MeanError(noms(t_6_ab)))
 q_6 = f(250, 1.885, t_6_auf_mitt, t_6_ab_mitt, d)
-print(q_6)
 r_6 = r(1.885, t_6_auf_mitt, t_6_ab_mitt)
+print(r_6)
 q_6_neu = q_6*(1+B/(p*r_6))**(-3/2)
 
 n = np.array([1,2,3,4,5,6])
@@ -347,9 +347,9 @@ write('build/Tabelle_q_texformat.tex', make_full_table(
 
 plt.xlim(0.5, 6.5)
 #plt.plot(n, unp.nominal_values(q)*10**(19), 'rx', label='Messdaten')
-plt.errorbar(n, unp.nominal_values(q), fmt='rx', yerr=unp.std_devs(q), label='Messdaten')
+plt.errorbar(n, unp.nominal_values(q)*10**18, fmt='rx', yerr=unp.std_devs(q)*10**18, label='Messdaten')
 plt.xlabel(r'$\text{Messung}$')
-plt.ylabel(r'$q \:/\: \si{\coulomb}$')
+plt.ylabel(r'$q \:/\: 10^{-18}\si{\coulomb}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/ladungen.pdf')
@@ -371,9 +371,9 @@ write('build/Tabelle_q_neu_texformat.tex', make_full_table(
 
 plt.clf()
 plt.xlim(0.5, 6.5)
-plt.errorbar(n, unp.nominal_values(q_neu), fmt='rx', yerr=unp.std_devs(q_neu), label='korrigierte Messdaten')
+plt.errorbar(n, unp.nominal_values(q_neu)*10**18, fmt='rx', yerr=unp.std_devs(q_neu)*10**18, label='korrigierte Messdaten')
 plt.xlabel(r'$\text{Messung}$')
-plt.ylabel(r'$q \:/\: \si{\coulomb}$')
+plt.ylabel(r'$q \:/\: 10^{-18}\si{\coulomb}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/ladungen_neu.pdf')
@@ -397,14 +397,11 @@ write('build/e_0.tex', make_SI(e_0 * 10**(19), r'\coulomb','e-19', figures=3))
 print(e_0)
 e_rel = abs(e_0-1.6021766208*10**(-19))/(1.6021766208*10**(-19))*100
 write('build/e_rel.tex', make_SI(e_rel, r'\percent', figures=2))
-print(e_rel)
 e_0_neu = GCD(q_neu,30)
 e_0_neu = unp.nominal_values(e_0_neu)
 write('build/e_0_neu.tex', make_SI(e_0_neu * 10**(19), r'\coulomb','e-19', figures=3))
-print(e_0_neu)
 e_neu_rel = abs(e_0_neu-1.6021766208*10**(-19))/(1.6021766208*10**(-19))*100
 write('build/e_neu_rel.tex', make_SI(e_neu_rel, r'\percent', figures=2))
-print(e_neu_rel)
 
 Faraday = 96485.3365 #https://de.wikipedia.org/wiki/Faraday-Konstante
 N_a_lit = 6.022140857*10**23 #https://de.wikipedia.org/wiki/Avogadro-Konstante
@@ -416,3 +413,44 @@ N_a_neu = Faraday/e_0_neu
 write('build/N_a_neu.tex', make_SI(N_a_neu * 10**(-23), r'\per\mol','e23', figures=3))
 N_a_neu_rel = abs(N_a_neu-N_a_lit)/N_a_lit *100
 write('build/N_a_neu_rel.tex', make_SI(N_a_neu_rel, r'\percent', figures=2))
+
+r = np.array([r_1,r_2,r_3,r_4,r_5,r_6])
+
+write('build/Tabelle_r.tex', make_table([n,unp.nominal_values(r)*10**7, unp.std_devs(r)*10**7],[0,3,3]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_r_texformat.tex', make_full_table(
+    'Radien der Öltröpfchen.',
+    'tabella',
+    'build/Tabelle_r.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                              # die Multicolumns sein sollen
+    [
+    r'$\text{Messung}$',
+    r'$r \:/\: 10^{-7}\si{\metre}$',
+    r'$\increment{r} \:/\: 10^{-7}\si{\metre}$']))
+
+e_0 = np.array([e_0, e_0_neu])
+e_0_rel = np.array([e_rel, e_neu_rel])
+N_a = np.array([N_a,N_a_neu])
+N_a_rel = np.array([N_a_rel, N_a_neu_rel])
+x = np.array([1,2])
+write('build/Tabelle_Ende.tex', make_table([x,e_0*10**19, e_0_rel, N_a*10**(-23), N_a_rel],[0,3,3,3,3]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_Ende_texformat.tex', make_full_table(
+    'Ergebnisse des Versuchs.',
+    'tab:Ende',
+    'build/Tabelle_Ende.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                              # die Multicolumns sein sollen
+    [
+    r'$\text{Methode}$',
+    r'$e_0 \:/\: 10^{-19}\si{\coulomb}$',
+    r'$\increment{e_0} \:/\: \si{\percent}$',
+    r'$N_a \:/\: 10^{23}\si{\per\mol}$',
+    r'$\increment{N_a} \:/\: \si{\percent}$']))
+
+
+
+
+#http://www.chemie.de/lexikon/Faraday-Konstante.html
+#http://www.chemie.de/lexikon/Elementarladung.html
+#https://elearning.physik.uni-frankfurt.de/data/FB13-PhysikOnline/lm_data/lm_324/daten/kap_17/node31.htm
+#http://www.chemie.de/lexikon/Avogadro-Konstante.html
