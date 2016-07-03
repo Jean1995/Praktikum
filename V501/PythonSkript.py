@@ -183,6 +183,7 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/plot_a1.pdf')
 
 print("In Kooperation mit: Sassi Vacation!")
+print("Starring Amba-Lamb-Guy (https://www.youtube.com/watch?v=fLQWKOB5se0)")
 # U_b,2 = 250 V
 plt.clf()
 params2 = ucurve_fit(reg_linear, U_2, D_lang)             # linearer Fit
