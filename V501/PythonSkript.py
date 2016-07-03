@@ -157,3 +157,168 @@ from error_calculation import(
 
 ########## DIFFERENT STUFF ##########
 # R = const.physical_constants["molar gas constant"]      # Array of value, unit, error
+
+
+# E-Feld Teilaufgabe a)
+
+D_lang, U_1, U_2, U_3 = np.genfromtxt('messdaten/messung_E_lang.txt', unpack=True)
+D_kurz, U_4, U_5 = np.genfromtxt('messdaten/messung_E_kurz.txt', unpack=True)
+D_lang = D_lang * 0.0254
+D_kurz = D_kurz * 0.0254 # in meter umrechnen
+
+print("Die folgenden Plots werden Ihnen präsentiert von: Micra Tours!")
+# U_b,1 = 200 V
+params1 = ucurve_fit(reg_linear, U_1, D_lang)             # linearer Fit
+m1, b1 = params1
+write('build/parameter_m1.tex', make_SI(m1, r'\metre\per\volt', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b1.tex', make_SI(b1, r'\volt', figures=2))      # type in Anz. signifikanter Stellen
+t_plot1 = np.linspace(np.amin(U_1)-0.5, np.amax(U_1)+0.5, 100)
+plt.plot(t_plot1, (m1.n*t_plot1+b1.n)*100, 'b-', label='Linearer Fit')
+plt.plot(U_1, D_lang*100, 'rx', label='Messdaten')
+#plt.xlim(t_plot1[0], t_plot1[-1])
+plt.ylabel(r'$D \:/\: \si{\centi\metre}$')
+plt.xlabel(r'$U_1 \:/\: \si{\volt}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot_a1.pdf')
+
+print("In Kooperation mit: Sassi Vacation!")
+# U_b,2 = 250 V
+plt.clf()
+params2 = ucurve_fit(reg_linear, U_2, D_lang)             # linearer Fit
+m2, b2 = params2
+write('build/parameter_m2.tex', make_SI(m2, r'\metre\per\volt', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b2.tex', make_SI(b2, r'\volt', figures=2))      # type in Anz. signifikanter Stellen
+t_plot2 = np.linspace(np.amin(U_2)-0.5, np.amax(U_2)+0.5, 100)
+plt.plot(t_plot2, (m2.n*t_plot2+b2.n)*100, 'b-', label='Linearer Fit')
+plt.plot(U_2, D_lang*100, 'rx', label='Messdaten')
+#plt.xlim(t_plot1[0], t_plot1[-1])
+plt.ylabel(r'$D \:/\: \si{\centi\metre}$')
+plt.xlabel(r'$U_2 \:/\: \si{\volt}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot_a2.pdf')
+
+print("... das maken dauert heute aber echt lang...")
+# U_b,3 = 300 V
+plt.clf()
+params3 = ucurve_fit(reg_linear, U_3, D_lang)             # linearer Fit
+m3, b3 = params3
+write('build/parameter_m3.tex', make_SI(m3, r'\metre\per\volt', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b3.tex', make_SI(b3, r'\volt', figures=2))      # type in Anz. signifikanter Stellen
+t_plot3 = np.linspace(np.amin(U_3)-0.5, np.amax(U_3)+0.5, 100)
+plt.plot(t_plot3, (m3.n*t_plot3+b3.n)*100, 'b-', label='Linearer Fit')
+plt.plot(U_3, D_lang*100, 'rx', label='Messdaten')
+#plt.xlim(t_plot1[0], t_plot1[-1])
+plt.ylabel(r'$D \:/\: \si{\centi\metre}$')
+plt.xlabel(r'$U_3 \:/\: \si{\volt}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot_a3.pdf')
+
+print("Wer lässt auch gefühlt 34 Funktionen in einem Protokoll fitten?!")
+# U_b,4 = 350 V
+plt.clf()
+params4 = ucurve_fit(reg_linear, U_4, D_kurz)             # linearer Fit
+m4, b4 = params4
+write('build/parameter_m4.tex', make_SI(m4, r'\metre\per\volt', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b4.tex', make_SI(b4, r'\volt', figures=2))      # type in Anz. signifikanter Stellen
+t_plot4 = np.linspace(np.amin(U_4)-0.5, np.amax(U_4)+0.5, 100)
+plt.plot(t_plot4, (m4.n*t_plot4+b4.n)*100, 'b-', label='Linearer Fit')
+plt.plot(U_4, D_kurz*100, 'rx', label='Messdaten')
+#plt.xlim(t_plot1[0], t_plot1[-1])
+plt.ylabel(r'$D \:/\: \si{\centi\metre}$')
+plt.xlabel(r'$U_4 \:/\: \si{\volt}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot_a4.pdf')
+
+print("Der isst auch kleine Kinder...")
+# U_b,5 = 400 V
+plt.clf()
+params5 = ucurve_fit(reg_linear, U_5, D_kurz)             # linearer Fit
+m5, b5 = params5
+write('build/parameter_m5.tex', make_SI(m5, r'\metre\per\volt', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b5.tex', make_SI(b5, r'\volt', figures=2))      # type in Anz. signifikanter Stellen
+t_plot5 = np.linspace(np.amin(U_5)-0.5, np.amax(U_5)+0.5, 100)
+plt.plot(t_plot5, (m5.n*t_plot5+b5.n)*100, 'b-', label='Linearer Fit')
+plt.plot(U_5, D_kurz*100, 'rx', label='Messdaten')
+#plt.xlim(t_plot1[0], t_plot1[-1])
+plt.ylabel(r'$D \:/\: \si{\centi\metre}$')
+plt.xlabel(r'$U_5 \:/\: \si{\volt}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot_a5.pdf')
+
+# E-Feld a), Teil 2
+
+print("Übrigens: Das ist unser letztes Protkoll aus dem AP!")
+U_b = np.array([200, 250, 300, 350, 400])
+empf = unp.uarray([m1.n, m2.n, m3.n, m4.n, m5.n], [m1.s, m2.s, m3.s, m4.s, m5.s])
+plt.clf()
+params6 = ucurve_fit(reg_linear, 1/U_b, noms(empf))             # linearer Fit
+m6, b6 = params6
+write('build/parameter_m6.tex', make_SI(m6, r'\metre', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b6.tex', make_SI(b6, r'\metre\per\volt', figures=2))      # type in Anz. signifikanter Stellen
+t_plot6 = np.linspace(np.amin(1/U_b)-0.001, np.amax(1/U_b)+0.001, 100)
+plt.plot(t_plot6, (m6.n*t_plot6+b6.n), 'b-', label='Linearer Fit')
+plt.errorbar(1/U_b, noms(empf), fmt='rx', yerr=stds(empf), label='Messdaten')
+#plt.xlim(t_plot1[0], t_plot1[-1])
+plt.ylabel(r'$\frac{D}{U_d} \:/\: \si{\metre\per\volt}$')
+plt.xlabel(r'$\frac{1}{U_\text{b}} \:/\: \si{\volt\tothe{-1}}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot_a6.pdf')
+
+d = 0.38 * 0.01
+p = 1.9 * 0.01
+L = 14.3*0.01
+m6_lit = (p*L)/(2*d)
+
+write('build/parameter_m6_lit.tex', make_SI(m6_lit, r'\metre', figures=3))       # type in Anz. signifikanter Stellen
+err_m6 = (m6 - m6_lit) / m6_lit
+write('build/parameter_m6_rel.tex', make_SI(err_m6*100, r'\percent', figures=2))
+
+# E-Feld b)
+
+v, A = np.genfromtxt('messdaten/frequenzen.txt', unpack=True)
+
+U_b = 400 #(???)
+D_amp = A[1] * 0.0254 # habe nicht ganz verstanden welchen Amplitudenwert wir nehmen sollen
+U_amp = 1/m6 * U_b * D_amp # Formel umgestellt und eingesetzt
+write('build/U_amp.tex', make_SI(U_amp, r'\volt', figures=2))
+
+######################################
+
+# B-Feld a)
+
+D_lang, I_1, I_2, I_3 = np.genfromtxt('messdaten/messung_B_lang.txt', unpack=True)
+D_kurz, I_4, I_5 = np.genfromtxt('messdaten/messung_B_kurz.txt', unpack=True)
+D_lang = D_lang * 0.0254
+D_kurz = D_kurz * 0.0254 # in meter umrechnen
+
+mu_0 = 4*np.pi*10**(-7)
+N = 50 #? geraten
+R = 0.25 # ? geraten
+L = 17.5*0.01
+B_1 = mu_0 * 8/np.sqrt(125) * N/R * I_1
+B_2 = mu_0 * 8/np.sqrt(125) * N/R * I_2
+B_3 = mu_0 * 8/np.sqrt(125) * N/R * I_3
+B_4 = mu_0 * 8/np.sqrt(125) * N/R * I_4
+B_5 = mu_0 * 8/np.sqrt(125) * N/R * I_5
+
+# U_b,1 = 250 V
+plt.clf()
+params7 = ucurve_fit(reg_linear, B_1, D_lang/(L**2+D_lang**2))             # linearer Fit
+m7, b7 = params7
+write('build/parameter_m7.tex', make_SI(m7, r'\per\metre\per\tesla', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b7.tex', make_SI(b7, r'\per\metre', figures=2))      # type in Anz. signifikanter Stellen
+t_plot7 = np.linspace(np.amin(B_1), np.amax(B_1), 100)
+plt.plot(t_plot7*10**(6), (m7.n*t_plot7+b7.n), 'b-', label='Linearer Fit')
+plt.plot(B_1*10**(6), D_lang/(L**2+D_lang**2), 'rx', label='Messdaten')
+#plt.xlim(t_plot1[0], t_plot1[-1])
+plt.ylabel(r'$\frac{D}{L^2 + D^2} \:/\: \si{\per\metre} $')
+plt.xlabel(r'$B_1 \:/\: \si{\micro\tesla}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot_a7.pdf')
