@@ -1,6 +1,131 @@
 \section{Auswertung}
 \label{sec:Auswertung}
 
+
+\subsection{Ablenkung durch das E-Feld}
+
+\subsubsection{Bestimmung der Apparaturkonstante}
+
+
+
+Die Messwerte, welche zur Bestimmung der Empfindlichkeit des Ablenksystems benutzt werden, sind in Tabelle \ref{table:A2} dargestellt.
+Dabei wird die Beschleunigungsspannung beginnend mit $U_{\text{B}} = \SI{200}{\volt}$ in Fünfzigerschritten erhöht.
+\input{Tabelle_b_texformat.tex}
+Für jede Messreihe wird nun ein plot erstellt, welcher die Ablenkspannung gegen die Ablenkung aufträgt.
+Mittels linearer Ausgleichsrechnung wird die Steigung, welche der Empfindlichkeit entspricht, berechnet.
+Die Fitparameter sind in Tabelle \ref{tab:c} einzusehen, die entsprechenden Plots \ref{plot:1} - \ref{plot:5} sind am Ende dieses Kapitels zu begutachten.
+\input{Tabelle_c_texformat.tex}
+Werden diese Steigungen nun gegen das Reziproke der Beschleunigungsspannung aufgetragen ergibt sich der Plot \ref{plot:6}.
+Über eine lineare Ausgleichsrechnung kann über die Steigung der Wert
+\begin{align*}
+  \frac{pL}{2d} = \input{build/parameter_m6}
+\end{align*}
+entnommen werden.
+
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plot_a1.pdf}
+  \caption{Plot zur Bestimmung der Empfindlichkeit bei $U_{\text{B}} = \SI{200}{\volt}$.}
+  \label{plot:1}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plot_a2.pdf}
+  \caption{Plot zur Bestimmung der Empfindlichkeit bei $U_{\text{B}} = \SI{250}{\volt}$.}
+  \label{plot:2}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plot_a3.pdf}
+  \caption{Plot zur Bestimmung der Empfindlichkeit bei $U_{\text{B}} = \SI{300}{\volt}$.}
+  \label{plot:3}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plot_a4.pdf}
+  \caption{Plot zur Bestimmung der Empfindlichkeit bei $U_{\text{B}} = \SI{350}{\volt}$.}
+  \label{plot:4}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plot_a5.pdf}
+  \caption{Plot zur Bestimmung der Empfindlichkeit bei $U_{\text{B}} = \SI{400}{\volt}$.}
+  \label{plot:5}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plot_a6.pdf}
+  \caption{Plot zur Ermittlung der Apparaturkonstante.}
+  \label{plot:6}
+\end{figure}
+
+\clearpage
+
+
+\subsubsection{Untersuchung der Sinusspannung}
+
+
+\clearpage
+\subsection{Ablenkung durch das B-Feld}
+\subsubsection{Bestimmung der spezifischen Elektronenladung}
+\input{Tabelle_a_texformat.tex}
+\begin{equation}
+  B = \mu_0 \frac{8}{\sqrt{125}}\frac{N}{R} I
+\end{equation}
+\begin{align*}
+  \mu_0 &= 4\pi \cdot 10^{-7}\si{\newton\per\ampere\tothe{2}},\\
+  N    &= 20,\\
+  R    &= \SI{0,282}{\metre} ,\\
+  L    &= \SI{17,5}{\centi\metre},\\
+\end{align*}
+\input{Tabelle_d_texformat.tex}
+
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plot_a7.pdf}
+  \caption{Plot zur Bestimmung des Proportionalitätsfaktors bei $U_{\text{B}} = \SI{250}{\volt}$.}
+  \label{plot:7}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plot_a8.pdf}
+  \caption{Plot zur Bestimmung des Proportionalitätsfaktors bei $U_{\text{B}} = \SI{300}{\volt}$.}
+  \label{plot:8}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plot_a9.pdf}
+  \caption{Plot zur Bestimmung des Proportionalitätsfaktors bei $U_{\text{B}} = \SI{350}{\volt}$.}
+  \label{plot:9}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plot_a10.pdf}
+  \caption{Plot zur Bestimmung des Proportionalitätsfaktors bei $U_{\text{B}} = \SI{400}{\volt}$.}
+  \label{plot:10}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[height=7cm]{build/plot_a11.pdf}
+  \caption{Plot zur Bestimmung des Proportionalitätsfaktors bei $U_{\text{B}} = \SI{450}{\volt}$.}
+  \label{plot:11}
+\end{figure}
+
+\clearpage
+
+\subsubsection{Messung der Größe des Erdmagnetfeldes}
+
+
+
 % % Examples
 % \begin{equation}
 %   U(t) = a \sin(b t + c) + d

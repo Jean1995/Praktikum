@@ -253,20 +253,41 @@ plt.savefig('build/plot_a5.pdf')
 
 # E-Feld a), Teil 2
 
+die_bs = np.array([b1.n, b2.n, b3.n, b4.n, b5.n])
+die_bs_err = np.array([b1.s, b2.s, b3.s, b4.s, b5.s])
+die_ms = np.array([m1.n, m2.n, m3.n, m4.n, m5.n])
+die_ms_err = np.array([m1.s, m2.s, m3.s, m4.s, m5.s])
 print("Übrigens: Das ist unser letztes Protkoll aus dem AP!")
 U_b = np.array([200, 250, 300, 350, 400])
 empf = unp.uarray([m1.n, m2.n, m3.n, m4.n, m5.n], [m1.s, m2.s, m3.s, m4.s, m5.s])
 plt.clf()
+
+write('Tabelle_c.tex', make_table([die_ms*10**4, die_ms_err*10**4, die_bs*10**3, die_bs_err*10**3],[2, 2, 2, 2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('Tabelle_c_texformat.tex', make_full_table(
+    'Fitparameter: Steigung $m$ und y-Achsenabschnitt $b$.',
+    'tab:c',
+    'Tabelle_c.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                              # die Multicolumns sein sollen
+    [
+    r'$m \:/\: 10^{-4}\si{\metre\per\volt}$',
+    r'$\increment{m} \:/\: 10^{-4}\si{\metre\per\volt}$',
+    r'$b \:/\: 10^{-3}\si{\volt}$',
+    r'$\increment{b} \:/\: 10^{-3}\si{\volt}$']))
+
+
+
+
 params6 = ucurve_fit(reg_linear, 1/U_b, noms(empf))             # linearer Fit
 m6, b6 = params6
 write('build/parameter_m6.tex', make_SI(m6, r'\metre', figures=1))       # type in Anz. signifikanter Stellen
 write('build/parameter_b6.tex', make_SI(b6, r'\metre\per\volt', figures=2))      # type in Anz. signifikanter Stellen
-t_plot6 = np.linspace(np.amin(1/U_b)-0.001, np.amax(1/U_b)+0.001, 100)
-plt.plot(t_plot6, (m6.n*t_plot6+b6.n), 'b-', label='Linearer Fit')
-plt.errorbar(1/U_b, noms(empf), fmt='rx', yerr=stds(empf), label='Messdaten')
+t_plot6 = np.linspace(np.amin(1/U_b*100)-0.001*100, np.amax(1/U_b*100)+0.001*100, 100)
+plt.plot(t_plot6, (m6.n*t_plot6+b6.n*100), 'b-', label='Linearer Fit')
+plt.errorbar(1/U_b*100, noms(empf)*100, fmt='rx', yerr=stds(empf)*100, label='Messdaten')
 #plt.xlim(t_plot1[0], t_plot1[-1])
-plt.ylabel(r'$\frac{D}{U_d} \:/\: \si{\metre\per\volt}$')
-plt.xlabel(r'$\frac{1}{U_\text{b}} \:/\: \si{\volt\tothe{-1}}$')
+plt.ylabel(r'$\frac{D}{U_d} \:/\: 10^{-2}\si{\metre\per\volt}$')
+plt.xlabel(r'$\frac{1}{U_\text{B}} \:/\: 10^{-2}\si{\volt\tothe{-1}}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/plot_a6.pdf')
@@ -299,8 +320,8 @@ D_lang = D_lang * 0.0254
 D_kurz = D_kurz * 0.0254 # in meter umrechnen
 
 mu_0 = 4*np.pi*10**(-7)
-N = 50 #? geraten
-R = 0.25 # ? geraten
+N = 20 #? geraten
+R = 0.282 # ? geraten
 L = 17.5*0.01
 B_1 = mu_0 * 8/np.sqrt(125) * N/R * I_1
 B_2 = mu_0 * 8/np.sqrt(125) * N/R * I_2
@@ -315,7 +336,7 @@ m7, b7 = params7
 write('build/parameter_m7.tex', make_SI(m7, r'\per\metre\per\tesla', figures=1))       # type in Anz. signifikanter Stellen
 write('build/parameter_b7.tex', make_SI(b7, r'\per\metre', figures=2))      # type in Anz. signifikanter Stellen
 t_plot7 = np.linspace(np.amin(B_1), np.amax(B_1), 100)
-plt.plot(t_plot7*10**(6), (m7.n*t_plot7+b7.n), 'b-', label='Linearer Fit')
+plt.plot(t_plot7*10**6, (m7.n*t_plot7+b7.n), 'b-', label='Linearer Fit')
 plt.plot(B_1*10**(6), D_lang/(L**2+D_lang**2), 'rx', label='Messdaten')
 #plt.xlim(t_plot1[0], t_plot1[-1])
 plt.ylabel(r'$\frac{D}{L^2 + D^2} \:/\: \si{\per\metre} $')
@@ -323,3 +344,67 @@ plt.xlabel(r'$B_1 \:/\: \si{\micro\tesla}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/plot_a7.pdf')
+
+# U_b,2 = 300 V
+plt.clf()
+params8 = ucurve_fit(reg_linear, B_2, D_lang/(L**2+D_lang**2))             # linearer Fit
+m8, b8 = params8
+write('build/parameter_m8.tex', make_SI(m8, r'\per\metre\per\tesla', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b8.tex', make_SI(b8, r'\per\metre', figures=2))      # type in Anz. signifikanter Stellen
+t_plot8 = np.linspace(np.amin(B_2), np.amax(B_2), 100)
+plt.plot(t_plot8*10**(6), (m8.n*t_plot8+b8.n), 'b-', label='Linearer Fit')
+plt.plot(B_2*10**(6), D_lang/(L**2+D_lang**2), 'rx', label='Messdaten')
+#plt.xlim(t_plot1[0], t_plot1[-1])
+plt.ylabel(r'$\frac{D}{L^2 + D^2} \:/\: \si{\per\metre} $')
+plt.xlabel(r'$B_2 \:/\: \si{\micro\tesla}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot_a8.pdf')
+
+# U_b,2 = 350 V
+plt.clf()
+params9 = ucurve_fit(reg_linear, B_3, D_lang/(L**2+D_lang**2))             # linearer Fit
+m9, b9 = params9
+write('build/parameter_m9.tex', make_SI(m9, r'\per\metre\per\tesla', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b9.tex', make_SI(b9, r'\per\metre', figures=2))      # type in Anz. signifikanter Stellen
+t_plot9 = np.linspace(np.amin(B_3), np.amax(B_3), 100)
+plt.plot(t_plot9*10**(6), (m9.n*t_plot9+b9.n), 'b-', label='Linearer Fit')
+plt.plot(B_3*10**(6), D_lang/(L**2+D_lang**2), 'rx', label='Messdaten')
+#plt.xlim(t_plot1[0], t_plot1[-1])
+plt.ylabel(r'$\frac{D}{L^2 + D^2} \:/\: \si{\per\metre} $')
+plt.xlabel(r'$B_3 \:/\: \si{\micro\tesla}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot_a9.pdf')
+
+# U_b,2 = 400 V
+plt.clf()
+params10 = ucurve_fit(reg_linear, B_4, D_lang/(L**2+D_lang**2))             # linearer Fit
+m10, b10 = params10
+write('build/parameter_m10.tex', make_SI(m10, r'\per\metre\per\tesla', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b10.tex', make_SI(b10, r'\per\metre', figures=2))      # type in Anz. signifikanter Stellen
+t_plot10 = np.linspace(np.amin(B_4), np.amax(B_4), 100)
+plt.plot(t_plot10*10**(6), (m10.n*t_plot10+b10.n), 'b-', label='Linearer Fit')
+plt.plot(B_4*10**(6), D_lang/(L**2+D_lang**2), 'rx', label='Messdaten')
+#plt.xlim(t_plot1[0], t_plot1[-1])
+plt.ylabel(r'$\frac{D}{L^2 + D^2} \:/\: \si{\per\metre} $')
+plt.xlabel(r'$B_4 \:/\: \si{\micro\tesla}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot_a10.pdf')
+
+# U_b,2 = 450 V
+plt.clf()
+params11 = ucurve_fit(reg_linear, B_5, D_lang/(L**2+D_lang**2))             # linearer Fit
+m11, b11 = params11
+write('build/parameter_m11.tex', make_SI(m11, r'\per\metre\per\tesla', figures=1))       # type in Anz. signifikanter Stellen
+write('build/parameter_b11.tex', make_SI(b11, r'\per\metre', figures=2))      # type in Anz. signifikanter Stellen
+t_plot11 = np.linspace(np.amin(B_5), np.amax(B_5), 100)
+plt.plot(t_plot11*10**(6), (m11.n*t_plot11+b11.n), 'b-', label='Linearer Fit')
+plt.plot(B_5*10**(6), D_lang/(L**2+D_lang**2), 'rx', label='Messdaten')
+#plt.xlim(t_plot1[0], t_plot1[-1])
+plt.ylabel(r'$\frac{D}{L^2 + D^2} \:/\: \si{\per\metre} $')
+plt.xlabel(r'$B_5 \:/\: \si{\micro\tesla}$')
+plt.legend(loc='best')
+plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
+plt.savefig('build/plot_a11.pdf')
