@@ -21,15 +21,15 @@ Für die Fehlerrechnung wird bei allen folgenden Rechnungen das Gaußsche Fehler
 \end{equation}
 für eine Funktion $f(x_1,x_2, \dotsc ,x_n)$, bei der die Größen $x_1, x_2, \dotsc , x_n$ voneinander unabhängig sind, verwendet.
 
-Bei der linearen Regressionsrechnung gilt mit den Parametern $m$ und $b$ und der Ausgleichsgerade $y=mx+b$ der Zusammenhang:
-\begin{align}
-  m &= \frac{\overline{xy}-\overline{x}\cdot\overline{y}}{\overline{x²} - \overline{x}²} & &  b = \overline{y} - m \overline{x}  \; .
-\end{align}
-Dabei sind $x_i$ und $y_i$ linear abhängige Messgrößen. Der Fehler dieser Parameter errechnet sich zudem zu
-\begin{align}
-  \sigma_m^2 &= \frac{\sigma^2}{n(\overline{x²} - \overline{x}²)} & &\sigma_b^2 = \frac{\sigma^2\overline{x²}}{n(\overline{x²} - \overline{x}²)}
-\end{align}
-% Wenn Messdaten mit Vorhersagen verglichen werden sollen, benutzt man häufig die \emph{root mean square deviation}. Diese ist gegeben durch
+%Bei der linearen Regressionsrechnung gilt mit den Parametern $m$ und $b$ und der Ausgleichsgerade $y=mx+b$ der Zusammenhang:
+%\begin{align}
+%  m &= \frac{\overline{xy}-\overline{x}\cdot\overline{y}}{\overline{x²} - \overline{x}²} & &  b = \overline{y} - m \overline{x}  \; .
+%\end{align}
+%Dabei sind $x_i$ und $y_i$ linear abhängige Messgrößen. Der Fehler dieser Parameter errechnet sich zudem zu
+%\begin{align}
+%  \sigma_m^2 &= \frac{\sigma^2}{n(\overline{x²} - \overline{x}²)} & &\sigma_b^2 = \frac{\sigma^2\overline{x²}}{n(\overline{x²} - %\overline{x}²)}
+%\end{align}
+%% Wenn Messdaten mit Vorhersagen verglichen werden sollen, benutzt man häufig die \emph{root mean square deviation}. Diese ist gegeben durch
 % \begin{equation}
 %   \label{eq:RMSE}
 %   \textrm{RMSD} = \sqrt{\overline{(Y_\textrm{Messung}-Y_\textrm{Vorhersage})^2}}  \; .

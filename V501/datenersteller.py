@@ -62,9 +62,9 @@ D = np.array([0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2.0]) # in Zoll! Obacht!
 I_1 = np.array([0, 0.28, 0.58, 0.89, 1.19, 1.52, 1.84, 2.18, 2.49]) # 250 V
 I_2 = np.array([0, 0.30, 0.64, 1.00, 1.34, 1.68, 2.2, 2.39, 2.73]) # 300 V
 I_3 = np.array([0, 0.32, 0.69, 1.07, 1.44, 1.81, 2.2, 2.58, 2.95]) # 350 V
-D_kurz = np.array([0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 0]) # in Zoll! Obacht!
-I_4 = np.array([0, 0.35, 0.74, 1.14, 1.56, 1.94, 2.34, 2.75, 0]) # 400 V
-I_5 = np.array([0, 0.4, 0.81, 1.25, 1.66, 2.09, 1.51, 2.94, 0]) # 450 V
+D_kurz = np.array([0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75]) # in Zoll! Obacht!
+I_4 = np.array([0, 0.35, 0.74, 1.14, 1.56, 1.94, 2.34, 2.75]) # 400 V
+I_5 = np.array([0, 0.4, 0.81, 1.25, 1.66, 2.09, 2.51, 2.94]) # 450 V
 
 np.savetxt('messdaten/messung_B_lang.txt', np.column_stack([D, I_1, I_2, I_3]), header="D [Zoll], I_1 [A], I_2 [A], I_3 [A]")
 np.savetxt('messdaten/messung_B_kurz.txt', np.column_stack([D_kurz, I_4, I_5]), header="D [Zoll], I_4 [A], I_5 [A]")

@@ -262,7 +262,7 @@ U_b = np.array([200, 250, 300, 350, 400])
 empf = unp.uarray([m1.n, m2.n, m3.n, m4.n, m5.n], [m1.s, m2.s, m3.s, m4.s, m5.s])
 plt.clf()
 
-write('Tabelle_c.tex', make_table([die_ms*10**4, die_ms_err*10**4, die_bs*10**3, die_bs_err*10**3],[2, 2, 2, 2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('Tabelle_c.tex', make_table([U_b, die_ms*10**4, die_ms_err*10**4, die_bs*10**3, die_bs_err*10**3],[0, 2, 2, 2, 2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
 write('Tabelle_c_texformat.tex', make_full_table(
     'Fitparameter: Steigung $m$ und y-Achsenabschnitt $b$.',
     'tab:c',
@@ -270,6 +270,7 @@ write('Tabelle_c_texformat.tex', make_full_table(
     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
                               # die Multicolumns sein sollen
     [
+    r'$U_b \:/\: \si{\volt}$',
     r'$m \:/\: 10^{-4}\si{\metre\per\volt}$',
     r'$\increment{m} \:/\: 10^{-4}\si{\metre\per\volt}$',
     r'$b \:/\: 10^{-3}\si{\volt}$',
@@ -282,7 +283,7 @@ params6 = ucurve_fit(reg_linear, 1/U_b, noms(empf))             # linearer Fit
 m6, b6 = params6
 write('build/parameter_m6.tex', make_SI(m6, r'\metre', figures=1))       # type in Anz. signifikanter Stellen
 write('build/parameter_b6.tex', make_SI(b6, r'\metre\per\volt', figures=2))      # type in Anz. signifikanter Stellen
-t_plot6 = np.linspace(np.amin(1/U_b*100)-0.001*100, np.amax(1/U_b*100)+0.001*100, 100)
+t_plot6 = np.linspace(np.amin(1/U_b*100)-0.001*20, np.amax(1/U_b*100)+0.001*20, 10)
 plt.plot(t_plot6, (m6.n*t_plot6+b6.n*100), 'b-', label='Linearer Fit')
 plt.errorbar(1/U_b*100, noms(empf)*100, fmt='rx', yerr=stds(empf)*100, label='Messdaten')
 #plt.xlim(t_plot1[0], t_plot1[-1])
@@ -309,6 +310,17 @@ U_b = 400 #(???)
 D_amp = A[1] * 0.0254 # habe nicht ganz verstanden welchen Amplitudenwert wir nehmen sollen
 U_amp = 1/m6 * U_b * D_amp # Formel umgestellt und eingesetzt
 write('build/U_amp.tex', make_SI(U_amp, r'\volt', figures=2))
+write('build/v0.tex', make_SI(v[0], r'\kilo\hertz', figures=1))
+write('build/v1.tex', make_SI(v[1], r'\kilo\hertz', figures=1))
+write('build/v2.tex', make_SI(v[2], r'\kilo\hertz', figures=1))
+write('build/v3.tex', make_SI(v[3], r'\kilo\hertz', figures=1))
+
+write('build/v0_mal_2.tex', make_SI(v[0]*2, r'\kilo\hertz', figures=1))
+write('build/v3_durch_2.tex', make_SI(v[3]/2, r'\kilo\hertz', figures=1))
+
+
+
+
 
 ######################################
 
@@ -318,6 +330,7 @@ D_lang, I_1, I_2, I_3 = np.genfromtxt('messdaten/messung_B_lang.txt', unpack=Tru
 D_kurz, I_4, I_5 = np.genfromtxt('messdaten/messung_B_kurz.txt', unpack=True)
 D_lang = D_lang * 0.0254
 D_kurz = D_kurz * 0.0254 # in meter umrechnen
+U_b_B = np.array([250, 300, 350, 400, 450])
 
 mu_0 = 4*np.pi*10**(-7)
 N = 20 #? geraten
@@ -349,6 +362,7 @@ plt.savefig('build/plot_a7.pdf')
 plt.clf()
 params8 = ucurve_fit(reg_linear, B_2, D_lang/(L**2+D_lang**2))             # linearer Fit
 m8, b8 = params8
+print("https://www.youtube.com/watch?v=Mdi534Q1Zsg")
 write('build/parameter_m8.tex', make_SI(m8, r'\per\metre\per\tesla', figures=1))       # type in Anz. signifikanter Stellen
 write('build/parameter_b8.tex', make_SI(b8, r'\per\metre', figures=2))      # type in Anz. signifikanter Stellen
 t_plot8 = np.linspace(np.amin(B_2), np.amax(B_2), 100)
@@ -379,13 +393,13 @@ plt.savefig('build/plot_a9.pdf')
 
 # U_b,2 = 400 V
 plt.clf()
-params10 = ucurve_fit(reg_linear, B_4, D_lang/(L**2+D_lang**2))             # linearer Fit
+params10 = ucurve_fit(reg_linear, B_4, D_kurz/(L**2+D_kurz**2))             # linearer Fit
 m10, b10 = params10
 write('build/parameter_m10.tex', make_SI(m10, r'\per\metre\per\tesla', figures=1))       # type in Anz. signifikanter Stellen
 write('build/parameter_b10.tex', make_SI(b10, r'\per\metre', figures=2))      # type in Anz. signifikanter Stellen
 t_plot10 = np.linspace(np.amin(B_4), np.amax(B_4), 100)
 plt.plot(t_plot10*10**(6), (m10.n*t_plot10+b10.n), 'b-', label='Linearer Fit')
-plt.plot(B_4*10**(6), D_lang/(L**2+D_lang**2), 'rx', label='Messdaten')
+plt.plot(B_4*10**(6), D_kurz/(L**2+D_kurz**2), 'rx', label='Messdaten')
 #plt.xlim(t_plot1[0], t_plot1[-1])
 plt.ylabel(r'$\frac{D}{L^2 + D^2} \:/\: \si{\per\metre} $')
 plt.xlabel(r'$B_4 \:/\: \si{\micro\tesla}$')
@@ -395,16 +409,52 @@ plt.savefig('build/plot_a10.pdf')
 
 # U_b,2 = 450 V
 plt.clf()
-params11 = ucurve_fit(reg_linear, B_5, D_lang/(L**2+D_lang**2))             # linearer Fit
+params11 = ucurve_fit(reg_linear, B_5, D_kurz/(L**2+D_kurz**2))             # linearer Fit
 m11, b11 = params11
 write('build/parameter_m11.tex', make_SI(m11, r'\per\metre\per\tesla', figures=1))       # type in Anz. signifikanter Stellen
 write('build/parameter_b11.tex', make_SI(b11, r'\per\metre', figures=2))      # type in Anz. signifikanter Stellen
 t_plot11 = np.linspace(np.amin(B_5), np.amax(B_5), 100)
 plt.plot(t_plot11*10**(6), (m11.n*t_plot11+b11.n), 'b-', label='Linearer Fit')
-plt.plot(B_5*10**(6), D_lang/(L**2+D_lang**2), 'rx', label='Messdaten')
+plt.plot(B_5*10**(6), D_kurz/(L**2+D_kurz**2), 'rx', label='Messdaten')
 #plt.xlim(t_plot1[0], t_plot1[-1])
 plt.ylabel(r'$\frac{D}{L^2 + D^2} \:/\: \si{\per\metre} $')
 plt.xlabel(r'$B_5 \:/\: \si{\micro\tesla}$')
 plt.legend(loc='best')
 plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 plt.savefig('build/plot_a11.pdf')
+
+
+die_bs_b = np.array([b7.n, b8.n, b9.n, b10.n, b11.n])
+die_bs_err_b = np.array([b7.s, b8.s, b9.s, b10.s, b11.s])
+die_ms_b = np.array([m7.n, m8.n, m9.n, m10.n, m11.n])
+die_ms_err_b = np.array([m7.s, m8.s, m9.s, m10.s, m11.s])
+
+write('Tabelle_e.tex', make_table([U_b_B, die_ms_b, die_ms_err_b, die_bs_b, die_bs_err_b],[0, 2, 2, 2, 2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('Tabelle_e_texformat.tex', make_full_table(
+    'Fitparameter: Steigung $m$ und y-Achsenabschnitt $b$.',
+    'tab:e',
+    'Tabelle_e.tex',
+    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+                              # die Multicolumns sein sollen
+    [
+    r'$U_b \:/\: \si{\volt}$',
+    r'$m \:/\:\si{\per\metre\per\tesla}$',
+    r'$\increment{m} \:/\:\si{\per\metre\per\tesla}$',
+    r'$b \:/\: \si{\per\metre}$',
+    r'$\increment{b} \:/\:\si{\per\metre}$']))
+
+steigungen = unp.uarray(die_ms_b, die_ms_err_b)
+konstante = 8*U_b_B*steigungen**2
+write('build/konstante_0.tex', make_SI(konstante[0]*10**(-11), r'\coulomb\per\kilogram','e11', figures=2))      # type in Anz. signifikanter Stellen
+write('build/konstante_1.tex', make_SI(konstante[1]*10**(-11), r'\coulomb\per\kilogram','e11', figures=2))      # type in Anz. signifikanter Stellen
+write('build/konstante_2.tex', make_SI(konstante[2]*10**(-11), r'\coulomb\per\kilogram','e11', figures=2))      # type in Anz. signifikanter Stellen
+write('build/konstante_3.tex', make_SI(konstante[3]*10**(-11), r'\coulomb\per\kilogram','e11', figures=2))      # type in Anz. signifikanter Stellen
+write('build/konstante_4.tex', make_SI(konstante[4]*10**(-11), r'\coulomb\per\kilogram','e11', figures=2))      # type in Anz. signifikanter Stellen
+
+mean_k = np.mean(noms(konstante))
+std_k = np.std(noms(konstante))
+k = ufloat(mean_k, std_k)
+write('build/konstante_mean.tex', make_SI(k*10**(-11), r'\coulomb\per\kilogram','e11', figures=2))      # type in Anz. signifikanter Stellen
+
+
+## Errrdmagnetfeld

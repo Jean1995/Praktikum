@@ -9,57 +9,59 @@
 
 
 Die Messwerte, welche zur Bestimmung der Empfindlichkeit des Ablenksystems benutzt werden, sind in Tabelle \ref{table:A2} dargestellt.
-Dabei wird die Beschleunigungsspannung beginnend mit $U_{\text{B}} = \SI{200}{\volt}$ in Fünfzigerschritten erhöht.
+Dabei wird die Beschleunigungsspannung beginnend mit $U_{\text{B}} = \SI{200}{\volt}$ in $\SI{50}{\volt}$-Schritten erhöht.
 \input{Tabelle_b_texformat.tex}
-Für jede Messreihe wird nun ein plot erstellt, welcher die Ablenkspannung gegen die Ablenkung aufträgt.
-Mittels linearer Ausgleichsrechnung wird die Steigung, welche der Empfindlichkeit entspricht, berechnet.
-Die Fitparameter sind in Tabelle \ref{tab:c} einzusehen, die entsprechenden Plots \ref{plot:1} - \ref{plot:5} sind am Ende dieses Kapitels zu begutachten.
+Für jede Messreihe wird nun die Ablenkung $D$ gegen die Ablenkspannung aufgetragen.
+Mittels linearer Ausgleichsrechnung wird die Steigung, welche der Empfindlichkeit $D/U$ entspricht, berechnet.
+Dabei wird die Ausgleichsrechnung in Python mithilfe von SciPy \cite{scipy} durchgeführt.
 \input{Tabelle_c_texformat.tex}
-Werden diese Steigungen nun gegen das Reziproke der Beschleunigungsspannung aufgetragen ergibt sich der Plot \ref{plot:6}.
-Über eine lineare Ausgleichsrechnung kann über die Steigung der Wert
+Die Fitparameter sind in Tabelle \ref{tab:c} angegeben, die entsprechenden Plots \ref{plot:1} bis \ref{plot:5} sind am Ende dieses Kapitels aufgeführt. \\
+Werden diese Steigungen nun gegen die Reziproke der Beschleunigungsspannung aufgetragen ergibt sich der Plot \ref{plot:6}.
+Über eine lineare Ausgleichsrechnung können die Fitparameter
 \begin{align*}
-  \frac{pL}{2d} = \input{build/parameter_m6}
+  m &= \frac{pL}{2d} = \input{build/parameter_m6} \\
+  b &= \input{build/parameter_b6}
 \end{align*}
-entnommen werden.
+ermittelt werden, wobei die Steigung $m$ nach Formel \eqref{eqn:2} der zu bestimmenden Apparaturkonstante entspricht.
 
 \begin{figure}
   \centering
-  \includegraphics[height=7cm]{build/plot_a1.pdf}
+  \includegraphics[height=6cm]{build/plot_a1.pdf}
   \caption{Plot zur Bestimmung der Empfindlichkeit bei $U_{\text{B}} = \SI{200}{\volt}$.}
   \label{plot:1}
 \end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics[height=7cm]{build/plot_a2.pdf}
+  \includegraphics[height=6cm]{build/plot_a2.pdf}
   \caption{Plot zur Bestimmung der Empfindlichkeit bei $U_{\text{B}} = \SI{250}{\volt}$.}
   \label{plot:2}
 \end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics[height=7cm]{build/plot_a3.pdf}
+  \includegraphics[height=6cm]{build/plot_a3.pdf}
   \caption{Plot zur Bestimmung der Empfindlichkeit bei $U_{\text{B}} = \SI{300}{\volt}$.}
   \label{plot:3}
 \end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics[height=7cm]{build/plot_a4.pdf}
+  \includegraphics[height=6cm]{build/plot_a4.pdf}
   \caption{Plot zur Bestimmung der Empfindlichkeit bei $U_{\text{B}} = \SI{350}{\volt}$.}
   \label{plot:4}
 \end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics[height=7cm]{build/plot_a5.pdf}
+  \includegraphics[height=6cm]{build/plot_a5.pdf}
   \caption{Plot zur Bestimmung der Empfindlichkeit bei $U_{\text{B}} = \SI{400}{\volt}$.}
   \label{plot:5}
 \end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics[height=7cm]{build/plot_a6.pdf}
+  \includegraphics[height=6cm]{build/plot_a6.pdf}
   \caption{Plot zur Ermittlung der Apparaturkonstante.}
   \label{plot:6}
 \end{figure}
@@ -68,59 +70,111 @@ entnommen werden.
 
 
 \subsubsection{Untersuchung der Sinusspannung}
-
+Bei der Untersuchung der Sinusspannung ergeben sich bei einer Beschleunigungsspannung von $U_b = \SI{400}{\volt}$ stehende Wellen für die folgenden Sägezahnfrequenzen:
+\begin{align*}
+  \nu_1 &= \input{build/v0.tex} \\
+  \nu_2 &= \input{build/v1.tex} \\
+  \nu_3 &= \input{build/v2.tex} \\
+  \nu_4 &= \input{build/v3.tex}
+\end{align*}
+Es fällt auf, dass man bei einer Interpretation von $\nu_2$ als Grundfrequenz die Zuordnungen
+\begin{align*}
+  2\nu_1  &= \input{build/v0_mal_2.tex} \\
+  \nu_2 &= \input{build/v1.tex} = \nu_\text{grund}\\
+  \frac{1}{2}\nu_4 &= \input{build/v3_durch_2.tex}
+\end{align*}
+treffen kann, so dass die Sinusspannung $\nu_2$ beträgt.
+Die Frequenz $\nu_3$ wird dabei jedoch ignoriert.
+Nach Formel \eqref{eqn:2} ergibt sich für die Grundfrequenz eine dazugehörige Spannungsamplitude von
+\begin{align*}
+  \hat{U} &= \input{build/U_amp.tex}.
+\end{align*}
 
 \clearpage
 \subsection{Ablenkung durch das B-Feld}
 \subsubsection{Bestimmung der spezifischen Elektronenladung}
-\input{Tabelle_a_texformat.tex}
-\begin{equation}
-  B = \mu_0 \frac{8}{\sqrt{125}}\frac{N}{R} I
-\end{equation}
+Bei den folgenden Messungen wird eine Helmholtzspule mit den Werten
 \begin{align*}
   \mu_0 &= 4\pi \cdot 10^{-7}\si{\newton\per\ampere\tothe{2}},\\
   N    &= 20,\\
   R    &= \SI{0,282}{\metre} ,\\
-  L    &= \SI{17,5}{\centi\metre},\\
+  L    &= \SI{17,5}{\centi\metre} ,\\
 \end{align*}
+verwendet, wobei $N$ die Windungszahl und $R$ den Radius bezeichnet.
+Zudem bezeichnet $L$ die Länge der verwendeten Kathodenröhre \cite{skript1} und $\mu_0$ die magnetische Feldkonstante.
+Um die spezifische Elektronenladung zu ermitteln, wird, wie in der Durchführung beschrieben, die Ablenkung $D$ in Abhängigkeit von der an der Helmholtspule angelegten Stromstärke $I$ betrachtet.
+Die Messergebnisse für die fünf verschiedenen Beschleunigungsspannungen, welche von $\SI{250}{\volt}$ bis $\SI{450}{\volt}$ in $\SI{50}{\volt}$-Schritten varriert werden, sind in Tabelle \ref{table:A2} angegeben.
+
+\input{Tabelle_a_texformat.tex}
+
+Die Stärke des Magnetfeldes $B$, welches auf die Elektronen wirkt, berechnet mithilfe von
+\begin{equation}
+  B = \mu_0 \frac{8}{\sqrt{125}}\frac{N}{R} I
+\end{equation}
+aus der angelegten Stromstärke.
+Dementsprechend folgen die Messergebnisse für $D$ in Abhängigkeit von $B$, die in Tabelle \ref{tab:d} angegeben sind.
+
 \input{Tabelle_d_texformat.tex}
+
+Zur Ermittlung der Konstante $\frac{e_0}{m_0}$ nach Formel \eqref{eqn:4} wird für jedes $U_\text{b}$ der Wert $\frac{D}{L^2+D^2}$ gegen $B$ aufgetragen.
+Zudem wird ein linearer Fit mit SciPy durchgeführt.
+Die Ergebnisse sind graphisch in den Abbildungen \ref{plot:7} bis \ref{plot:11} dargestellt, die Fitparameter sind in Tabelle \ref{tab:e} angegeben.
+
+\input{Tabelle_e_texformat.tex}
 
 \begin{figure}
   \centering
-  \includegraphics[height=7cm]{build/plot_a7.pdf}
+  \includegraphics[height=6cm]{build/plot_a7.pdf}
   \caption{Plot zur Bestimmung des Proportionalitätsfaktors bei $U_{\text{B}} = \SI{250}{\volt}$.}
   \label{plot:7}
 \end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics[height=7cm]{build/plot_a8.pdf}
+  \includegraphics[height=6cm]{build/plot_a8.pdf}
   \caption{Plot zur Bestimmung des Proportionalitätsfaktors bei $U_{\text{B}} = \SI{300}{\volt}$.}
   \label{plot:8}
 \end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics[height=7cm]{build/plot_a9.pdf}
+  \includegraphics[height=6cm]{build/plot_a9.pdf}
   \caption{Plot zur Bestimmung des Proportionalitätsfaktors bei $U_{\text{B}} = \SI{350}{\volt}$.}
   \label{plot:9}
 \end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics[height=7cm]{build/plot_a10.pdf}
+  \includegraphics[height=6cm]{build/plot_a10.pdf}
   \caption{Plot zur Bestimmung des Proportionalitätsfaktors bei $U_{\text{B}} = \SI{400}{\volt}$.}
   \label{plot:10}
 \end{figure}
 
 \begin{figure}
   \centering
-  \includegraphics[height=7cm]{build/plot_a11.pdf}
+  \includegraphics[height=6cm]{build/plot_a11.pdf}
   \caption{Plot zur Bestimmung des Proportionalitätsfaktors bei $U_{\text{B}} = \SI{450}{\volt}$.}
   \label{plot:11}
 \end{figure}
 
-\clearpage
+Nach Formel \eqref{eqn:4} ergibt sich aus den Steigungen und den jeweiligen Beschleunigungsspannungen der Wert
+\begin{equation}
+  \frac{e_0}{m_0} = 8 U_\text{b} m^2.
+\end{equation}
+Hieraus folgen für die jeweligen Messreihen die Werte
+\begin{align*}
+  c_1 &= \input{build/konstante_0.tex} \\
+  c_2 &= \input{build/konstante_1.tex} \\
+  c_3 &= \input{build/konstante_2.tex} \\
+  c_4 &= \input{build/konstante_3.tex} \\
+  c_5 &= \input{build/konstante_4.tex}
+\end{align*}
+sowie gemittelt ein Wert von
+\begin{align*}
+  \frac{e_0}{m_0} &= \input{build/konstante_mean.tex}. \\
+\end{align*}
+
+%\clearpage
 
 \subsubsection{Messung der Größe des Erdmagnetfeldes}
 
