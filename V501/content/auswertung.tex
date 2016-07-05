@@ -110,6 +110,7 @@ Die Messergebnisse für die fünf verschiedenen Beschleunigungsspannungen, welch
 Die Stärke des Magnetfeldes $B$, welches auf die Elektronen wirkt, berechnet mithilfe von
 \begin{equation}
   B = \mu_0 \frac{8}{\sqrt{125}}\frac{N}{R} I
+  \label{eqn:bfeld}
 \end{equation}
 aus der angelegten Stromstärke.
 Dementsprechend folgen die Messergebnisse für $D$ in Abhängigkeit von $B$, die in Tabelle \ref{tab:d} angegeben sind.
@@ -177,8 +178,18 @@ sowie gemittelt ein Wert von
 %\clearpage
 
 \subsubsection{Messung der Größe des Erdmagnetfeldes}
-
-
+Zur Messung des Erdmagnetfeldes wird, wie in der Durchführung beschrieben, eine Kompensationsmessung durchgeführt.
+Dabei ergibt sich, dass bei einem Strom von $I = \SI{0.26}{\ampere}$ das Erdmagnetfeld ausgeglichen wird, was nach Formel   \eqref{eqn:bfeld} einem Magnetfeld von
+\begin{align*}
+  B_\text{erd} &= \input{build/erdmagnetfeld.tex}
+\end{align*}
+entspricht.
+Da ein endlicher Inklinationswinkel vorhanden ist, muss dieser zur Bestimmung der effektiven horizontalen Komponente berücksichtigt werden.
+Dieser wird zu $\phi = \SI{70}{\degree}$ ermittelt, so dass sich der Wert
+\begin{align*}
+  \frac{B_\text{erd}}{\sin{(\phi)}} = B_\text{erd,korr} &= \input{build/erdmagnetfeld_korrigiert.tex}
+\end{align*}
+für die effektive Horizontalkomponente des Erdmagnetfeldes ergibt.
 
 % % Examples
 % \begin{equation}

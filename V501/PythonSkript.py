@@ -300,7 +300,7 @@ m6_lit = (p*L)/(2*d)
 
 write('build/parameter_m6_lit.tex', make_SI(m6_lit, r'\metre', figures=3))       # type in Anz. signifikanter Stellen
 err_m6 = (m6 - m6_lit) / m6_lit
-write('build/parameter_m6_rel.tex', make_SI(err_m6*100, r'\percent', figures=2))
+write('build/parameter_m6_rel.tex', make_SI(err_m6.n*100, r'\percent', figures=2))
 
 # E-Feld b)
 
@@ -456,5 +456,25 @@ std_k = np.std(noms(konstante))
 k = ufloat(mean_k, std_k)
 write('build/konstante_mean.tex', make_SI(k*10**(-11), r'\coulomb\per\kilogram','e11', figures=2))      # type in Anz. signifikanter Stellen
 
+k_lit = 1.758820024*10**11
+write('build/lit.tex', make_SI(k_lit*10**(-11), r'\coulomb\per\kilogram','e11', figures=4))
+k_rel = (mean_k - k_lit) / k_lit
+write('build/rel.tex', make_SI(k_rel*100, r'\percent', figures=1))
+#
+
 
 ## Errrdmagnetfeld
+
+I_erd = 0.26 # Kompensationsstrom in Ampere
+U_erd = 200 # Beschleunigungsspannung
+phi = 70/360 * 2*np.pi #grad inklinationswinkel
+
+B_erd = mu_0 * 8/np.sqrt(125) * N/R * I_erd
+write('build/erdmagnetfeld.tex', make_SI(B_erd*10**6, r'\micro\tesla', figures=2))
+
+B_erd_korrigiert = B_erd / np.sin(phi)
+write('build/erdmagnetfeld_korrigiert.tex', make_SI(B_erd_korrigiert*10**6, r'\micro\tesla', figures=2))
+
+B_erd_lit = 19.3221
+
+write('build/erdmagnetfeld_korrigiert_lit.tex', make_SI(B_erd_lit, r'\micro\tesla', figures=2))
