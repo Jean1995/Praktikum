@@ -205,13 +205,13 @@ t_plot = np.linspace(np.amin(x_eff(x_1, k)), np.amax(x_eff(x_1, k)), 100)
 o,i = params
 plt.plot(t_plot, t_plot*o.n+i.n, 'y-', label='Linearer Fit')
 
-h = noms((23000-i)/o)
-
+h = ((23000-i)/o)
+print(h)
 
 plt.plot(x_eff(x_1, p_1), pulse_1, 'rx', label='Messdaten')
 #plt.xlim(-0.01, 0.025)
 #plt.ylim(-1000, 50000)
-plt.axvline(x=h, color='g', linestyle='--')
+plt.axvline(x=noms(h), color='g', linestyle='--')
 plt.axhline(y=46000, color='b', linestyle='--')
 plt.axhline(y=23000, color='b', linestyle='--')
 plt.xlabel(r'$x_\text{eff} \:/\: \si{\metre}$')
@@ -225,8 +225,8 @@ plt.savefig('build/plot_a_1.pdf')
 
 E_mit_1 = 406/1023 * 4 # Lineare Skala: Bei Channel 1023 ist das Maximum von 4 MeV, bei Channel 406 ist der mittlere Wert
 
-write('build/x_mittel_1.tex', make_SI(h*100, r'\centi\metre', figures=2))
-write('build/E_mittel_1.tex', make_SI(E_mit_1, r'\mega\electronvolt', figures=3))
+write('build/x_mittel_1.tex', make_SI(h*100, r'\centi\metre', figures=1))
+#write('build/E_mittel_1.tex', make_SI(E_mit_1, r'\mega\electronvolt', figures=3))
 
 
 plt.clf()
@@ -240,6 +240,9 @@ params_1_fit = ucurve_fit(reg_linear, x_eff(x_1, p_1[2:16]), (channel_1[2:16]/10
 a1, b1 = params_1_fit
 write('build/parameter_a_1.tex', make_SI(a1, r'\mega\electronvolt\per\metre', figures=1))       # type in Anz. signifikanter Stellen
 write('build/parameter_b_1.tex', make_SI(b1, r'\mega\electronvolt', figures=2))      # type in Anz. signifikanter Stellen
+
+E_mit_1 = a1*h/100+b1
+write('build/E_mittel_1.tex', make_SI(E_mit_1, r'\mega\electronvolt', figures=1))
 
 t_plot = np.linspace(0, 0.025)
 plt.plot(t_plot, b1.n + t_plot*a1.n, 'b-', label='Linearer Fit')
