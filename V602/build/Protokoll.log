@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.80.0 (TeX Live 2015) (rev 5238)  (format=lualatex 2015.10.12)  4 JUN 2016 00:30
+This is LuaTeX, Version beta-0.80.0 (TeX Live 2015) (rev 5238)  (format=lualatex 2015.10.12)  7 JUL 2016 00:34
  restricted \write18 enabled.
 **Protokoll.tex
 (./Protokoll.tex
@@ -297,7 +297,7 @@ Lua-only attribute luaotfload@cursbase = 6
 Lua-only attribute luaotfload@curscurs = 7
 Lua-only attribute luaotfload@cursdone = 8
 Lua-only attribute luaotfload@state = 9
-luaotfload | main : fontloader loaded in 0.029 seconds
+luaotfload | main : fontloader loaded in 0.031 seconds
 Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
 Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
 Inserting `luaotfload.find_vf_file' at position 1 in `find_vf_file'.
@@ -2497,60 +2497,58 @@ File: ressources/bragg.png Graphic file (type png)
  <use ressources/bragg.png>
 Package pdftex.def Info: ressources/bragg.png used on input line 105.
 (pdftex.def)             Requested size: 181.88799pt x 142.26378pt.
- [4<./ressources/bragg.png>]) [5] (./content/fehlerrechnung.tex) [6
-
-] (./content/versuchsaufbau.tex <ressources/aufbau.png, id=116, 829.59938pt x 436.63126pt>
+ [4<./ressources/bragg.png>]) (./content/fehlerrechnung.tex) [5] (./content/versuchsaufbau.tex <ressources/aufbau.png, id=112, 829.59938pt x 436.63126pt>
 File: ressources/aufbau.png Graphic file (type png)
  <use ressources/aufbau.png>
 Package pdftex.def Info: ressources/aufbau.png used on input line 8.
 (pdftex.def)             Requested size: 432.48282pt x 227.62204pt.
-) [7
+) [6
 
-<./ressources/aufbau.png>] (./content/durchfuehrung.tex(load luc: /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmroman5-regular.luc)) [8
+<./ressources/aufbau.png>] (./content/durchfuehrung.tex(load luc: /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmroman5-regular.luc)) [7
 
-] (./content/auswertung.tex <build/plot_1.pdf, id=130, 417.7206pt x 258.00488pt>
+] (./content/auswertung.tex <build/plot_1.pdf, id=126, 417.7206pt x 258.00488pt>
 File: build/plot_1.pdf Graphic file (type pdf)
  <use build/plot_1.pdf>
 Package pdftex.def Info: build/plot_1.pdf used on input line 96.
 (pdftex.def)             Requested size: 417.71957pt x 258.00424pt.
- <build/plot_2.pdf, id=132, 417.7206pt x 258.00488pt>
+ <build/plot_2.pdf, id=128, 417.7206pt x 258.00488pt>
 File: build/plot_2.pdf Graphic file (type pdf)
  <use build/plot_2.pdf>
 Package pdftex.def Info: build/plot_2.pdf used on input line 108.
 (pdftex.def)             Requested size: 417.71957pt x 258.00424pt.
- (./build/Theta_k_kante_a.tex) (./build/Theta_k_kante_b.tex) (./build/Theta_k_kante_a.tex) (./build/Theta_k_kante_b.tex) (./build/E_k_kante_a_cu.tex) (./build/E_k_kante_a_lit_cu.tex) (./build/E_k_kante_b_cu.tex) (./build/E_k_kante_b_lit_cu.tex) (./build/E_k_kante_a_cu.tex) (./build/E_k_kante_a_lit_cu.tex) (./build/E_k_kante_b_cu.tex) (./build/E_k_kante_b_lit_cu.tex) <build/plot_3.pdf, id=136, 417.7206pt x 258.00488pt>
+ (./build/Theta_k_kante_a.tex) (./build/Theta_k_kante_b.tex) (./build/Theta_k_kante_a.tex) (./build/Theta_k_kante_b.tex) (./build/E_k_kante_a_cu.tex) (./build/E_k_kante_a_lit_cu.tex) (./build/E_k_kante_b_cu.tex) (./build/E_k_kante_b_lit_cu.tex) (./build/E_k_kante_a_cu.tex) (./build/E_k_kante_a_lit_cu.tex) (./build/E_k_kante_b_cu.tex) (./build/E_k_kante_b_lit_cu.tex) <build/plot_3.pdf, id=132, 417.7206pt x 258.00488pt>
 File: build/plot_3.pdf Graphic file (type pdf)
  <use build/plot_3.pdf>
 Package pdftex.def Info: build/plot_3.pdf used on input line 128.
 (pdftex.def)             Requested size: 417.71957pt x 258.00424pt.
- [9
+ [8
 
-<./build/plot_1.pdf>] (./build/Theta_min.tex) (./build/Theta_min.tex) (./build/lambda_min.tex) (./build/lambda_min.tex) (./build/E_max.tex) (./build/E_max.tex) (./build/lambda_min_t.tex) (./build/lambda_min_t.tex) (./build/E_max_t.tex) (./build/E_max_t.tex) [10<./build/plot_2.pdf>] (./build/sigma_1_cu.tex) (./build/sigma_1_lit_cu.tex) (./build/sigma_2_cu.tex) (./build/sigma_2_lit_cu.tex) (./build/sigma_3_cu.tex) (./build/sigma_3_lit_cu.tex) (./build/sigma_1_cu.tex) (./build/sigma_1_lit_cu.tex) (./build/sigma_2_cu.tex) (./build/sigma_2_lit_cu.tex) (./build/sigma_3_cu.tex) (./build/sigma_3_lit_cu.tex) (./messdaten/peak_1.tex) (./messdaten/peak_2.tex) (./build/delta_theta_1.tex) (./build/delta_Energie_1.tex) (./build/delta_theta_1.tex) (./build/delta_Energie_1.tex) [11<./build/plot_3.pdf>] (./build/delta_theta_2.tex) (./build/delta_Energie_2.tex) (./build/delta_theta_2.tex) (./build/delta_Energie_2.tex) <build/plot_ge.pdf, id=245, 417.7206pt x 258.00488pt>
+<./build/plot_1.pdf>] (./build/Theta_min.tex) (./build/Theta_min.tex) (./build/lambda_min.tex) (./build/lambda_min.tex) (./build/E_max.tex) (./build/E_max.tex) (./build/lambda_min_t.tex) (./build/lambda_min_t.tex) (./build/E_max_t.tex) (./build/E_max_t.tex) [9<./build/plot_2.pdf>] (./build/sigma_1_cu.tex) (./build/sigma_1_lit_cu.tex) (./build/sigma_2_cu.tex) (./build/sigma_2_lit_cu.tex) (./build/sigma_3_cu.tex) (./build/sigma_3_lit_cu.tex) (./build/sigma_1_cu.tex) (./build/sigma_1_lit_cu.tex) (./build/sigma_2_cu.tex) (./build/sigma_2_lit_cu.tex) (./build/sigma_3_cu.tex) (./build/sigma_3_lit_cu.tex) (./messdaten/peak_1.tex) (./messdaten/peak_2.tex) (./build/delta_theta_1.tex) (./build/delta_Energie_1.tex) (./build/delta_theta_1.tex) (./build/delta_Energie_1.tex) [10<./build/plot_3.pdf>] (./build/delta_theta_2.tex) (./build/delta_Energie_2.tex) (./build/delta_theta_2.tex) (./build/delta_Energie_2.tex) <build/plot_ge.pdf, id=240, 417.7206pt x 258.00488pt>
 File: build/plot_ge.pdf Graphic file (type pdf)
  <use build/plot_ge.pdf>
 Package pdftex.def Info: build/plot_ge.pdf used on input line 224.
 (pdftex.def)             Requested size: 417.71957pt x 258.00424pt.
- <build/plot_zr.pdf, id=246, 417.7206pt x 258.00488pt>
+ <build/plot_zr.pdf, id=241, 417.7206pt x 258.00488pt>
 File: build/plot_zr.pdf Graphic file (type pdf)
  <use build/plot_zr.pdf>
 Package pdftex.def Info: build/plot_zr.pdf used on input line 231.
 (pdftex.def)             Requested size: 417.71957pt x 258.00424pt.
- <build/plot_sr.pdf, id=247, 417.7206pt x 258.00488pt>
+ <build/plot_sr.pdf, id=242, 417.7206pt x 258.00488pt>
 File: build/plot_sr.pdf Graphic file (type pdf)
  <use build/plot_sr.pdf>
 Package pdftex.def Info: build/plot_sr.pdf used on input line 238.
 (pdftex.def)             Requested size: 417.71957pt x 258.00424pt.
- (./build/E_ge.tex) (./build/E_zr.tex) (./build/E_sr.tex) (./build/E_ge.tex) (./build/E_zr.tex) (./build/E_sr.tex) (./build/sigma_ge.tex) (./build/sigma_zr.tex) (./build/sigma_sr.tex) (./build/sigma_ge.tex) (./build/sigma_zr.tex) (./build/sigma_sr.tex) (./build/sigma_ge_lit.tex) (./build/sigma_zr_lit.tex) (./build/sigma_sr_lit.tex) (./build/sigma_ge_lit.tex) (./build/sigma_zr_lit.tex) (./build/sigma_sr_lit.tex) [12] [13<./build/plot_ge.pdf><./build/plot_zr.pdf>] <build/plot_ryd.pdf, id=319, 417.7206pt x 258.00488pt>
+ (./build/E_ge.tex) (./build/E_zr.tex) (./build/E_sr.tex) (./build/E_ge.tex) (./build/E_zr.tex) (./build/E_sr.tex) (./build/sigma_ge.tex) (./build/sigma_zr.tex) (./build/sigma_sr.tex) (./build/sigma_ge.tex) (./build/sigma_zr.tex) (./build/sigma_sr.tex) (./build/sigma_ge_lit.tex) (./build/sigma_zr_lit.tex) (./build/sigma_sr_lit.tex) (./build/sigma_ge_lit.tex) (./build/sigma_zr_lit.tex) (./build/sigma_sr_lit.tex) [11] [12<./build/plot_ge.pdf><./build/plot_zr.pdf>] <build/plot_ryd.pdf, id=315, 417.7206pt x 258.00488pt>
 File: build/plot_ryd.pdf Graphic file (type pdf)
  <use build/plot_ryd.pdf>
 Package pdftex.def Info: build/plot_ryd.pdf used on input line 268.
 (pdftex.def)             Requested size: 417.71957pt x 258.00424pt.
- (./build/ebberg_konstante.tex) (./build/ebberg_konstante.tex) (./build/ebberg_konstante_ry.tex) (./build/ebberg_konstante_ry.tex) <build/plot_wi.pdf, id=322, 417.7206pt x 258.00488pt>
+ (./build/ebberg_konstante.tex) (./build/ebberg_konstante.tex) (./build/ebberg_konstante_ry.tex) (./build/ebberg_konstante_ry.tex) <build/plot_wi.pdf, id=318, 417.7206pt x 258.00488pt>
 File: build/plot_wi.pdf Graphic file (type pdf)
  <use build/plot_wi.pdf>
 Package pdftex.def Info: build/plot_wi.pdf used on input line 287.
 (pdftex.def)             Requested size: 417.71957pt x 258.00424pt.
- [14<./build/plot_sr.pdf>] (./build/theta_wi_1.tex) (./build/theta_wi_2.tex) (./build/theta_wi_1.tex) (./build/theta_wi_2.tex) (./build/wi_delta_E.tex) (./build/wi_delta_E.tex) (./build/sigma_wi.tex) (./build/sigma_wi.tex)) [15<./build/plot_ryd.pdf>] [16<./build/plot_wi.pdf>] (./content/diskussion.tex (./build/E_k_kante_a_rel_cu.tex) (./build/E_k_kante_b_rel_cu.tex) (./build/E_k_kante_a_rel_cu.tex) (./build/E_k_kante_b_rel_cu.tex) (./build/E_max_rel.tex) (./build/E_max_rel.tex) (./build/sigma_1_rel_cu.tex) (./build/sigma_2_rel_cu.tex) (./build/sigma_1_rel_cu.tex) (./build/sigma_2_rel_cu.tex) (./build/ebbergs_rel.tex) (./build/ebbergs_rel.tex)) [17
+ [13<./build/plot_sr.pdf>] (./build/theta_wi_1.tex) (./build/theta_wi_2.tex) (./build/theta_wi_1.tex) (./build/theta_wi_2.tex) (./build/wi_delta_E.tex) (./build/wi_delta_E.tex) (./build/sigma_wi.tex) (./build/sigma_wi_lit.tex) (./build/sigma_wi.tex) (./build/sigma_wi_lit.tex)) [14<./build/plot_ryd.pdf>] [15<./build/plot_wi.pdf>] (./content/diskussion.tex (./build/E_k_kante_a_rel_cu.tex) (./build/E_k_kante_b_rel_cu.tex) (./build/E_k_kante_a_rel_cu.tex) (./build/E_k_kante_b_rel_cu.tex) (./build/E_max_rel.tex) (./build/E_max_rel.tex) (./build/sigma_1_rel_cu.tex) (./build/sigma_2_rel_cu.tex) (./build/sigma_3_rel_cu.tex) (./build/sigma_1_rel_cu.tex) (./build/sigma_2_rel_cu.tex) (./build/sigma_3_rel_cu.tex) (./build/sigma_ge_rel.tex) (./build/sigma_zr_rel.tex) (./build/sigma_sr_rel.tex) (./build/sigma_wi_rel.tex) (./build/sigma_ge_rel.tex) (./build/sigma_zr_rel.tex) (./build/sigma_sr_rel.tex) (./build/sigma_wi_rel.tex) (./build/ebbergs_rel.tex) (./build/ebbergs_rel.tex)) [16
 
 ](load luc: /home/jean/.local/texlive/2015/texmf-var/luatex-cache/generic/fonts/otf/lmromancaps10-regular.luc)
 LaTeX Font Info:    Try loading font information for EU2+lmtt on input line 35.
@@ -2571,7 +2569,7 @@ Overfull \hbox (15.73053pt too wide) in paragraph at lines 36--36
 \EU2/lmr/m/n/10.95 http://129.217.224.2/HOME-PAGE/PHY-SI-KER/BA-CHE-LOR/AP/SKRIPT/Ro-ent-gen-Abs.pdf.
  []
 
-[18
+[17
 
 ] (./content/anhang.tex)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 41.
@@ -2580,9 +2578,9 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 41.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 41.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 41.
 Package rerunfilecheck Info: File `Protokoll.aux' has not changed.
-(rerunfilecheck)             Checksum: 26F4CDB11052F2E28F6866B67E76733D;17187.
+(rerunfilecheck)             Checksum: 869FB963CE71501013216210B66F6FF9;17185.
 Package rerunfilecheck Info: File `Protokoll.toc' has not changed.
-(rerunfilecheck)             Checksum: 1CA9D944DFD1D2422C928EDA18A1D51E;2233.
+(rerunfilecheck)             Checksum: 6BDFF86C46571087DE4B952DAB5168DD;2233.
 Package logreq Info: Writing requests to 'Protokoll.run.xml'.
 
 \openout1 = Protokoll.run.xml
@@ -2590,19 +2588,19 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 41.
 )
 
 Here is how much of LuaTeX's memory you used:
- 58393 strings out of 494897
+ 58518 strings out of 494897
  100000,1977958 words of node,token memory allocated
- 691 words of node memory still in use:
+ 693 words of node memory still in use:
    7 hlist, 2 vlist, 2 rule, 2 glue, 13 kern, 19 attribute, 68 glue_spec, 19 attribute_list, 1 action, 2 write nodes
-   avail lists: 1:3,2:10431,3:341,4:1128,5:271,6:3411,7:68,8:25,9:470,10:480,11:1
- 59365 multiletter control sequences out of 65536+600000
- 119 fonts using 35878975 bytes
+   avail lists: 1:3,2:10445,3:354,4:1126,5:271,6:3411,7:68,8:25,9:470,10:480,11:1
+ 59383 multiletter control sequences out of 65536+600000
+ 119 fonts using 35879147 bytes
  72i,19n,104p,1253b,2075s stack positions out of 5000i,500n,10000p,200000b,100000s
 </home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmromancaps10-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman9-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman8-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm-math/latinmodern-math.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmsans10-bold.otf></home/jean/.local/texlive/2015/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf>
-Output written on Protokoll.pdf (18 pages, 797562 bytes).
+Output written on Protokoll.pdf (17 pages, 797723 bytes).
 
-PDF statistics: 596 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 595 PDF objects out of 1000 (max. 8388607)
  444 compressed objects within 5 object streams
- 70 named destinations out of 1000 (max. 131072)
+ 69 named destinations out of 1000 (max. 131072)
  192 words of extra memory for PDF output out of 10000 (max. 10000000)
 

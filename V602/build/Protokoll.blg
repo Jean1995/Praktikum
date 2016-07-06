@@ -1,15 +1,15 @@
 [0] Config.pm:324> INFO - This is Biber 2.1
 [0] Config.pm:327> INFO - Logfile is 'build/Protokoll.blg'
-[52] biber:276> INFO - === Do Jun  2, 2016, 20:44:16
-[53] Biber.pm:333> INFO - Reading 'build/Protokoll.bcf'
-[205] Biber.pm:645> INFO - Found 3 citekeys in bib section 0
-[235] Biber.pm:2977> INFO - Processing section 0
-[259] Biber.pm:3115> INFO - Looking for bibtex format file 'Quellen.bib' for section 0
-[260] bibtex.pm:1021> INFO - Decoding LaTeX character macros into UTF-8
-[261] bibtex.pm:895> INFO - Found BibTeX data source 'Quellen.bib'
-[315] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
-[315] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[315] Biber.pm:2854> INFO - Sorting list 'nty' of type 'entry' with scheme 'nty' and locale 'de-DE'
-[315] Biber.pm:2858> INFO - No sort tailoring available for locale 'de-DE'
-[321] bbl.pm:505> INFO - Writing 'build/Protokoll.bbl' with encoding 'UTF-8'
-[322] bbl.pm:596> INFO - Output to build/Protokoll.bbl
+[43] biber:276> INFO - === Do Jul  7, 2016, 00:33:45
+[43] Biber.pm:333> INFO - Reading 'build/Protokoll.bcf'
+[170] Biber.pm:645> INFO - Found 3 citekeys in bib section 0
+[191] Biber.pm:2977> INFO - Processing section 0
+[210] Biber.pm:3115> INFO - Looking for bibtex format file 'Quellen.bib' for section 0
+[211] bibtex.pm:1021> INFO - Decoding LaTeX character macros into UTF-8
+[211] bibtex.pm:895> INFO - Found BibTeX data source 'Quellen.bib'
+[261] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[261] UCollate.pm:66> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[261] Biber.pm:2854> INFO - Sorting list 'nty' of type 'entry' with scheme 'nty' and locale 'de-DE'
+[262] Biber.pm:2858> INFO - No sort tailoring available for locale 'de-DE'
+[267] bbl.pm:505> INFO - Writing 'build/Protokoll.bbl' with encoding 'UTF-8'
+[268] bbl.pm:596> INFO - Output to build/Protokoll.bbl

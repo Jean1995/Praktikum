@@ -153,9 +153,9 @@ beziehungsweise eine maximalen Energie von
 erwartet.
 \subsubsection{Bestimmung der Abschirmkonstanten für Kupfer}
 Aus den Energien $E_{K_\alpha}$ und $E_{K_\beta}$ lassen sich aus Formel \eqref{eqn:std} die Abschirmkonstanten $\sigma_K$ bestimmen.
-Für $sigma_1$ wird verwendet, dass die Absorptionskanten hier in etwa mit der Bindungsenergie des Elektrons übereinstimmt.
+Für $\sigma_1$ wird verwendet, dass die Absorptionskante hier in etwa mit der Bindungsenergie des Elektrons übereinstimmt.
 Die Abschirmkonstante wird somit nach Formel \eqref{eqn:std} ermittelt.
-Für $sigma_2$ wird die Abschirmkonstante aus der Beziehung $E_{k_\alpha} = E_2 - E_1$, für $sigma_3$ aus der Beziehung  $E_{k_\beta} = E_3 - E_1$ gewonnen.
+Für $\sigma_2$ wird die Abschirmkonstante aus der Beziehung $E_{k_\alpha} = E_2 - E_1$, für $sigma_3$ aus der Beziehung  $E_{k_\beta} = E_3 - E_1$ gewonnen.
 Es ergeben sich somit die Abschirmkonstanten
 \begin{align*}
   \sigma_{1} &= \input{build/sigma_1_cu.tex} & \sigma_{1, \text{lit}} &= \input{build/sigma_1_lit_cu.tex} \\
@@ -261,8 +261,8 @@ Die Literaturwerte, welche anhand der Energien der K-Kante aus der Literatur \ci
 
 \subsection{Bestimmung der Rydbergkonstante aus dem Moseleyschen Gesetz}
 Die Rydbergkonstante kann mithilfe des Moseleyschen Gesetzes \eqref{eqn:std} bestimmt werden.
-Hierzu wird der Wert von $Z_\text{eff}$ gegen die Wurzel der dazugehören Energie des $K_\alpha$ Übergangs abgetragen.
-Diese Werte werden mithilfe von Numpy in Python linear gefittet, das Ergebnis ist in Abbildung \ref{fig:plot7} angegeben.
+Hierzu wird der Wert von $Z_\text{eff}$ gegen die Wurzel der dazugehörigen Energie des $K_\alpha$ Übergangs abgetragen.
+Diese Werte werden mithilfe von Numpy in Python linear gefittet. Das Ergebnis ist in Abbildung \ref{fig:plot7} dargestellt.
 \begin{figure}
   \centering
   \includegraphics{build/plot_ryd.pdf}
@@ -280,8 +280,8 @@ und darauf unverzüglich auf die Rydbergkonstante von
 geschlossen werden.
 
 \subsection{Bestimmung der Abschirmkonstante von Wismut}
-Für das Element Wismut lässt sich die Abschirmkonstante aufgrund der höheren Kernladungszahl nach Formel \eqref{eqn:crap} bestimmt werden.
-Hierzu wird das Absorbtionsspektrum im Bereich der L-Kanten betrachtet, das Ergebnis ist in Abbildung \ref{fig:plot8} angegeben.
+Für das Element Wismut lässt sich die Abschirmkonstante aufgrund der höheren Kernladungszahl nach Formel \eqref{eqn:crap} bestimmen.
+Hierzu wird das Absorbtionsspektrum im Bereich der L-Kanten betrachtet. Das Ergebnis ist in Abbildung \ref{fig:plot8} dargestellt.
 \begin{figure}
   \centering
   \includegraphics{build/plot_wi.pdf}
@@ -290,15 +290,17 @@ Hierzu wird das Absorbtionsspektrum im Bereich der L-Kanten betrachtet, das Erge
 \end{figure}
 Aus dem Spektrum kann man die Kanten für die Winkel
 \begin{align*}
-  \Theta_{\text{Wi},1} &= \input{build/theta_wi_1.tex}, \\
-  \Theta_{\text{Wi},2} &= \input{build/theta_wi_2.tex} \\
+  \Theta_{\text{Bi},1} &= \input{build/theta_wi_1.tex}, \\
+  \Theta_{\text{Bi},2} &= \input{build/theta_wi_2.tex} \\
 \end{align*}
 entnehmen.
 Hieraus folgt eine Energiedifferenz von
 \begin{align*}
   \increment E_\text{L} &= \input{build/wi_delta_E.tex}. \\
 \end{align*}
-Aus der angegebenen Formel folgt hiermit für die Abschirmkonstante von Wismut
+Aus der Formel \eqref{eqn:crap} folgt hiermit für die Abschirmkonstante von Wismut
 \begin{align*}
-  \sigma_{\text{Wi}} &= \input{build/sigma_wi.tex}. \\
+  \sigma_{\text{Bi}} &= \input{build/sigma_wi.tex}, \\
+  \sigma_\text{Bi, lit} &= \input{build/sigma_wi_lit.tex},
 \end{align*}
+wobei der Literaturwert ebenfalls anhand von Formel \eqref{eqn:crap} aus den bekannten Literaturenergien \cite{energie} berechnet wird.

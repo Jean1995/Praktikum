@@ -410,12 +410,14 @@ sigma_ge = 32 - np.sqrt(E_ge*e/R)
 write('build/E_ge.tex', make_SI(E_ge*10**(-3), r'\kilo\electronvolt', figures=2))
 write('build/sigma_ge.tex', make_SI(sigma_ge, r' ', figures=2))
 
-E_ge_lit =  11.1040001
+E_ge_lit =  11.1040001*1000
 #write('build/sigma_ge_lit.tex', make_SI(Sigma(32,E_ge_lit*e,1,3 ), r' ', figures=2))
 sigma_ge_lit = 32 - np.sqrt(E_ge_lit*e/R)
 
 write('build/sigma_ge_lit.tex', make_SI(sigma_ge_lit, r' ', figures=2))
 
+sigma_ge_rel = abs(sigma_ge - sigma_ge_lit)/sigma_ge_lit * 100
+write('build/sigma_ge_rel.tex', make_SI(sigma_ge_rel, r'\percent', figures=1))
 
 ##################Zirkonium##############
 
@@ -441,7 +443,7 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 
 plt.savefig('build/plot_zr.pdf')
 
-E_zr_lit = 17.9979992
+E_zr_lit = 17.9979992*1000
 E_zr = Energie(kante)
 #sigma_zr = Sigma(40,E_zr*e,1,3 )
 sigma_zr = 40 - np.sqrt(E_zr*e/R)
@@ -453,6 +455,8 @@ sigma_zr_lit = 40 - np.sqrt(E_zr_lit*e/R)
 #write('build/sigma_zr_lit.tex', make_SI(Sigma(40,E_zr_lit*e,1,3 ), r' ', figures=2))
 write('build/sigma_zr_lit.tex', make_SI(sigma_zr_lit, r' ', figures=2))
 
+sigma_zr_rel = abs(sigma_zr - sigma_zr_lit)/sigma_zr_lit * 100
+write('build/sigma_zr_rel.tex', make_SI(sigma_zr_rel, r'\percent', figures=1))
 
 ################Strontium################
 
@@ -478,7 +482,7 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 
 plt.savefig('build/plot_sr.pdf')
 
-E_sr_lit =  16.1049995
+E_sr_lit =  16.1049995*1000
 E_sr = Energie(kante)
 #sigma_sr = Sigma(38,E_sr*e,1,3 )
 sigma_sr = 38 - np.sqrt(E_sr*e/R)
@@ -490,6 +494,9 @@ sigma_sr_lit = 38 - np.sqrt(E_sr_lit*e/R)
 write('build/sigma_sr_lit.tex', make_SI(sigma_sr_lit
 , r' ', figures=2))
 
+sigma_sr_rel = abs(sigma_sr - sigma_sr_lit)/sigma_sr_lit * 100
+write('build/sigma_sr_rel.tex', make_SI(sigma_sr_rel, r'\percent', figures=1))
+
 ##############Wismut#############
 
 theta = np.genfromtxt('messdaten/mess_wi_winkel.txt', unpack=True)
@@ -500,8 +507,8 @@ plt.clf()                   # clear actual plot before generating a new one
 t_plot = np.linspace(np.amin(theta)-0.1, np.amax(theta)+0.1 , 100)
 plt.xlim(np.amin(theta)-0.1, np.amax(theta)+0.1)
 plt.ylim(np.amin(I), 160)
-plt.axvline(11.2, color='k', linestyle='--')
-plt.axvline(13.2, color='k', linestyle='--')
+plt.axvline(10.9, color='k', linestyle='--')
+plt.axvline(12.9, color='k', linestyle='--')
 #kante = 13.2-11.2
 #plt.axvline(kante, color='b', linestyle='--')
 
@@ -514,17 +521,23 @@ plt.tight_layout(pad=0, h_pad=1.08, w_pad=1.08)
 
 plt.savefig('build/plot_wi.pdf')
 
-write('build/theta_wi_1.tex', make_SI(11.2, r'\degree', figures=1))
-write('build/theta_wi_2.tex', make_SI(13.2, r'\degree', figures=1))
+write('build/theta_wi_1.tex', make_SI(10.9, r'\degree', figures=1))
+write('build/theta_wi_2.tex', make_SI(12.9, r'\degree', figures=1))
 
 
-delta_E_wi = Energie(11.2) - Energie(13.2)
+delta_E_wi = Energie(10.9) - Energie(12.9)
 write('build/wi_delta_E.tex', make_SI(delta_E_wi, r'\electronvolt', figures=1))
 delta_E_wi = delta_E_wi * e
 
 sigma_wi = Sigma_L(83, delta_E_wi)
 write('build/sigma_wi.tex', make_SI(sigma_wi, r' ', figures=2))
 
+delta_E_wi_lit = 15.7080002*1000*e - 13.4180002*1000*e
+sigma_wi_lit = Sigma_L(83, delta_E_wi_lit)
+write('build/sigma_wi_lit.tex', make_SI(sigma_wi_lit, r' ', figures=2))
+
+sigma_wi_rel = abs(sigma_wi - sigma_wi_lit)/sigma_wi_lit * 100
+write('build/sigma_wi_rel.tex', make_SI(sigma_wi_rel, r'\percent', figures=1))
 
 ############RYDBERG#########
 #Z_array = ([32-1,38-1,40-1])

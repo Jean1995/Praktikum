@@ -2243,7 +2243,8 @@
     <bcf:citekey order="5">energie</bcf:citekey>
     <bcf:citekey order="6">energie</bcf:citekey>
     <bcf:citekey order="7">energie</bcf:citekey>
-    <bcf:citekey order="8">Konstanten</bcf:citekey>
+    <bcf:citekey order="8">energie</bcf:citekey>
+    <bcf:citekey order="9">Konstanten</bcf:citekey>
   </bcf:section>
   <bcf:sortlist section="0" name="nty" type="entry" sortscheme="nty">
   <bcf:sorting>
