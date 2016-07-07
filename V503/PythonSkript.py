@@ -335,7 +335,7 @@ q = np.array([q_1,q_2,q_3,q_4,q_5,q_6])
 
 write('build/Tabelle_q.tex', make_table([n,unp.nominal_values(q)*10**19, unp.std_devs(q)*10**19],[0,3,3]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
 write('build/Tabelle_q_texformat.tex', make_full_table(
-    'Ladungen.',
+    r'Berechnete Ladungen aus den ausgewählten Geschwindigkeiten $v_\text{ab}$ und $v_\text{auf}$.',
     'table:q',
     'build/Tabelle_q.tex',
     [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
@@ -366,7 +366,7 @@ write('build/Tabelle_q_neu_texformat.tex', make_full_table(
                               # die Multicolumns sein sollen
     [
     r'$\text{Messung}$',
-    r'$q \:/\: 10^{-19}\si{\coulomb}$',
+    r'$q \:/\: 10^{-19\:/\:}\si{\coulomb}$',
     r'$\increment{q} \:/\: 10^{-19}\si{\coulomb}$']))
 
 plt.clf()
@@ -433,7 +433,7 @@ e_0_rel = np.array([e_rel, e_neu_rel])
 N_a = np.array([N_a,N_a_neu])
 N_a_rel = np.array([N_a_rel, N_a_neu_rel])
 x = np.array([1,2])
-write('build/Tabelle_Ende.tex', make_table([x,e_0*10**19, e_0_rel, N_a*10**(-23), N_a_rel],[0,3,3,3,3]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+write('build/Tabelle_Ende.tex', make_table([x,e_0*10**19, e_0_rel, N_a*10**(-23), N_a_rel],[0,3,0,3,0]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
 write('build/Tabelle_Ende_texformat.tex', make_full_table(
     'Ergebnisse des Versuchs.',
     'tab:Ende',
