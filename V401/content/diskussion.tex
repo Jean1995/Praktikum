@@ -1,10 +1,28 @@
 \section{Diskussion}
 \label{sec:Diskussion}
-Die Messergebnisse, sowie Literaturwerte und Abweichungen sind im Folgenden nochmals dargestellt, wobei die erste Zeile für Luft und die zweite für $\ce{C4H8}$ steht. \cite{Quelle1} \cite{Quelle2}
+Die Messergebnisse, sowie Literaturwerte und Abweichungen sind im Folgenden nochmals dargestellt. \cite{Quelle1} \cite{Quelle2}
 \begin{align*}
   \lambda_{\text{Laser}} &= \input{build/lambda_laser.tex}\\
 \end{align*}
-\input{Tabelle_ikse_texformat.tex}\\
+
+\begin{table}
+  \centering
+  \caption{Messergebnisse der Auswertung des Versuchs.}
+  \label{tab:irgendwas}
+  \sisetup{table-format=1.2}
+  \begin{tabular}{c c c c c}
+    \toprule
+    {$\text{Gas}$} & {$n$} & {$\Delta n$} & {$n_{\text{lit}}$} & {$\delta n \:/\: \si{\percent}$}\\
+    \midrule
+    \input{Tabelle_ikse.tex}
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+
+%\input{Tabelle_ikse_texformat.tex}\\
+
 %n_{\text{Luft}} &= \input{build/n_luft.tex},\\
 %n_{\text{Luft,lit}} &= \input{build/n_luft_lit.tex},\\
 %\Delta n_{\text{Luft}} &= \input{build/n_luft_rel.tex},\\

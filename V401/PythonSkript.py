@@ -183,7 +183,7 @@ z_x, s_x = np.genfromtxt('messdaten/1_1.txt', unpack=True)
 s_x = s_x/5.046*10**(-3)
 lambda_laser_x = 2*s_x/z_x
 lambda_laser_x = ufloat(np.mean(lambda_laser_x) ,MeanError(noms(lambda_laser_x)))
-write('build/lambda_laser_x.tex', make_SI(lambda_laser_x * 1e9, r'\nano\metre', figures=3))
+write('build/lambda_laser_x.tex', make_SI(lambda_laser_x * 1e7, r'\metre', 'e-7', figures=1))
 
 
 write('build/Tabelle_a.tex', make_table([s_1*5.046*10**3,s_1*10**3, z_1, lambda_laser*10**9],[3, 3, 0, 2]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
@@ -200,7 +200,7 @@ write('build/Tabelle_a_texformat.tex', make_full_table(
     r'$\lambda \:/\: \si{\nano\metre}$']))
 
 lambda_laser = ufloat(np.mean(lambda_laser) ,MeanError(noms(lambda_laser)))
-write('build/lambda_laser.tex', make_SI(lambda_laser * 1e9, r'\nano\metre', figures=3))
+write('build/lambda_laser.tex', make_SI(lambda_laser * 1e7, r'\metre','e-7', figures=1))
 
 z_2, p_2 = np.genfromtxt('messdaten/2.txt', unpack=True)
 n_luft = 1 + (z_2*lambda_laser)/(2*0.05)*296.15/273.15*1.0132/p_2  # 1+(z*lambda)/(2*b)*(T)/(T_0)*(p_0)/(Delta_p)
@@ -225,10 +225,10 @@ write('build/Tabelle_b_texformat.tex', make_full_table(
     r'$n$']))
 
 n_luft = ufloat(unp.nominal_values(np.mean(n_luft)) ,gauss)
-write('build/n_luft.tex', make_SI(n_luft, r'', figures=2))
-write('build/n_luft_lit.tex', make_SI(1.000292, r'', figures=6))   #http://www.chemie.de/lexikon/Brechzahl.html
+write('build/n_luft.tex', make_SI(n_luft, r'', figures=1))
+write('build/n_luft_lit.tex', make_SI(1.000292, r'', figures=3))   #http://www.chemie.de/lexikon/Brechzahl.html
 n_luft_rel = abs(unp.nominal_values(n_luft)-1.000292)/1.000292 *100
-write('build/n_luft_rel.tex', make_SI(n_luft_rel, r'\percent', figures=3))
+write('build/n_luft_rel.tex', make_SI(n_luft_rel, r'\percent', figures=1))
 
 n_luft_neu = 1 + (z_2*lambda_laser_x)/(2*0.05)*296.15/273.15*1.0132/p_2
 
@@ -243,7 +243,7 @@ gauss = np.sqrt((mean_lambda_laser_x*delta_a)**2+(mean_a*delta_lambda_laser_x)**
 n_luft_neu = ufloat(unp.nominal_values(np.mean(n_luft_neu)) ,gauss)
 write('build/n_luft_neu.tex', make_SI(n_luft_neu, r'', figures=1))
 n_luft_rel_neu = abs(unp.nominal_values(n_luft_neu)-1.000292)/1.000292 *100
-write('build/n_luft_rel_neu.tex', make_SI(n_luft_rel_neu, r'\percent', figures=3))
+write('build/n_luft_rel_neu.tex', make_SI(n_luft_rel_neu, r'\percent', figures=4))
 
 
 
@@ -270,10 +270,10 @@ write('build/Tabelle_c_texformat.tex', make_full_table(
     r'$n$']))
 
 n_gas = ufloat(unp.nominal_values(np.mean(n_gas)) ,gauss)
-write('build/n_gas.tex', make_SI(n_gas, r'', figures=2))
+write('build/n_gas.tex', make_SI(n_gas, r'', figures=1))
 write('build/n_gas_lit.tex', make_SI(1.3811, r'', figures=4))   #http://www.chemicalbook.com/ChemicalProductProperty_DE_CB4763080.htm
 n_gas_rel = abs(unp.nominal_values(n_gas)-1.3811)/1.3811 *100
-write('build/n_gas_rel.tex', make_SI(n_gas_rel, r'\percent', figures=3))
+write('build/n_gas_rel.tex', make_SI(n_gas_rel, r'\percent', figures=1))
 
 nse = np.array([unp.nominal_values(n_luft), unp.nominal_values(n_gas)])
 nse_fehler = np.array([unp.std_devs(n_luft), unp.std_devs(n_gas)])
@@ -281,15 +281,15 @@ nse_lit = np.array([1.000292, 1.3811])
 nse_rel = np.array([n_luft_rel, n_gas_rel])
 
 
-write('Tabelle_ikse.tex', make_table([nse, nse_fehler, nse_lit, nse_rel],[6, 6, 6, 3]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
-write('Tabelle_ikse_texformat.tex', make_full_table(
-    'Messergebnisse.',
-    'tab:4',
-    'Tabelle_ikse.tex',
-    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
-                           # die Multicolumns sein sollen
-    [
-    r'$n$',
-    r'$\Delta n$',
-    r'$n_{\text{lit}}$',
-    r'$\delta n \:/\: \si{\percent}$']))
+#write('Tabelle_ikse.tex', make_table([nse, nse_fehler, nse_lit, nse_rel],[6, 5, 6, 3]))     # Jeder fehlerbehaftete Wert bekommt zwei Spalten
+#write('Tabelle_ikse_texformat.tex', make_full_table(
+#    'Messergebnisse.',
+#    'tab:4',
+#    'Tabelle_ikse.tex',
+#    [],              # Hier aufpassen: diese Zahlen bezeichnen diejenigen resultierenden Spaltennummern,
+#                           # die Multicolumns sein sollen
+#    [
+#    r'$n$',
+#    r'$\Delta n$',
+#    r'$n_{\text{lit}}$',
+#    r'$\delta n \:/\: \si{\percent}$']))
