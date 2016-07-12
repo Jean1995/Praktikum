@@ -83,14 +83,22 @@ bei der $N$ die gezählten Interferenzmaxima beschreibt.\\
 \subsection{Bestimmung eines Brechungsindex über Interferenz}
 
 Befindet sich die Messapparatur in einem Medium, herrscht auf jeder Wegstrecke der Brechungsindex $n$.
-Wird ein anderes Medium der Dicke $b$ einem Strahlengang in den Weg gesetzt, durchläuft das Licht auf diesem Ast eine zusätzliche effektive Weglänge von $b\Delta n$
-Dadurch lässt sich bei bekannter Wellenlänge die Änderung eines Brechungsindex $\Delta n$,
+Wird ein anderes Medium der Dicke $b$ einem Strahlengang in den Weg gesetzt, durchläuft das Licht auf diesem Ast eine zusätzliche effektive Weglänge von $b\Delta n$.
+Dadurch lässt sich bei bekannter Wellenlänge die Änderung des Brechungsindex $\Delta n$,
 \begin{equation}
   b\Delta n = N\frac{\lambda}{2}, \label{eqn:3}
 \end{equation}
 beschreiben.
-Der Brechungsindex lässt sich dann über die Kenntis seiner Änderung ermitteln.
-
+Zur Berechnung des Brechungsindex unter Normalbedingungen wird die Formel
+\begin{equation}
+  n(p_0,T_0) = 1 +\Delta n(\Delta p) \frac{T}{T_0}\frac{p_0}{\Delta p}
+\end{equation}
+verwendet, bei der $p_0$ den Normaldruck und $T_0$ die Normaltemperatur beschreibt.
+Wird diese Formel durch den Ausdruck (\ref{eqn:3}) ergänzt ergibt sich
+\begin{equation}
+  n(p_0,T_0) = 1 +\frac{N \lambda}{2b} \frac{T}{T_0}\frac{p_0}{\Delta p}, \label{eqn:soso}
+\end{equation}
+wobei $\lambda$ die Wellenlänge des Lasers und $b$ die Länge des Gasbehälters ist, welchen das Laserlicht passiert.
 
 
 
