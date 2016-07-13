@@ -16,41 +16,43 @@ Im Allgemeinen kann Licht als elektromagnetische Welle der Form
 \end{equation}
 mit Ort $\vec{x}$ und Zeit $t$, sowie Wellenvektor $\vec{k}$, Frequenz $\omega$ und Phasenkonstante $\delta$, angenommen werden, wobei sie sich nur in ihrer Intensität
 \begin{equation}
-  I = const |\vec{E}|²
+  I \propto |\vec{E}|²
 \end{equation}
 messbar macht.
 Da diese elektromagnetischen Wellen den Maxwell-Gleichungen unterliegen, gilt die lineare Superposition, wodurch sich zwei Wellen einfach addieren lassen.
 Aus Gründen der Messbarkeit muss hier jedoch auf ein zeitliches Mittel zurückgegriffen werden, wodurch sich für die gesamte Intensität $I_{\text{ges}}$ der Ausdruck
 \begin{equation}
-  I_{\text{ges}} = \frac{const}{t_2-t_1} \int_{t_1}^{t_2} (|\vec{E_1}+\vec{E_2}|)²(x,t) dt
+  I_{\text{ges}} \propto \frac{const}{t_2-t_1} \int_{t_1}^{t_2} (|\vec{E_1}+\vec{E_2}|)²(x,t) dt
 \end{equation}
 ergibt. Dabei muss darauf geachtet werden, dass die Periodendauer $T = 2\pi/\omega$ groß gegenüber der Länge des Messintervalls ist.
 Somit ergibt sich für zwei Lichtwellen der Form \eqref{eqn:1}, welche sich nur in ihrer Phase unterscheiden,
 \begin{equation}
-  I_{\text{ges}} = const \cdot 2\vec{E_0}(1+\cos{(\delta_2-\delta_1)}).
+  I_{\text{ges}} \propto \cdot 2\vec{E_0}(1+\cos{(\delta_2-\delta_1)}).
 \end{equation}
 Hierbei spiegelt der Cosinus den Interferenzterm wieder.
-Erkennbar ist, dass, wenn der Phasenunterschied $(\delta_2-\delta_1)$ ungerade Vielfache von $\pi$ beträgt, es zur Auslöschung der beobachtbaren Intensität führt.
+Erkennbar ist, dass, wenn der Phasenunterschied $(\delta_2-\delta_1)$ ungerade Vielfache von $\pi$ beträgt, er zur Auslöschung der beobachtbaren Intensität kommt.
 Dies wird als destruktive Interferenz bezeichnet.
 Ein Kernkriterium, unter dem Interferenzerscheinungen beobachtbar werden, ist die Kohärenz der beiden Lichtbündel.\\
 
 \subsection{Zeitliche Kohärenz}
-Zwei Wellen sind zueinander zeitlich kohärent, wenn sie, abgesehen von ihrer Amplitude, zeitlich das selbe Schwingungsmuster in ihrem Zug aufweisen.
-Sie gleichen sich demnach bis auf eine konstante Phasendifferenz.
-Dabei ist auf die Entstehung des Lichtes zu achten:
-Licht wird in einem gewissen Zeitintervall von angeregten Atomen emittiert.
-Bei mehreren Atomen (im Prinzip Lichtquellen) überlagern sich die Wellenzüge, welche sie emittieren.
-Hierbei ist zu erwähnen, dass bei Lichtquellen wie zum Beispiel Glühlampen die Phasenkonstanten im Allgemeinen statistische Funktionen $\delta(t)$ der Zeit sind.
-Demnach können verschieden große bzw. kleine Werte angenommen werden.
-Daraus folgt, dass der gemittelte Cosinus der Phasendifferenz,
+Zwei Wellen sind zueinander kohärent, wenn sie, abgesehen von einer zeitlich konstanten Phasendifferenz, das selbe Schwingungsmuster in ihrem Zug aufweisen.
+%Sie gleichen sich demnach bis auf eine konstante Phasendifferenz.
+Diese Voraussetzung ist im Allgemeinen nicht gegeben:
+Licht entsteht durch eine zeitlich begrenzte Emission durch angeregte Atome.
+Dabei ist jedoch zu beachten, dass bei normalen Lichtquellen, wie zum Beispiel Glühlampen, die Emission durch verschidene Atome zeitlich zufällig und unabhängig voneinander auftritt.
+Hierdurch sind die Phasendifferenzen im Allgemeinen statistische Funktionen $\delta(t)$ der Zeit.
+Demnach können die Differenzen verschieden große bzw. kleine Werte annehmen.
+Daraus folgt, dass der zeitlich gemittelte Cosinus der Phasendifferenz aus dem Interferenzterm,
 \begin{equation}
   \frac{1}{t_2-t_1} \int_{t_1}^{t_2} \cos{(\delta_2(t)-\delta_1(t))}dt \approx 0,
 \end{equation}
-nicht mehr beobachtbar ist.
+verschwindet und die Interferenzeffekte nicht mehr beobachtbar sind.
 Deswegen bildet sich bei alltäglichen Lichtquellen im allgemeinen kein Interferenzmuster aus; es ist inkohärent.\\
-Kohärentes Licht kann mit einem Laser erzeugt werden.
-Die Atome im Inneren des Lasers werden gezielt so angeregt, dass sie theoretisch Wellenzüge gleicher Frequenz (monochromatisch) erzeugen.
-Dieses Licht hat sogar theoretisch eine unendliche Kohärenzlänge.
+Kohärentes Licht stattdessen kann mit einem Laser erzeugt werden.
+Die Atome im Inneren des Lasers werden gezielt so angeregt, dass die Phasendifferenzen konstant sind und monochromatisches, kohärentes Licht entsteht.
+%Die Wellenzüge beistzen demenstprechend die selbe Frequenz, das Licht ist monochromatisch.
+%sie theoretisch Wellenzüge gleicher Frequenz (monochromatisch) erzeugen.
+%Dieses Licht hat sogar theoretisch eine unendliche Kohärenzlänge.
 
 \subsection{Kohärenzlänge}
 
@@ -67,16 +69,21 @@ Beträgt die Differenz der beiden Wege nun ungeradzahlige Vielfache der halben W
   \Delta = (2n+1)\frac{\lambda}{2},
 \end{equation}
 so kommt es zu Auslöschungseffekten am Punkt P.
-Wichtig ist zusätzlich noch die Kohärenzlänge $l$.
-Da, wie bereits erwähnt, die Emission von Licht in endlichen Zeitintervallen $\tau$ stattfindet, hat der Wellenzug (bei mehreren Emittern die Wellengruppe) eine endliche Länge.
-Wird diese überschritten, überlagern sich am Auftreffpunkt P zwei Wellenzüge von unterschiedlichen Emissionsakten, was bei hinreichend großem Wegunterschied zum Verschwinden des Interferenzeffektes führt.
+Wichtig ist dabei der Begriff der Kohärenzlänge $l$.
+Bei der grundlegenden Lichterzeugung durch angeregte Atome dauert der Emissionsvorgang beschränkte Zeit.
+Dementsprechend besitzt der Wellenzug eine endliche Länge, das Passieren dieses Wellenzuges entspricht einer bestimmten Zeit $\tau$.
+%Bei mehreren Atomen (im Prinzip Lichtquellen) überlagern sich die Wellenzüge, welche sie emittieren.
+%Da, wie bereits erwähnt, die Emission von Licht in endlichen Zeitintervallen $\tau$ stattfindet, hat der Wellenzug (bei mehreren Emittern die Wellengruppe) eine endliche Länge.
+Wird diese Länge durch die Wegdifferenz überschritten, überlagern sich am Auftreffpunkt P zwei Wellenzüge von unterschiedlichen Emissionsakten, was bei hinreichend großem Wegunterschied zum Verschwinden des Interferenzeffektes führt.
 Demnach wird die Kohärenzlänge festgelegt als das Produkt der bei P maximal beobachtbaren Intensitätsmaxima $N$ mit der Wellenlänge $\lambda$ des Lichtes,
 \begin{equation}
   l = N\lambda.\\
 \end{equation}
-Daher hat Laserlicht, im Gegensatz zu einer herkömmlichen Lichtquelle, eine unendliche Kohärenzlänge, wenn bedacht wird, dass der Emissionsakt immer im Gleichtakt vollführt wird.\\
-Zusätzlich kann die Breite der Lichtquelle zur Verhinderung der Interferenzerscheinungen führen, da das emittierte Licht an verschiedenen Stellen möglicherweise Phasenverschiebungen aufweist, die insgesamt in einer Inkohärenz enden.
-Dies wird als räumliche Inkohärenz aufgefasst.\\
+Laserlicht besitzt dabei, im Gegensatz zu einer herkömmlichen Lichtquelle, eine unendliche Kohärenzlänge, wenn bedacht wird, dass der Emissionsakt immer im Gleichtakt vollführt wird.\\
+Zusätzlich kann die Breite der Lichtquelle zur Verhinderung der Interferenzerscheinungen führen, da das von verschiedenen Orten der Lichtquelle emittierte Licht im Allgemeinen durch die verschiedenen Richtungen zum Beobachtungspunkt eine Phasendifferenz besitzt.
+Der Effekt kann durch die Verwendung eines großen Abstandes zur Lichtquelle oder durch die Verwendung einer kleinen Öffnung minimiert werden.
+%%Dies wird als räumliche Inkohärenz aufgefasst.
+
 
 %Die letzten zwei Sätze können wir auch rausnehmen.....Wahrscheinlich besser....LASS ES WEG!
 
