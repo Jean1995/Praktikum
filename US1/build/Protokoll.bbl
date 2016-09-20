@@ -1,0 +1,63 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.5 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \sortlist{nty}{nty}
+    \entry{anpassungsschicht}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=9b0e6f512d4197bd57c9881033a65285}{Parusel}{P\bibinitperiod}{Marek}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \list{institution}{1}{%
+        {Ruhr-Universität Bochum}%
+      }
+      \strng{namehash}{9b0e6f512d4197bd57c9881033a65285}
+      \strng{fullhash}{9b0e6f512d4197bd57c9881033a65285}
+      \field{sortinit}{P}
+      \field{sortinithash}{c0a4896d0e424f9ca4d7f14f2b3428e7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{http://www.ruhr-uni-bochum.de/hft/research/blech/Blech-Dateien/2005_Diplomarbeit_Parusel.pdf}
+      \field{title}{Entwurf und Realisierung von Ultraschallwandlern für die Abbildung von spiegelnden Konturen}
+      \field{type}{mathesis}
+      \field{year}{2005}
+      \field{pages}{24}
+      \range{pages}{1}
+    \endentry
+    \entry{acryl}{misc}{}
+      \field{sortinit}{S}
+      \field{sortinithash}{fd1e7c5ab79596b13dbbb67f8d70fb5a}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{http://www.olympus-ims.com/de/ndt-tutorials/thickness-gage/appendices-velocities/}
+      \field{month}{Mai}
+      \field{title}{Schallgeschwindigkeiten im Material}
+      \field{year}{2016}
+    \endentry
+    \entry{skript}{misc}{}
+      \field{sortinit}{T}
+      \field{sortinithash}{423d138a005a533b47e6475e39378bf2}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{http://129.217.224.2/HOMEPAGE/PHYSIKER/BACHELOR/AP/SKRIPT/UltraschallGL.pdf}
+      \field{month}{Mai}
+      \field{title}{TU Dortmund - Fachbereich Physik : Anfängerpraktikum Anleitung zu Versuch US1}
+      \field{year}{2016}
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
+
