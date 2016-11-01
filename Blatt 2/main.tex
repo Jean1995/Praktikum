@@ -1,0 +1,71 @@
+\input{header.tex}
+
+%\subject{Versuchsprotokoll zum Versuch Nr. XXX}
+%\title{XXX}
+%\date{
+%  Durchführung: xx.xx.2015
+%}
+
+\begin{document}
+
+%\maketitle
+%\thispagestyle{empty}
+%\newpage
+
+%\input{content/theorie.tex}
+%\input{content/durchfuehrung.tex}
+%\input{content/auswertung.tex}
+%\input{content/diskussion.tex}
+%
+%\printbibliography
+
+\section{1a)}
+Die gegebene Formel beschreibt die Masse eines gesamten Atomkernes in Abhängigkeit der Massenzahl und der Ordnungzahl (Anzahl Protonen). Diese setzt sich aus der Masse der einzelnen, ungebunden Nukleonen abzüglich der in Masse umgerechneten Bindungsenergien zusammen. Wegen dem Massendefekt erhält man die fehlende Masse beim Zusammensetzen des Kernes als Bindungsenergie.\\
+Annahme: Man nimmt das Tröpfenmodell des Atomkernes an, d.h. man hat Protonen und Neutronen als Kernbausteine, die durch kurzreichweitige Kernkraft zusammengehaten weden. Die Kernkraft wirkt von jedem Nukleon nur auf die benachbarten Nukleonen. Man hat also Parallelen zu einer inkompressiblen Flüssigkeit.\\
+\begin{itemize}
+  \item $M_1$: Die Masse der einzelnen Protonen
+  \item $M_2$: Die Masse der einzelnen Neutronen.
+  \item $M_3$: Die Wechselwirkung findet nur zum jeweils nächsten Nachbarn statt, deshalb steigt die Bindungsenergie linear mit der Anzahl der Nukleonen an.
+  \item $M_4$: Die Nukleonen an der Oberfläche besitzen weniger Nachbarn und tragen somit weniger zur Bindungsenergie bei. Empirisch ist der mittlere Kernradius durch den Zusammenhang $R_{\frac{1}{2}} = \sqrt[3]{A}$ bekannt, die Oberfläche ist $\sim R^2$. Somit folgt $M_4 \sim A^{\frac{2}{3}}$.
+  \item $M_5$: Protonen stoßen sich aufgrund ihrer Ladung ab, wodurch die Bindungsenergie im Kern verringert wird. Dabei ist die Coloumbabstoßung $\sim Z^2$ und sie fällt mit $\sim \frac{1}{R}$ ab, mit dem mittleren Kernradius ergibt sich also $M_5 \sim \frac{1}{\sqrt[3]{A}}$.
+  \item $M_6$: Asymmetrieterm: Ein Ungleichgewicht der Protonen und Neutronen mindert die Stabilität und somit die Bindungsenergie. Im Allgemeinen soll $M_6 \sim (Z-N)$ gelten. Damit die Vorzeichenunabhängigkeit gegeben ist, wird der Wert zusätzlich quadriert und durch $A$ geteilt.
+  \item $M_7$: Es gibt eine (in diesem Modell empirisch beründete) besondere Stabilität von gg-Kernen sowie eine Instabilität von uu-Kernen. Deshalb nimmt die Bindungsenergie ab (für uu-Kerne), bzw. zu (für gg-Kerne). Empirisch ergibt sich auch die Proportinalität $\sim \frac{1}{\sqrt{A}}$.
+\end{itemize}
+
+\section{1b)}
+\begin{figure}
+  \centering
+  \label{fig:1}
+  \includegraphics[height=6.5cm]{1b_2.pdf}
+  \caption{Exemplarisch dargestellte Abhängigkeit der Masse von der Ordnungszahl für ein Nuklid mit ungerader Massenzahl.}
+\end{figure}
+In Abbildung 1 sind Isobare mit $A = 109$ angegeben. Eine hohe Bindungsenergie, und somit eine hohe Stabilität, äußert sich hier in einer geringen Masse des Kerns, da sich die Bindungsenergie jeweils aus der Differenz der berechneten Kernmasse und der (hier konstanten) Masse der einzelnen Nukleonen ergibt. Der Zustand ist hier energetisch am günstigsten.
+Man sieht, dass es ein eindeutiges Minimum bei $Z=47$ ergibt. Dies ist auch darin bedründet, dass es sich hier wegen dem ungeraden $A$ weder um gg- noch um uu-Kerne handeln kann, so dass der Graph durch eine einzelne Parabel mit einem Minimum beschrieben wird. Dementsprechend müsste das Silberisotop der einzige stabile Kern sein, was durch ein Blick auf die Nuklidkarte bestätigt wird.
+
+
+\section{1c)}
+
+\begin{figure}
+  \centering
+  \label{fig:2}
+  \includegraphics[height=7cm]{1c.pdf}
+  \caption{Abhängigkeit der Masse von der Ordnunszahl für A = 110.}
+\end{figure}
+Die Abhängigkeit $M(Z)$ ist für $A=110$ in Abbildung 2 dargstellt. Man erkennt die beiden gg- und uu-Kerne, welche als Parablen dargestellt werden.
+Für $Z=46$ ergibt sich also ein Minimum im Vergleich zu den benachbarten Kernen. Ein $\beta^{-}$-Zerfall (nach rechts) oder ein $\beta^{+}$-Zerfall (nach links) wären beide also ungünstig, weil Kerne mit geringerer Bindungsenergie entstehen würden. Dementprechend handelt es sich bei Palladium mit der Massenzahl $A=110$ also um ein stabiles Nuklid, was ein Blick auf die Nuklidkarte bestätigt.
+
+\section{1d)}
+\begin{figure}
+  \centering
+  \label{fig:3}
+  \includegraphics[height=7cm]{1d.pdf}
+  \caption{Abhängigkeit der Masse von der Ordnungszahl für A=8.}
+\end{figure}
+Man sieht in Abbildung 3, dass stabile Kerne für $Z=4$ vorausgesagt werden. Die Begründung würde analog zu den vorherigen Aufgabenstellungen erfolgen. Ein Blick auf die Nuklidkarte offenbart, dass der Kern jedoch nicht stabil ist!
+Dies liegt darin begründet, dass der Kern in zwei Heliumatome mit $Z=N=2$ zerfallen kann. Hierbei handelt es sich um einen doppelten magischen Kern, bei dem man eine besondere Stabilität zu erwarten hat, die die Voraussagen der Bethe-Weizsäcker-Formel noch mal stark übertrifft.
+Deshalb ist der Kern gegen der eigentlichen Erwartung instabil.
+
+
+
+
+\end{document}
